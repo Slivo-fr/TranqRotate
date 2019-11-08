@@ -1,0 +1,7 @@
+## Interface: 11302
+## Title: TranqRotate
+## Notes: A tranqshot rotation assistant
+## Author: Slivo
+## Version: 1.0
+
+TranqRotate.lua
