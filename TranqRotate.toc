@@ -3,5 +3,10 @@
 ## Notes: A tranqshot rotation assistant
 ## Author: Slivo
 ## Version: 1.0
+## SavedVariables: TranqRotateDb
+
+locales\enUS.lua
 
 TranqRotate.lua
+defaults.lua
+settings.lua
