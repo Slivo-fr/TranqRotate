@@ -7,6 +7,8 @@ local L = {
     ["LOADED_MESSAGE"] = "TranqRotate 已加載, 輸入 /tranq 進入設置",
 
     -- Settings
+    ["SETTING_GENERAL"] = "General",
+
     --- Announces
     ["SETTING_ANNOUNCES"] = "通告",
     ["ENABLE_ANNOUNCES"] = "啟用通告",

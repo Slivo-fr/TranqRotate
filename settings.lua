@@ -23,7 +23,7 @@ function TranqRotate:CreateConfig()
 		icon = "",
 		args = {
             general = {
-                name = 'general',
+                name = L['SETTING_GENERAL'],
                 type = "group",
                 order = 1,
                 args = {
@@ -100,8 +100,8 @@ function TranqRotate:CreateConfig()
     AceConfigRegistry:RegisterOptionsTable(Addon, options, true)
 	options.args.profile = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
 
-    AceConfigDialog:AddToBlizOptions(Addon, nil, nil, "announces")
-    --AceConfigDialog:AddToBlizOptions(Addon, L['SETTING_ANNOUNCES'], Addon, "announces")
+    AceConfigDialog:AddToBlizOptions(Addon, nil, nil, "general")
+    AceConfigDialog:AddToBlizOptions(Addon, L['SETTING_ANNOUNCES'], Addon, "announces")
     AceConfigDialog:AddToBlizOptions(Addon, L["SETTING_PROFILES"], Addon, "profile")
 
     AceConfigDialog:SetDefaultSize(Addon, 895, 570)

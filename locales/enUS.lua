@@ -5,6 +5,8 @@ local L = {
     ["LOADED_MESSAGE"] = "TranqRotate loaded, type /tranq for settings",
 
     -- Settings
+    ["SETTING_GENERAL"] = "General",
+
     --- Announces
     ["SETTING_ANNOUNCES"] = "Announces",
     ["ENABLE_ANNOUNCES"] = "Enable announces",
