@@ -18,7 +18,6 @@ local L = {
     ["MESSAGE_CHANNEL_NAME_DESC"] = "Set the name of the player or channel you want to send messages",
 
     ----- Channels types
-
     ["CHANNEL_WHISPER"] = "Whisper",
     ["CHANNEL_CHANNEL"] = "Channel",
     ["CHANNEL_RAID_WARNING"] = "Raid Warning",

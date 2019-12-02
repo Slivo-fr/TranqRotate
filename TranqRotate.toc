@@ -6,6 +6,8 @@
 ## SavedVariables: TranqRotateDb
 
 locales\enUS.lua
+locales\zhCN.lua
+locales\zhTW.lua
 
 TranqRotate.lua
 defaults.lua
