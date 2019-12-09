@@ -12,9 +12,20 @@ Here is a list of feature I want to implement at some point, no specific order i
 - Transhot rotation configuration (raid assist required, order hunters, make groupe of multiple hunters, leave some hunt out of rotation as backup)
 - Transhot rotation display (Synchronized list will rotate as hunters tranq successfully or miss, showing at top the next hunter or hunter group that will have to tranq)
 
+### Download
+
+Do not use github download button on this page, get the latest release zip file from https://github.com/Slivo-fr/TranqRotate/releases
+Once this addon is stable enough, I will upload it on curse so it can be downloaded and updated using twich client.
+
+### Credits
+
+I'm been learning and using some code of https://github.com/Aviana/YaHT to build this first codebase. It helped a lot !
+
 ### About me
 
 I work as developer in a very different field, I have been wanting to make some addon for a long time but I'm a total newbie on this topic.
 
 Here is my first try, don't be too harsh but let me know if somethings looks wrong to you !
 Please report any issue using github issues : https://github.com/Slivo-fr/TranqRotate/issues
+
+
