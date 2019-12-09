@@ -2,10 +2,11 @@
 ## Title: TranqRotate
 ## Notes: A tranqshot rotation assistant
 ## Author: Slivo
-## Version: 1.0
+## Version: 1.0.0
 ## SavedVariables: TranqRotateDb
 
 locales\enUS.lua
+locales\frFR.lua
 locales\zhCN.lua
 locales\zhTW.lua
 

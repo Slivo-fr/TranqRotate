@@ -8,6 +8,9 @@ local L = {
 
     -- Settings
     ["SETTING_GENERAL"] = "General",
+    ["SETTING_GENERAL_REPORT"] = "Please report any issue at",
+    ["SETTING_GENERAL_DESC"] = "This first version will only allow you to get automatic tranq annouce messages\n"..
+        "I'm planning to add more features giving visual feedback about tranqshot rotation",
 
     --- Announces
     ["SETTING_ANNOUNCES"] = "通告",

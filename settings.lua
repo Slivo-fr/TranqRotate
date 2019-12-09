@@ -28,10 +28,22 @@ function TranqRotate:CreateConfig()
                 order = 1,
                 args = {
 					descriptionText = {
-						name = "TranqRotate by Slivo\n\n".."Version: "..TranqRotate.version,
+						name = "TranqRotate v" .. TranqRotate.version .. " by Slivo\n",
 						type = "description",
 						width = "full",
 						order = 1,
+					},
+					repoLink = {
+						name = L['SETTING_GENERAL_REPORT'] .. " https://github.com/Slivo-fr/TranqRotate\n",
+						type = "description",
+						width = "full",
+						order = 2,
+					},
+					baseVersion = {
+						name = L['SETTING_GENERAL_DESC'],
+						type = "description",
+						width = "full",
+						order = 3,
 					},
                 }
             },
