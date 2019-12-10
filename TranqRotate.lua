@@ -2,7 +2,7 @@ TranqRotate = select(2, ...)
 
 local L = TranqRotate.L
 local ACR = LibStub("AceConfigRegistry-3.0", true)
-TranqRotate.version = "1.0.0"
+TranqRotate.version = "1.0.1"
 
 local TranqShot = GetSpellInfo(19801)
 --local TranqShot = GetSpellInfo(14287) --Arcane shot for testing
