@@ -19,7 +19,7 @@ Once this addon is stable enough, I will upload it on curse so it can be downloa
 
 ### Credits
 
-I'm been learning and using some code of https://github.com/Aviana/YaHT to build this first codebase. It helped a lot !
+I've been learning and using some code of https://github.com/Aviana/YaHT to build this first codebase. It helped a lot !
 
 ### About me
 
