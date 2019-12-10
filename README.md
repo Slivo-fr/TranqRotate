@@ -15,7 +15,8 @@ Here is a list of feature I want to implement at some point, no specific order i
 ### Download
 
 Do not use github download button on this page, get the latest release zip file from https://github.com/Slivo-fr/TranqRotate/releases
-Once this addon is stable enough, I will upload it on curse so it can be downloaded and updated using twich client.
+
+Also available here https://www.curseforge.com/wow/addons/tranqrotate and there https://wowclassicui.com/fr/addons/tranqrotate
 
 ### Credits
 
