@@ -17,6 +17,9 @@ function TranqRotate:init()
 
     self:CreateConfig()
 
+    TranqRotate.hunterTable = {}
+    TranqRotate:initGui();
+
     printMessage(L['LOADED_MESSAGE'])
 end
 

@@ -21,5 +21,6 @@ locales\zhCN.lua
 locales\zhTW.lua
 
 TranqRotate.lua
+Gui.Lua
 defaults.lua
 settings.lua
