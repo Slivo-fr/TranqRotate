@@ -18,8 +18,9 @@ function TranqRotate:init()
     self:CreateConfig()
 
     TranqRotate.hunterTable = {}
-    TranqRotate:initGui();
+    TranqRotate.rotationTable = { rotation = {}, backup = {} }
 
+    TranqRotate:initGui();
     printMessage(L['LOADED_MESSAGE'])
 end
 
@@ -56,14 +57,23 @@ end
 SLASH_TRANQROTATE1 = "/tranq"
 SLASH_TRANQROTATE2 = "/tranqrotate"
 SlashCmdList["TRANQROTATE"] = function(msg)
-    local AceConfigDialog = LibStub("AceConfigDialog-3.0")
-	AceConfigDialog:Open("TranqRotate")
+    local _, _, cmd, args = string.find(msg, "%s?(%w+)%s?(.*)")
+
+    if (cmd == 'redraw') then
+        TranqRotate:drawHunterFrames()
+    elseif (cmd == 'add' and args ~= nil) then
+        TranqRotate:registerHunter(args, 'GUID')
+        TranqRotate:drawHunterFrames()
+    else
+        local AceConfigDialog = LibStub("AceConfigDialog-3.0")
+        AceConfigDialog:Open("TranqRotate")
+    end
 end
 
-local frame = CreateFrame("Frame")
-frame:RegisterEvent("PLAYER_LOGIN")
-frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
-frame:SetScript(
+local eventFrame = CreateFrame("Frame")
+eventFrame:RegisterEvent("PLAYER_LOGIN")
+eventFrame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+eventFrame:SetScript(
     "OnEvent",
     function(self, event, ...)
         if( event == "PLAYER_LOGIN" ) then
