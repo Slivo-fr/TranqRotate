@@ -20,8 +20,10 @@ locales\frFR.lua
 locales\zhCN.lua
 locales\zhTW.lua
 
-TranqRotate.lua
-constants.lua
-Gui.Lua
-defaults.lua
-settings.lua
+src\tranqRotate.lua
+src\events.lua
+src\rotation.lua
+src\constants.lua
+src\gui.lua
+src\defaults.lua
+src\settings.lua

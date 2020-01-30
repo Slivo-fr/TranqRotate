@@ -41,6 +41,13 @@ local L = {
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已对 %s 施放了宁神射击!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 对 %s 宁神失败!!!",
 
+    --- Rotation
+    ["SETTING_ROTATION"] = "Rotation",
+    ["LOCK_WINDOW"] = "Lock window",
+    ["LOCK_WINDOW_DESC"] = "Lock window",
+    ["WINDOW_LOCKED"] = "TranqRotate: Window locked",
+    ["WINDOW_UNLOCKED"] = "TranqRotate: Window unlocked",
+
     --- Profiles
     ["SETTING_PROFILES"] = "配置"
 }

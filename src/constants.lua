@@ -5,5 +5,5 @@ TranqRotate.colors = {
     ['blue'] = CreateColor(0.3, 0.3, 0.7),
     ['red'] = CreateColor(0.7, 0.3, 0.3),
     ['gray'] = CreateColor(0.3, 0.3, 0.3),
-
+    ['purple'] = CreateColor(0.71,0.45,0.75)
 }

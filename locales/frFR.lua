@@ -41,6 +41,13 @@ local L = {
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait sur %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TIR TRANQUILLISANT RATE SUR %s !!!",
 
+    --- Rotation
+    ["SETTING_ROTATION"] = "Rotation",
+    ["LOCK_WINDOW"] = "Verrouiller la position de la fênetre",
+    ["LOCK_WINDOW_DESC"] = "Verrouiller la position de la fênetre",
+    ["WINDOW_LOCKED"] = "TranqRotate: Fenêtre verrouillée",
+    ["WINDOW_UNLOCKED"] = "TranqRotate: Fenêtre déverrouillée",
+
     --- Profiles
     ["SETTING_PROFILES"] = "Profils"
 }
