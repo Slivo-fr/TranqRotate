@@ -1,5 +1,7 @@
 local TranqRotate = select(2, ...)
 
+local L = TranqRotate.L
+
 -- Initialize GUI frames. Shouldn't be called more than once
 function TranqRotate:initGui() 
 
@@ -132,6 +134,7 @@ function TranqRotate:hideHunter(hunter)
     end
 end
 
+-- Refresh a single hunter frame
 function TranqRotate:refreshHunterFrame(hunter)
     setHunterFrameColor(hunter)
 end
@@ -150,4 +153,16 @@ function setHunterFrameColor(hunter)
     end
 
     hunter.frame.texture:SetVertexColor(color:GetRGB())
+end
+
+-- Lock/Unlock the mainFrame position
+function TranqRotate:lock(lock)
+    TranqRotate.db.profile.lock = lock
+    TranqRotate:applySettings()
+
+    if (lock) then
+        TranqRotate:printMessage(L['WINDOW_LOCKED'])
+    else
+        TranqRotate:printMessage(L['WINDOW_UNLOCKED'])
+    end
 end

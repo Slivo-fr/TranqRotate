@@ -1,8 +1,9 @@
 local TranqRotate = select(2, ...)
 
+-- Adds hunter to global table and one of the two rotation tables
 function TranqRotate:registerHunter(hunterName)
 
-    -- Init hunter 'object'
+    -- Initialize hunter 'object'
     local hunter = {}
     hunter.name = hunterName
     hunter.GUID = UnitGUID(hunterName)
@@ -26,6 +27,7 @@ function TranqRotate:registerHunter(hunterName)
     return hunter
 end
 
+-- Removes a hunter from all lists
 function TranqRotate:removeHunter(deletedHunter)
 
     -- Clear from global list
@@ -65,6 +67,7 @@ function TranqRotate:rotate(lastHunter, fail)
 
 end
 
+-- Removes all nextTranq flags and set it true for next shooter
 function TranqRotate:setNextTranq(nextHunter)
     for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
         if (hunter.name == nextHunter.name) then
@@ -133,7 +136,7 @@ function TranqRotate:resetRotation()
 
 end
 
--- TEST FUNCTION - Manually rotate hunters for test purpose
+-- @todo: remove this | TEST FUNCTION - Manually rotate hunters for test purpose
 function TranqRotate:testRotation()
 
     for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
@@ -176,6 +179,7 @@ function TranqRotate:purgeHunterList()
     for key,hunter in pairs(TranqRotate.hunterTable) do
         if (not UnitInParty(hunter.name)) then
             TranqRotate:removeHunter(hunter)
+            TranqRotate:unregisterUnitEvents()
             change = true
         end
     end
@@ -186,29 +190,27 @@ function TranqRotate:purgeHunterList()
 
 end
 
-function TranqRotate:refreshHunterList()
+-- Iterate over all raid members to find hunters and update their status
+function TranqRotate:updateRaidStatus()
 
     if (IsInGroup() and IsInRaid()) then
 
         local playerCount = GetNumGroupMembers()
 
-        --print('player count : ' .. playerCount)
-
         for index = 1, playerCount, 1 do
 
             local name, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(index)
-            --print(name)
-            --print('online : ', online)
 
             -- Players name might be nil at loading
             if (name ~= nil) then
                 local GUID = UnitGUID(name)
                 local hunter = nil
 
-                if(select(2,UnitClass(name)) == 'HUNTER') then
+                if(true or select(2,UnitClass(name)) == 'HUNTER') then
 
                     if (not TranqRotate:isHunterRegistered(GUID)) then
-                        hunter = TranqRotate:registerHunter(name)GetRaidRosterInfo(index)
+                        hunter = TranqRotate:registerHunter(name)
+                        TranqRotate:registerUnitEvents(hunter)
                     else
                         hunter = TranqRotate:getHunter(nil, GUID)
                     end
@@ -226,10 +228,24 @@ function TranqRotate:refreshHunterList()
     end
 end
 
+-- Update registered hunters status to reflect dead/offline players
+function TranqRotate:updateHuntersStatus()
+
+    for key,hunter in pairs(TranqRotate.hunterTable) do
+
+        hunter.alive = not UnitIsDeadOrGhost(hunter.name)
+        hunter.offline = not UnitIsConnected(hunter.name)
+
+        TranqRotate:refreshHunterFrame(hunter)
+    end
+end
+
+-- @todo: Remove once drag & drop is ok | TEST function allowing slash command with name to move hunters
 function TranqRotate:moveHunterFromName(name, group, position)
     TranqRotate:moveHunter(TranqRotate:getHunter(name, nil), group, position)
 end
 
+-- Moves given hunter to the given position in the given group (ROTATION or BACKUP)
 function TranqRotate:moveHunter(hunter, group, position)
 
     local originIndex = nil
@@ -284,6 +300,7 @@ function TranqRotate:moveHunter(hunter, group, position)
     TranqRotate:drawHunterFrames()
 end
 
+-- Find the table that contains given hunter (rotation or backup)
 function TranqRotate:getHunterRotationTable(hunter)
     if (table.contains(TranqRotate.rotationTables.rotation, hunter)) then
         return TranqRotate.rotationTables.rotation
@@ -293,6 +310,7 @@ function TranqRotate:getHunterRotationTable(hunter)
     end
 end
 
+-- @todo: remove this
 function TranqRotate:test()
     --if (IsInRaid()) then
     --    local raid_units = {}

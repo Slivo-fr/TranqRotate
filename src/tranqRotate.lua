@@ -1,12 +1,9 @@
 TranqRotate = select(2, ...)
 
 local L = TranqRotate.L
-TranqRotate.version = "1.0.1"
+TranqRotate.version = "1.1.0"
 
---local TranqShot = GetSpellInfo(19801)
---local TranqShot = GetSpellInfo(14287) --Arcane shot for testing
---local canTranq = IsUsableSpell(TranqShot)
-
+-- Initialize addon - Shouldn't be call more than once
 function TranqRotate:init()
 
     self:LoadDefaults()
@@ -21,19 +18,21 @@ function TranqRotate:init()
     TranqRotate.hunterTable = {}
     TranqRotate.rotationTables = { rotation = {}, backup = {} }
 
-    TranqRotate:refreshHunterList()
     TranqRotate:initGui()
+    TranqRotate:updateRaidStatus()
     TranqRotate:applySettings()
 
     TranqRotate:printMessage(L['LOADED_MESSAGE'])
 end
 
+-- Apply setting on profile change
 function TranqRotate:ProfilesChanged()
 	self.db:RegisterDefaults(self.defaults)
 
     self:applySettings()
 end
 
+-- Apply settings
 function TranqRotate:applySettings()
 
     TranqRotate.mainFrame:ClearAllPoints()
@@ -48,10 +47,12 @@ function TranqRotate:applySettings()
     TranqRotate.mainFrame:SetMovable(not TranqRotate.db.profile.lock)
 end
 
+-- Print wrapper, just in case
 function TranqRotate:printMessage(msg)
     print(msg)
 end
 
+-- Send a message to a given channel
 function TranqRotate:sendAnnounceMessage(message, destName)
     if TranqRotate.db.profile.enableAnnounces then
         local channelNumber
@@ -67,25 +68,21 @@ SLASH_TRANQROTATE2 = "/tranqrotate"
 SlashCmdList["TRANQROTATE"] = function(msg)
     local _, _, cmd, args = string.find(msg, "%s?(%w+)%s?(.*)")
 
-    if (cmd == 'redraw') then
+    if (cmd == 'redraw') then -- @todo decide if this should be removed or not
         TranqRotate:drawHunterFrames()
-    elseif (cmd == 'init') then
+    elseif (cmd == 'init') then -- @todo: remove this
         TranqRotate:resetRotation()
     elseif (cmd == 'lock') then
-        TranqRotate.db.profile.lock = true
-        TranqRotate:applySettings()
-        TranqRotate:printMessage(L['WINDOW_LOCKED'])
+        TranqRotate:lock(true)
     elseif (cmd == 'unlock') then
-        TranqRotate.db.profile.lock = false
-        TranqRotate:applySettings()
-        TranqRotate:printMessage(L['WINDOW_UNLOCKED'])
-    elseif (cmd == 'rotate') then
+        TranqRotate:lock(false)
+    elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not
         TranqRotate:testRotation()
-    elseif (cmd == 'raid') then
-        TranqRotate:refreshHunterList()
-    elseif (cmd == 'test') then
+    elseif (cmd == 'raid') then -- @todo: (Maybe) remove once raid members are properly updated
+        TranqRotate:updateRaidStatus()
+    elseif (cmd == 'test') then -- @todo: remove this
         TranqRotate:test()
-    elseif (cmd == 'move' and args ~= nil)  then
+    elseif (cmd == 'move' and args ~= nil)  then -- @todo: remove this when drag & drop is ok
         chunks = {}
         for substring in args:gmatch("%S+") do
             table.insert(chunks, substring)

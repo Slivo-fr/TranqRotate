@@ -9,6 +9,10 @@ eventFrame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 eventFrame:RegisterEvent("GROUP_ROSTER_UPDATE")
 eventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 
+-- @todo: clean this
+--eventFrame:RegisterEvent("PARTY_MEMBER_DISABLE")
+--eventFrame:RegisterEvent("PARTY_MEMBER_ENABLE")
+
 --PARTY_MEMBER_DISABLE
 --PARTY_MEMBER_ENABLE
 --PLAYER_ROLES_ASSIGNED
@@ -22,7 +26,7 @@ eventFrame:SetScript(
         elseif (event == "PLAYER_TARGET_CHANGED") then
             -- Ugly hack to initialize hunter list when player login right into raid
             -- Raid members data is unreliable on PLAYER_LOGIN and PLAYER_ENTERING_WORLD events
-            TranqRotate:refreshHunterList()
+            TranqRotate:updateRaidStatus()
             self:UnregisterEvent("PLAYER_TARGET_CHANGED")
         else
             TranqRotate[event](TranqRotate, ...)
@@ -50,11 +54,38 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     end
 end
 
+-- Register single unit events for a given hunter
+function TranqRotate:registerUnitEvents(hunter)
+
+    hunter.frame:RegisterUnitEvent("PARTY_MEMBER_DISABLE", hunter.name)
+    hunter.frame:RegisterUnitEvent("PARTY_MEMBER_ENABLE", hunter.name)
+    --hunter.frame:RegisterUnitEvent("UNIT_HEALTH_FREQUENT", hunter.name) -- Could be needed with UNIT_HEALTH throtle
+    hunter.frame:RegisterUnitEvent("UNIT_HEALTH", hunter.name)
+    hunter.frame:RegisterUnitEvent("UNIT_CONNECTION", hunter.name)
+    hunter.frame:RegisterUnitEvent("UNIT_FLAGS", hunter.name)
+
+    hunter.frame:SetScript(
+        "OnEvent",
+        function(self, event, ...)
+            TranqRotate:updateHuntersStatus()
+        end
+    )
+
+end
+
+function TranqRotate:unregisterUnitEvents()
+    self:UnregisterEvent("PARTY_MEMBER_DISABLE")
+    self:UnregisterEvent("PARTY_MEMBER_ENABLE")
+    self:UnregisterEvent("UNIT_HEALTH_FREQUENT")
+    self:UnregisterEvent("UNIT_CONNECTION")
+    self:UnregisterEvent("UNIT_FLAGS")
+end
+
 function TranqRotate:GROUP_ROSTER_UPDATE()
-    TranqRotate:refreshHunterList()
+    TranqRotate:updateRaidStatus()
 end
 
 function TranqRotate:PLAYER_TARGET_CHANGED()
-    TranqRotate:refreshHunterList()
+    TranqRotate:updateRaidStatus()
     self:UnregisterEvent("PLAYER_TARGET_CHANGED")
 end
