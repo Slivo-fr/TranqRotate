@@ -7,3 +7,8 @@ TranqRotate.colors = {
     ['gray'] = CreateColor(0.3, 0.3, 0.3),
     ['purple'] = CreateColor(0.71,0.45,0.75)
 }
+
+TranqRotate.constants = {
+    ['hunterFrameHeight'] = 20,
+    ['hunterFrameSpacing'] = 4,
+}

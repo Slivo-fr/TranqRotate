@@ -178,8 +178,8 @@ function TranqRotate:purgeHunterList()
 
     for key,hunter in pairs(TranqRotate.hunterTable) do
         if (not UnitInParty(hunter.name)) then
-            TranqRotate:removeHunter(hunter)
             TranqRotate:unregisterUnitEvents()
+            TranqRotate:removeHunter(hunter)
             change = true
         end
     end
@@ -208,24 +208,31 @@ function TranqRotate:updateRaidStatus()
 
                 if(true or select(2,UnitClass(name)) == 'HUNTER') then
 
-                    if (not TranqRotate:isHunterRegistered(GUID)) then
-                        hunter = TranqRotate:registerHunter(name)
-                        TranqRotate:registerUnitEvents(hunter)
+                    local registered = TranqRotate:isHunterRegistered(GUID)
+
+                    if (not registered) then
+                        if (not InCombatLockdown()) then
+                            hunter = TranqRotate:registerHunter(name)
+                            TranqRotate:registerUnitEvents(hunter)
+                            registered = true
+                        end
                     else
                         hunter = TranqRotate:getHunter(nil, GUID)
                     end
 
-                    hunter.offline = not online
-                    hunter.alive = not isDead
+                    if (registered) then
+                        hunter.offline = not online
+                        hunter.alive = not isDead
 
-                    TranqRotate:refreshHunterFrame(hunter)
+                        TranqRotate:refreshHunterFrame(hunter)
+                    end
                 end
 
             end
         end
-
-        TranqRotate:purgeHunterList()
     end
+
+    TranqRotate:purgeHunterList()
 end
 
 -- Update registered hunters status to reflect dead/offline players
@@ -312,6 +319,8 @@ end
 
 -- @todo: remove this
 function TranqRotate:test()
+
+    TranqRotate:enableListSorting()
     --if (IsInRaid()) then
     --    local raid_units = {}
     --    for i=1,40 do
