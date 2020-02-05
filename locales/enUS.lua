@@ -39,6 +39,13 @@ local L = {
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tranqshot done on %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TRANQSHOT FAILED ON %s !!!",
 
+    --- Rotation
+    ["SETTING_ROTATION"] = "Rotation",
+    ["LOCK_WINDOW"] = "Lock window",
+    ["LOCK_WINDOW_DESC"] = "Lock window",
+    ["WINDOW_LOCKED"] = "TranqRotate: Window locked",
+    ["WINDOW_UNLOCKED"] = "TranqRotate: Window unlocked",
+
     --- Profiles
     ["SETTING_PROFILES"] = "Profiles"
 }

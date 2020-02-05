@@ -13,6 +13,7 @@ function TranqRotate:CreateConfig()
 
 	local function set(info, value)
 		TranqRotate.db.profile[info[#info]] = value
+        TranqRotate:applySettings()
 	end
 
 	local options = {
@@ -45,6 +46,19 @@ function TranqRotate:CreateConfig()
 						width = "full",
 						order = 3,
 					},
+					spacer = {
+						name = ' ',
+						type = "description",
+						width = "full",
+						order = 4,
+					},
+                    lock = {
+                        name = L["LOCK_WINDOW"],
+                        desc = L["LOCK_WINDOW_DESC"],
+                        type = "toggle",
+                        order = 5,
+                        width = "double",
+                    }
                 }
             },
             announces = {
@@ -105,7 +119,7 @@ function TranqRotate:CreateConfig()
                         width = "double",
                     },
                 }
-            }
+            },
 		}
 	}
 
