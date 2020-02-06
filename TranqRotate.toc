@@ -25,5 +25,6 @@ src\events.lua
 src\rotation.lua
 src\constants.lua
 src\gui.lua
+src\dragdrop.lua
 src\defaults.lua
 src\settings.lua

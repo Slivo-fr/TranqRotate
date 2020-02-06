@@ -178,7 +178,7 @@ function TranqRotate:purgeHunterList()
 
     for key,hunter in pairs(TranqRotate.hunterTable) do
         if (not UnitInParty(hunter.name)) then
-            TranqRotate:unregisterUnitEvents()
+            TranqRotate:unregisterUnitEvents(hunter)
             TranqRotate:removeHunter(hunter)
             change = true
         end
@@ -206,7 +206,7 @@ function TranqRotate:updateRaidStatus()
                 local GUID = UnitGUID(name)
                 local hunter = nil
 
-                if(true or select(2,UnitClass(name)) == 'HUNTER') then
+                if(select(2,UnitClass(name)) == 'HUNTER') then
 
                     local registered = TranqRotate:isHunterRegistered(GUID)
 
@@ -266,12 +266,7 @@ function TranqRotate:moveHunter(hunter, group, position)
     end
 
     -- Setting originalIndex
-    for key, loopHunter in pairs(originTable) do
-        if (hunter.name == loopHunter.name) then
-            originIndex = key
-            break
-        end
-    end
+    originIndex = TranqRotate:getHunterIndex(hunter, originTable)
 
     local sameTableMove = originTable == destinationTable
 
@@ -319,26 +314,19 @@ end
 
 -- @todo: remove this
 function TranqRotate:test()
-
     TranqRotate:enableListSorting()
-    --if (IsInRaid()) then
-    --    local raid_units = {}
-    --    for i=1,40 do
-    --        raid_units[i]="raid"..tostring(i)
-    --    end
-    --
-    --    for i=1,#raid_units do
-    --        local unit = raid_units[i]
-    --
-    --        if UnitExists(unit) then
-    --            --print(UnitName(unit))
-    --            local index = UnitInRaid(UnitName(unit))
-    --
-    --            local name, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(index)
-    --
-    --            print (name, online)
-    --
-    --        end
-    --    end
-    --end
+end
+
+-- Returns a hunter's index in the given table
+function TranqRotate:getHunterIndex(hunter, table)
+    local originIndex = 0
+
+    for key, loopHunter in pairs(table) do
+        if (hunter.name == loopHunter.name) then
+            originIndex = key
+            break
+        end
+    end
+
+    return originIndex
 end

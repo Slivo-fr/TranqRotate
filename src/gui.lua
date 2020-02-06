@@ -46,7 +46,7 @@ function TranqRotate:initGui()
 
     TranqRotate:drawHunterFrames()
     TranqRotate:createDropHintFrame()
-    TranqRotate:createMeterFrame()
+    TranqRotate:createRulerFrame()
 end
 
 -- render / re-render hunter frames to reflect table changes.
@@ -88,7 +88,18 @@ function TranqRotate:drawList(hunterList, parentFrame)
             hunter.frame:SetFrameStrata("MEDIUM")
             hunter.frame:SetHeight(hunterFrameHeight)
 
-            TranqRotate:setHunterFrameDraggable(hunter)
+            -- Set Texture
+            hunter.frame.texture = hunter.frame:CreateTexture(nil, "ARTWORK")
+            hunter.frame.texture:SetTexture("Interface\\AddOns\\TranqRotate\\textures\\steel.tga")
+            hunter.frame.texture:SetAllPoints()
+
+            -- Set Text
+            hunter.frame.text = hunter.frame:CreateFontString(nil, "ARTWORK")
+            hunter.frame.text:SetFont("Fonts\\ARIALN.ttf", 12)
+            hunter.frame.text:SetPoint("LEFT",5,0)
+            hunter.frame.text:SetText(hunter.name)
+
+            TranqRotate:configureHunterFrameDrag(hunter)
         else
             hunter.frame:SetParent(parentFrame)
         end
@@ -110,19 +121,8 @@ function TranqRotate:drawList(hunterList, parentFrame)
             TranqRotate.mainFrame:SetHeight(TranqRotate.mainFrame:GetHeight() + hunterFrameHeight + hunterFrameSpacing)
         end
 
-        -- Set Texture
-        hunter.frame.texture = hunter.frame:CreateTexture(nil, "ARTWORK")
-        hunter.frame.texture:SetTexture("Interface\\AddOns\\TranqRotate\\textures\\steel.tga")
-        hunter.frame.texture:SetAllPoints()
-
         -- SetColor
         setHunterFrameColor(hunter)
-
-        -- Set Text
-        hunter.frame.text = hunter.frame:CreateFontString(nil, "ARTWORK")
-        hunter.frame.text:SetFont("Fonts\\ARIALN.ttf", 12)
-        hunter.frame.text:SetPoint("LEFT",5,0)
-        hunter.frame.text:SetText(hunter.name)
 
         hunter.frame:Show()
         hunter.frame.hunter = hunter
@@ -169,145 +169,4 @@ function TranqRotate:lock(lock)
     else
         TranqRotate:printMessage(L['WINDOW_UNLOCKED'])
     end
-end
-
--- Enable drag & drop for all hunter frames
-function TranqRotate:enableListSorting()
-    for key,hunter in pairs(TranqRotate.hunterTable) do
-        TranqRotate:enableHunterFrameDragging(hunter, true)
-    end
-end
-
--- configure hunter frame drag behavior
-function TranqRotate:setHunterFrameDraggable(hunter)
-
-    hunter.frame:RegisterForDrag("LeftButton")
-    hunter.frame:SetClampedToScreen(true)
-
-    hunter.frame:SetScript(
-        "OnDragStart",
-        function()
-            hunter.frame:StartMoving()
-            hunter.frame:SetFrameStrata("HIGH")
-            TranqRotate.mainFrame.meterFrame:SetPoint('BOTTOMRIGHT', hunter.frame, 'TOPLEFT', 0, 0)
-            TranqRotate.mainFrame.dropHintFrame:Show()
-            TranqRotate.mainFrame.backupFrame:Show()
-        end
-    )
-
-    hunter.frame:SetScript(
-        "OnDragStop",
-        function()
-            hunter.frame:StopMovingOrSizing()
-            hunter.frame:SetFrameStrata("MEDIUM")
-            TranqRotate.mainFrame.dropHintFrame:Hide()
-
-            if (#TranqRotate.rotationTables.backup < 1) then
-                TranqRotate.mainFrame.backupFrame:Hide()
-            end
-            --config.point, meh , config.relativePoint, config.x, config.y = hunter.frame:GetPoint()
-
-            --print(hunter.frame:GetPoint())
-            --print(hunter.frame:GetParent():GetName())
-            print('Drop')
-        end
-    )
-end
-
--- Enable or disable drag & drop for the hunter frame
-function TranqRotate:enableHunterFrameDragging(hunter, movable)
-    hunter.frame:EnableMouse(movable)
-    hunter.frame:SetMovable(movable)
-end
-
--- create and initialize the drop hint frame
-function TranqRotate:createDropHintFrame()
-
-    local hintFrame = CreateFrame("Frame", nil, TranqRotate.mainFrame.rotationFrame)
-
-    hintFrame:SetPoint('TOP', TranqRotate.mainFrame.rotationFrame, 'TOP', 0, 0)
-    hintFrame:SetFrameStrata("MEDIUM")
-    hintFrame:SetHeight(20)
-    hintFrame:SetWidth(110)
-
-    hintFrame.texture = hintFrame:CreateTexture(nil, "BACKGROUND")
-    hintFrame.texture:SetColorTexture(TranqRotate.colors.blue:GetRGB())
-    hintFrame.texture:SetPoint('LEFT')
-    hintFrame.texture:SetPoint('RIGHT')
-    hintFrame.texture:SetHeight(2)
-
-    hintFrame:Hide()
-
-    TranqRotate.mainFrame.dropHintFrame = hintFrame
-end
-
--- Create and initialize the 'meter' frame.
--- It's height will be used as a ruler for position calculation
-function TranqRotate:createMeterFrame()
-
-    local meterFrame = CreateFrame("Frame", nil, TranqRotate.mainFrame.rotationFrame)
-
-    meterFrame:SetPoint('TOPLEFT', TranqRotate.mainFrame, 'TOPLEFT', 0, 0)
-
-    -- @todo : Remove this
-    --meterFrame.texture = meterFrame:CreateTexture(nil, "BACKGROUND")
-    --meterFrame.texture:SetColorTexture(0.8, 0.5, 0.5, 0.2)
-    --meterFrame.texture:SetAllPoints()
-    --meterFrame:Show()
-
-    TranqRotate.mainFrame.meterFrame = meterFrame
-
-    meterFrame:SetScript(
-        "OnSizeChanged",
-        function (self, width, height)
-            TranqRotate:setDropHintPosition(self, width, height)
-        end
-    )
-
-end
-
--- Set the drop hint frame position to match dragged frame position
-function TranqRotate:setDropHintPosition(self, width, height)
-
-    local hunterFrameHeight = TranqRotate.constants.hunterFrameHeight
-    local hunterFrameSpacing = TranqRotate.constants.hunterFrameSpacing
-    local hintPosition = 0
-
-    -- Hunt frame is above rotation frames
-    if (TranqRotate.mainFrame.meterFrame:GetTop() > TranqRotate.mainFrame.rotationFrame:GetTop()) then
-        height = 0
-    end
-
-    local index = floor(height / 22)
-
-    -- Small offset to the first position so it does not clip hunt frame
-    if (index == 0) then
-        hintPosition = -2
-    else
-        hintPosition = (index) * (hunterFrameHeight + hunterFrameSpacing) - hunterFrameSpacing / 2;
-    end
-
-    -- Hunter frame is bellow rotation frame
-    if (height > TranqRotate.mainFrame.rotationFrame:GetHeight()) then
-
-        -- Removing rotation frame size from calculation, using it's height as base hintPosition offset
-        height = height - TranqRotate.mainFrame.rotationFrame:GetHeight()
-        hintPosition = TranqRotate.mainFrame.rotationFrame:GetHeight()
-
-        if (height > TranqRotate.mainFrame.backupFrame:GetHeight()) then
-            -- Frame is bellow backup frame
-            hintPosition = hintPosition + TranqRotate.mainFrame.backupFrame:GetHeight() - hunterFrameHeight + hunterFrameSpacing / 2
-        else
-            index = floor(height / (hunterFrameHeight + hunterFrameSpacing))
-
-            -- Small offset to the first position so it does not clip hunt frame
-            if (index == 0) then
-                hintPosition = hintPosition - 2
-            else
-                hintPosition = hintPosition + (index) * (hunterFrameHeight + hunterFrameSpacing) - hunterFrameSpacing / 2;
-            end
-        end
-    end
-
-    TranqRotate.mainFrame.dropHintFrame:SetPoint('TOP', 0 , -hintPosition)
 end
