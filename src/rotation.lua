@@ -247,11 +247,6 @@ function TranqRotate:updateHuntersStatus()
     end
 end
 
--- @todo: Remove once drag & drop is ok | TEST function allowing slash command with name to move hunters
-function TranqRotate:moveHunterFromName(name, group, position)
-    TranqRotate:moveHunter(TranqRotate:getHunter(name, nil), group, position)
-end
-
 -- Moves given hunter to the given position in the given group (ROTATION or BACKUP)
 function TranqRotate:moveHunter(hunter, group, position)
 

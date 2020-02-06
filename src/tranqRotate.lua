@@ -81,12 +81,6 @@ SlashCmdList["TRANQROTATE"] = function(msg)
         TranqRotate:updateRaidStatus()
     elseif (cmd == 'test') then -- @todo: remove this
         TranqRotate:test()
-    elseif (cmd == 'move' and args ~= nil)  then -- @todo: remove this when drag & drop is ok
-        chunks = {}
-        for substring in args:gmatch("%S+") do
-            table.insert(chunks, substring)
-        end
-        TranqRotate:moveHunterFromName(chunks[1], chunks[2], tonumber(chunks[3]))
     else
         local AceConfigDialog = LibStub("AceConfigDialog-3.0")
         AceConfigDialog:Open("TranqRotate")
