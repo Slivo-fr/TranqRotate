@@ -7,7 +7,6 @@ function TranqRotate:initGui()
 
     -- Main window
     TranqRotate.mainFrame = CreateFrame("Frame", 'mainFrame', UIParent)
-    TranqRotate.mainFrame:SetFrameStrata("MEDIUM")
     TranqRotate.mainFrame:SetWidth(120)
     TranqRotate.mainFrame:SetHeight(40)
     TranqRotate.mainFrame:Show()
@@ -162,8 +161,7 @@ end
 
 function TranqRotate:createHunterFrame(hunter, parentFrame)
     hunter.frame = CreateFrame("Frame", nil, parentFrame)
-    hunter.frame:SetFrameStrata("MEDIUM")
-    hunter.frame:SetHeight(hunterFrameHeight)
+    hunter.frame:SetHeight(TranqRotate.constants.hunterFrameHeight)
 
     -- Set Texture
     hunter.frame.texture = hunter.frame:CreateTexture(nil, "ARTWORK")

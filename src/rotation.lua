@@ -205,7 +205,7 @@ function TranqRotate:updateRaidStatus()
             -- Players name might be nil at loading
             if (name ~= nil) then
                 local GUID = UnitGUID(name)
-                local hunter = nil
+                local hunter
 
                 if(select(2,UnitClass(name)) == 'HUNTER') then
 
@@ -251,19 +251,17 @@ end
 -- Moves given hunter to the given position in the given group (ROTATION or BACKUP)
 function TranqRotate:moveHunter(hunter, group, position)
 
-    local originIndex = nil
-    local finalIndex = position
-
     local originTable = TranqRotate:getHunterRotationTable(hunter)
+    local originIndex = TranqRotate:getHunterIndex(hunter, originTable)
+
     local destinationTable = TranqRotate.rotationTables.rotation
+    local finalIndex = position
 
     if (group == 'BACKUP') then
         destinationTable = TranqRotate.rotationTables.backup
     end
 
     -- Setting originalIndex
-    originIndex = TranqRotate:getHunterIndex(hunter, originTable)
-
     local sameTableMove = originTable == destinationTable
 
     -- Defining finalIndex

@@ -54,7 +54,6 @@ function TranqRotate:createDropHintFrame()
     local hintFrame = CreateFrame("Frame", nil, TranqRotate.mainFrame.rotationFrame)
 
     hintFrame:SetPoint('TOP', TranqRotate.mainFrame.rotationFrame, 'TOP', 0, 0)
-    hintFrame:SetFrameStrata("MEDIUM")
     hintFrame:SetHeight(TranqRotate.constants.hunterFrameHeight)
     hintFrame:SetWidth(110)
 
