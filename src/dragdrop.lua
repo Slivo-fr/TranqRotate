@@ -34,7 +34,7 @@ function TranqRotate:configureHunterFrameDrag(hunter)
         "OnDragStop",
         function()
             hunter.frame:StopMovingOrSizing()
-            hunter.frame:SetFrameStrata("MEDIUM")
+            hunter.frame:SetFrameStrata(TranqRotate.mainFrame:GetFrameStrata())
             TranqRotate.mainFrame.dropHintFrame:Hide()
 
             if (#TranqRotate.rotationTables.backup < 1) then
@@ -76,7 +76,7 @@ function TranqRotate:createRulerFrame()
     local rulerFrame = CreateFrame("Frame", nil, TranqRotate.mainFrame.rotationFrame)
     TranqRotate.mainFrame.rulerFrame = rulerFrame
 
-    rulerFrame:SetPoint('TOPLEFT', TranqRotate.mainFrame, 'TOPLEFT', 0, 0)
+    rulerFrame:SetPoint('TOPLEFT', TranqRotate.mainFrame.rotationFrame, 'TOPLEFT', 0, 0)
 
     rulerFrame:SetScript(
         "OnSizeChanged",

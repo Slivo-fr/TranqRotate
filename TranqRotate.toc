@@ -24,6 +24,7 @@ src\tranqRotate.lua
 src\events.lua
 src\rotation.lua
 src\constants.lua
+src\frames.lua
 src\gui.lua
 src\dragdrop.lua
 src\defaults.lua

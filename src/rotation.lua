@@ -84,7 +84,7 @@ end
 function TranqRotate:getNextRotationHunter(lastHunter)
 
     local rotationTable = TranqRotate.rotationTables.rotation
-    local nextHunter = nil
+    local nextHunter
     local lastHunterIndex = 1
     local nextHunterIndex = 1
 

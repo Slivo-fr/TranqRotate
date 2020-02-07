@@ -85,15 +85,14 @@ SlashCmdList["TRANQROTATE"] = function(msg)
     elseif (cmd == 'test') then -- @todo: remove this
         TranqRotate:test()
     else
-        local AceConfigDialog = LibStub("AceConfigDialog-3.0")
-        AceConfigDialog:Open("TranqRotate")
+        TranqRotate:openSettings()
     end
 end
 
 function TranqRotate:toggleDisplay()
     if (TranqRotate.mainFrame:IsShown()) then
         TranqRotate.mainFrame:Hide()
-        TranqRotate:printMessage('Tranqrotate window hidden. Use /tranq toggle toggle display')
+        TranqRotate:printMessage('Tranqrotate window hidden. Use /tranq toggle to get it back')
     else
         TranqRotate.mainFrame:Show()
     end
@@ -112,4 +111,36 @@ function table.contains(table, element)
         end
     end
     return false
+end
+
+function TranqRotate:openSettings()
+    local AceConfigDialog = LibStub("AceConfigDialog-3.0")
+    AceConfigDialog:Open("TranqRotate")
+end
+
+function TranqRotate:broadcastToRaid()
+    local channel = 'RAID'
+
+    SendChatMessage('--- Hunter tranqshot setup ---', channel)
+    SendChatMessage(
+        TranqRotate:buildGroupMessage('Rotation : ', TranqRotate.rotationTables.rotation),
+        channel
+    )
+
+    if (#TranqRotate.rotationTables.backup > 0) then
+        SendChatMessage(
+            TranqRotate:buildGroupMessage('Backup : ', TranqRotate.rotationTables.backup),
+            channel
+        )
+    end
+end
+
+function TranqRotate:buildGroupMessage(prefix, rotationTable)
+    local hunters = {}
+
+    for key, hunt in pairs(rotationTable) do
+        table.insert(hunters, hunt.name)
+    end
+
+    return prefix .. table.concat(hunters, ', ')
 end
