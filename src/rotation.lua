@@ -270,6 +270,8 @@ function TranqRotate:moveHunter(hunter, group, position)
 
     if (group == 'BACKUP') then
         destinationTable = TranqRotate.rotationTables.backup
+        -- Remove nextTranq flag when moved to backup
+        hunter.nextTranq = false
     end
 
     -- Setting originalIndex
