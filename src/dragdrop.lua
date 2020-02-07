@@ -55,13 +55,12 @@ function TranqRotate:createDropHintFrame()
 
     hintFrame:SetPoint('TOP', TranqRotate.mainFrame.rotationFrame, 'TOP', 0, 0)
     hintFrame:SetFrameStrata("MEDIUM")
-    hintFrame:SetHeight(20)
+    hintFrame:SetHeight(TranqRotate.constants.hunterFrameHeight)
     hintFrame:SetWidth(110)
 
     hintFrame.texture = hintFrame:CreateTexture(nil, "BACKGROUND")
-    hintFrame.texture:SetColorTexture(TranqRotate.colors.blue:GetRGB())
-    -- @todo tweak the hint bar color
-    --hintFrame.texture:SetAlpha('LEFT')
+    hintFrame.texture:SetColorTexture(TranqRotate.colors.white:GetRGB())
+    hintFrame.texture:SetAlpha(0.7)
     hintFrame.texture:SetPoint('LEFT')
     hintFrame.texture:SetPoint('RIGHT')
     hintFrame.texture:SetHeight(2)

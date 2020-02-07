@@ -56,7 +56,7 @@ end
 function TranqRotate:rotate(lastHunter, fail)
 
     -- Default value to false
-    local fail = fail or false
+    fail = fail or false
     local nextHunter = TranqRotate:getNextRotationHunter(lastHunter)
 
     TranqRotate:setNextTranq(nextHunter)
@@ -127,12 +127,13 @@ function TranqRotate:resetRotation()
         TranqRotate:refreshHunterFrame(hunter)
     end
 
-    if (#TranqRotate.rotationTables.rotation > 0) then
-        local firstHunter = TranqRotate.rotationTables.rotation[1]
-
-        firstHunter.nextTranq = true
-        TranqRotate:refreshHunterFrame(firstHunter)
-    end
+    -- @todo remove this if neutral reset is fine
+    --if (#TranqRotate.rotationTables.rotation > 0) then
+    --    local firstHunter = TranqRotate.rotationTables.rotation[1]
+    --
+    --    firstHunter.nextTranq = true
+    --    TranqRotate:refreshHunterFrame(firstHunter)
+    --end
 
 end
 
@@ -305,11 +306,6 @@ function TranqRotate:getHunterRotationTable(hunter)
     if (table.contains(TranqRotate.rotationTables.backup, hunter)) then
         return TranqRotate.rotationTables.backup
     end
-end
-
--- @todo: remove this
-function TranqRotate:test()
-    TranqRotate:enableListSorting()
 end
 
 -- Returns a hunter's index in the given table

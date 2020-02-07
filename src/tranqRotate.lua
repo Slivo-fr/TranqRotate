@@ -17,6 +17,7 @@ function TranqRotate:init()
 
     TranqRotate.hunterTable = {}
     TranqRotate.rotationTables = { rotation = {}, backup = {} }
+    TranqRotate.enableDrag = true
 
     TranqRotate:initGui()
     TranqRotate:updateRaidStatus()
@@ -69,6 +70,8 @@ SlashCmdList["TRANQROTATE"] = function(msg)
 
     if (cmd == 'redraw') then -- @todo decide if this should be removed or not
         TranqRotate:drawHunterFrames()
+    elseif (cmd == 'toggle') then -- @todo: remove this
+        TranqRotate:toggleDisplay()
     elseif (cmd == 'init') then -- @todo: remove this
         TranqRotate:resetRotation()
     elseif (cmd == 'lock') then
@@ -85,6 +88,21 @@ SlashCmdList["TRANQROTATE"] = function(msg)
         local AceConfigDialog = LibStub("AceConfigDialog-3.0")
         AceConfigDialog:Open("TranqRotate")
     end
+end
+
+function TranqRotate:toggleDisplay()
+    if (TranqRotate.mainFrame:IsShown()) then
+        TranqRotate.mainFrame:Hide()
+        TranqRotate:printMessage('Tranqrotate window hidden. Use /tranq toggle toggle display')
+    else
+        TranqRotate.mainFrame:Show()
+    end
+end
+
+-- @todo: remove this
+function TranqRotate:test()
+    TranqRotate:printMessage('test')
+--    TranqRotate:enableListSorting()
 end
 
 function table.contains(table, element)

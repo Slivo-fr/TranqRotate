@@ -46,6 +46,7 @@ function TranqRotate:CreateConfig()
 						width = "full",
 						order = 3,
 					},
+                    -- @todo : find a way to space widget properly
 					spacer = {
 						name = ' ',
 						type = "description",

@@ -5,10 +5,11 @@ local L = TranqRotate.L
 -- Initialize GUI frames. Shouldn't be called more than once
 function TranqRotate:initGui() 
 
+    -- Main window
     TranqRotate.mainFrame = CreateFrame("Frame", 'mainFrame', UIParent)
     TranqRotate.mainFrame:SetFrameStrata("MEDIUM")
     TranqRotate.mainFrame:SetWidth(120)
-    TranqRotate.mainFrame:SetHeight(30)
+    TranqRotate.mainFrame:SetHeight(40)
     TranqRotate.mainFrame:Show()
 
     TranqRotate.mainFrame:RegisterForDrag("LeftButton")
@@ -20,6 +21,7 @@ function TranqRotate:initGui()
         config.point, meh , config.relativePoint, config.x, config.y = TranqRotate.mainFrame:GetPoint()
     end)
 
+    -- Rotation frame
     TranqRotate.mainFrame.rotationFrame = CreateFrame("Frame", 'rotationFrame', TranqRotate.mainFrame)
     TranqRotate.mainFrame.rotationFrame:SetPoint('TOPLEFT')
     TranqRotate.mainFrame.rotationFrame:SetPoint('TOPRIGHT')
@@ -29,6 +31,7 @@ function TranqRotate:initGui()
     TranqRotate.mainFrame.rotationFrame.texture:SetColorTexture(0,0,0,0.5)
     TranqRotate.mainFrame.rotationFrame.texture:SetAllPoints()
 
+    -- Backup frame
     TranqRotate.mainFrame.backupFrame = CreateFrame("Frame", 'backupFrame', TranqRotate.mainFrame)
     TranqRotate.mainFrame.backupFrame:SetPoint('TOPLEFT', TranqRotate.mainFrame.rotationFrame, 'BOTTOMLEFT', 0, 0)
     TranqRotate.mainFrame.backupFrame:SetPoint('TOPRIGHT', TranqRotate.mainFrame.rotationFrame, 'BOTTOMRIGHT', 0, 0)
@@ -38,6 +41,7 @@ function TranqRotate:initGui()
     TranqRotate.mainFrame.backupFrame.texture:SetColorTexture(0,0,0,0.5)
     TranqRotate.mainFrame.backupFrame.texture:SetAllPoints()
 
+    -- Visual separator
     TranqRotate.mainFrame.backupFrame.texture = TranqRotate.mainFrame.backupFrame:CreateTexture(nil, "BACKGROUND")
     TranqRotate.mainFrame.backupFrame.texture:SetColorTexture(0.8,0.8,0.8,0.8)
     TranqRotate.mainFrame.backupFrame.texture:SetHeight(1)
@@ -60,9 +64,9 @@ function TranqRotate:drawHunterFrames()
 
     if (#TranqRotate.rotationTables.backup > 0) then
         TranqRotate.mainFrame:SetHeight(TranqRotate.mainFrame:GetHeight() + 20)
-        TranqRotate.mainFrame.backupFrame:SetHeight(20)
     end
 
+    TranqRotate.mainFrame.backupFrame:SetHeight(20)
     TranqRotate:drawList(TranqRotate.rotationTables.backup, TranqRotate.mainFrame.backupFrame)
 
 end
@@ -100,6 +104,10 @@ function TranqRotate:drawList(hunterList, parentFrame)
             hunter.frame.text:SetText(hunter.name)
 
             TranqRotate:configureHunterFrameDrag(hunter)
+
+            if (TranqRotate.enableDrag) then
+                TranqRotate:enableHunterFrameDragging(hunter, true)
+            end
         else
             hunter.frame:SetParent(parentFrame)
         end
