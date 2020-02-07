@@ -10,11 +10,6 @@ eventFrame:RegisterEvent("GROUP_ROSTER_UPDATE")
 eventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 
 -- @todo: clean this
---eventFrame:RegisterEvent("PARTY_MEMBER_DISABLE")
---eventFrame:RegisterEvent("PARTY_MEMBER_ENABLE")
-
---PARTY_MEMBER_DISABLE
---PARTY_MEMBER_ENABLE
 --PLAYER_ROLES_ASSIGNED
 
 eventFrame:SetScript(
@@ -73,12 +68,13 @@ function TranqRotate:registerUnitEvents(hunter)
 
 end
 
-function TranqRotate:unregisterUnitEvents()
-    self:UnregisterEvent("PARTY_MEMBER_DISABLE")
-    self:UnregisterEvent("PARTY_MEMBER_ENABLE")
-    self:UnregisterEvent("UNIT_HEALTH_FREQUENT")
-    self:UnregisterEvent("UNIT_CONNECTION")
-    self:UnregisterEvent("UNIT_FLAGS")
+-- Unregister single unit events for a given hunter
+function TranqRotate:unregisterUnitEvents(hunter)
+    hunter.frame:UnregisterEvent("PARTY_MEMBER_DISABLE")
+    hunter.frame:UnregisterEvent("PARTY_MEMBER_ENABLE")
+    hunter.frame:UnregisterEvent("UNIT_HEALTH_FREQUENT")
+    hunter.frame:UnregisterEvent("UNIT_CONNECTION")
+    hunter.frame:UnregisterEvent("UNIT_FLAGS")
 end
 
 function TranqRotate:GROUP_ROSTER_UPDATE()

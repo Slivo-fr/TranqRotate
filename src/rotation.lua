@@ -56,7 +56,7 @@ end
 function TranqRotate:rotate(lastHunter, fail)
 
     -- Default value to false
-    local fail = fail or false
+    fail = fail or false
     local nextHunter = TranqRotate:getNextRotationHunter(lastHunter)
 
     TranqRotate:setNextTranq(nextHunter)
@@ -127,12 +127,13 @@ function TranqRotate:resetRotation()
         TranqRotate:refreshHunterFrame(hunter)
     end
 
-    if (#TranqRotate.rotationTables.rotation > 0) then
-        local firstHunter = TranqRotate.rotationTables.rotation[1]
-
-        firstHunter.nextTranq = true
-        TranqRotate:refreshHunterFrame(firstHunter)
-    end
+    -- @todo remove this if neutral reset is fine
+    --if (#TranqRotate.rotationTables.rotation > 0) then
+    --    local firstHunter = TranqRotate.rotationTables.rotation[1]
+    --
+    --    firstHunter.nextTranq = true
+    --    TranqRotate:refreshHunterFrame(firstHunter)
+    --end
 
 end
 
@@ -178,8 +179,8 @@ function TranqRotate:purgeHunterList()
 
     for key,hunter in pairs(TranqRotate.hunterTable) do
         if (not UnitInParty(hunter.name)) then
+            TranqRotate:unregisterUnitEvents(hunter)
             TranqRotate:removeHunter(hunter)
-            TranqRotate:unregisterUnitEvents()
             change = true
         end
     end
@@ -204,28 +205,35 @@ function TranqRotate:updateRaidStatus()
             -- Players name might be nil at loading
             if (name ~= nil) then
                 local GUID = UnitGUID(name)
-                local hunter = nil
+                local hunter
 
-                if(true or select(2,UnitClass(name)) == 'HUNTER') then
+                if(select(2,UnitClass(name)) == 'HUNTER') then
 
-                    if (not TranqRotate:isHunterRegistered(GUID)) then
-                        hunter = TranqRotate:registerHunter(name)
-                        TranqRotate:registerUnitEvents(hunter)
+                    local registered = TranqRotate:isHunterRegistered(GUID)
+
+                    if (not registered) then
+                        if (not InCombatLockdown()) then
+                            hunter = TranqRotate:registerHunter(name)
+                            TranqRotate:registerUnitEvents(hunter)
+                            registered = true
+                        end
                     else
                         hunter = TranqRotate:getHunter(nil, GUID)
                     end
 
-                    hunter.offline = not online
-                    hunter.alive = not isDead
+                    if (registered) then
+                        hunter.offline = not online
+                        hunter.alive = not isDead
 
-                    TranqRotate:refreshHunterFrame(hunter)
+                        TranqRotate:refreshHunterFrame(hunter)
+                    end
                 end
 
             end
         end
-
-        TranqRotate:purgeHunterList()
     end
+
+    TranqRotate:purgeHunterList()
 end
 
 -- Update registered hunters status to reflect dead/offline players
@@ -240,32 +248,20 @@ function TranqRotate:updateHuntersStatus()
     end
 end
 
--- @todo: Remove once drag & drop is ok | TEST function allowing slash command with name to move hunters
-function TranqRotate:moveHunterFromName(name, group, position)
-    TranqRotate:moveHunter(TranqRotate:getHunter(name, nil), group, position)
-end
-
 -- Moves given hunter to the given position in the given group (ROTATION or BACKUP)
 function TranqRotate:moveHunter(hunter, group, position)
 
-    local originIndex = nil
-    local finalIndex = position
-
     local originTable = TranqRotate:getHunterRotationTable(hunter)
+    local originIndex = TranqRotate:getHunterIndex(hunter, originTable)
+
     local destinationTable = TranqRotate.rotationTables.rotation
+    local finalIndex = position
 
     if (group == 'BACKUP') then
         destinationTable = TranqRotate.rotationTables.backup
     end
 
     -- Setting originalIndex
-    for key, loopHunter in pairs(originTable) do
-        if (hunter.name == loopHunter.name) then
-            originIndex = key
-            break
-        end
-    end
-
     local sameTableMove = originTable == destinationTable
 
     -- Defining finalIndex
@@ -310,26 +306,16 @@ function TranqRotate:getHunterRotationTable(hunter)
     end
 end
 
--- @todo: remove this
-function TranqRotate:test()
-    --if (IsInRaid()) then
-    --    local raid_units = {}
-    --    for i=1,40 do
-    --        raid_units[i]="raid"..tostring(i)
-    --    end
-    --
-    --    for i=1,#raid_units do
-    --        local unit = raid_units[i]
-    --
-    --        if UnitExists(unit) then
-    --            --print(UnitName(unit))
-    --            local index = UnitInRaid(UnitName(unit))
-    --
-    --            local name, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(index)
-    --
-    --            print (name, online)
-    --
-    --        end
-    --    end
-    --end
+-- Returns a hunter's index in the given table
+function TranqRotate:getHunterIndex(hunter, table)
+    local originIndex = 0
+
+    for key, loopHunter in pairs(table) do
+        if (hunter.name == loopHunter.name) then
+            originIndex = key
+            break
+        end
+    end
+
+    return originIndex
 end
