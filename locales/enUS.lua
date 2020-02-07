@@ -35,9 +35,11 @@ local L = {
     ["ANNOUNCES_MESSAGE_HEADER"] = "Announce messages",
     ["SUCCESS_MESSAGE_LABEL"] = "Successful announce message",
     ["FAIL_MESSAGE_LABEL"] = "Fail announce message",
+    ["FAIL_WHISPER_LABEL"] = "Fail whisper message",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tranqshot done on %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TRANQSHOT FAILED ON %s !!!",
+    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TRANQSHOT FAILED ! TRANQ NOW !",
 
     --- Rotation
     ["SETTING_ROTATION"] = "Rotation",

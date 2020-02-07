@@ -37,9 +37,11 @@ local L = {
     ["ANNOUNCES_MESSAGE_HEADER"] = "Messages",
     ["SUCCESS_MESSAGE_LABEL"] = "Message de réussite",
     ["FAIL_MESSAGE_LABEL"] = "Message d'échec",
+    ["FAIL_WHISPER_LABEL"] = "Message d'echec chuchotté",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait sur %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TIR TRANQUILLISANT RATE SUR %s !!!",
+    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TIR TRANQUILISANT RATE ! TRANQ MAINTENANT !",
 
     --- Rotation
     ["SETTING_ROTATION"] = "Rotation",

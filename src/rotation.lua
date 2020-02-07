@@ -60,9 +60,10 @@ function TranqRotate:rotate(lastHunter, fail)
     local nextHunter = TranqRotate:getNextRotationHunter(lastHunter)
 
     TranqRotate:setNextTranq(nextHunter)
+    local name, realm = UnitName("player")
 
-    if (fail) then
-        -- Throw alert to the next hunter in the rotation, maybe alert backup too ...
+    if (name == lastHunter.name and fail) then
+        SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
     end
 
 end
@@ -79,6 +80,16 @@ function TranqRotate:setNextTranq(nextHunter)
         TranqRotate:refreshHunterFrame(hunter)
     end
 end
+
+-- Returns the hunter that will shoot next
+function TranqRotate:getNextTranq()
+    for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
+        if (hunter.nextTranq) then
+            return hunter
+        end
+    end
+end
+
 
 -- Find and returns the next hunter that will tranq base on last shooter
 function TranqRotate:getNextRotationHunter(lastHunter)

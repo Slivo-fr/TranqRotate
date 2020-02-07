@@ -119,6 +119,12 @@ function TranqRotate:CreateConfig()
                         order = 22,
                         width = "double",
                     },
+                    whisperFailMessage = {
+                        name = L["FAIL_WHISPER_LABEL"],
+                        type = "input",
+                        order = 23,
+                        width = "double",
+                    },
                 }
             },
 		}

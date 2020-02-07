@@ -37,9 +37,11 @@ local L = {
     ["ANNOUNCES_MESSAGE_HEADER"] = "通告資訊",
     ["SUCCESS_MESSAGE_LABEL"] = "施放成功通告資訊",
     ["FAIL_MESSAGE_LABEL"] = "施放失敗通告資訊",
+    ["FAIL_WHISPER_LABEL"] = "Fail whisper message",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已對 %s 施放了寧神射擊!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 對 %s 寧神失敗!!!",
+    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TRANQSHOT FAILED ! TRANQ NOW !",
 
     --- Rotation
     ["SETTING_ROTATION"] = "Rotation",
