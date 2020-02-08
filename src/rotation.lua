@@ -64,8 +64,10 @@ function TranqRotate:rotate(lastHunter, fail)
 
     if (name == lastHunter.name and fail) then
         SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
+        for key, backupHunter in pairs(TranqRotate.rotationTables.backup) do
+            SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, backupHunter.name)
+        end
     end
-
 end
 
 -- Removes all nextTranq flags and set it true for next shooter
