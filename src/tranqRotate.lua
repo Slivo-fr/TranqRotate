@@ -84,8 +84,10 @@ SlashCmdList["TRANQROTATE"] = function(msg)
         TranqRotate:updateRaidStatus()
     elseif (cmd == 'test') then -- @todo: remove this
         TranqRotate:test()
-    else
+    elseif (cmd == 'settings') then -- @todo: remove this
         TranqRotate:openSettings()
+    else
+        TranqRotate:printHelp()
     end
 end
 
@@ -121,18 +123,22 @@ end
 function TranqRotate:broadcastToRaid()
     local channel = 'RAID'
 
-    SendChatMessage('--- Hunter tranqshot setup ---', channel)
-    SendChatMessage(
-        TranqRotate:buildGroupMessage('Rotation : ', TranqRotate.rotationTables.rotation),
-        channel
-    )
+    if (IsInGroup() and IsInRaid()) then
 
-    if (#TranqRotate.rotationTables.backup > 0) then
+        SendChatMessage('--- ' .. L['BROADCAST_HEADER_TEXT'] .. ' ---', channel)
         SendChatMessage(
-            TranqRotate:buildGroupMessage('Backup : ', TranqRotate.rotationTables.backup),
+            TranqRotate:buildGroupMessage(L['BROADCAST_ROTATION_PREFIX'] .. ' : ', TranqRotate.rotationTables.rotation),
             channel
         )
+
+        if (#TranqRotate.rotationTables.backup > 0) then
+            SendChatMessage(
+                TranqRotate:buildGroupMessage(L['BROADCAST_BACKUP_PREFIX'] .. ' : ', TranqRotate.rotationTables.backup),
+                channel
+            )
+        end
     end
+
 end
 
 function TranqRotate:buildGroupMessage(prefix, rotationTable)
@@ -143,4 +149,16 @@ function TranqRotate:buildGroupMessage(prefix, rotationTable)
     end
 
     return prefix .. table.concat(hunters, ', ')
+end
+
+function TranqRotate:printHelp()
+    TranqRotate:printMessage(TranqRotate:colorText('/tranqrotate') .. ' commands options :')
+    TranqRotate:printMessage('   ' .. TranqRotate:colorText('toggle') .. ' : Show/Hide the main window')
+    TranqRotate:printMessage('   ' .. TranqRotate:colorText('lock') .. ' : Lock the main window position')
+    TranqRotate:printMessage('   ' .. TranqRotate:colorText('unlock') .. ' : Unlock the main window position')
+    TranqRotate:printMessage('   ' .. TranqRotate:colorText('settings') .. ' : Open TranqRotate settings')
+end
+
+function TranqRotate:colorText(text)
+    return '|cffffbf00' .. text .. '|r'
 end

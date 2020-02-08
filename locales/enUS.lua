@@ -49,7 +49,12 @@ local L = {
     ["WINDOW_UNLOCKED"] = "TranqRotate: Window unlocked",
 
     --- Profiles
-    ["SETTING_PROFILES"] = "Profiles"
+    ["SETTING_PROFILES"] = "Profiles",
+
+    --- Raid broadcast messages
+    ["BROADCAST_HEADER_TEXT"] = "Hunter tranqshot setup",
+    ["BROADCAST_ROTATION_PREFIX"] = "Rotation",
+    ["BROADCAST_BACKUP_PREFIX"] = "Backup",
 }
 
 TranqRotate.L = L
