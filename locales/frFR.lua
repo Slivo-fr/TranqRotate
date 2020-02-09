@@ -46,8 +46,8 @@ local L = {
     --- Rotation
     ["LOCK_WINDOW"] = "Verrouiller la position de la fênetre",
     ["LOCK_WINDOW_DESC"] = "Verrouiller la position de la fênetre",
-    ["HIDE_WINDOW_NOT_IN_RAID"] = "Hide the window when not in a raid",
-    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Hide the window when not in a raid",
+    ["HIDE_WINDOW_NOT_IN_RAID"] = "Masquer la fenêtre principale hors raid",
+    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Masquer la fenêtre principale hors raid",
     ["WINDOW_LOCKED"] = "TranqRotate: Fenêtre verrouillée",
     ["WINDOW_UNLOCKED"] = "TranqRotate: Fenêtre déverrouillée",
 
