@@ -42,9 +42,10 @@ local L = {
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TRANQSHOT FAILED ! TRANQ NOW !",
 
     --- Rotation
-    ["SETTING_ROTATION"] = "Rotation",
     ["LOCK_WINDOW"] = "Lock window",
     ["LOCK_WINDOW_DESC"] = "Lock window",
+    ["HIDE_WINDOW_NOT_IN_RAID"] = "Hide the window when not in a raid",
+    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Hide the window when not in a raid",
     ["WINDOW_LOCKED"] = "TranqRotate: Window locked",
     ["WINDOW_UNLOCKED"] = "TranqRotate: Window unlocked",
 

@@ -207,7 +207,7 @@ end
 -- Iterate over all raid members to find hunters and update their status
 function TranqRotate:updateRaidStatus()
 
-    if (IsInGroup() and IsInRaid()) then
+    if (IsInRaid()) then
 
         local playerCount = GetNumGroupMembers()
 

@@ -94,6 +94,11 @@ end
 function TranqRotate:toggleDisplay()
     if (TranqRotate.mainFrame:IsShown()) then
         TranqRotate.mainFrame:Hide()
+
+        if (IsInRaid()) then
+            TranqRotate.manuallyHiddenWhileInRaid = true
+        end
+
         TranqRotate:printMessage('Tranqrotate window hidden. Use /tranq toggle to get it back')
     else
         TranqRotate.mainFrame:Show()
@@ -123,7 +128,7 @@ end
 function TranqRotate:broadcastToRaid()
     local channel = 'RAID'
 
-    if (IsInGroup() and IsInRaid()) then
+    if (IsInRaid()) then
 
         SendChatMessage('--- ' .. L['BROADCAST_HEADER_TEXT'] .. ' ---', channel)
         SendChatMessage(

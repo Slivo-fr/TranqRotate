@@ -14,6 +14,25 @@ function TranqRotate:initGui()
     TranqRotate:drawHunterFrames()
     TranqRotate:createDropHintFrame()
     TranqRotate:createRulerFrame()
+
+    TranqRotate.manuallyHiddenWhileInRaid = false
+    TranqRotate:updateDisplay()
+end
+
+-- Show/Hide main window based on user settings
+function TranqRotate:updateDisplay()
+    if (TranqRotate.db.profile.hideNotInRaid and not IsInRaid()) then
+        TranqRotate.mainFrame:Hide()
+    else
+        if (not TranqRotate.manuallyHiddenWhileInRaid) then
+            TranqRotate.mainFrame:Show()
+        end
+    end
+
+    -- Reset manual hide during the raid when leaving it
+    if (not IsInRaid()) then
+        TranqRotate.manuallyHiddenWhileInRaid = false
+    end
 end
 
 -- render / re-render hunter frames to reflect table changes.

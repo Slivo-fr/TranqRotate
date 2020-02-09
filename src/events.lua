@@ -79,6 +79,7 @@ end
 
 function TranqRotate:GROUP_ROSTER_UPDATE()
     TranqRotate:updateRaidStatus()
+    TranqRotate:updateDisplay()
 end
 
 function TranqRotate:PLAYER_TARGET_CHANGED()

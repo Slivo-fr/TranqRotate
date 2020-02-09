@@ -8,7 +8,8 @@ function TranqRotate:LoadDefaults()
 	        announceSuccessMessage = L["DEFAULT_SUCCESS_ANNOUNCE_MESSAGE"],
 	        announceFailMessage = L["DEFAULT_FAIL_ANNOUNCE_MESSAGE"],
 			whisperFailMessage = L["DEFAULT_FAIL_WHISPER_MESSAGE"],
-			lock = false
+			lock = false,
+			hideNotInRaid = false,
 	    },
 	}
 end
