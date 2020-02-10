@@ -66,11 +66,6 @@ function TranqRotate:CreateConfig()
                         type = "toggle",
                         order = 6,
                         width = "double",
-                        set = function(info, value)
-                            set(info,value)
-                            LibStub("AceConfigRegistry-3.0", true):NotifyChange("TranqRotate")
-                            TranqRotate:updateDisplay()
-                        end
                     }
                 }
             },

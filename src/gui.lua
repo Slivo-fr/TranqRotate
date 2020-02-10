@@ -141,25 +141,3 @@ function TranqRotate:lock(lock)
         TranqRotate:printMessage(L['WINDOW_UNLOCKED'])
     end
 end
-
-function TranqRotate:createHunterFrame(hunter, parentFrame)
-    hunter.frame = CreateFrame("Frame", nil, parentFrame)
-    hunter.frame:SetHeight(TranqRotate.constants.hunterFrameHeight)
-
-    -- Set Texture
-    hunter.frame.texture = hunter.frame:CreateTexture(nil, "ARTWORK")
-    hunter.frame.texture:SetTexture("Interface\\AddOns\\TranqRotate\\textures\\steel.tga")
-    hunter.frame.texture:SetAllPoints()
-
-    -- Set Text
-    hunter.frame.text = hunter.frame:CreateFontString(nil, "ARTWORK")
-    hunter.frame.text:SetFont("Fonts\\ARIALN.ttf", 12)
-    hunter.frame.text:SetPoint("LEFT",5,0)
-    hunter.frame.text:SetText(hunter.name)
-
-    TranqRotate:configureHunterFrameDrag(hunter)
-
-    if (TranqRotate.enableDrag) then
-        TranqRotate:enableHunterFrameDragging(hunter, true)
-    end
-end

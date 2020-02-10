@@ -29,3 +29,4 @@ src\gui.lua
 src\dragdrop.lua
 src\defaults.lua
 src\settings.lua
+src\utils.lua

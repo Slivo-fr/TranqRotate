@@ -1,5 +1,6 @@
 local TranqRotate = select(2, ...)
 
+-- Create main window
 function TranqRotate:createMainFrame()
     TranqRotate.mainFrame = CreateFrame("Frame", 'mainFrame', UIParent)
     TranqRotate.mainFrame:SetWidth(120)
@@ -20,6 +21,7 @@ function TranqRotate:createMainFrame()
     )
 end
 
+-- Create Title frame
 function TranqRotate:createTitleFrame()
     TranqRotate.mainFrame.titleFrame = CreateFrame("Frame", 'rotationFrame', TranqRotate.mainFrame)
     TranqRotate.mainFrame.titleFrame:SetPoint('TOPLEFT')
@@ -39,6 +41,7 @@ function TranqRotate:createTitleFrame()
     TranqRotate.mainFrame.titleFrame.text:SetTextColor(1,1,1,1)
 end
 
+-- Create title bar buttons
 function TranqRotate:createButtons()
 
     local buttons = {
@@ -64,7 +67,7 @@ function TranqRotate:createButtons()
     end
 end
 
-
+-- Create a single button in the title bar
 function TranqRotate:createButton(position, texture, callback)
 
     local button = CreateFrame("Button", nil, TranqRotate.mainFrame.titleFrame)
@@ -85,6 +88,7 @@ function TranqRotate:createButton(position, texture, callback)
     button:SetScript("OnClick", callback)
 end
 
+-- Create rotation frame
 function TranqRotate:createRotationFrame()
     TranqRotate.mainFrame.rotationFrame = CreateFrame("Frame", 'rotationFrame', TranqRotate.mainFrame)
     TranqRotate.mainFrame.rotationFrame:SetPoint('LEFT')
@@ -97,6 +101,7 @@ function TranqRotate:createRotationFrame()
     TranqRotate.mainFrame.rotationFrame.texture:SetAllPoints()
 end
 
+-- Create backup frame
 function TranqRotate:createBackupFrame()
     -- Backup frame
     TranqRotate.mainFrame.backupFrame = CreateFrame("Frame", 'backupFrame', TranqRotate.mainFrame)
@@ -114,4 +119,27 @@ function TranqRotate:createBackupFrame()
     TranqRotate.mainFrame.backupFrame.texture:SetHeight(1)
     TranqRotate.mainFrame.backupFrame.texture:SetWidth(60)
     TranqRotate.mainFrame.backupFrame.texture:SetPoint('TOP')
+end
+
+-- Create single hunter frame
+function TranqRotate:createHunterFrame(hunter, parentFrame)
+    hunter.frame = CreateFrame("Frame", nil, parentFrame)
+    hunter.frame:SetHeight(TranqRotate.constants.hunterFrameHeight)
+
+    -- Set Texture
+    hunter.frame.texture = hunter.frame:CreateTexture(nil, "ARTWORK")
+    hunter.frame.texture:SetTexture("Interface\\AddOns\\TranqRotate\\textures\\steel.tga")
+    hunter.frame.texture:SetAllPoints()
+
+    -- Set Text
+    hunter.frame.text = hunter.frame:CreateFontString(nil, "ARTWORK")
+    hunter.frame.text:SetFont("Fonts\\ARIALN.ttf", 12)
+    hunter.frame.text:SetPoint("LEFT",5,0)
+    hunter.frame.text:SetText(hunter.name)
+
+    TranqRotate:configureHunterFrameDrag(hunter)
+
+    if (TranqRotate.enableDrag) then
+        TranqRotate:enableHunterFrameDragging(hunter, true)
+    end
 end

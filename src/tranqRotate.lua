@@ -36,12 +36,15 @@ end
 function TranqRotate:applySettings()
 
     TranqRotate.mainFrame:ClearAllPoints()
+
     local config = TranqRotate.db.profile
     if config.point then
         TranqRotate.mainFrame:SetPoint(config.point, UIParent, config.relativePoint, config.x, config.y)
     else
         TranqRotate.mainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
     end
+
+    TranqRotate:updateDisplay()
 
     TranqRotate.mainFrame:EnableMouse(not TranqRotate.db.profile.lock)
     TranqRotate.mainFrame:SetMovable(not TranqRotate.db.profile.lock)
@@ -111,20 +114,13 @@ function TranqRotate:test()
 --    TranqRotate:enableListSorting()
 end
 
-function table.contains(table, element)
-    for _, value in pairs(table) do
-        if value == element then
-            return true
-        end
-    end
-    return false
-end
-
+-- Open ace settings
 function TranqRotate:openSettings()
     local AceConfigDialog = LibStub("AceConfigDialog-3.0")
     AceConfigDialog:Open("TranqRotate")
 end
 
+-- Sends rotation setup to raid channel
 function TranqRotate:broadcastToRaid()
     local channel = 'RAID'
 
@@ -146,6 +142,7 @@ function TranqRotate:broadcastToRaid()
 
 end
 
+-- Serialize hunters names of a given rotation group
 function TranqRotate:buildGroupMessage(prefix, rotationTable)
     local hunters = {}
 
@@ -156,6 +153,7 @@ function TranqRotate:buildGroupMessage(prefix, rotationTable)
     return prefix .. table.concat(hunters, ', ')
 end
 
+-- Print command options to chat
 function TranqRotate:printHelp()
     TranqRotate:printMessage(TranqRotate:colorText('/tranqrotate') .. ' commands options :')
     TranqRotate:printMessage('   ' .. TranqRotate:colorText('toggle') .. ' : Show/Hide the main window')
@@ -164,6 +162,7 @@ function TranqRotate:printHelp()
     TranqRotate:printMessage('   ' .. TranqRotate:colorText('settings') .. ' : Open TranqRotate settings')
 end
 
+-- Adds color to given text
 function TranqRotate:colorText(text)
     return '|cffffbf00' .. text .. '|r'
 end

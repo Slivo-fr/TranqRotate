@@ -313,10 +313,10 @@ end
 
 -- Find the table that contains given hunter (rotation or backup)
 function TranqRotate:getHunterRotationTable(hunter)
-    if (table.contains(TranqRotate.rotationTables.rotation, hunter)) then
+    if (TranqRotate:tableContains(TranqRotate.rotationTables.rotation, hunter)) then
         return TranqRotate.rotationTables.rotation
     end
-    if (table.contains(TranqRotate.rotationTables.backup, hunter)) then
+    if (TranqRotate:tableContains(TranqRotate.rotationTables.backup, hunter)) then
         return TranqRotate.rotationTables.backup
     end
 end

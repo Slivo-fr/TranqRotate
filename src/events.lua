@@ -49,6 +49,17 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     end
 end
 
+function TranqRotate:GROUP_ROSTER_UPDATE()
+    TranqRotate:updateRaidStatus()
+    TranqRotate:updateDisplay()
+end
+
+function TranqRotate:PLAYER_TARGET_CHANGED()
+    TranqRotate:updateRaidStatus()
+    self:UnregisterEvent("PLAYER_TARGET_CHANGED")
+end
+
+
 -- Register single unit events for a given hunter
 function TranqRotate:registerUnitEvents(hunter)
 
@@ -75,14 +86,4 @@ function TranqRotate:unregisterUnitEvents(hunter)
     hunter.frame:UnregisterEvent("UNIT_HEALTH_FREQUENT")
     hunter.frame:UnregisterEvent("UNIT_CONNECTION")
     hunter.frame:UnregisterEvent("UNIT_FLAGS")
-end
-
-function TranqRotate:GROUP_ROSTER_UPDATE()
-    TranqRotate:updateRaidStatus()
-    TranqRotate:updateDisplay()
-end
-
-function TranqRotate:PLAYER_TARGET_CHANGED()
-    TranqRotate:updateRaidStatus()
-    self:UnregisterEvent("PLAYER_TARGET_CHANGED")
 end
