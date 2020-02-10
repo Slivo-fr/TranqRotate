@@ -4,7 +4,7 @@ local TranqRotate = select(2, ...)
 
 local L = {
 
-    ["LOADED_MESSAGE"] = "TranqRotate 已加載, 輸入 /tranq 進入設置",
+    ["LOADED_MESSAGE"] = "TranqRotate loaded, type /tranq for options",
 
     -- Settings
     ["SETTING_GENERAL"] = "General",
