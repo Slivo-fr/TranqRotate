@@ -8,7 +8,8 @@ This addon is still in a (stable) beta state, a stable release should come soon.
 
 ## Feedback
 
-I'm looking for feedback ! Feel free to contact me at any time ingame (Slivo@Sulfuron) or elsewhere. 
+I'm looking for feedback ! Feel free to contact me at any time ingame (Slivo@Sulfuron) or elsewhere.
+ 
 Please report any issue using github issues : https://github.com/Slivo-fr/TranqRotate/issues
 
 ## Features
