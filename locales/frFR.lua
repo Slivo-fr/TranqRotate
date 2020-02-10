@@ -9,8 +9,9 @@ local L = {
     -- Settings
     ["SETTING_GENERAL"] = "Général",
     ["SETTING_GENERAL_REPORT"] = "Merci de signaler tout bug rencontré sur",
-    ["SETTING_GENERAL_DESC"] = "Cette première version permet uniquement des annonces automatique pour le tir tranquillisant\n"..
-        "D'autres fonctionnalités sont prévues, permettant entre autre un affichage temps réel de la rotation et des cooldowns",
+    ["SETTING_GENERAL_DESC"] = "Nouveau : Une fenetre permet maintenant de régler et suivre la rotation\n"..
+        "TranRotate va également et automatiquement chuchoter le chasseur suivant et le backup en cas de raté !\n"..
+        "Aucune synchronisation n'est encore en place, chaque chasseur dois régler l'ordre de son coté.",
 
     --- Announces
     ["SETTING_ANNOUNCES"] = "Annonces",
