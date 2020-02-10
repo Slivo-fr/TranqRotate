@@ -46,15 +46,13 @@ Here is a list of feature I want to implement at some point, no specific order i
 - Encounter detection and frenzy cooldown progress bar
 - Add a button to close the window without using `/tranq toggle`
 
-### Download
+## Download
 
 Do not use github download button on this page, get the latest release zip file from https://github.com/Slivo-fr/TranqRotate/releases
 
 Also available here https://www.curseforge.com/wow/addons/tranqrotate and there https://wowclassicui.com/fr/addons/tranqrotate
 
-### Credits
+## Credits
 
 I've been learning and using some code of https://github.com/Aviana/YaHT to build this first codebase. Thanks for his work.
 Many thanks to the wow addon discord members that helped me a lot too.
-
-
