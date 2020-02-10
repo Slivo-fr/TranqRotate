@@ -55,4 +55,5 @@ Also available here https://www.curseforge.com/wow/addons/tranqrotate and there 
 ## Credits
 
 I've been learning and using some code of https://github.com/Aviana/YaHT to build this first codebase. Thanks for his work.
+
 Many thanks to the wow addon discord members that helped me a lot too.
