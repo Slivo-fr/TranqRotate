@@ -44,7 +44,6 @@ Here is a list of feature I want to implement at some point, no specific order i
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot
 - Automatic reset of rotation when raid wipe or boss die
 - Encounter detection and frenzy cooldown progress bar
-- Add a button to close the window without using `/tranq toggle`
 
 ## Download
 
