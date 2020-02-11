@@ -102,7 +102,7 @@ function TranqRotate:toggleDisplay()
             TranqRotate.manuallyHiddenWhileInRaid = true
         end
 
-        TranqRotate:printMessage('Tranqrotate window hidden. Use /tranq toggle to get it back')
+        TranqRotate:printMessage(L['TRANQ_WINDOW_HIDDEN'])
     else
         TranqRotate.mainFrame:Show()
     end
