@@ -3,8 +3,8 @@ local TranqRotate = select(2, ...)
 -- Create main window
 function TranqRotate:createMainFrame()
     TranqRotate.mainFrame = CreateFrame("Frame", 'mainFrame', UIParent)
-    TranqRotate.mainFrame:SetWidth(120)
-    TranqRotate.mainFrame:SetHeight(40 + TranqRotate.constants.titleBarHeight)
+    TranqRotate.mainFrame:SetWidth(TranqRotate.constants.mainFrameWidth)
+    TranqRotate.mainFrame:SetHeight(TranqRotate.constants.rotationFramesBaseHeight * 2 + TranqRotate.constants.titleBarHeight)
     TranqRotate.mainFrame:Show()
 
     TranqRotate.mainFrame:RegisterForDrag("LeftButton")
@@ -46,6 +46,11 @@ function TranqRotate:createButtons()
 
     local buttons = {
         {
+            ['texture'] = 'Interface/Buttons/UI-Panel-MinimizeButton-Up',
+            ['callback'] = TranqRotate.toggleDisplay,
+            ['textCoord'] = {0.18, 0.8, 0.2, 0.8}
+        },
+        {
             ['texture'] = 'Interface/GossipFrame/BinderGossipIcon',
             ['callback'] = TranqRotate.openSettings
         },
@@ -62,13 +67,13 @@ function TranqRotate:createButtons()
     local position = 5
 
     for key, button in pairs(buttons) do
-        TranqRotate:createButton(position, button.texture, button.callback )
+        TranqRotate:createButton(position, button.texture, button.callback, button.textCoord)
         position = position + 13
     end
 end
 
 -- Create a single button in the title bar
-function TranqRotate:createButton(position, texture, callback)
+function TranqRotate:createButton(position, texture, callback, textCoord)
 
     local button = CreateFrame("Button", nil, TranqRotate.mainFrame.titleFrame)
     button:SetPoint('RIGHT', -position, 0)
@@ -85,6 +90,11 @@ function TranqRotate:createButton(position, texture, callback)
     highlight:SetAllPoints()
     button:SetHighlightTexture(highlight)
 
+    if (textCoord) then
+        normal:SetTexCoord(unpack(textCoord))
+        highlight:SetTexCoord(unpack(textCoord))
+    end
+
     button:SetScript("OnClick", callback)
 end
 
@@ -94,7 +104,7 @@ function TranqRotate:createRotationFrame()
     TranqRotate.mainFrame.rotationFrame:SetPoint('LEFT')
     TranqRotate.mainFrame.rotationFrame:SetPoint('RIGHT')
     TranqRotate.mainFrame.rotationFrame:SetPoint('TOP', 0, -TranqRotate.constants.titleBarHeight)
-    TranqRotate.mainFrame.rotationFrame:SetHeight(20)
+    TranqRotate.mainFrame.rotationFrame:SetHeight(TranqRotate.constants.rotationFramesBaseHeight)
 
     TranqRotate.mainFrame.rotationFrame.texture = TranqRotate.mainFrame.rotationFrame:CreateTexture(nil, "BACKGROUND")
     TranqRotate.mainFrame.rotationFrame.texture:SetColorTexture(0,0,0,0.5)
@@ -107,8 +117,9 @@ function TranqRotate:createBackupFrame()
     TranqRotate.mainFrame.backupFrame = CreateFrame("Frame", 'backupFrame', TranqRotate.mainFrame)
     TranqRotate.mainFrame.backupFrame:SetPoint('TOPLEFT', TranqRotate.mainFrame.rotationFrame, 'BOTTOMLEFT', 0, 0)
     TranqRotate.mainFrame.backupFrame:SetPoint('TOPRIGHT', TranqRotate.mainFrame.rotationFrame, 'BOTTOMRIGHT', 0, 0)
-    TranqRotate.mainFrame.backupFrame:SetHeight(20)
+    TranqRotate.mainFrame.backupFrame:SetHeight(TranqRotate.constants.rotationFramesBaseHeight)
 
+    -- Set Texture
     TranqRotate.mainFrame.backupFrame.texture = TranqRotate.mainFrame.backupFrame:CreateTexture(nil, "BACKGROUND")
     TranqRotate.mainFrame.backupFrame.texture:SetColorTexture(0,0,0,0.5)
     TranqRotate.mainFrame.backupFrame.texture:SetAllPoints()

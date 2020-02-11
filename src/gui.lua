@@ -39,16 +39,16 @@ end
 function TranqRotate:drawHunterFrames()
 
     -- Different height to reduce spacing between both groups
-    TranqRotate.mainFrame:SetHeight(20 + TranqRotate.constants.titleBarHeight)
-    TranqRotate.mainFrame.rotationFrame:SetHeight(20)
+    TranqRotate.mainFrame:SetHeight(TranqRotate.constants.rotationFramesBaseHeight + TranqRotate.constants.titleBarHeight)
+    TranqRotate.mainFrame.rotationFrame:SetHeight(TranqRotate.constants.rotationFramesBaseHeight)
 
     TranqRotate:drawList(TranqRotate.rotationTables.rotation, TranqRotate.mainFrame.rotationFrame)
 
     if (#TranqRotate.rotationTables.backup > 0) then
-        TranqRotate.mainFrame:SetHeight(TranqRotate.mainFrame:GetHeight() + 20)
+        TranqRotate.mainFrame:SetHeight(TranqRotate.mainFrame:GetHeight() + TranqRotate.constants.rotationFramesBaseHeight)
     end
 
-    TranqRotate.mainFrame.backupFrame:SetHeight(20)
+    TranqRotate.mainFrame.backupFrame:SetHeight(TranqRotate.constants.rotationFramesBaseHeight)
     TranqRotate:drawList(TranqRotate.rotationTables.backup, TranqRotate.mainFrame.backupFrame)
 
 end
