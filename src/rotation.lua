@@ -83,16 +83,6 @@ function TranqRotate:setNextTranq(nextHunter)
     end
 end
 
--- Returns the hunter that will shoot next
-function TranqRotate:getNextTranq()
-    for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
-        if (hunter.nextTranq) then
-            return hunter
-        end
-    end
-end
-
-
 -- Find and returns the next hunter that will tranq base on last shooter
 function TranqRotate:getNextRotationHunter(lastHunter)
 
