@@ -5,6 +5,7 @@ local TranqRotate = select(2, ...)
 local L = {
 
     ["LOADED_MESSAGE"] = "TranqRotate chargé, utilisez /tranq pour les options",
+    ["TRANQ_WINDOW_HIDDEN"] = "Tranqrotate window hidden. Use /tranq toggle to get it back",
 
     -- Settings
     ["SETTING_GENERAL"] = "Général",
