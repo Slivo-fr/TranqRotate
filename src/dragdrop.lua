@@ -55,7 +55,7 @@ function TranqRotate:createDropHintFrame()
 
     hintFrame:SetPoint('TOP', TranqRotate.mainFrame.rotationFrame, 'TOP', 0, 0)
     hintFrame:SetHeight(TranqRotate.constants.hunterFrameHeight)
-    hintFrame:SetWidth(110)
+    hintFrame:SetWidth(TranqRotate.constants.mainFrameWidth - 10)
 
     hintFrame.texture = hintFrame:CreateTexture(nil, "BACKGROUND")
     hintFrame.texture:SetColorTexture(TranqRotate.colors.white:GetRGB())
