@@ -155,11 +155,12 @@ end
 
 -- Print command options to chat
 function TranqRotate:printHelp()
+    local spacing = '   '
     TranqRotate:printMessage(TranqRotate:colorText('/tranqrotate') .. ' commands options :')
-    TranqRotate:printMessage('   ' .. TranqRotate:colorText('toggle') .. ' : Show/Hide the main window')
-    TranqRotate:printMessage('   ' .. TranqRotate:colorText('lock') .. ' : Lock the main window position')
-    TranqRotate:printMessage('   ' .. TranqRotate:colorText('unlock') .. ' : Unlock the main window position')
-    TranqRotate:printMessage('   ' .. TranqRotate:colorText('settings') .. ' : Open TranqRotate settings')
+    TranqRotate:printMessage(spacing .. TranqRotate:colorText('toggle') .. ' : Show/Hide the main window')
+    TranqRotate:printMessage(spacing .. TranqRotate:colorText('lock') .. ' : Lock the main window position')
+    TranqRotate:printMessage(spacing .. TranqRotate:colorText('unlock') .. ' : Unlock the main window position')
+    TranqRotate:printMessage(spacing .. TranqRotate:colorText('settings') .. ' : Open TranqRotate settings')
 end
 
 -- Adds color to given text
