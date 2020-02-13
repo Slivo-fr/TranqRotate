@@ -39,7 +39,7 @@ function TranqRotate:applySettings()
 
     local config = TranqRotate.db.profile
     if config.point then
-        TranqRotate.mainFrame:SetPoint(config.point, UIParent, config.relativePoint, config.x, config.y)
+        TranqRotate.mainFrame:SetPoint(config.point, UIParent, 'BOTTOMLEFT', config.x, config.y)
     else
         TranqRotate.mainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
     end

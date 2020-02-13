@@ -14,9 +14,12 @@ function TranqRotate:createMainFrame()
     TranqRotate.mainFrame:SetScript(
         "OnDragStop",
         function()
-            local config, meh = TranqRotate.db.profile
+            local config = TranqRotate.db.profile
             TranqRotate.mainFrame:StopMovingOrSizing()
-            config.point, meh , config.relativePoint, config.x, config.y = TranqRotate.mainFrame:GetPoint()
+
+            config.point = 'TOPLEFT'
+            config.y = TranqRotate.mainFrame:GetTop()
+            config.x = TranqRotate.mainFrame:GetLeft()
         end
     )
 end
