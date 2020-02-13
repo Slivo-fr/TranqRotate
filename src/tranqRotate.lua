@@ -166,3 +166,19 @@ end
 function TranqRotate:colorText(text)
     return '|cffffbf00' .. text .. '|r'
 end
+
+-- Check if unit is promoted
+function isHunterPromoted(name)
+
+    local raidIndex = UnitInRaid(name)
+
+    if (raidIndex) then
+        local name, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(index)
+
+        if (role == "MAINASSIST") then
+            return true
+        end
+    end
+
+    return false
+end
