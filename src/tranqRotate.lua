@@ -113,6 +113,7 @@ end
 -- @todo: remove this
 function TranqRotate:test()
     TranqRotate:printMessage('test')
+    TranqRotate:testSync()
 --    TranqRotate:enableListSorting()
 end
 
