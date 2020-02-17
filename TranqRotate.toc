@@ -1,4 +1,4 @@
-## Interface: 11302
+## Interface: 11303
 ## Title: TranqRotate
 ## Notes: A tranqshot rotation assistant
 ## Author: Slivo
@@ -20,6 +20,13 @@ locales\frFR.lua
 locales\zhCN.lua
 locales\zhTW.lua
 
-TranqRotate.lua
-defaults.lua
-settings.lua
+src\tranqRotate.lua
+src\events.lua
+src\rotation.lua
+src\constants.lua
+src\frames.lua
+src\gui.lua
+src\dragdrop.lua
+src\defaults.lua
+src\settings.lua
+src\utils.lua

@@ -13,6 +13,7 @@ function TranqRotate:CreateConfig()
 
 	local function set(info, value)
 		TranqRotate.db.profile[info[#info]] = value
+        TranqRotate:applySettings()
 	end
 
 	local options = {
@@ -45,6 +46,27 @@ function TranqRotate:CreateConfig()
 						width = "full",
 						order = 3,
 					},
+                    -- @todo : find a way to space widget properly
+					spacer = {
+						name = ' ',
+						type = "description",
+						width = "full",
+						order = 4,
+					},
+                    lock = {
+                        name = L["LOCK_WINDOW"],
+                        desc = L["LOCK_WINDOW_DESC"],
+                        type = "toggle",
+                        order = 5,
+                        width = "double",
+                    },
+                    hideNotInRaid = {
+                        name = L["HIDE_WINDOW_NOT_IN_RAID"],
+                        desc = L["HIDE_WINDOW_NOT_IN_RAID_DESC"],
+                        type = "toggle",
+                        order = 6,
+                        width = "double",
+                    }
                 }
             },
             announces = {
@@ -104,8 +126,14 @@ function TranqRotate:CreateConfig()
                         order = 22,
                         width = "double",
                     },
+                    whisperFailMessage = {
+                        name = L["FAIL_WHISPER_LABEL"],
+                        type = "input",
+                        order = 23,
+                        width = "double",
+                    },
                 }
-            }
+            },
 		}
 	}
 
