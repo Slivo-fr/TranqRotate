@@ -226,7 +226,7 @@ function TranqRotate:updateRaidStatus()
 
                     if (registered) then
                         hunter.offline = not online
-                        hunter.alive = not isDead
+                        hunter.alive = TranqRotate:isHunterAlive(hunter.name)
 
                         TranqRotate:refreshHunterFrame(hunter)
                     end
@@ -244,11 +244,15 @@ function TranqRotate:updateHuntersStatus()
 
     for key,hunter in pairs(TranqRotate.hunterTable) do
 
-        hunter.alive = not UnitIsDeadOrGhost(hunter.name)
+        hunter.alive = TranqRotate:isHunterAlive(hunter.name)
         hunter.offline = not UnitIsConnected(hunter.name)
 
         TranqRotate:refreshHunterFrame(hunter)
     end
+end
+
+function TranqRotate:isHunterAlive(name)
+    return UnitIsFeignDeath(name) or not UnitIsDeadOrGhost(name)
 end
 
 -- Moves given hunter to the given position in the given group (ROTATION or BACKUP)

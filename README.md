@@ -2,13 +2,14 @@
 
 This addon is meant to help hunters to setup tranqshot rotation and give them real time visual feedback about it.
 
-**TranqRotate DOES NOT synchronize anything with other hunters (yet), even if they use the addon too.**
+**TranqRotate DOES NOT synchronize anything with other hunters (yet), even if they use the addon too. 
+Considering this fact and the Blizzard 45m combat log limit, I would advice to not have your hunters spread too much until sync is added.**
 
 This addon is still in a (stable) beta state, a stable release should come soon.
 
 ## Feedback
 
-I'm looking for feedback ! Feel free to contact me at any time ingame (Slivo@Sulfuron) or elsewhere.
+I'm looking for feedback ! Feel free to contact me ingame (Slivo@Sulfuron).
  
 Please report any issue using github issues : https://github.com/Slivo-fr/TranqRotate/issues
 
@@ -28,7 +29,9 @@ Use `/tranq` for options
 
 You must be in a raid for hunters to get registered and displayed by the addon.
 
-First step is to set your tranq order using drag & drop on hunters. You may use the trumpet button to get it written in raid chat so others hunters can know what you planned (And set their TranqRotate order if they use it). Please note the backup group is hidden if empty but you can still drag hunters into it.
+First step is to set your tranq order using drag & drop on hunters. 
+You may use the trumpet button to get it written in raid chat so others hunters can know what you planned (And set their TranqRotate order if they use it). 
+Please note the backup group is hidden if empty but you can still drag hunters into it.
 
 You can now just pull the boss and start shooting your tranqshots, TranqRotate will track the rotation and use a purple tranq-like color on the next hunter that should tranq.
 
@@ -44,6 +47,7 @@ Here is a list of feature I want to implement at some point, no specific order i
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot
 - Automatic reset of rotation when raid wipe or boss die
 - Encounter detection and frenzy cooldown progress bar
+- Handling of battleground raids
 
 ## Download
 
