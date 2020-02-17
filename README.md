@@ -5,8 +5,6 @@ This addon is meant to help hunters to setup tranqshot rotation and give them re
 **TranqRotate DOES NOT synchronize anything with other hunters (yet), even if they use the addon too. 
 Considering this fact and the Blizzard 45m combat log limit, I would advice to not have your hunters spread too much until sync is added.**
 
-This addon is still in a (stable) beta state, a stable release should come soon.
-
 ## Feedback
 
 I'm looking for feedback ! Feel free to contact me ingame (Slivo@Sulfuron).
