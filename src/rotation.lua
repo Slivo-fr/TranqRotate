@@ -216,7 +216,7 @@ end
 -- Iterate over all raid members to find hunters and update their status
 function TranqRotate:updateRaidStatus()
 
-    if (IsInRaid()) then
+    if (IsInRaid() and not TranqRotate:isPlayerInBattleground()) then
 
         local playerCount = GetNumGroupMembers()
 
@@ -273,11 +273,6 @@ function TranqRotate:updateHunterStatus(hunter)
     end
 
     TranqRotate:refreshHunterFrame(hunter)
-end
-
--- Checks if a hunter is alive
-function TranqRotate:isHunterAlive(name)
-    return UnitIsFeignDeath(name) or not UnitIsDeadOrGhost(name)
 end
 
 -- Moves given hunter to the given position in the given group (ROTATION or BACKUP)
