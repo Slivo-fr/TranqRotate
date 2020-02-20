@@ -79,6 +79,8 @@ SlashCmdList["TRANQROTATE"] = function(msg)
         TranqRotate:resetRotation()
     elseif (cmd == 'lock') then
         TranqRotate:lock(true)
+    elseif (cmd == 'backup') then
+        TranqRotate:whisperBackup()
     elseif (cmd == 'unlock') then
         TranqRotate:lock(false)
     elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not
@@ -161,6 +163,7 @@ function TranqRotate:printHelp()
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('lock') .. ' : Lock the main window position')
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('unlock') .. ' : Unlock the main window position')
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('settings') .. ' : Open TranqRotate settings')
+    TranqRotate:printMessage(spacing .. TranqRotate:colorText('backup') .. ' : Whispers backup hunters to immediately tranq')
 end
 
 -- Adds color to given text
