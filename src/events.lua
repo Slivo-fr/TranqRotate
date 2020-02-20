@@ -65,7 +65,6 @@ function TranqRotate:registerUnitEvents(hunter)
 
     hunter.frame:RegisterUnitEvent("PARTY_MEMBER_DISABLE", hunter.name)
     hunter.frame:RegisterUnitEvent("PARTY_MEMBER_ENABLE", hunter.name)
-    --hunter.frame:RegisterUnitEvent("UNIT_HEALTH_FREQUENT", hunter.name) -- Could be needed with UNIT_HEALTH throtle
     hunter.frame:RegisterUnitEvent("UNIT_HEALTH", hunter.name)
     hunter.frame:RegisterUnitEvent("UNIT_CONNECTION", hunter.name)
     hunter.frame:RegisterUnitEvent("UNIT_FLAGS", hunter.name)
