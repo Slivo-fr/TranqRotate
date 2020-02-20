@@ -55,16 +55,34 @@ end
 -- The parameter is the hunter that used it's tranq (successfully or not)
 function TranqRotate:rotate(lastHunter, fail)
 
+    local name, realm = UnitName("player")
+    local hunterRotationTable = TranqRotate:getHunterRotationTable(lastHunter)
+    local hasPlayerFailed = name == lastHunter.name and fail
+
     -- Default value to false
     fail = fail or false
-    local nextHunter = TranqRotate:getNextRotationHunter(lastHunter)
 
-    TranqRotate:setNextTranq(nextHunter)
+    if (hunterRotationTable == TranqRotate.rotationTables.rotation) then
+        local nextHunter = TranqRotate:getNextRotationHunter(lastHunter)
+
+        TranqRotate:setNextTranq(nextHunter)
+
+        if (hasPlayerFailed) then
+            if (#TranqRotate.rotationTables.backup < 1) then
+                SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
+            end
+        end
+    end
+
+    if (hasPlayerFailed) then
+        TranqRotate:whisperBackup()
+    end
+end
+
+function TranqRotate:whisperBackup()
     local name, realm = UnitName("player")
-
-    if (name == lastHunter.name and fail) then
-        SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
-        for key, backupHunter in pairs(TranqRotate.rotationTables.backup) do
+    for key, backupHunter in pairs(TranqRotate.rotationTables.backup) do
+        if (backupHunter.name ~= name) then
             SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, backupHunter.name)
         end
     end
