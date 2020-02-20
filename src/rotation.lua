@@ -79,6 +79,7 @@ function TranqRotate:rotate(lastHunter, fail)
     end
 end
 
+-- Whisper fail message to all backup except player
 function TranqRotate:whisperBackup()
     local name, realm = UnitName("player")
     for key, backupHunter in pairs(TranqRotate.rotationTables.backup) do
