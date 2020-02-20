@@ -225,10 +225,7 @@ function TranqRotate:updateRaidStatus()
                     end
 
                     if (registered) then
-                        hunter.offline = not online
-                        hunter.alive = TranqRotate:isHunterAlive(hunter.name)
-
-                        TranqRotate:refreshHunterFrame(hunter)
+                        TranqRotate:updateHunterStatus(hunter)
                     end
                 end
 
@@ -239,18 +236,27 @@ function TranqRotate:updateRaidStatus()
     TranqRotate:purgeHunterList()
 end
 
--- Update registered hunters status to reflect dead/offline players
+-- Update hunters status to reflect dead/offline players
 function TranqRotate:updateHuntersStatus()
-
     for key,hunter in pairs(TranqRotate.hunterTable) do
-
-        hunter.alive = TranqRotate:isHunterAlive(hunter.name)
-        hunter.offline = not UnitIsConnected(hunter.name)
-
-        TranqRotate:refreshHunterFrame(hunter)
+        TranqRotate:updateHunterStatus(hunter)
     end
 end
 
+-- Update hunter status
+function TranqRotate:updateHunterStatus(hunter)
+    hunter.alive = TranqRotate:isHunterAlive(hunter.name)
+    hunter.offline = not UnitIsConnected(hunter.name)
+
+    -- Jump to the next hunter if the current one is dead or offline
+    if (hunter.nextTranq and (not hunter.alive or hunter.offline)) then
+        TranqRotate:rotate(hunter, false)
+    end
+
+    TranqRotate:refreshHunterFrame(hunter)
+end
+
+-- Checks if a hunter is alive
 function TranqRotate:isHunterAlive(name)
     return UnitIsFeignDeath(name) or not UnitIsDeadOrGhost(name)
 end
