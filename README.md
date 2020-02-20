@@ -17,8 +17,8 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 
 - Automatically send messages to notify others player about your tranq success or fail, hopefully you won't have to bother with that crappy macro anymore !
 - Display the list of raid hunters
-- Allow player to re-order players between two groups : main rotation and backup.
-- Whisper backup hunters (if there is backup) or next rotation hunter if you miss your tranqshot 
+- Allow player to re-order players between two groups : main rotation and backup
+- Whisper backup hunters (if there is backup) or next rotation hunter if you miss your tranqshot
 - Provide a real time visual feedback about the rotation status, even if no one else use the addon in your raid
 - Allow player to broadcast the configured rotation and backup group to the raid
 - Display offline and dead status on hunters frames
