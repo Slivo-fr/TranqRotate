@@ -249,7 +249,7 @@ function TranqRotate:updateHunterStatus(hunter)
     hunter.offline = not UnitIsConnected(hunter.name)
 
     -- Jump to the next hunter if the current one is dead or offline
-    if (hunter.nextTranq and (not hunter.aline or hunter.offline)) then
+    if (hunter.nextTranq and (not hunter.alive or hunter.offline)) then
         TranqRotate:rotate(hunter, false)
     end
 
