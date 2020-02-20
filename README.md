@@ -37,6 +37,9 @@ You can now just pull the boss and start shooting your tranqshots, TranqRotate w
 
 Once boss has died (or you wiped), just use the reset button in the top bar to reset the rotation state
 
+You may adds the `/tranq backup` command to a macro that you can use when you are unable to tranq and you need some help,
+it will whisper all backup hunters the fail message
+
 ## Roadmap
 
 Here is a list of feature I want to implement at some point, no specific order is decided yet.
