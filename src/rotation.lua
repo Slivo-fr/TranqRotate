@@ -250,9 +250,18 @@ function TranqRotate:updateRaidStatus()
 
             end
         end
+
+        print('TranqRotate.raidInitialized', TranqRotate.raidInitialized)
+
+        if (not TranqRotate.raidInitialized) then
+            TranqRotate:sendSyncOrderRequest()
+            TranqRotate.raidInitialized = true
+        end
     end
+        print('TranqRotate.raidInitialized', TranqRotate.raidInitialized)
 
     TranqRotate:purgeHunterList()
+    TranqRotate.raidInitialized = false
 end
 
 -- Update hunters status to reflect dead/offline players
@@ -347,4 +356,34 @@ function TranqRotate:getHunterIndex(hunter, table)
     end
 
     return originIndex
+end
+
+-- Builds simple rotation tables containing only hunters names
+function TranqRotate:getSimpleRotationTables()
+
+    local simpleTables = { rotation = {}, backup = {} }
+
+    for key, rotationTable in pairs(TranqRotate.rotationTables) do
+        for _, hunter in pairs(rotationTable) do
+            table.insert(simpleTables[key], hunter.name)
+        end
+    end
+
+    return simpleTables
+end
+
+-- Apply a simple rotation configuration
+function TranqRotate:applyRotationConfiguration(rotationsTables)
+
+    for key, rotationTable in pairs(rotationsTables) do
+
+        local group = 'ROTATION'
+        if (key == 'backup') then
+            group = 'BACKUP'
+        end
+
+        for index, hunterName in pairs(rotationTable) do
+            TranqRotate:moveHunter(TranqRotate:getHunter(hunterName), group, index)
+        end
+    end
 end

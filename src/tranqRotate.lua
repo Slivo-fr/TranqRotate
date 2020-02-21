@@ -18,10 +18,13 @@ function TranqRotate:init()
     TranqRotate.hunterTable = {}
     TranqRotate.rotationTables = { rotation = {}, backup = {} }
     TranqRotate.enableDrag = true
+    TranqRotate.raidInitialized = false
 
     TranqRotate:initGui()
     TranqRotate:updateRaidStatus()
     TranqRotate:applySettings()
+
+    TranqRotate:registerComms()
 
     TranqRotate:printMessage(L['LOADED_MESSAGE'])
 end
@@ -118,7 +121,7 @@ end
 -- @todo: remove this
 function TranqRotate:test()
     TranqRotate:printMessage('test')
-    TranqRotate:testSync()
+    TranqRotate:sendSyncOrderRequest()
 end
 
 -- Open ace settings

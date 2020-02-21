@@ -11,26 +11,19 @@ end
 -- Handle message reception and
 function TranqRotate.OnCommReceived(prefix, data, channel, sender)
 
-    print(prefix, data, channel, sender)
-
     if not UnitIsUnit('player', sender) then
-        print('dispatch')
 
         local success, message = AceSerializer:Deserialize(data)
 
-        print('success', success)
-
         if (success) then
             if (message.type == TranqRotate.constants.commsTypes.tranqshotDone) then
-                TranqRotate:receiveSyncTranq(prefix, data, channel, sender)
+                TranqRotate:receiveSyncTranq(prefix, message, channel, sender)
             elseif (message.type == TranqRotate.constants.commsTypes.syncOrder) then
-                TranqRotate:receiveSyncOrder(prefix, data, channel, sender)
+                TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
             elseif (message.type == TranqRotate.constants.commsTypes.syncRequest) then
-                TranqRotate:receiveSyncRequest(prefix, data, channel, sender)
+                TranqRotate:receiveSyncRequest(prefix, message, channel, sender)
             end
         end
-    else
-        print('drop')
     end
 end
 
@@ -49,7 +42,7 @@ end
 
 -- Broadcast a tranqshot event
 function TranqRotate:sendSyncTranq(hunter, fail, timestamp)
-
+    TranqRotate:printPrefixedMessage('Broadcasting tranqshot from ' .. hunter.name)
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.tranqshotDone,
         ['timestamp'] = timestamp,
@@ -62,10 +55,10 @@ end
 
 -- Broadcast current rotation configuration
 function TranqRotate:sendSyncOrder()
-
+    TranqRotate:printPrefixedMessage('Broadcasting rotation configuration')
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.syncOrder,
-        ['rotation'] = TranqRotate.rotationTables
+        ['rotation'] = TranqRotate:getSimpleRotationTables()
     }
 
     TranqRotate:sendMessage(message)
@@ -73,7 +66,7 @@ end
 
 -- Broadcast a request for the current rotation configuration
 function TranqRotate:sendSyncOrderRequest()
-
+    TranqRotate:printPrefixedMessage('Broadcasting sync request')
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.syncRequest,
     }
@@ -86,21 +79,19 @@ end
 -----------------------------------------------------------------------------------------------------------------------
 
 -- Tranqshot event received
-function TranqRotate:receiveSyncTranq(prefix, data, channel, sender)
-    print(prefix, unpack(data), channel, sender)
+function TranqRotate:receiveSyncTranq(prefix, message, channel, sender)
+    TranqRotate:printPrefixedMessage('Received tranq for ' .. message.player .. ' from ' .. sender)
+    TranqRotate:rotate(TranqRotate:getHunter(message.player), message.fail)
 end
 
 -- Rotation configuration received
-function TranqRotate:receiveSyncOrder(prefix, data, channel, sender)
-
-    print(prefix, unpack(data), channel, sender)
-
-    TransRotate:printPrefixedMessage(sender .. ' broadcasted a new rotation order')
+function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
+    TranqRotate:printPrefixedMessage('Received new rotation configuration from ' .. sender)
+    TranqRotate:applyRotationConfiguration(message.rotation)
 end
 
 -- Request to send current roration configuration received
 function TranqRotate:receiveSyncRequest(prefix, data, channel, sender)
-    print(prefix, unpack(data), channel, sender)
-
+    TranqRotate:printPrefixedMessage('Received sync request from ' .. sender)
     TranqRotate:sendSyncOrder()
 end
