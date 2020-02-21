@@ -55,6 +55,11 @@ function TranqRotate:printMessage(msg)
     print(msg)
 end
 
+-- Print message with colored prefix
+function TranqRotate:printPrefixedMessage(msg)
+    TranqRotate:printMessage(TranqRotate:colorText(TranqRotate.constants.printPrefix) .. msg)
+end
+
 -- Send a message to a given channel
 function TranqRotate:sendAnnounceMessage(message, destName)
     if TranqRotate.db.profile.enableAnnounces then
@@ -114,7 +119,6 @@ end
 function TranqRotate:test()
     TranqRotate:printMessage('test')
     TranqRotate:testSync()
---    TranqRotate:enableListSorting()
 end
 
 -- Open ace settings

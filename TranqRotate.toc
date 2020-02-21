@@ -2,7 +2,7 @@
 ## Title: TranqRotate
 ## Notes: A tranqshot rotation assistant
 ## Author: Slivo
-## Version: 1.0.1
+## Version: 1.1.0
 ## SavedVariables: TranqRotateDb
 ## OptionalDeps: Ace3
 
@@ -14,6 +14,7 @@ libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
 libs\AceGUI-3.0\AceGUI-3.0.xml
 libs\AceConfig-3.0\AceConfig-3.0.xml
 libs\AceComm-3.0\AceComm-3.0.xml
+libs\AceSerializer-3.0\AceSerializer-3.0.xml
 #@end-no-lib-strip@
 
 locales\enUS.lua
