@@ -1,5 +1,12 @@
 ## TranqRotate Changelog
 
+#### v1.2.0
+
+- Main window don't show up in battleground anymore
+- Fix potential bug in rotation when backup hunter use tranq
+- Adds `/tranq backup` command to manually alert backup if required (use that with a macro)
+- Remove turn to tranq from a hunter that dies and set it to the following in rotation
+
 #### v1.1.0
 
 - Adds TranqRotate window
