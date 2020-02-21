@@ -11,3 +11,13 @@ function TranqRotate:tableContains(table, element)
 
     return false
 end
+
+-- Checks if a hunter is alive
+function TranqRotate:isHunterAlive(name)
+    return UnitIsFeignDeath(name) or not UnitIsDeadOrGhost(name)
+end
+
+-- Checks if a hunter is in a battleground
+function TranqRotate:isPlayerInBattleground()
+    return UnitInBattleground('player') ~= nil
+end
