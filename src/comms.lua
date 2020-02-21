@@ -8,15 +8,6 @@ function TranqRotate:registerComms()
     AceComm:RegisterComm(TranqRotate.constants.commsPrefix, TranqRotate.OnCommReceived)
 end
 
-
---function TranqRotate:testSync()
---    local prefix = 'tranqrotate'
---
---    AceComm:RegisterComm('tranqrotate', TranqRotate.OnCommReceived)
---    AceComm:SendCommMessage(prefix, 'thisisatestmessage', 'RAID')
---end
-
-
 -- Handle message reception and
 function TranqRotate.OnCommReceived(prefix, data, channel, sender)
 
@@ -52,7 +43,9 @@ function TranqRotate:sendMessage(message)
     )
 end
 
+-----------------------------------------------------------------------------------------------------------------------
 -- OUTPUT
+-----------------------------------------------------------------------------------------------------------------------
 
 -- Broadcast a tranqshot event
 function TranqRotate:sendSyncTranq(hunter, fail, timestamp)
@@ -88,7 +81,9 @@ function TranqRotate:sendSyncOrderRequest()
     TranqRotate:sendMessage(message)
 end
 
+-----------------------------------------------------------------------------------------------------------------------
 -- INPUT
+-----------------------------------------------------------------------------------------------------------------------
 
 -- Tranqshot event received
 function TranqRotate:receiveSyncTranq(prefix, data, channel, sender)
@@ -99,10 +94,13 @@ end
 function TranqRotate:receiveSyncOrder(prefix, data, channel, sender)
 
     print(prefix, unpack(data), channel, sender)
-    TransRotate:printPrefixedMessage('someone changed rotation order')
+
+    TransRotate:printPrefixedMessage(sender .. ' broadcasted a new rotation order')
 end
 
 -- Request to send current roration configuration received
 function TranqRotate:receiveSyncRequest(prefix, data, channel, sender)
     print(prefix, unpack(data), channel, sender)
+
+    TranqRotate:sendSyncOrder()
 end
