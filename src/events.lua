@@ -34,14 +34,18 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     local timestamp, event, _, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags = CombatLogGetCurrentEventInfo()
     local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand = select(12, CombatLogGetCurrentEventInfo())
 
+    -- @todo try to refactor a bit
     if (spellName == TranqShot) then
+        local hunter = TranqRotate:getHunter(nil, sourceGUID)
         if (event == "SPELL_CAST_SUCCESS") then
-            TranqRotate:rotate(TranqRotate:getHunter(nil, sourceGUID), false)
+            TranqRotate:sendSyncTranq(hunter, false, timestamp)
+            TranqRotate:rotate(hunter, false)
             if  (sourceGUID == UnitGUID("player")) then
                 TranqRotate:sendAnnounceMessage(TranqRotate.db.profile.announceSuccessMessage, destName)
             end
         elseif (event == "SPELL_MISSED") then
-            TranqRotate:rotate(TranqRotate:getHunter(nil, sourceGUID), true)
+            TranqRotate:sendSyncTranq(hunter, true, timestamp)
+            TranqRotate:rotate(hunter, true)
             if  (sourceGUID == UnitGUID("player")) then
                 TranqRotate:sendAnnounceMessage(TranqRotate.db.profile.announceFailMessage, destName)
             end
