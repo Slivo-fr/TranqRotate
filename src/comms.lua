@@ -86,8 +86,14 @@ end
 
 -- Rotation configuration received
 function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
-    TranqRotate:printPrefixedMessage('Received new rotation configuration from ' .. sender)
-    TranqRotate:applyRotationConfiguration(message.rotation)
+
+    if (TranqRotate.lastDropTime < data.timestamp) then
+        print('handle sync order')
+        TranqRotate:printPrefixedMessage('Received new rotation configuration from ' .. sender)
+        TranqRotate:applyRotationConfiguration(message.rotation)
+    else
+        print('drop outdated sync order')
+    end
 end
 
 -- Request to send current roration configuration received
