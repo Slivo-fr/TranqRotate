@@ -19,7 +19,7 @@ function TranqRotate:init()
     TranqRotate.rotationTables = { rotation = {}, backup = {} }
     TranqRotate.enableDrag = true
     TranqRotate.raidInitialized = false
-    TranqRotate.lastDropTime = 0
+    TranqRotate.lastOrderBroadcast = 0
 
     TranqRotate:initGui()
     TranqRotate:updateRaidStatus()

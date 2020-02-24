@@ -56,11 +56,13 @@ end
 -- Broadcast current rotation configuration
 function TranqRotate:sendSyncOrder()
     TranqRotate:printPrefixedMessage('Broadcasting rotation configuration')
+    TranqRotate.lastOrderBroadcast = GetServerTime()
+
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.syncOrder,
+        ['timestamp'] = TranqRotate.lastOrderBroadcast,
         ['rotation'] = TranqRotate:getSimpleRotationTables()
     }
-
     TranqRotate:sendMessage(message)
 end
 
@@ -87,12 +89,12 @@ end
 -- Rotation configuration received
 function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
 
-    if (TranqRotate.lastDropTime < data.timestamp) then
+    if (TranqRotate.lastOrderBroadcast < message.timestamp) then
         print('handle sync order')
         TranqRotate:printPrefixedMessage('Received new rotation configuration from ' .. sender)
         TranqRotate:applyRotationConfiguration(message.rotation)
     else
-        print('drop outdated sync order')
+        print('drop outdated rotation order comms ')
     end
 end
 
