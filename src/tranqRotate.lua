@@ -19,9 +19,13 @@ function TranqRotate:init()
     TranqRotate.rotationTables = { rotation = {}, backup = {} }
     TranqRotate.enableDrag = true
 
+    TranqRotate.raidInitialized = false
+
     TranqRotate:initGui()
     TranqRotate:updateRaidStatus()
     TranqRotate:applySettings()
+
+    TranqRotate:initComms()
 
     TranqRotate:printMessage(L['LOADED_MESSAGE'])
 end
@@ -53,6 +57,11 @@ end
 -- Print wrapper, just in case
 function TranqRotate:printMessage(msg)
     print(msg)
+end
+
+-- Print message with colored prefix
+function TranqRotate:printPrefixedMessage(msg)
+    TranqRotate:printMessage(TranqRotate:colorText(TranqRotate.constants.printPrefix) .. msg)
 end
 
 -- Send a message to a given channel
@@ -113,7 +122,7 @@ end
 -- @todo: remove this
 function TranqRotate:test()
     TranqRotate:printMessage('test')
---    TranqRotate:enableListSorting()
+    TranqRotate:sendSyncOrderRequest()
 end
 
 -- Open ace settings

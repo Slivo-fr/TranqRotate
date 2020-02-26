@@ -59,7 +59,11 @@ function TranqRotate:createButtons()
         },
         {
             ['texture'] = 'Interface/Buttons/UI-RefreshButton',
-            ['callback'] = TranqRotate.resetRotation
+            ['callback'] = function()
+                    TranqRotate:updateRaidStatus()
+                    TranqRotate:resetRotation()
+                    TranqRotate:sendSyncOrderRequest()
+                end
         },
         {
             ['texture'] = 'Interface/Buttons/UI-GuildButton-MOTD-Up',

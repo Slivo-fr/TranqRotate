@@ -16,4 +16,15 @@ TranqRotate.constants = {
     ['titleBarHeight'] = 18,
     ['mainFrameWidth'] = 130,
     ['rotationFramesBaseHeight'] = 20,
+
+    ['commsPrefix'] = 'tranqrotate',
+    ['commsChannel'] = 'RAID',
+
+    ['commsTypes'] = {
+        ['tranqshotDone'] = 'tranqshot-done',
+        ['syncOrder'] = 'sync-order',
+        ['syncRequest'] = 'sync-request',
+    },
+
+    ['printPrefix'] = 'TranqRotate - '
 }

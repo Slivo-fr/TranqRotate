@@ -11,6 +11,7 @@ function TranqRotate:registerHunter(hunterName)
     hunter.offline = false
     hunter.alive = true
     hunter.nextTranq = false
+    hunter.lastTranqTime = 0
 
     -- Add to global list
     table.insert(TranqRotate.hunterTable, hunter)
@@ -59,17 +60,22 @@ function TranqRotate:rotate(lastHunter, fail)
     local hunterRotationTable = TranqRotate:getHunterRotationTable(lastHunter)
     local hasPlayerFailed = name == lastHunter.name and fail
 
+    lastHunter.lastTranqTime = GetServerTime()
+
     -- Default value to false
     fail = fail or false
 
     if (hunterRotationTable == TranqRotate.rotationTables.rotation) then
         local nextHunter = TranqRotate:getNextRotationHunter(lastHunter)
 
-        TranqRotate:setNextTranq(nextHunter)
+        if (nextHunter ~= nil) then
 
-        if (hasPlayerFailed) then
-            if (#TranqRotate.rotationTables.backup < 1) then
-                SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
+            TranqRotate:setNextTranq(nextHunter)
+
+            if (hasPlayerFailed) then
+                if (#TranqRotate.rotationTables.backup < 1) then
+                    SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
+                end
             end
         end
     end
@@ -216,7 +222,7 @@ end
 -- Iterate over all raid members to find hunters and update their status
 function TranqRotate:updateRaidStatus()
 
-    if (IsInRaid() and not TranqRotate:isPlayerInBattleground()) then
+    if (TranqRotate:isInPveRaid()) then
 
         local playerCount = GetNumGroupMembers()
 
@@ -250,6 +256,13 @@ function TranqRotate:updateRaidStatus()
 
             end
         end
+
+        if (not TranqRotate.raidInitialized) then
+            TranqRotate:sendSyncOrderRequest()
+            TranqRotate.raidInitialized = true
+        end
+    else
+        TranqRotate.raidInitialized = false
     end
 
     TranqRotate:purgeHunterList()
@@ -347,4 +360,37 @@ function TranqRotate:getHunterIndex(hunter, table)
     end
 
     return originIndex
+end
+
+-- Builds simple rotation tables containing only hunters names
+function TranqRotate:getSimpleRotationTables()
+
+    local simpleTables = { rotation = {}, backup = {} }
+
+    for key, rotationTable in pairs(TranqRotate.rotationTables) do
+        for _, hunter in pairs(rotationTable) do
+            table.insert(simpleTables[key], hunter.name)
+        end
+    end
+
+    return simpleTables
+end
+
+-- Apply a simple rotation configuration
+function TranqRotate:applyRotationConfiguration(rotationsTables)
+
+    for key, rotationTable in pairs(rotationsTables) do
+
+        local group = 'ROTATION'
+        if (key == 'backup') then
+            group = 'BACKUP'
+        end
+
+        for index, hunterName in pairs(rotationTable) do
+            local hunter = TranqRotate:getHunter(hunterName)
+            if (hunter) then
+                TranqRotate:moveHunter(hunter, group, index)
+            end
+        end
+    end
 end

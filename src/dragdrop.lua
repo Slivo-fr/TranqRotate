@@ -43,7 +43,7 @@ function TranqRotate:configureHunterFrameDrag(hunter)
 
             local group, position = TranqRotate:getDropPosition(TranqRotate.mainFrame.rulerFrame:GetHeight())
             TranqRotate:handleDrop(hunter, group, position)
-
+            TranqRotate:sendSyncOrder(false)
         end
     )
 end

@@ -6,6 +6,8 @@
 - Fix potential bug in rotation when backup hunter use tranq
 - Adds `/tranq backup` command to manually alert backup if required (use that with a macro)
 - Remove turn to tranq from a hunter that dies and set it to the following in rotation
+- Adds hunter list and tranqshot synchronization
+- Adds resync and raid refresh feature to the reset button
 
 #### v1.1.0
 
@@ -44,4 +46,4 @@
 - Adds automatic success and fail tranqshot messages
 - Adds frFR locale
 - Adds znTW locale
-- Adds znTW locale
+- Adds zhCN locale

@@ -21,7 +21,7 @@ end
 
 -- Show/Hide main window based on user settings
 function TranqRotate:updateDisplay()
-    if (TranqRotate.db.profile.hideNotInRaid and (not IsInRaid() or TranqRotate:isPlayerInBattleground())) then
+    if (TranqRotate.db.profile.hideNotInRaid and not TranqRotate:isInPveRaid()) then
         TranqRotate.mainFrame:Hide()
     else
         if (not TranqRotate.manuallyHiddenWhileInRaid) then
