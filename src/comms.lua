@@ -31,6 +31,7 @@ function TranqRotate.OnCommReceived(prefix, data, channel, sender)
     end
 end
 
+-- Checks if a given version from a given sender should be applied
 function TranqRotate:isVersionEligible(version, sender)
     return version > TranqRotate.syncVersion or (version == TranqRotate.syncVersion and sender < TranqRotate.syncLastSender)
 end
