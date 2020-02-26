@@ -11,6 +11,7 @@ function TranqRotate:registerHunter(hunterName)
     hunter.offline = false
     hunter.alive = true
     hunter.nextTranq = false
+    hunter.lastTranqTime = 0
 
     -- Add to global list
     table.insert(TranqRotate.hunterTable, hunter)
@@ -59,17 +60,22 @@ function TranqRotate:rotate(lastHunter, fail)
     local hunterRotationTable = TranqRotate:getHunterRotationTable(lastHunter)
     local hasPlayerFailed = name == lastHunter.name and fail
 
+    lastHunter.lastTranqTime = GetServerTime()
+
     -- Default value to false
     fail = fail or false
 
     if (hunterRotationTable == TranqRotate.rotationTables.rotation) then
         local nextHunter = TranqRotate:getNextRotationHunter(lastHunter)
 
-        TranqRotate:setNextTranq(nextHunter)
+        if (nextHunter ~= nil) then
 
-        if (hasPlayerFailed) then
-            if (#TranqRotate.rotationTables.backup < 1) then
-                SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
+            TranqRotate:setNextTranq(nextHunter)
+
+            if (hasPlayerFailed) then
+                if (#TranqRotate.rotationTables.backup < 1) then
+                    SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
+                end
             end
         end
     end

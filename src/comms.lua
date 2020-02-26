@@ -110,7 +110,12 @@ end
 
 -- Tranqshot event received
 function TranqRotate:receiveSyncTranq(prefix, message, channel, sender)
-    TranqRotate:rotate(TranqRotate:getHunter(message.player), message.fail)
+
+    local hunter = TranqRotate:getHunter(message.player)
+
+    if (hunter ~= nil and hunter.lastTranqTime <  GetServerTime() - 10) then
+        TranqRotate:rotate(TranqRotate:getHunter(message.player), message.fail)
+    end
 end
 
 -- Rotation configuration received
