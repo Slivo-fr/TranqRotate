@@ -6,6 +6,7 @@
 - Fix potential bug in rotation when backup hunter use tranq
 - Adds `/tranq backup` command to manually alert backup if required (use that with a macro)
 - Remove turn to tranq from a hunter that dies and set it to the following in rotation
+- Adds resync and raid refresh feature to the reset button
 
 #### v1.1.0
 
