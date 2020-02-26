@@ -2,8 +2,7 @@
 
 This addon is meant to help hunters to setup tranqshot rotation and give them real time visual feedback about it.
 
-**TranqRotate DOES NOT synchronize anything with other hunters (yet), even if they use the addon too. 
-Considering this fact and the Blizzard 45m combat log limit, I would advice to not have your hunters spread too much until sync is added.**
+![Screenshot](docs/screenshots/screenshot.png "ui") ![Screenshot](docs/screenshots/drag.gif "ui")  ![Screenshot](docs/screenshots/rotation.gif "ui")
 
 ## Feedback
 
@@ -29,13 +28,14 @@ Use `/tranq` for options
 
 You must be in a raid for hunters to get registered and displayed by the addon.
 
-First step is to set your tranq order using drag & drop on hunters. 
-You may use the trumpet button to get it written in raid chat so others hunters can know what you planned (And set their TranqRotate order if they use it). 
+First step is to set your tranq order using drag & drop on hunters, if other hunter use the addon too, changes will be synced. 
+You may use the trumpet button to get it written in raid chat so others players can know what you planned. 
 Please note the backup group is hidden if empty but you can still drag hunters into it.
 
 You can now just pull the boss and start shooting your tranqshots, TranqRotate will track the rotation and use a purple tranq-like color on the next hunter that should tranq.
 
-Once boss has died (or you wiped), just use the reset button in the top bar to reset the rotation state
+Once boss has died (or you wiped), just use the reset button in the top bar to reset the rotation state.
+The reset button is also able to resync raid hunters and rotation setup if you need.
 
 You may adds the `/tranq backup` command to a macro that you can use when you are unable to tranq and you need some help,
 it will whisper all backup hunters the fail message
