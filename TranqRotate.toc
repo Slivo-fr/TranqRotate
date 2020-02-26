@@ -1,5 +1,5 @@
 ## Interface: 11303
-## Title: TranqRotate
+## Title: TranqRotate |cff00aa001.1.0|r
 ## Notes: A tranqshot rotation assistant
 ## Author: Slivo
 ## Version: 1.1.0

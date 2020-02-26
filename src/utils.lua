@@ -21,3 +21,8 @@ end
 function TranqRotate:isPlayerInBattleground()
     return UnitInBattleground('player') ~= nil
 end
+
+-- Checks if a hunter is in a PvE raid
+function TranqRotate:isInPveRaid()
+    return IsInRaid() and not TranqRotate:isPlayerInBattleground()
+end

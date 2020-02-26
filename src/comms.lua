@@ -4,7 +4,11 @@ local AceComm = LibStub("AceComm-3.0")
 local AceSerializer = LibStub("AceSerializer-3.0")
 
 -- Register comm prefix at initialization steps
-function TranqRotate:registerComms()
+function TranqRotate:initComms()
+
+    TranqRotate.syncVersion = 0
+    TranqRotate.syncLastSender = ''
+
     AceComm:RegisterComm(TranqRotate.constants.commsPrefix, TranqRotate.OnCommReceived)
 end
 
@@ -27,12 +31,31 @@ function TranqRotate.OnCommReceived(prefix, data, channel, sender)
     end
 end
 
+function TranqRotate:isVersionEligible(version, sender)
+    return version > TranqRotate.syncVersion or (version == TranqRotate.syncVersion and sender < TranqRotate.syncLastSender)
+end
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Messaging functions
+-----------------------------------------------------------------------------------------------------------------------
+
+-- Proxy to send raid addon message
+function TranqRotate:sendRaidAddonMessage(message)
+    TranqRotate:sendAddonMessage(message, TranqRotate.constants.commsChannel)
+end
+
+-- Proxy to send whisper addon message
+function TranqRotate:sendWhisperAddonMessage(message, name)
+    TranqRotate:sendAddonMessage(message, 'WHISPER', name)
+end
+
 -- Broadcast a given message to the commsChannel with the commsPrefix
-function TranqRotate:sendMessage(message)
+function TranqRotate:sendAddonMessage(message, channel, name)
     AceComm:SendCommMessage(
         TranqRotate.constants.commsPrefix,
         AceSerializer:Serialize(message),
-        TranqRotate.constants.commsChannel
+        channel,
+        name
     )
 end
 
@@ -42,7 +65,6 @@ end
 
 -- Broadcast a tranqshot event
 function TranqRotate:sendSyncTranq(hunter, fail, timestamp)
-    TranqRotate:printPrefixedMessage('Broadcasting tranqshot from ' .. hunter.name)
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.tranqshotDone,
         ['timestamp'] = timestamp,
@@ -50,30 +72,36 @@ function TranqRotate:sendSyncTranq(hunter, fail, timestamp)
         ['fail'] = fail,
     }
 
-    TranqRotate:sendMessage(message)
+    TranqRotate:sendRaidAddonMessage(message)
 end
 
 -- Broadcast current rotation configuration
-function TranqRotate:sendSyncOrder()
-    TranqRotate:printPrefixedMessage('Broadcasting rotation configuration')
-    TranqRotate.lastOrderBroadcast = GetServerTime()
+function TranqRotate:sendSyncOrder(whisper, name)
+
+    TranqRotate.syncVersion = TranqRotate.syncVersion + 1
+    TranqRotate.syncLastSender = UnitName("player")
 
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.syncOrder,
-        ['timestamp'] = TranqRotate.lastOrderBroadcast,
+        ['version'] = TranqRotate.syncVersion,
         ['rotation'] = TranqRotate:getSimpleRotationTables()
     }
-    TranqRotate:sendMessage(message)
+
+    if (whisper) then
+        TranqRotate:sendWhisperAddonMessage(message, name)
+    else
+        TranqRotate:sendRaidAddonMessage(message, name)
+    end
 end
 
 -- Broadcast a request for the current rotation configuration
 function TranqRotate:sendSyncOrderRequest()
-    TranqRotate:printPrefixedMessage('Broadcasting sync request')
+
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.syncRequest,
     }
 
-    TranqRotate:sendMessage(message)
+    TranqRotate:sendRaidAddonMessage(message)
 end
 
 -----------------------------------------------------------------------------------------------------------------------
@@ -82,24 +110,22 @@ end
 
 -- Tranqshot event received
 function TranqRotate:receiveSyncTranq(prefix, message, channel, sender)
-    TranqRotate:printPrefixedMessage('Received tranq for ' .. message.player .. ' from ' .. sender)
     TranqRotate:rotate(TranqRotate:getHunter(message.player), message.fail)
 end
 
 -- Rotation configuration received
 function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
 
-    if (TranqRotate.lastOrderBroadcast < message.timestamp) then
-        print('handle sync order')
+    if (TranqRotate:isVersionEligible(message.version, sender)) then
+        TranqRotate.syncVersion = (message.version)
+        TranqRotate.syncLastSender = sender
+
         TranqRotate:printPrefixedMessage('Received new rotation configuration from ' .. sender)
         TranqRotate:applyRotationConfiguration(message.rotation)
-    else
-        print('drop outdated rotation order comms ')
     end
 end
 
 -- Request to send current roration configuration received
 function TranqRotate:receiveSyncRequest(prefix, data, channel, sender)
-    TranqRotate:printPrefixedMessage('Received sync request from ' .. sender)
-    TranqRotate:sendSyncOrder()
+    TranqRotate:sendSyncOrder(true, sender)
 end

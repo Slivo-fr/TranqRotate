@@ -44,4 +44,4 @@
 - Adds automatic success and fail tranqshot messages
 - Adds frFR locale
 - Adds znTW locale
-- Adds znTW locale
+- Adds zhCN locale

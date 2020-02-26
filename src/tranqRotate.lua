@@ -18,14 +18,14 @@ function TranqRotate:init()
     TranqRotate.hunterTable = {}
     TranqRotate.rotationTables = { rotation = {}, backup = {} }
     TranqRotate.enableDrag = true
+
     TranqRotate.raidInitialized = false
-    TranqRotate.lastOrderBroadcast = 0
 
     TranqRotate:initGui()
     TranqRotate:updateRaidStatus()
     TranqRotate:applySettings()
 
-    TranqRotate:registerComms()
+    TranqRotate:initComms()
 
     TranqRotate:printMessage(L['LOADED_MESSAGE'])
 end

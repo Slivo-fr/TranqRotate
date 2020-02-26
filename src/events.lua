@@ -22,6 +22,7 @@ eventFrame:SetScript(
             -- Ugly hack to initialize hunter list when player login right into raid
             -- Raid members data is unreliable on PLAYER_LOGIN and PLAYER_ENTERING_WORLD events
             TranqRotate:updateRaidStatus()
+            TranqRotate:sendSyncOrderRequest()
             self:UnregisterEvent("PLAYER_TARGET_CHANGED")
         else
             TranqRotate[event](TranqRotate, ...)

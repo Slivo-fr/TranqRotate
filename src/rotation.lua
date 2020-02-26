@@ -216,7 +216,7 @@ end
 -- Iterate over all raid members to find hunters and update their status
 function TranqRotate:updateRaidStatus()
 
-    if (IsInRaid() and not TranqRotate:isPlayerInBattleground()) then
+    if (TranqRotate:isInPveRaid()) then
 
         local playerCount = GetNumGroupMembers()
 
@@ -251,17 +251,15 @@ function TranqRotate:updateRaidStatus()
             end
         end
 
-        print('TranqRotate.raidInitialized', TranqRotate.raidInitialized)
-
         if (not TranqRotate.raidInitialized) then
             TranqRotate:sendSyncOrderRequest()
             TranqRotate.raidInitialized = true
         end
+    else
+        TranqRotate.raidInitialized = false
     end
-        print('TranqRotate.raidInitialized', TranqRotate.raidInitialized)
 
     TranqRotate:purgeHunterList()
-    TranqRotate.raidInitialized = false
 end
 
 -- Update hunters status to reflect dead/offline players
@@ -383,7 +381,10 @@ function TranqRotate:applyRotationConfiguration(rotationsTables)
         end
 
         for index, hunterName in pairs(rotationTable) do
-            TranqRotate:moveHunter(TranqRotate:getHunter(hunterName), group, index)
+            local hunter = TranqRotate:getHunter(hunterName)
+            if (hunter) then
+                TranqRotate:moveHunter(hunter, group, index)
+            end
         end
     end
 end
