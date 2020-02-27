@@ -34,6 +34,8 @@ Please note the backup group is hidden if empty but you can still drag hunters i
 
 You can now just pull the boss and start shooting your tranqshots, TranqRotate will track the rotation and use a purple tranq-like color on the next hunter that should tranq.
 
+**warning** : if all of your hunters does not use the addon, make sure someone with the addon stay within 45m range of hunters without the addon or you won't be able to detected their tranqshot. MC and AQ40 tranq encounters may lead to range issues. 
+
 Once boss has died (or you wiped), just use the reset button in the top bar to reset the rotation state.
 The reset button is also able to resync raid hunters and rotation setup if you need.
 
