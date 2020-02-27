@@ -80,25 +80,19 @@ SLASH_TRANQROTATE2 = "/tranqrotate"
 SlashCmdList["TRANQROTATE"] = function(msg)
     local _, _, cmd, args = string.find(msg, "%s?(%w+)%s?(.*)")
 
-    if (cmd == 'redraw') then -- @todo decide if this should be removed or not
-        TranqRotate:drawHunterFrames()
-    elseif (cmd == 'toggle') then -- @todo: remove this
+    if (cmd == 'toggle') then
         TranqRotate:toggleDisplay()
-    elseif (cmd == 'init') then -- @todo: remove this
-        TranqRotate:resetRotation()
     elseif (cmd == 'lock') then
         TranqRotate:lock(true)
-    elseif (cmd == 'backup') then
-        TranqRotate:whisperBackup()
     elseif (cmd == 'unlock') then
         TranqRotate:lock(false)
+    elseif (cmd == 'backup') then
+        TranqRotate:whisperBackup()
     elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not
         TranqRotate:testRotation()
-    elseif (cmd == 'raid') then -- @todo: (Maybe) remove once raid members are properly updated
-        TranqRotate:updateRaidStatus()
     elseif (cmd == 'test') then -- @todo: remove this
         TranqRotate:test()
-    elseif (cmd == 'settings') then -- @todo: remove this
+    elseif (cmd == 'settings') then
         TranqRotate:openSettings()
     else
         TranqRotate:printHelp()

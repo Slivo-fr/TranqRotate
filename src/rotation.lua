@@ -149,20 +149,10 @@ end
 
 -- Init/Reset rotation status, next tranq is the first hunter on the list
 function TranqRotate:resetRotation()
-
     for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
         hunter.nextTranq = false
         TranqRotate:refreshHunterFrame(hunter)
     end
-
-    -- @todo remove this if neutral reset is fine
-    --if (#TranqRotate.rotationTables.rotation > 0) then
-    --    local firstHunter = TranqRotate.rotationTables.rotation[1]
-    --
-    --    firstHunter.nextTranq = true
-    --    TranqRotate:refreshHunterFrame(firstHunter)
-    --end
-
 end
 
 -- @todo: remove this | TEST FUNCTION - Manually rotate hunters for test purpose
@@ -179,6 +169,7 @@ end
 -- Check if a hunter is already registered
 function TranqRotate:isHunterRegistered(GUID)
 
+    -- @todo refactor this using TranqRotate:getHunter(name, GUID)
     for key,hunter in pairs(TranqRotate.hunterTable) do
         if (hunter.GUID == GUID) then
             return true
