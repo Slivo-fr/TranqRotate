@@ -26,5 +26,8 @@ TranqRotate.constants = {
         ['syncRequest'] = 'sync-request',
     },
 
-    ['printPrefix'] = 'TranqRotate - '
+    ['printPrefix'] = 'TranqRotate - ',
+    ['duplicateTranqshotDelayThreshold'] = 10,
+
+    ['minimumCooldownElapsedForEligibility'] = 10,
 }
