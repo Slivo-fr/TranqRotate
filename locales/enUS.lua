@@ -8,9 +8,7 @@ local L = {
     -- Settings
     ["SETTING_GENERAL"] = "General",
     ["SETTING_GENERAL_REPORT"] = "Please report any issue at",
-    ["SETTING_GENERAL_DESC"] = "New : TranqRotate now has a window allowing hunters to track rotation status\n"..
-        "It still automatically announce tranq or miss and now whispers next and backup when you miss\n"..
-        "It doesn't sync rotation order between hunters yet, you have to manually set the correct groups and order.",
+    ["SETTING_GENERAL_DESC"] = "New : TranqRotate now synchronize hunters list and tranqshot with other users\n",
 
     --- Announces
     ["SETTING_ANNOUNCES"] = "Announces",
