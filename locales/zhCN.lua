@@ -23,12 +23,8 @@ local L = {
     ["ANNOUNCES_CHANNEL_HEADER"] = "通告频道",
     ["MESSAGE_CHANNEL_TYPE"] = "发送到",
     ["MESSAGE_CHANNEL_TYPE_DESC"] = "你想发送到哪个频道",
-    ["MESSAGE_CHANNEL_NAME"] = "频道名或玩家名",
-    ["MESSAGE_CHANNEL_NAME_DESC"] = "自定义设置要发送消息的玩家或频道的名称",
 
     ----- Channels types
-    ["CHANNEL_WHISPER"] = "私聊",
-    ["CHANNEL_CHANNEL"] = "频道",
     ["CHANNEL_RAID_WARNING"] = "团队警报",
     ["CHANNEL_SAY"] = "说",
     ["CHANNEL_YELL"] = "大喊",

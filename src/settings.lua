@@ -92,22 +92,12 @@ function TranqRotate:CreateConfig()
                         type = "select",
                         order = 11,
                         values = {
-                            ["WHISPER"] = L["CHANNEL_WHISPER"],
-                            ["CHANNEL"] = L["CHANNEL_CHANNEL"],
                             ["RAID_WARNING"] = L["CHANNEL_RAID_WARNING"],
                             ["SAY"] = L["CHANNEL_SAY"],
                             ["YELL"] = L["CHANNEL_YELL"],
                             ["PARTY"] = L["CHANNEL_PARTY"],
                             ["RAID"] = L["CHANNEL_RAID"]
                         },
-                        set = function(info, value) set(info,value) LibStub("AceConfigRegistry-3.0", true):NotifyChange("TranqRotate") end
-                    },
-                    targetChannel = {
-                        name = L["MESSAGE_CHANNEL_NAME"],
-                        desc = L["MESSAGE_CHANNEL_NAME_DESC"],
-                        type = "input",
-                        order = 12,
-                        hidden = function() return not (TranqRotate.db.profile.channelType == "WHISPER" or TranqRotate.db.profile.channelType == "CHANNEL") end,
                     },
                     announceHeader = {
                         name = L["ANNOUNCES_MESSAGE_HEADER"],
