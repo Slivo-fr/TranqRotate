@@ -36,12 +36,8 @@ local L = {
     ["ANNOUNCES_CHANNEL_HEADER"] = "Canal",
     ["MESSAGE_CHANNEL_TYPE"] = "Envoyer les annonces sur",
     ["MESSAGE_CHANNEL_TYPE_DESC"] = "Canal à utiliser pour les annonces",
-    ["MESSAGE_CHANNEL_NAME"] = "Nom du canal ou du joueur",
-    ["MESSAGE_CHANNEL_NAME_DESC"] = "Nom du canal ou du  à utiliser",
 
     ----- Channels types
-    ["CHANNEL_WHISPER"] = "Chuchoter ",
-    ["CHANNEL_CHANNEL"] = "Canal",
     ["CHANNEL_RAID_WARNING"] = "Avertissement raid",
     ["CHANNEL_SAY"] = "Dire",
     ["CHANNEL_YELL"] = "Crier",

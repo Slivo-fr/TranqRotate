@@ -34,12 +34,8 @@ local L = {
     ["ANNOUNCES_CHANNEL_HEADER"] = "Announce channel",
     ["MESSAGE_CHANNEL_TYPE"] = "Send messages to",
     ["MESSAGE_CHANNEL_TYPE_DESC"] = "Channel you want to send messages",
-    ["MESSAGE_CHANNEL_NAME"] = "Name of channel or player",
-    ["MESSAGE_CHANNEL_NAME_DESC"] = "Set the name of the player or channel you want to send messages",
 
     ----- Channels types
-    ["CHANNEL_WHISPER"] = "Whisper",
-    ["CHANNEL_CHANNEL"] = "Channel",
     ["CHANNEL_RAID_WARNING"] = "Raid Warning",
     ["CHANNEL_SAY"] = "Say",
     ["CHANNEL_YELL"] = "Yell",
