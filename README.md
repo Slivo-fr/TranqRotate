@@ -2,11 +2,13 @@
 
 This addon is meant to help hunters to setup tranqshot rotation and give them real time visual feedback about it.
 
+**Using player channel as annoucement target does not work as blizzard restricted the addon messaging capacities on those. Option will be removed at some point.**
+
 ![Screenshot](docs/screenshots/screenshot.png "ui") ![Screenshot](docs/screenshots/drag.gif "ui")  ![Screenshot](docs/screenshots/rotation.gif "ui")
 
 ## Feedback
 
-I'm looking for feedback ! Feel free to contact me ingame (Slivo@Sulfuron).
+I'm looking for feedback ! I've set up a small discord server to get in touch : https://discord.gg/bPFyvDe
  
 Please report any issue using github issues : https://github.com/Slivo-fr/TranqRotate/issues
 
@@ -33,6 +35,8 @@ You may use the trumpet button to get it written in raid chat so others players 
 Please note the backup group is hidden if empty but you can still drag hunters into it.
 
 You can now just pull the boss and start shooting your tranqshots, TranqRotate will track the rotation and use a purple tranq-like color on the next hunter that should tranq.
+
+**warning** : if all of your hunters does not use the addon, make sure someone with the addon stay within 45m range of hunters without the addon or you won't be able to detected their tranqshot. MC and AQ40 tranq encounters may lead to range issues. 
 
 Once boss has died (or you wiped), just use the reset button in the top bar to reset the rotation state.
 The reset button is also able to resync raid hunters and rotation setup if you need.
