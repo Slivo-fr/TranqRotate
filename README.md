@@ -8,7 +8,7 @@ This addon is meant to help hunters to setup tranqshot rotation and give them re
 
 ## Feedback
 
-I'm looking for feedback ! Feel free to contact me ingame (Slivo@Sulfuron).
+I'm looking for feedback ! I've set up a small discord server to get in touch : https://discord.gg/bPFyvDe
  
 Please report any issue using github issues : https://github.com/Slivo-fr/TranqRotate/issues
 
