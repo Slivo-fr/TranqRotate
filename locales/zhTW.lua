@@ -4,8 +4,8 @@ local TranqRotate = select(2, ...)
 
 local L = {
 
-    ["LOADED_MESSAGE"] = "TranqRotate loaded, type /tranq for options",
-    ["TRANQ_WINDOW_HIDDEN"] = "Tranqrotate window hidden. Use /tranq toggle to get it back",
+    ["LOADED_MESSAGE"] = "TranqRotate 已加载, 输入 /tranq 进入设置",
+    ["TRANQ_WINDOW_HIDDEN"] = "Tranqrotate 窗口隐藏. 输入 /tranq toggle 显示窗口",
 
     -- Settings
     ["SETTING_GENERAL"] = "General",
@@ -37,27 +37,27 @@ local L = {
     ["ANNOUNCES_MESSAGE_HEADER"] = "通告資訊",
     ["SUCCESS_MESSAGE_LABEL"] = "施放成功通告資訊",
     ["FAIL_MESSAGE_LABEL"] = "施放失敗通告資訊",
-    ["FAIL_WHISPER_LABEL"] = "Fail whisper message",
+    ["FAIL_WHISPER_LABEL"] = "失败的私聊消息",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已對 %s 施放了寧神射擊!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 對 %s 寧神失敗!!!",
-    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TRANQSHOT FAILED ! TRANQ NOW !",
+    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "寧神失敗 !! 赶紧寧神!!",
 
     --- Rotation
-    ["LOCK_WINDOW"] = "Lock window",
-    ["LOCK_WINDOW_DESC"] = "Lock window",
-    ["HIDE_WINDOW_NOT_IN_RAID"] = "Hide the window when not in a raid",
-    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Hide the window when not in a raid",
-    ["WINDOW_LOCKED"] = "TranqRotate: Window locked",
-    ["WINDOW_UNLOCKED"] = "TranqRotate: Window unlocked",
+    ["LOCK_WINDOW"] = "锁定窗口",
+    ["LOCK_WINDOW_DESC"] = "锁定窗口",
+    ["HIDE_WINDOW_NOT_IN_RAID"] = "不在团队时隐藏窗口",
+    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "不在团队时隐藏窗口",
+    ["WINDOW_LOCKED"] = "TranqRotate: 窗口已隐藏",
+    ["WINDOW_UNLOCKED"] = "TranqRotate: 窗口已锁定",
 
     --- Profiles
     ["SETTING_PROFILES"] = "配置",
 
     --- Raid broadcast messages
-    ["BROADCAST_HEADER_TEXT"] = "Hunter tranqshot setup",
-    ["BROADCAST_ROTATION_PREFIX"] = "Rotation",
-    ["BROADCAST_BACKUP_PREFIX"] = "Backup",
+    ["BROADCAST_HEADER_TEXT"] = "猎人宁神设置",
+    ["BROADCAST_ROTATION_PREFIX"] = "循环",
+    ["BROADCAST_BACKUP_PREFIX"] = "备份",
 }
 
 TranqRotate.L = L
