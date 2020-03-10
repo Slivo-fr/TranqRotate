@@ -4,8 +4,8 @@ local TranqRotate = select(2, ...)
 
 local L = {
 
-    ["LOADED_MESSAGE"] = "TranqRotate 已加载, 输入 /tranq 进入设置",
-    ["TRANQ_WINDOW_HIDDEN"] = "Tranqrotate 窗口隐藏. 输入 /tranq toggle 显示窗口",
+    ["LOADED_MESSAGE"] = "TranqRotate 已加載, 輸入 /tranq 進入設定",
+    ["TRANQ_WINDOW_HIDDEN"] = "Tranqrotate 窗口隱藏. 輸入 /tranq toggle 顯示窗口",
 
     -- Settings
     ["SETTING_GENERAL"] = "General",
@@ -20,7 +20,7 @@ local L = {
     ---- Channels
     ["ANNOUNCES_CHANNEL_HEADER"] = "通告頻道",
     ["MESSAGE_CHANNEL_TYPE"] = "發送到",
-    ["MESSAGE_CHANNEL_TYPE_DESC"] = "你想發送到哪個頻道",
+    ["MESSAGE_CHANNEL_TYPE_DESC"] = "妳想發送到哪個頻道",
     ["MESSAGE_CHANNEL_NAME"] = "頻道名或玩家名",
     ["MESSAGE_CHANNEL_NAME_DESC"] = "自定義設置要發送消息的玩家或頻道的名稱",
 
@@ -37,27 +37,27 @@ local L = {
     ["ANNOUNCES_MESSAGE_HEADER"] = "通告資訊",
     ["SUCCESS_MESSAGE_LABEL"] = "施放成功通告資訊",
     ["FAIL_MESSAGE_LABEL"] = "施放失敗通告資訊",
-    ["FAIL_WHISPER_LABEL"] = "失败的私聊消息",
+    ["FAIL_WHISPER_LABEL"] = "失敗的私聊消息",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已對 %s 施放了寧神射擊!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 對 %s 寧神失敗!!!",
-    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "寧神失敗 !! 赶紧寧神!!",
+    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "寧神失敗 !! 趕緊寧神!!",
 
     --- Rotation
-    ["LOCK_WINDOW"] = "锁定窗口",
-    ["LOCK_WINDOW_DESC"] = "锁定窗口",
-    ["HIDE_WINDOW_NOT_IN_RAID"] = "不在团队时隐藏窗口",
-    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "不在团队时隐藏窗口",
-    ["WINDOW_LOCKED"] = "TranqRotate: 窗口已隐藏",
-    ["WINDOW_UNLOCKED"] = "TranqRotate: 窗口已锁定",
+    ["LOCK_WINDOW"] = "鎖定窗口",
+    ["LOCK_WINDOW_DESC"] = "鎖定窗口",
+    ["HIDE_WINDOW_NOT_IN_RAID"] = "不在團隊時隱藏窗口",
+    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "不在團隊時隱藏窗口",
+    ["WINDOW_LOCKED"] = "TranqRotate: 窗口已隱藏",
+    ["WINDOW_UNLOCKED"] = "TranqRotate: 窗口已鎖定",
 
     --- Profiles
     ["SETTING_PROFILES"] = "配置",
 
     --- Raid broadcast messages
-    ["BROADCAST_HEADER_TEXT"] = "猎人宁神设置",
-    ["BROADCAST_ROTATION_PREFIX"] = "循环",
-    ["BROADCAST_BACKUP_PREFIX"] = "备份",
+    ["BROADCAST_HEADER_TEXT"] = "獵人寧神設置",
+    ["BROADCAST_ROTATION_PREFIX"] = "循環",
+    ["BROADCAST_BACKUP_PREFIX"] = "備份",
 }
 
 TranqRotate.L = L
