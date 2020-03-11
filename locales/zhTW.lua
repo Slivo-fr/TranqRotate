@@ -4,12 +4,12 @@ local TranqRotate = select(2, ...)
 
 local L = {
 
-    ["LOADED_MESSAGE"] = "TranqRotate loaded, type /tranq for options",
-    ["TRANQ_WINDOW_HIDDEN"] = "Tranqrotate window hidden. Use /tranq toggle to get it back",
+    ["LOADED_MESSAGE"] = "TranqRotate 已加載, 輸入 /tranq 進入設定",
+    ["TRANQ_WINDOW_HIDDEN"] = "Tranqrotate 窗口隱藏. 輸入 /tranq toggle 顯示窗口",
 
     -- Settings
     ["SETTING_GENERAL"] = "General",
-    ["SETTING_GENERAL_REPORT"] = "Please report any issue at",
+    ["SETTING_GENERAL_REPORT"] = "請報告問題: ",
     ["SETTING_GENERAL_DESC"] = "New : TranqRotate now synchronize hunters list and tranqshot with other users\n",
 
     --- Announces
@@ -37,27 +37,27 @@ local L = {
     ["ANNOUNCES_MESSAGE_HEADER"] = "通告資訊",
     ["SUCCESS_MESSAGE_LABEL"] = "施放成功通告資訊",
     ["FAIL_MESSAGE_LABEL"] = "施放失敗通告資訊",
-    ["FAIL_WHISPER_LABEL"] = "Fail whisper message",
+    ["FAIL_WHISPER_LABEL"] = "施放失敗私聊資訊",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已對 %s 施放了寧神射擊!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 對 %s 寧神失敗!!!",
-    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TRANQSHOT FAILED ! TRANQ NOW !",
+    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "寧神失敗 !! 趕緊補寧神!!",
 
     --- Rotation
-    ["LOCK_WINDOW"] = "Lock window",
-    ["LOCK_WINDOW_DESC"] = "Lock window",
-    ["HIDE_WINDOW_NOT_IN_RAID"] = "Hide the window when not in a raid",
-    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Hide the window when not in a raid",
-    ["WINDOW_LOCKED"] = "TranqRotate: Window locked",
-    ["WINDOW_UNLOCKED"] = "TranqRotate: Window unlocked",
+    ["LOCK_WINDOW"] = "鎖定窗口",
+    ["LOCK_WINDOW_DESC"] = "鎖定窗口",
+    ["HIDE_WINDOW_NOT_IN_RAID"] = "不在團隊時隱藏窗口",
+    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "不在團隊時隱藏窗口",
+    ["WINDOW_LOCKED"] = "TranqRotate: 窗口已隱藏",
+    ["WINDOW_UNLOCKED"] = "TranqRotate: 窗口已鎖定",
 
     --- Profiles
     ["SETTING_PROFILES"] = "配置",
 
     --- Raid broadcast messages
-    ["BROADCAST_HEADER_TEXT"] = "Hunter tranqshot setup",
-    ["BROADCAST_ROTATION_PREFIX"] = "Rotation",
-    ["BROADCAST_BACKUP_PREFIX"] = "Backup",
+    ["BROADCAST_HEADER_TEXT"] = "獵人寧神順序",
+    ["BROADCAST_ROTATION_PREFIX"] = "循環",
+    ["BROADCAST_BACKUP_PREFIX"] = "替補",
 }
 
 TranqRotate.L = L
