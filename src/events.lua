@@ -1,7 +1,6 @@
 local TranqRotate = select(2, ...)
 
-local TranqShot = GetSpellInfo(19801)
---local TranqShot = GetSpellInfo(14287) --Arcane shot for testing
+TranqRotate.tranqShot = GetSpellInfo(19801)
 
 local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent("PLAYER_LOGIN")
@@ -33,7 +32,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand = select(12, CombatLogGetCurrentEventInfo())
 
     -- @todo try to refactor a bit
-    if (spellName == TranqShot) then
+    if (spellName == TranqRotate.tranqShot) then
         local hunter = TranqRotate:getHunter(nil, sourceGUID)
         if (event == "SPELL_CAST_SUCCESS") then
             TranqRotate:sendSyncTranq(hunter, false, timestamp)
