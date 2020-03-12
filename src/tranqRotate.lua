@@ -116,7 +116,7 @@ end
 -- @todo: remove this
 function TranqRotate:test()
     TranqRotate:printMessage('test')
-    TranqRotate:enableArcaneShotTesting(true)
+    TranqRotate:toggleArcaneShotTesting(true)
 end
 
 -- Open ace settings
@@ -191,15 +191,15 @@ function TranqRotate:isHunterPromoted(name)
 end
 
 -- Enable usage of arcane shot instead of tranqshot for testing purpose
-function TranqRotate:enableArcaneShotTesting(enable)
+function TranqRotate:toggleArcaneShotTesting(enable)
     if (enable) then
         TranqRotate:printPrefixedMessage('Arcane shot testing mode enabled for 10 minutes')
         TranqRotate.tranqShot = GetSpellInfo(14287) --Arcane shot for testing
 
         --Disable testing in 10 minutes
-        wait(10, function()
+        C_Timer.After(10, function()
             TranqRotate:printPrefixedMessage('Arcane shot testing mode disabled')
-            TranqRotate:enableArcaneShotTesting(false)
+            TranqRotate:toggleArcaneShotTesting(false)
         end)
     else
         TranqRotate.tranqShot = GetSpellInfo(19801)
