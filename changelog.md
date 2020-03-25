@@ -1,5 +1,9 @@
 ## TranqRotate Changelog
 
+#### v1.3.0
+
+- Adds test mode
+
 #### v1.2.0
 
 - Main window don't show up in battleground anymore

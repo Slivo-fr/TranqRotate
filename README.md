@@ -23,6 +23,7 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 - Synchronize tranqshot cast to other player using the addon
 - Allow player to broadcast the configured rotation and backup group to the raid
 - Display offline and dead status on hunters frames
+- Test mode out of raid using arcane shot
 
 ## Usage
  
