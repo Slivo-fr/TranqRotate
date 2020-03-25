@@ -1,4 +1,4 @@
-if( GetLocale() ~= "frFR" ) then return end
+if (GetLocale() ~= "frFR") then return end
 
 local TranqRotate = select(2, ...)
 
@@ -21,10 +21,13 @@ local L = {
 
     ---- Channels
     ["ANNOUNCES_CHANNEL_HEADER"] = "Canal",
-    ["MESSAGE_CHANNEL_TYPE"] = "Envoyer les annonces sur",
+    ["MESSAGE_CHANNEL_TYPE"] = "Canal",
     ["MESSAGE_CHANNEL_TYPE_DESC"] = "Canal à utiliser pour les annonces",
+    ["MESSAGE_CHANNEL_NAME"] = "Nom du canal",
+    ["MESSAGE_CHANNEL_NAME_DESC"] = "Nom du canal à utiliser",
 
     ----- Channels types
+    ["CHANNEL_CHANNEL"] = "Channel",
     ["CHANNEL_RAID_WARNING"] = "Avertissement raid",
     ["CHANNEL_SAY"] = "Dire",
     ["CHANNEL_YELL"] = "Crier",
@@ -32,7 +35,7 @@ local L = {
     ["CHANNEL_RAID"] = "Raid",
 
     ---- Messages
-    ["ANNOUNCES_MESSAGE_HEADER"] = "Messages",
+    ["ANNOUNCES_MESSAGE_HEADER"] = "Annonces de tir tranquilisant",
     ["SUCCESS_MESSAGE_LABEL"] = "Message de réussite",
     ["FAIL_MESSAGE_LABEL"] = "Message d'échec",
     ["FAIL_WHISPER_LABEL"] = "Message d'échec cdhuchoté",
@@ -40,6 +43,8 @@ local L = {
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait sur %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TIR TRANQUILLISANT RATE SUR %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TIR TRANQUILISANT RATE ! TRANQ MAINTENANT !",
+
+    ["BROADCAST_MESSAGE_HEADER"] = "Diffusion de la configuation de la rotation",
 
     --- Rotation
     ["LOCK_WINDOW"] = "Verrouiller la position de la fênetre",

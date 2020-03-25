@@ -1,4 +1,4 @@
-if( GetLocale() ~= "zhCN" ) then return end
+if (GetLocale() ~= "zhCN") then return end
 
 local TranqRotate = select(2, ...)
 
@@ -23,8 +23,11 @@ local L = {
     ["ANNOUNCES_CHANNEL_HEADER"] = "通告频道",
     ["MESSAGE_CHANNEL_TYPE"] = "发送到",
     ["MESSAGE_CHANNEL_TYPE_DESC"] = "你想发送到哪个频道",
+    ["MESSAGE_CHANNEL_NAME"] = "频道名或玩家名",
+    ["MESSAGE_CHANNEL_NAME_DESC"] = "Set the name of the target channel",
 
     ----- Channels types
+    ["CHANNEL_CHANNEL"] = "频道",
     ["CHANNEL_RAID_WARNING"] = "团队警报",
     ["CHANNEL_SAY"] = "说",
     ["CHANNEL_YELL"] = "大喊",
@@ -40,6 +43,8 @@ local L = {
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已对 %s 施放了宁神射击!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 对 %s 宁神失败!!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TRANQSHOT FAILED ! TRANQ NOW !",
+
+    ["BROADCAST_MESSAGE_HEADER"] = "Rotation setup text broadcast",
 
     --- Rotation
     ["LOCK_WINDOW"] = "Lock window",
