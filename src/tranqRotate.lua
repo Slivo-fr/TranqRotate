@@ -65,15 +65,37 @@ function TranqRotate:printPrefixedMessage(msg)
     TranqRotate:printMessage(TranqRotate:colorText(TranqRotate.constants.printPrefix) .. msg)
 end
 
--- Send a message to a given channel
-function TranqRotate:sendAnnounceMessage(message, destName)
+-- Send a tranq annouce message to a given channel
+function TranqRotate:sendAnnounceMessage(message, targetName)
     if TranqRotate.db.profile.enableAnnounces then
-        local channelNumber
-        if TranqRotate.db.profile.channelType == "CHANNEL" then
-            channelNumber = GetChannelName(TranqRotate.db.profile.targetChannel)
-        end
-        SendChatMessage(string.format(message,destName), TranqRotate.db.profile.channelType, nil, channelNumber or TranqRotate.db.profile.targetChannel)
+        TranqRotate:sendMessage(
+            message,
+            targetName,
+            TranqRotate.db.profile.channelType,
+            TranqRotate.db.profile.targetChannel
+        )
     end
+end
+
+-- Send a rotation broadcast message
+function TranqRotate:sendRotationSetupBroacastMessage(message)
+    if TranqRotate.db.profile.enableAnnounces then
+        TranqRotate:sendMessage(
+            message,
+            nil,
+            TranqRotate.db.profile.setupBroadcastChannelType,
+            TranqRotate.db.profile.setupBroadcastTargetChannel
+        )
+    end
+end
+
+-- Send a message to a given channel
+function TranqRotate:sendMessage(message, targetName, channelType, targetChannel)
+    local channelNumber
+    if channelType == "CHANNEL" then
+        channelNumber = GetChannelName(targetChannel)
+    end
+    SendChatMessage(string.format(message, targetName), channelType, nil, channelNumber or targetChannel)
 end
 
 SLASH_TRANQROTATE1 = "/tranq"
@@ -127,25 +149,20 @@ function TranqRotate:openSettings()
 end
 
 -- Sends rotation setup to raid channel
-function TranqRotate:broadcastToRaid()
-    local channel = 'RAID'
+function TranqRotate:printRotationSetup()
 
     if (IsInRaid()) then
-
-        SendChatMessage('--- ' .. L['BROADCAST_HEADER_TEXT'] .. ' ---', channel)
-        SendChatMessage(
-            TranqRotate:buildGroupMessage(L['BROADCAST_ROTATION_PREFIX'] .. ' : ', TranqRotate.rotationTables.rotation),
-            channel
+        TranqRotate:sendRotationSetupBroacastMessage('--- ' .. L['BROADCAST_HEADER_TEXT'] .. ' ---', channel)
+        TranqRotate:sendRotationSetupBroacastMessage(
+            TranqRotate:buildGroupMessage(L['BROADCAST_ROTATION_PREFIX'] .. ' : ', TranqRotate.rotationTables.rotation)
         )
 
         if (#TranqRotate.rotationTables.backup > 0) then
-            SendChatMessage(
-                TranqRotate:buildGroupMessage(L['BROADCAST_BACKUP_PREFIX'] .. ' : ', TranqRotate.rotationTables.backup),
-                channel
+            TranqRotate:sendRotationSetupBroacastMessage(
+                TranqRotate:buildGroupMessage(L['BROADCAST_BACKUP_PREFIX'] .. ' : ', TranqRotate.rotationTables.backup)
             )
         end
     end
-
 end
 
 -- Serialize hunters names of a given rotation group

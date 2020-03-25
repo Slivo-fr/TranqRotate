@@ -1,4 +1,4 @@
-if( GetLocale() ~= "zhTW" ) then return end
+if (GetLocale() ~= "zhTW") then return end
 
 local TranqRotate = select(2, ...)
 
@@ -37,10 +37,9 @@ local L = {
     ["MESSAGE_CHANNEL_TYPE"] = "發送到",
     ["MESSAGE_CHANNEL_TYPE_DESC"] = "你想發送到哪個頻道",
     ["MESSAGE_CHANNEL_NAME"] = "頻道名或玩家名",
-    ["MESSAGE_CHANNEL_NAME_DESC"] = "自定義設置要發送消息的玩家或頻道的名稱",
+    ["MESSAGE_CHANNEL_NAME_DESC"] = "Set the name of the target channel",
 
     ----- Channels types
-    ["CHANNEL_WHISPER"] = "私聊",
     ["CHANNEL_CHANNEL"] = "頻道",
     ["CHANNEL_RAID_WARNING"] = "團隊警報",
     ["CHANNEL_SAY"] = "說",
@@ -57,6 +56,8 @@ local L = {
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已對 %s 施放了寧神射擊!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 對 %s 寧神失敗!!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "寧神失敗 !! 趕緊補寧神!!",
+
+    ["BROADCAST_MESSAGE_HEADER"] = "Rotation setup text broadcast",
 
     --- Profiles
     ["SETTING_PROFILES"] = "配置",
