@@ -20,12 +20,12 @@ local L = {
     ["WINDOW_UNLOCKED"] = "TranqRotate: Fenêtre déverrouillée",
 
     ["TEST_MODE_HEADER"] = "Test mode",
-    ["ENABLE_ARCANE_SHOT_TESTING"] = "Toggle testing mode",
+    ["ENABLE_ARCANE_SHOT_TESTING"] = "Activer/désactiver le mode test",
     ["ENABLE_ARCANE_SHOT_TESTING_DESC"] =
         "Tant que le mode de test est activé, arcane shot sera considéré comme un tir tranquilisant\n" ..
         "Le mode de test durera 10 minutes ou jusqu'a désactivation",
-    ["ARCANE_SHOT_TESTING_ENABLED"] = "Arcane shot testing mode enabled for 10 minutes",
-    ["ARCANE_SHOT_TESTING_DISABLED"] = "Arcane shot testing mode disabled",
+    ["ARCANE_SHOT_TESTING_ENABLED"] = "Test mode activé pour 10 minutes",
+    ["ARCANE_SHOT_TESTING_DISABLED"] = "Test mode désactivé",
 
     --- Announces
     ["SETTING_ANNOUNCES"] = "Annonces",
