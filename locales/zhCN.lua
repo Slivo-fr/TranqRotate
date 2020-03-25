@@ -12,6 +12,21 @@ local L = {
     ["SETTING_GENERAL_REPORT"] = "请报告问题: ",
     ["SETTING_GENERAL_DESC"] = "New : TranqRotate now synchronize hunters list and tranqshot with other users\n",
 
+    ["LOCK_WINDOW"] = "锁定窗口",
+    ["LOCK_WINDOW_DESC"] = "锁定窗口",
+    ["HIDE_WINDOW_NOT_IN_RAID"] = "不在团队时隐藏窗口",
+    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "不在团队时隐藏窗口",
+    ["WINDOW_LOCKED"] = "TranqRotate: 窗口已隐藏",
+    ["WINDOW_UNLOCKED"] = "TranqRotate: 窗口已锁定",
+
+    ["TEST_MODE_HEADER"] = "Test mode",
+    ["ENABLE_ARCANE_SHOT_TESTING"] = "Toggle testing mode",
+    ["ENABLE_ARCANE_SHOT_TESTING_DESC"] =
+        "While testing mode is enabled, arcane shot will be registered as a tranqshot\n" ..
+        "Testing mode will last 10 minutes unless you toggle it off",
+    ["ARCANE_SHOT_TESTING_ENABLED"] = "Arcane shot testing mode enabled for 10 minutes",
+    ["ARCANE_SHOT_TESTING_DISABLED"] = "Arcane shot testing mode disabled",
+
     --- Announces
     ["SETTING_ANNOUNCES"] = "通告",
     ["ENABLE_ANNOUNCES"] = "启用通告",
@@ -42,14 +57,6 @@ local L = {
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已对 %s 施放了宁神射击!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 对 %s 宁神失败!!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "宁神失败 !! 赶紧补宁神!!",
-
-    --- Rotation
-    ["LOCK_WINDOW"] = "锁定窗口",
-    ["LOCK_WINDOW_DESC"] = "锁定窗口",
-    ["HIDE_WINDOW_NOT_IN_RAID"] = "不在团队时隐藏窗口",
-    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "不在团队时隐藏窗口",
-    ["WINDOW_LOCKED"] = "TranqRotate: 窗口已隐藏",
-    ["WINDOW_UNLOCKED"] = "TranqRotate: 窗口已锁定",
 
     --- Profiles
     ["SETTING_PROFILES"] = "配置",

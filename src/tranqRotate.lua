@@ -20,6 +20,7 @@ function TranqRotate:init()
     TranqRotate.enableDrag = true
 
     TranqRotate.raidInitialized = false
+    TranqRotate.testMode = false
 
     TranqRotate:initGui()
     TranqRotate:updateRaidStatus()
@@ -116,7 +117,7 @@ end
 -- @todo: remove this
 function TranqRotate:test()
     TranqRotate:printMessage('test')
-    TranqRotate:sendSyncOrderRequest()
+    TranqRotate:toggleArcaneShotTesting()
 end
 
 -- Open ace settings
@@ -188,4 +189,21 @@ function TranqRotate:isHunterPromoted(name)
     end
 
     return false
+end
+
+-- Toggle arcane shot testing mode
+function TranqRotate:toggleArcaneShotTesting(disable)
+
+    if (not disable and not TranqRotate.testMode) then
+        TranqRotate:printPrefixedMessage(L['ARCANE_SHOT_TESTING_ENABLED'])
+        TranqRotate.testMode = true
+
+        -- Disable testing in 10 minutes
+        C_Timer.After(600, function()
+            TranqRotate:toggleArcaneShotTesting(true)
+        end)
+    else
+        TranqRotate.testMode = false
+        TranqRotate:printPrefixedMessage(L['ARCANE_SHOT_TESTING_DISABLED'])
+    end
 end

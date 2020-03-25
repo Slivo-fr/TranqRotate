@@ -12,6 +12,21 @@ local L = {
     ["SETTING_GENERAL_REPORT"] = "Merci de signaler tout bug rencontré sur",
     ["SETTING_GENERAL_DESC"] = "Nouveau : TranqRotate synchronize maintenant la liste et les tirs tranquillisants",
 
+    ["LOCK_WINDOW"] = "Verrouiller la position de la fênetre",
+    ["LOCK_WINDOW_DESC"] = "Verrouiller la position de la fênetre",
+    ["HIDE_WINDOW_NOT_IN_RAID"] = "Masquer la fenêtre principale hors raid",
+    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Masquer la fenêtre principale hors raid",
+    ["WINDOW_LOCKED"] = "TranqRotate: Fenêtre verrouillée",
+    ["WINDOW_UNLOCKED"] = "TranqRotate: Fenêtre déverrouillée",
+
+    ["TEST_MODE_HEADER"] = "Test mode",
+    ["ENABLE_ARCANE_SHOT_TESTING"] = "Toggle testing mode",
+    ["ENABLE_ARCANE_SHOT_TESTING_DESC"] =
+        "Tant que le mode de test est activé, arcane shot sera considéré comme un tir tranquilisant\n" ..
+        "Le mode de test durera 10 minutes ou jusqu'a désactivation",
+    ["ARCANE_SHOT_TESTING_ENABLED"] = "Arcane shot testing mode enabled for 10 minutes",
+    ["ARCANE_SHOT_TESTING_DISABLED"] = "Arcane shot testing mode disabled",
+
     --- Announces
     ["SETTING_ANNOUNCES"] = "Annonces",
     ["ENABLE_ANNOUNCES"] = "Activer les annonces",
@@ -42,14 +57,6 @@ local L = {
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait sur %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TIR TRANQUILLISANT RATE SUR %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TIR TRANQUILISANT RATE ! TRANQ MAINTENANT !",
-
-    --- Rotation
-    ["LOCK_WINDOW"] = "Verrouiller la position de la fênetre",
-    ["LOCK_WINDOW_DESC"] = "Verrouiller la position de la fênetre",
-    ["HIDE_WINDOW_NOT_IN_RAID"] = "Masquer la fenêtre principale hors raid",
-    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Masquer la fenêtre principale hors raid",
-    ["WINDOW_LOCKED"] = "TranqRotate: Fenêtre verrouillée",
-    ["WINDOW_UNLOCKED"] = "TranqRotate: Fenêtre déverrouillée",
 
     --- Profiles
     ["SETTING_PROFILES"] = "Profils",

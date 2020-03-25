@@ -10,6 +10,21 @@ local L = {
     ["SETTING_GENERAL_REPORT"] = "Please report any issue at",
     ["SETTING_GENERAL_DESC"] = "New : TranqRotate now synchronize hunters list and tranqshot with other users\n",
 
+    ["LOCK_WINDOW"] = "Lock window",
+    ["LOCK_WINDOW_DESC"] = "Lock window",
+    ["HIDE_WINDOW_NOT_IN_RAID"] = "Hide the window when not in a raid",
+    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Hide the window when not in a raid",
+    ["WINDOW_LOCKED"] = "TranqRotate: Window locked",
+    ["WINDOW_UNLOCKED"] = "TranqRotate: Window unlocked",
+
+    ["TEST_MODE_HEADER"] = "Test mode",
+    ["ENABLE_ARCANE_SHOT_TESTING"] = "Toggle testing mode",
+    ["ENABLE_ARCANE_SHOT_TESTING_DESC"] =
+        "While testing mode is enabled, arcane shot will be registered as a tranqshot\n" ..
+        "Testing mode will last 10 minutes unless you toggle it off",
+    ["ARCANE_SHOT_TESTING_ENABLED"] = "Arcane shot testing mode enabled for 10 minutes",
+    ["ARCANE_SHOT_TESTING_DISABLED"] = "Arcane shot testing mode disabled",
+
     --- Announces
     ["SETTING_ANNOUNCES"] = "Announces",
     ["ENABLE_ANNOUNCES"] = "Enable announces",
@@ -40,14 +55,6 @@ local L = {
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tranqshot done on %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TRANQSHOT FAILED ON %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TRANQSHOT FAILED ! TRANQ NOW !",
-
-    --- Rotation
-    ["LOCK_WINDOW"] = "Lock window",
-    ["LOCK_WINDOW_DESC"] = "Lock window",
-    ["HIDE_WINDOW_NOT_IN_RAID"] = "Hide the window when not in a raid",
-    ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Hide the window when not in a raid",
-    ["WINDOW_LOCKED"] = "TranqRotate: Window locked",
-    ["WINDOW_UNLOCKED"] = "TranqRotate: Window unlocked",
 
     --- Profiles
     ["SETTING_PROFILES"] = "Profiles",
