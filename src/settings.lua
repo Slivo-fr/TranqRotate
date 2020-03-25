@@ -47,7 +47,7 @@ function TranqRotate:CreateConfig()
 						order = 3,
 					},
                     -- @todo : find a way to space widget properly
-					spacer = {
+					spacer4 = {
 						name = ' ',
 						type = "description",
 						width = "full",
@@ -66,6 +66,29 @@ function TranqRotate:CreateConfig()
                         type = "toggle",
                         order = 6,
                         width = "double",
+                    },
+                    testHeader = {
+                        name = L["TEST_MODE_HEADER"],
+                        type = "header",
+                        order = 10,
+                    },
+                    ToggleArcaneShotTestingDesc = {
+                        name = L['ENABLE_ARCANE_SHOT_TESTING_DESC'],
+                        type = "description",
+                        width = "full",
+                        order = 11,
+                    },
+                    spacer12 = {
+                        name = ' ',
+                        type = "description",
+                        width = "full",
+                        order = 12,
+                    },
+                    ToggleArcaneShotTesting = {
+                        name = L["ENABLE_ARCANE_SHOT_TESTING"],
+                        type = "execute",
+                        order = 13,
+                        func = function() TranqRotate.toggleArcaneShotTesting() end
                     }
                 }
             },
