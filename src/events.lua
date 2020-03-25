@@ -9,6 +9,9 @@ eventFrame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 eventFrame:RegisterEvent("GROUP_ROSTER_UPDATE")
 eventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 
+-- @todo: clean this
+--PLAYER_ROLES_ASSIGNED
+
 eventFrame:SetScript(
     "OnEvent",
     function(self, event, ...)

@@ -81,58 +81,18 @@ function TranqRotate:CreateConfig()
                         order = 1,
                         width = "double",
                     },
-                    announceHeader = {
-                        name = L["ANNOUNCES_MESSAGE_HEADER"],
+                    channelHeader = {
+                        name = L["ANNOUNCES_CHANNEL_HEADER"],
                         type = "header",
-                        order = 20,
+                        order = 10,
                     },
                     channelType = {
                         name = L["MESSAGE_CHANNEL_TYPE"],
                         desc = L["MESSAGE_CHANNEL_TYPE_DESC"],
                         type = "select",
-                        order = 21,
+                        order = 11,
                         values = {
-                            ["RAID_WARNING"] = L["CHANNEL_RAID_WARNING"],
-                            ["SAY"] = L["CHANNEL_SAY"],
-                            ["YELL"] = L["CHANNEL_YELL"],
-                            ["PARTY"] = L["CHANNEL_PARTY"],
-                            ["RAID"] = L["CHANNEL_RAID"]
-                        },
-                    },
-                    spacer22 = {
-                        name = ' ',
-                        type = "description",
-                        width = "normal",
-                        order = 22,
-                    },
-                    announceSuccessMessage = {
-                        name = L["SUCCESS_MESSAGE_LABEL"],
-                        type = "input",
-                        order = 23,
-                        width = "double",
-                    },
-                    announceFailMessage = {
-                        name = L["FAIL_MESSAGE_LABEL"],
-                        type = "input",
-                        order = 24,
-                        width = "double",
-                    },
-                    whisperFailMessage = {
-                        name = L["FAIL_WHISPER_LABEL"],
-                        type = "input",
-                        order = 25,
-                        width = "double",
-                    },
-                    setupBroadcastHeader = {
-                        name = L["BROADCAST_MESSAGE_HEADER"],
-                        type = "header",
-                        order = 30,
-                    },
-                    setupBroadcastChannelType = {
-                        name = L["MESSAGE_CHANNEL_TYPE"],
-                        type = "select",
-                        order = 31,
-                        values = {
+                            ["WHISPER"] = L["CHANNEL_WHISPER"],
                             ["CHANNEL"] = L["CHANNEL_CHANNEL"],
                             ["RAID_WARNING"] = L["CHANNEL_RAID_WARNING"],
                             ["SAY"] = L["CHANNEL_SAY"],
@@ -142,12 +102,35 @@ function TranqRotate:CreateConfig()
                         },
                         set = function(info, value) set(info,value) LibStub("AceConfigRegistry-3.0", true):NotifyChange("TranqRotate") end
                     },
-                    setupBroadcastTargetChannel = {
+                    targetChannel = {
                         name = L["MESSAGE_CHANNEL_NAME"],
                         desc = L["MESSAGE_CHANNEL_NAME_DESC"],
                         type = "input",
-                        order = 32,
-                        hidden = function() return not (TranqRotate.db.profile.setupBroadcastChannelType == "CHANNEL") end,
+                        order = 12,
+                        hidden = function() return not (TranqRotate.db.profile.channelType == "WHISPER" or TranqRotate.db.profile.channelType == "CHANNEL") end,
+                    },
+                    announceHeader = {
+                        name = L["ANNOUNCES_MESSAGE_HEADER"],
+                        type = "header",
+                        order = 20,
+                    },
+                    announceSuccessMessage = {
+                        name = L["SUCCESS_MESSAGE_LABEL"],
+                        type = "input",
+                        order = 21,
+                        width = "double",
+                    },
+                    announceFailMessage = {
+                        name = L["FAIL_MESSAGE_LABEL"],
+                        type = "input",
+                        order = 22,
+                        width = "double",
+                    },
+                    whisperFailMessage = {
+                        name = L["FAIL_WHISPER_LABEL"],
+                        type = "input",
+                        order = 23,
+                        width = "double",
                     },
                 }
             },
