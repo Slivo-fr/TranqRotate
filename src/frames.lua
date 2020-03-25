@@ -67,7 +67,7 @@ function TranqRotate:createButtons()
         },
         {
             ['texture'] = 'Interface/Buttons/UI-GuildButton-MOTD-Up',
-            ['callback'] = TranqRotate.broadcastToRaid
+            ['callback'] = TranqRotate.printRotationSetup
         },
     }
 
