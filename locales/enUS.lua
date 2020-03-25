@@ -19,11 +19,10 @@ local L = {
     ["ANNOUNCES_CHANNEL_HEADER"] = "Announce channel",
     ["MESSAGE_CHANNEL_TYPE"] = "Send messages to",
     ["MESSAGE_CHANNEL_TYPE_DESC"] = "Channel you want to send messages",
-    ["MESSAGE_CHANNEL_NAME"] = "Name of channel or player",
-    ["MESSAGE_CHANNEL_NAME_DESC"] = "Set the name of the player or channel you want to send messages",
+    ["MESSAGE_CHANNEL_NAME"] = "Channel name",
+    ["MESSAGE_CHANNEL_NAME_DESC"] = "Set the name of the target channel",
 
     ----- Channels types
-    ["CHANNEL_WHISPER"] = "Whisper",
     ["CHANNEL_CHANNEL"] = "Channel",
     ["CHANNEL_RAID_WARNING"] = "Raid Warning",
     ["CHANNEL_SAY"] = "Say",
@@ -40,6 +39,8 @@ local L = {
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tranqshot done on %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TRANQSHOT FAILED ON %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TRANQSHOT FAILED ! TRANQ NOW !",
+
+    ["BROADCAST_MESSAGE_HEADER"] = "Rotation setup text broadcast",
 
     --- Rotation
     ["LOCK_WINDOW"] = "Lock window",
