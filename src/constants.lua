@@ -30,4 +30,8 @@ TranqRotate.constants = {
     ['duplicateTranqshotDelayThreshold'] = 10,
 
     ['minimumCooldownElapsedForEligibility'] = 10,
+
+    ['sounds'] = {
+        ['nextToTranq'] = 'Interface\\AddOns\\TranqRotate\\sounds\\ding.ogg',
+    }
 }

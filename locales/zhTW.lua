@@ -59,6 +59,10 @@ local L = {
 
     ["BROADCAST_MESSAGE_HEADER"] = "Rotation setup text broadcast",
 
+    --- Sounds
+    ["SETTING_SOUNDS"] = "Sounds",
+    ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "Play a sound when you are the next to shoot",
+
     --- Profiles
     ["SETTING_PROFILES"] = "配置",
 

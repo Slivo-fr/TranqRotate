@@ -59,6 +59,10 @@ local L = {
 
     ["BROADCAST_MESSAGE_HEADER"] = "Diffusion de la configuation de la rotation",
 
+    --- Sounds
+    ["SETTING_SOUNDS"] = "Sons",
+    ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "Jouer un son lorsque vous êtes le prochain à devoir tranq",
+
     --- Profiles
     ["SETTING_PROFILES"] = "Profils",
 
