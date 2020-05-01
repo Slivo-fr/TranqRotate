@@ -119,9 +119,9 @@ function setHunterFrameColor(hunter)
 
     local color = TranqRotate.colors.green
 
-    if (hunter.offline) then
+    if (not TranqRotate:isHunterOnline(hunter)) then
         color = TranqRotate.colors.gray
-    elseif (not hunter.alive) then
+    elseif (not TranqRotate:isHunterAlive(hunter)) then
         color = TranqRotate.colors.red
     elseif (hunter.nextTranq) then
         color = TranqRotate.colors.purple
