@@ -11,6 +11,7 @@ function TranqRotate:LoadDefaults()
 			whisperFailMessage = L["DEFAULT_FAIL_WHISPER_MESSAGE"],
 			lock = false,
 			hideNotInRaid = false,
+			enableNextToTranqSound = true,
 	    },
 	}
 end

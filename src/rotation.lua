@@ -98,6 +98,10 @@ function TranqRotate:setNextTranq(nextHunter)
     for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
         if (hunter.name == nextHunter.name) then
             hunter.nextTranq = true
+
+            if (nextHunter.name == UnitName("player")) and TranqRotate.db.profile.enableNextToTranqSound then
+                PlaySoundFile(TranqRotate.constants.sounds.nextToTranq)
+            end
         else
             hunter.nextTranq = false
         end

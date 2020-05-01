@@ -174,7 +174,21 @@ function TranqRotate:CreateConfig()
                     },
                 }
             },
-		}
+            sounds = {
+                name = L['SETTING_SOUNDS'],
+                type = "group",
+                order = 3,
+                args = {
+                    enableAnnounces = {
+                        name = L["ENABLE_NEXT_TO_TRANQ_SOUND"],
+                        desc = L["ENABLE_NEXT_TO_TRANQ_SOUND"],
+                        type = "toggle",
+                        order = 1,
+                        width = "double",
+                    },
+                }
+            }
+        }
 	}
 
     AceConfigRegistry:RegisterOptionsTable(Addon, options, true)
