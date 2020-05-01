@@ -3,6 +3,9 @@
 #### v1.3.0
 
 - Adds test mode
+- Adds sound when user is the next to tranq (Added setting toggle to switch if off)
+- Adds some logic to rotation, TranqRotate will skip a hunter if it's tranq ability isn't ready
+- Update zhCN & zhTW locales, thanks to LeePich
 
 #### v1.2.0
 
