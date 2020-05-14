@@ -7,6 +7,7 @@ local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent("PLAYER_LOGIN")
 eventFrame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 eventFrame:RegisterEvent("GROUP_ROSTER_UPDATE")
+eventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
 eventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 
 eventFrame:SetScript(
@@ -51,7 +52,14 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     end
 end
 
+-- Raid group has changed
 function TranqRotate:GROUP_ROSTER_UPDATE()
+    TranqRotate:updateRaidStatus()
+    TranqRotate:updateDisplay()
+end
+
+-- Player left combat
+function TranqRotate:PLAYER_REGEN_ENABLED()
     TranqRotate:updateRaidStatus()
     TranqRotate:updateDisplay()
 end
@@ -60,7 +68,6 @@ function TranqRotate:PLAYER_TARGET_CHANGED()
     TranqRotate:updateRaidStatus()
     self:UnregisterEvent("PLAYER_TARGET_CHANGED")
 end
-
 
 -- Register single unit events for a given hunter
 function TranqRotate:registerUnitEvents(hunter)
