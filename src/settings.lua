@@ -179,7 +179,7 @@ function TranqRotate:CreateConfig()
                 type = "group",
                 order = 3,
                 args = {
-                    enableAnnounces = {
+                    enableNextToTranqSound = {
                         name = L["ENABLE_NEXT_TO_TRANQ_SOUND"],
                         desc = L["ENABLE_NEXT_TO_TRANQ_SOUND"],
                         type = "toggle",
