@@ -155,7 +155,7 @@ function TranqRotate:createHunterFrame(hunter, parentFrame)
     hunter.frame.text:SetPoint("LEFT",5,0)
     hunter.frame.text:SetText(hunter.name)
 
-    TranqRotate:createCooldownFrame(hunter, hunter.frame)
+    TranqRotate:createCooldownFrame(hunter)
     TranqRotate:configureHunterFrameDrag(hunter)
 
     if (TranqRotate.enableDrag) then
@@ -164,10 +164,10 @@ function TranqRotate:createHunterFrame(hunter, parentFrame)
 end
 
 -- Create the cooldown frame
-function TranqRotate:createCooldownFrame(hunter, parentFrame)
+function TranqRotate:createCooldownFrame(hunter)
 
     -- Frame
-    hunter.frame.cooldownFrame = CreateFrame("Frame", nil, parentFrame)
+    hunter.frame.cooldownFrame = CreateFrame("Frame", nil, hunter.frame)
     hunter.frame.cooldownFrame:SetPoint('LEFT', 5, 0)
     hunter.frame.cooldownFrame:SetPoint('RIGHT', -5, 0)
     hunter.frame.cooldownFrame:SetPoint('TOP', 0, -17)
