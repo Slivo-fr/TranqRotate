@@ -11,7 +11,7 @@ TranqRotate.colors = {
 }
 
 TranqRotate.constants = {
-    ['hunterFrameHeight'] = 20,
+    ['hunterFrameHeight'] = 22,
     ['hunterFrameSpacing'] = 4,
     ['titleBarHeight'] = 18,
     ['mainFrameWidth'] = 130,

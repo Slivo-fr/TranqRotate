@@ -155,9 +155,48 @@ function TranqRotate:createHunterFrame(hunter, parentFrame)
     hunter.frame.text:SetPoint("LEFT",5,0)
     hunter.frame.text:SetText(hunter.name)
 
+    TranqRotate:createCooldownFrame(hunter)
     TranqRotate:configureHunterFrameDrag(hunter)
 
     if (TranqRotate.enableDrag) then
         TranqRotate:enableHunterFrameDragging(hunter, true)
     end
+end
+
+-- Create the cooldown frame
+function TranqRotate:createCooldownFrame(hunter)
+
+    -- Frame
+    hunter.frame.cooldownFrame = CreateFrame("Frame", nil, hunter.frame)
+    hunter.frame.cooldownFrame:SetPoint('LEFT', 5, 0)
+    hunter.frame.cooldownFrame:SetPoint('RIGHT', -5, 0)
+    hunter.frame.cooldownFrame:SetPoint('TOP', 0, -17)
+    hunter.frame.cooldownFrame:SetHeight(3)
+
+    -- background
+    hunter.frame.cooldownFrame.background = hunter.frame.cooldownFrame:CreateTexture(nil, "ARTWORK")
+    hunter.frame.cooldownFrame.background:SetColorTexture(0,0,0,1)
+    hunter.frame.cooldownFrame.background:SetAllPoints()
+
+    local statusBar = CreateFrame("StatusBar", nil, hunter.frame.cooldownFrame)
+    statusBar:SetAllPoints()
+    statusBar:SetMinMaxValues(0,1)
+    statusBar:SetStatusBarTexture("Interface\\AddOns\\TranqRotate\\textures\\steel.tga")
+    statusBar:GetStatusBarTexture():SetHorizTile(false)
+    statusBar:GetStatusBarTexture():SetVertTile(false)
+    statusBar:SetStatusBarColor(1, 0, 0)
+    hunter.frame.cooldownFrame.statusBar = statusBar
+
+    hunter.frame.cooldownFrame:SetScript(
+        "OnUpdate",
+        function(self, elapsed)
+            self.statusBar:SetValue(GetTime())
+
+            if (self.statusBar.exirationTime < GetTime()) then
+                self:Hide()
+            end
+        end
+    )
+
+    hunter.frame.cooldownFrame:Hide()
 end
