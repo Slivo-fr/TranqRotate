@@ -114,7 +114,7 @@ end
 function TranqRotate:getNextRotationHunter(lastHunter)
 
     local rotationTable = TranqRotate.rotationTables.rotation
-    local nextHunter = nil
+    local nextHunter
     local lastHunterIndex = 1
 
     -- Finding last hunter index in rotation
@@ -150,10 +150,11 @@ function TranqRotate:getNextRotationHunter(lastHunter)
     -- If no hunter in the rotation match the alive/online/CD criteria
     -- Pick the hunter with the lowest cooldown
     if (nextHunter == nil and #rotationTable > 0) then
-        nextHunter = rotationTable[1]
+        local latestTranq = GetServerTime() + 1
         for key, hunter in pairs(rotationTable) do
-            if (TranqRotate:isHunterAliveAndOnline(hunter) and hunter.lastTranqTime < nextHunter.lastTranqTime) then
+            if (TranqRotate:isHunterAliveAndOnline(hunter) and hunter.lastTranqTime < latestTranq) then
                 nextHunter = hunter
+                latestTranq = hunter.lastTranqTime
             end
         end
     end
@@ -284,7 +285,7 @@ end
 function TranqRotate:updateHunterStatus(hunter)
 
     -- Jump to the next hunter if the current one is dead or offline
-    if (hunter.nextTranq and (not TranqRotate:isHunterAlive(hunter))) then
+    if (hunter.nextTranq and (not TranqRotate:isHunterAliveAndOnline(hunter))) then
         TranqRotate:rotate(hunter, false)
     end
 
