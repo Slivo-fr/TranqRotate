@@ -52,13 +52,18 @@ end
 
 -- Update the rotation list once a tranq has been done.
 -- The parameter is the hunter that used it's tranq (successfully or not)
-function TranqRotate:rotate(lastHunter, fail)
+function TranqRotate:rotate(lastHunter, fail, rotateWithoutCooldown)
 
     local name, realm = UnitName("player")
     local hunterRotationTable = TranqRotate:getHunterRotationTable(lastHunter)
     local hasPlayerFailed = name == lastHunter.name and fail
 
     lastHunter.lastTranqTime = GetServerTime()
+
+    -- Do not trigger cooldown when rotation from a dead or disconnected status
+    if (rotateWithoutCooldown ~= true) then
+        TranqRotate:startHunterCooldown(lastHunter)
+    end
 
     -- Default value to false
     fail = fail or false
@@ -286,7 +291,7 @@ function TranqRotate:updateHunterStatus(hunter)
 
     -- Jump to the next hunter if the current one is dead or offline
     if (hunter.nextTranq and (not TranqRotate:isHunterAliveAndOnline(hunter))) then
-        TranqRotate:rotate(hunter, false)
+        TranqRotate:rotate(hunter, false, true)
     end
 
     TranqRotate:refreshHunterFrame(hunter)

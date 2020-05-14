@@ -130,6 +130,12 @@ function setHunterFrameColor(hunter)
     hunter.frame.texture:SetVertexColor(color:GetRGB())
 end
 
+function TranqRotate:startHunterCooldown(hunter)
+    hunter.frame.cooldownFrame.statusBar:SetMinMaxValues(GetTime(), GetTime() + 20)
+    hunter.frame.cooldownFrame.statusBar.exirationTime = GetTime() + 20
+    hunter.frame.cooldownFrame:Show()
+end
+
 -- Lock/Unlock the mainFrame position
 function TranqRotate:lock(lock)
     TranqRotate.db.profile.lock = lock
