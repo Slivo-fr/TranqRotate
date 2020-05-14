@@ -57,7 +57,7 @@ local L = {
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TIR TRANQUILLISANT RATE SUR %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TIR TRANQUILISANT RATE ! TRANQ MAINTENANT !",
 
-    ["BROADCAST_MESSAGE_HEADER"] = "Diffusion de la configuation de la rotation",
+    ["BROADCAST_MESSAGE_HEADER"] = "Diffusion de la configuration de la rotation",
 
     --- Sounds
     ["SETTING_SOUNDS"] = "Sons",
