@@ -1,7 +1,7 @@
 TranqRotate = select(2, ...)
 
 local L = TranqRotate.L
-TranqRotate.version = "1.2.0"
+TranqRotate.version = "1.3.0"
 
 -- Initialize addon - Shouldn't be call more than once
 function TranqRotate:init()

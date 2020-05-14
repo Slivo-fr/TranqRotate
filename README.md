@@ -25,6 +25,7 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 - Display offline and dead status on hunters frames
 - Test mode out of raid using arcane shot
 - Play a sound when you are next on rotation
+- Display the tranq cooldown of each hunter
 
 ## Usage
  
