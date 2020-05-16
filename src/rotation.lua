@@ -269,11 +269,15 @@ function TranqRotate:updateRaidStatus()
         end
 
         if (not TranqRotate.raidInitialized) then
+            TranqRotate:updateDisplay()
             TranqRotate:sendSyncOrderRequest()
             TranqRotate.raidInitialized = true
         end
     else
-        TranqRotate.raidInitialized = false
+        if(TranqRotate.raidInitialized == true) then
+            TranqRotate:updateDisplay()
+            TranqRotate.raidInitialized = false
+        end
     end
 
     TranqRotate:purgeHunterList()
