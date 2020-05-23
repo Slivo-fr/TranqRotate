@@ -58,7 +58,7 @@ function TranqRotate:rotate(lastHunter, fail, rotateWithoutCooldown)
     local hunterRotationTable = TranqRotate:getHunterRotationTable(lastHunter)
     local hasPlayerFailed = name == lastHunter.name and fail
 
-    lastHunter.lastTranqTime = GetServerTime()
+    lastHunter.lastTranqTime = GetTime()
 
     -- Do not trigger cooldown when rotation from a dead or disconnected status
     if (rotateWithoutCooldown ~= true) then
@@ -155,7 +155,7 @@ function TranqRotate:getNextRotationHunter(lastHunter)
     -- If no hunter in the rotation match the alive/online/CD criteria
     -- Pick the hunter with the lowest cooldown
     if (nextHunter == nil and #rotationTable > 0) then
-        local latestTranq = GetServerTime() + 1
+        local latestTranq = GetTime() + 1
         for key, hunter in pairs(rotationTable) do
             if (TranqRotate:isHunterAliveAndOnline(hunter) and hunter.lastTranqTime < latestTranq) then
                 nextHunter = hunter
