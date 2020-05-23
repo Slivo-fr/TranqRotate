@@ -51,7 +51,6 @@ it will whisper all backup hunters the fail message
 
 Here is a list of feature I want to implement at some point, no specific order is decided yet.
 
-- Display of every hunter tranqhot cooldowns
 - Adds RL/Raid assist handling to restrict rotation groups changes
 - Automatic handling of death and disconnection of hunters on the rotation group (swap with a backup, send an alert about it)
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot
