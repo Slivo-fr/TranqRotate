@@ -151,7 +151,7 @@ function TranqRotate:createHunterFrame(hunter, parentFrame)
 
     -- Set Text
     hunter.frame.text = hunter.frame:CreateFontString(nil, "ARTWORK")
-    hunter.frame.text:SetFont("Fonts\\ARIALN.ttf", 12)
+    hunter.frame.text:SetFont(TranqRotate:getPlayerNameFont(), 12)
     hunter.frame.text:SetPoint("LEFT",5,0)
     hunter.frame.text:SetText(hunter.name)
 

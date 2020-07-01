@@ -49,3 +49,11 @@ end
 function TranqRotate:isInPveRaid()
     return IsInRaid() and not TranqRotate:isPlayerInBattleground()
 end
+
+function TranqRotate:getPlayerNameFont()
+    if (GetLocale() == "zhCN" or GetLocale() == "zhTW") then
+        return "Fonts\\ARHei.ttf"
+    end
+
+    return "Fonts\\ARIALN.ttf"
+end
