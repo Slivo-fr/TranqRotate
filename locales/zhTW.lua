@@ -10,7 +10,7 @@ local L = {
     -- Settings
     ["SETTING_GENERAL"] = "General",
     ["SETTING_GENERAL_REPORT"] = "請報告問題: ",
-    ["SETTING_GENERAL_DESC"] = "New : TranqRotate now synchronize hunters list and tranqshot with other users\n",
+    ["SETTING_GENERAL_DESC"] = "New : TranqRotate now display hunters cooldowns and play a sound when it's your turn! There's also a new test mode\n",
 
     ["LOCK_WINDOW"] = "鎖定窗口",
     ["LOCK_WINDOW_DESC"] = "鎖定窗口",

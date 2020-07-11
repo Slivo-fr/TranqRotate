@@ -1,4 +1,4 @@
-if (GetLocale() ~= "frFR") then return end
+if (GetLocale() ~= "ffrFR") then return end
 
 local TranqRotate = select(2, ...)
 
@@ -10,7 +10,7 @@ local L = {
     -- Settings
     ["SETTING_GENERAL"] = "Général",
     ["SETTING_GENERAL_REPORT"] = "Merci de signaler tout bug rencontré sur",
-    ["SETTING_GENERAL_DESC"] = "Nouveau : TranqRotate synchronize maintenant la liste et les tirs tranquillisants",
+    ["SETTING_GENERAL_DESC"] = "Nouveau : TranqRotate affiche les cooldowns, joue un son quand c'est votre tour et dispose d'un nouveau mode test",
 
     ["LOCK_WINDOW"] = "Verrouiller la position de la fênetre",
     ["LOCK_WINDOW_DESC"] = "Verrouiller la position de la fênetre",
