@@ -29,13 +29,13 @@ end
 
 -- Checks if a hunter tranqshot is ready
 function TranqRotate:isHunterTranqCooldownReady(hunter)
-    return hunter.lastTranqTime <= GetServerTime() - 20
+    return hunter.lastTranqTime <= GetTime() - 20
 end
 
 -- Checks if a hunter is elligible to tranq next
 function TranqRotate:isEligibleForNextTranq(hunter)
 
-    local isCooldownShortEnough = hunter.lastTranqTime <= GetServerTime() - TranqRotate.constants.minimumCooldownElapsedForEligibility
+    local isCooldownShortEnough = hunter.lastTranqTime <= GetTime() - TranqRotate.constants.minimumCooldownElapsedForEligibility
 
     return TranqRotate:isHunterAliveAndOnline(hunter) and isCooldownShortEnough
 end
@@ -48,4 +48,12 @@ end
 -- Checks if a hunter is in a PvE raid
 function TranqRotate:isInPveRaid()
     return IsInRaid() and not TranqRotate:isPlayerInBattleground()
+end
+
+function TranqRotate:getPlayerNameFont()
+    if (GetLocale() == "zhCN" or GetLocale() == "zhTW") then
+        return "Fonts\\ARHei.ttf"
+    end
+
+    return "Fonts\\ARIALN.ttf"
 end

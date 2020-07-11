@@ -15,23 +15,18 @@ function TranqRotate:initGui()
     TranqRotate:createDropHintFrame()
     TranqRotate:createRulerFrame()
 
-    TranqRotate.manuallyHiddenWhileInRaid = false
     TranqRotate:updateDisplay()
 end
 
 -- Show/Hide main window based on user settings
 function TranqRotate:updateDisplay()
-    if (TranqRotate.db.profile.hideNotInRaid and not TranqRotate:isInPveRaid()) then
-        TranqRotate.mainFrame:Hide()
-    else
-        if (not TranqRotate.manuallyHiddenWhileInRaid) then
-            TranqRotate.mainFrame:Show()
-        end
-    end
 
-    -- Reset manual hide during the raid when leaving it
-    if (not IsInRaid()) then
-        TranqRotate.manuallyHiddenWhileInRaid = false
+    if (TranqRotate:isInPveRaid()) then
+        TranqRotate.mainFrame:Show()
+    else
+        if (TranqRotate.db.profile.hideNotInRaid) then
+            TranqRotate.mainFrame:Hide()
+        end
     end
 end
 

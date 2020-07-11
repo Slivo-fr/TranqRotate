@@ -1,7 +1,9 @@
 TranqRotate = select(2, ...)
 
 local L = TranqRotate.L
-TranqRotate.version = "1.2.0"
+
+local parent = ...
+TranqRotate.version = GetAddOnMetadata(parent, "Version")
 
 -- Initialize addon - Shouldn't be call more than once
 function TranqRotate:init()
@@ -125,11 +127,6 @@ end
 function TranqRotate:toggleDisplay()
     if (TranqRotate.mainFrame:IsShown()) then
         TranqRotate.mainFrame:Hide()
-
-        if (IsInRaid()) then
-            TranqRotate.manuallyHiddenWhileInRaid = true
-        end
-
         TranqRotate:printMessage(L['TRANQ_WINDOW_HIDDEN'])
     else
         TranqRotate.mainFrame:Show()

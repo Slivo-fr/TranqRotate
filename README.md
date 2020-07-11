@@ -25,6 +25,7 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 - Display offline and dead status on hunters frames
 - Test mode out of raid using arcane shot
 - Play a sound when you are next on rotation
+- Display the tranq cooldown of each hunter
 
 ## Usage
  
@@ -50,7 +51,6 @@ it will whisper all backup hunters the fail message
 
 Here is a list of feature I want to implement at some point, no specific order is decided yet.
 
-- Display of every hunter tranqhot cooldowns
 - Adds RL/Raid assist handling to restrict rotation groups changes
 - Automatic handling of death and disconnection of hunters on the rotation group (swap with a backup, send an alert about it)
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot

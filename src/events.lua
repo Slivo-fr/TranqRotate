@@ -55,13 +55,11 @@ end
 -- Raid group has changed
 function TranqRotate:GROUP_ROSTER_UPDATE()
     TranqRotate:updateRaidStatus()
-    TranqRotate:updateDisplay()
 end
 
 -- Player left combat
 function TranqRotate:PLAYER_REGEN_ENABLED()
     TranqRotate:updateRaidStatus()
-    TranqRotate:updateDisplay()
 end
 
 function TranqRotate:PLAYER_TARGET_CHANGED()

@@ -2,10 +2,14 @@
 
 #### v1.3.0
 
-- Adds test mode
+- Adds arcane shot test mode
 - Adds sound when user is the next to tranq (Added setting toggle to switch if off)
 - Adds some logic to rotation, TranqRotate will skip a hunter if it's tranq ability isn't ready
 - Update zhCN & zhTW locales, thanks to LeePich
+- Adds raid check and update display when player leave combat
+- Fix rotation logic with dead or offline players
+- Adds hunters tranq cooldown display
+- Use a font that support unicode character for asian player names
 
 #### v1.2.0
 
