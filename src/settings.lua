@@ -47,7 +47,7 @@ function TranqRotate:CreateConfig()
 						order = 3,
 					},
                     -- @todo : find a way to space widget properly
-					spacer = {
+					spacer4 = {
 						name = ' ',
 						type = "description",
 						width = "full",
@@ -66,6 +66,29 @@ function TranqRotate:CreateConfig()
                         type = "toggle",
                         order = 6,
                         width = "double",
+                    },
+                    testHeader = {
+                        name = L["TEST_MODE_HEADER"],
+                        type = "header",
+                        order = 10,
+                    },
+                    ToggleArcaneShotTestingDesc = {
+                        name = L['ENABLE_ARCANE_SHOT_TESTING_DESC'],
+                        type = "description",
+                        width = "full",
+                        order = 11,
+                    },
+                    spacer12 = {
+                        name = ' ',
+                        type = "description",
+                        width = "full",
+                        order = 12,
+                    },
+                    ToggleArcaneShotTesting = {
+                        name = L["ENABLE_ARCANE_SHOT_TESTING"],
+                        type = "execute",
+                        order = 13,
+                        func = function() TranqRotate.toggleArcaneShotTesting() end
                     }
                 }
             },
@@ -81,18 +104,58 @@ function TranqRotate:CreateConfig()
                         order = 1,
                         width = "double",
                     },
-                    channelHeader = {
-                        name = L["ANNOUNCES_CHANNEL_HEADER"],
+                    announceHeader = {
+                        name = L["ANNOUNCES_MESSAGE_HEADER"],
                         type = "header",
-                        order = 10,
+                        order = 20,
                     },
                     channelType = {
                         name = L["MESSAGE_CHANNEL_TYPE"],
                         desc = L["MESSAGE_CHANNEL_TYPE_DESC"],
                         type = "select",
-                        order = 11,
+                        order = 21,
                         values = {
-                            ["WHISPER"] = L["CHANNEL_WHISPER"],
+                            ["RAID_WARNING"] = L["CHANNEL_RAID_WARNING"],
+                            ["SAY"] = L["CHANNEL_SAY"],
+                            ["YELL"] = L["CHANNEL_YELL"],
+                            ["PARTY"] = L["CHANNEL_PARTY"],
+                            ["RAID"] = L["CHANNEL_RAID"]
+                        },
+                    },
+                    spacer22 = {
+                        name = ' ',
+                        type = "description",
+                        width = "normal",
+                        order = 22,
+                    },
+                    announceSuccessMessage = {
+                        name = L["SUCCESS_MESSAGE_LABEL"],
+                        type = "input",
+                        order = 23,
+                        width = "double",
+                    },
+                    announceFailMessage = {
+                        name = L["FAIL_MESSAGE_LABEL"],
+                        type = "input",
+                        order = 24,
+                        width = "double",
+                    },
+                    whisperFailMessage = {
+                        name = L["FAIL_WHISPER_LABEL"],
+                        type = "input",
+                        order = 25,
+                        width = "double",
+                    },
+                    setupBroadcastHeader = {
+                        name = L["BROADCAST_MESSAGE_HEADER"],
+                        type = "header",
+                        order = 30,
+                    },
+                    setupBroadcastChannelType = {
+                        name = L["MESSAGE_CHANNEL_TYPE"],
+                        type = "select",
+                        order = 31,
+                        values = {
                             ["CHANNEL"] = L["CHANNEL_CHANNEL"],
                             ["RAID_WARNING"] = L["CHANNEL_RAID_WARNING"],
                             ["SAY"] = L["CHANNEL_SAY"],
@@ -102,39 +165,30 @@ function TranqRotate:CreateConfig()
                         },
                         set = function(info, value) set(info,value) LibStub("AceConfigRegistry-3.0", true):NotifyChange("TranqRotate") end
                     },
-                    targetChannel = {
+                    setupBroadcastTargetChannel = {
                         name = L["MESSAGE_CHANNEL_NAME"],
                         desc = L["MESSAGE_CHANNEL_NAME_DESC"],
                         type = "input",
-                        order = 12,
-                        hidden = function() return not (TranqRotate.db.profile.channelType == "WHISPER" or TranqRotate.db.profile.channelType == "CHANNEL") end,
-                    },
-                    announceHeader = {
-                        name = L["ANNOUNCES_MESSAGE_HEADER"],
-                        type = "header",
-                        order = 20,
-                    },
-                    announceSuccessMessage = {
-                        name = L["SUCCESS_MESSAGE_LABEL"],
-                        type = "input",
-                        order = 21,
-                        width = "double",
-                    },
-                    announceFailMessage = {
-                        name = L["FAIL_MESSAGE_LABEL"],
-                        type = "input",
-                        order = 22,
-                        width = "double",
-                    },
-                    whisperFailMessage = {
-                        name = L["FAIL_WHISPER_LABEL"],
-                        type = "input",
-                        order = 23,
-                        width = "double",
+                        order = 32,
+                        hidden = function() return not (TranqRotate.db.profile.setupBroadcastChannelType == "CHANNEL") end,
                     },
                 }
             },
-		}
+            sounds = {
+                name = L['SETTING_SOUNDS'],
+                type = "group",
+                order = 3,
+                args = {
+                    enableNextToTranqSound = {
+                        name = L["ENABLE_NEXT_TO_TRANQ_SOUND"],
+                        desc = L["ENABLE_NEXT_TO_TRANQ_SOUND"],
+                        type = "toggle",
+                        order = 1,
+                        width = "double",
+                    },
+                }
+            }
+        }
 	}
 
     AceConfigRegistry:RegisterOptionsTable(Addon, options, true)

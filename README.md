@@ -20,9 +20,12 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 - Synchronize rotation order between player using the addon
 - Whisper backup hunters (if there is backup) or next rotation hunter if you miss your tranqshot
 - Provide a real time visual feedback about the rotation status, even if no one else use the addon in your raid
-- Synchronize tranqshot cast to other player using the addon
+- Synchronize tranqshot casts to other player using the addon
 - Allow player to broadcast the configured rotation and backup group to the raid
 - Display offline and dead status on hunters frames
+- Test mode out of raid using arcane shot
+- Play a sound when you are next on rotation
+- Display the tranq cooldown of each hunter
 
 ## Usage
  
@@ -48,7 +51,6 @@ it will whisper all backup hunters the fail message
 
 Here is a list of feature I want to implement at some point, no specific order is decided yet.
 
-- Display of every hunter tranqhot cooldowns
 - Adds RL/Raid assist handling to restrict rotation groups changes
 - Automatic handling of death and disconnection of hunters on the rotation group (swap with a backup, send an alert about it)
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot

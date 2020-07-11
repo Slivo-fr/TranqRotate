@@ -11,7 +11,7 @@ TranqRotate.colors = {
 }
 
 TranqRotate.constants = {
-    ['hunterFrameHeight'] = 20,
+    ['hunterFrameHeight'] = 22,
     ['hunterFrameSpacing'] = 4,
     ['titleBarHeight'] = 18,
     ['mainFrameWidth'] = 130,
@@ -26,5 +26,12 @@ TranqRotate.constants = {
         ['syncRequest'] = 'sync-request',
     },
 
-    ['printPrefix'] = 'TranqRotate - '
+    ['printPrefix'] = 'TranqRotate - ',
+    ['duplicateTranqshotDelayThreshold'] = 10,
+
+    ['minimumCooldownElapsedForEligibility'] = 10,
+
+    ['sounds'] = {
+        ['nextToTranq'] = 'Interface\\AddOns\\TranqRotate\\sounds\\ding.ogg',
+    }
 }

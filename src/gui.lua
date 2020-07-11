@@ -15,23 +15,18 @@ function TranqRotate:initGui()
     TranqRotate:createDropHintFrame()
     TranqRotate:createRulerFrame()
 
-    TranqRotate.manuallyHiddenWhileInRaid = false
     TranqRotate:updateDisplay()
 end
 
 -- Show/Hide main window based on user settings
 function TranqRotate:updateDisplay()
-    if (TranqRotate.db.profile.hideNotInRaid and not TranqRotate:isInPveRaid()) then
-        TranqRotate.mainFrame:Hide()
-    else
-        if (not TranqRotate.manuallyHiddenWhileInRaid) then
-            TranqRotate.mainFrame:Show()
-        end
-    end
 
-    -- Reset manual hide during the raid when leaving it
-    if (not IsInRaid()) then
-        TranqRotate.manuallyHiddenWhileInRaid = false
+    if (TranqRotate:isInPveRaid()) then
+        TranqRotate.mainFrame:Show()
+    else
+        if (TranqRotate.db.profile.hideNotInRaid) then
+            TranqRotate.mainFrame:Hide()
+        end
     end
 end
 
@@ -119,15 +114,21 @@ function setHunterFrameColor(hunter)
 
     local color = TranqRotate.colors.green
 
-    if (hunter.offline) then
+    if (not TranqRotate:isHunterOnline(hunter)) then
         color = TranqRotate.colors.gray
-    elseif (not hunter.alive) then
+    elseif (not TranqRotate:isHunterAlive(hunter)) then
         color = TranqRotate.colors.red
     elseif (hunter.nextTranq) then
         color = TranqRotate.colors.purple
     end
 
     hunter.frame.texture:SetVertexColor(color:GetRGB())
+end
+
+function TranqRotate:startHunterCooldown(hunter)
+    hunter.frame.cooldownFrame.statusBar:SetMinMaxValues(GetTime(), GetTime() + 20)
+    hunter.frame.cooldownFrame.statusBar.exirationTime = GetTime() + 20
+    hunter.frame.cooldownFrame:Show()
 end
 
 -- Lock/Unlock the mainFrame position

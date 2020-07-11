@@ -1,16 +1,14 @@
 local TranqRotate = select(2, ...)
 
-local TranqShot = GetSpellInfo(19801)
---local TranqShot = GetSpellInfo(14287) --Arcane shot for testing
+local tranqShot = GetSpellInfo(19801)
+local arcaneShot = GetSpellInfo(14287)
 
 local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent("PLAYER_LOGIN")
 eventFrame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 eventFrame:RegisterEvent("GROUP_ROSTER_UPDATE")
+eventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
 eventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
-
--- @todo: clean this
---PLAYER_ROLES_ASSIGNED
 
 eventFrame:SetScript(
     "OnEvent",
@@ -36,7 +34,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand = select(12, CombatLogGetCurrentEventInfo())
 
     -- @todo try to refactor a bit
-    if (spellName == TranqShot) then
+    if (spellName == tranqShot or (TranqRotate.testMode and spellName == arcaneShot)) then
         local hunter = TranqRotate:getHunter(nil, sourceGUID)
         if (event == "SPELL_CAST_SUCCESS") then
             TranqRotate:sendSyncTranq(hunter, false, timestamp)
@@ -54,16 +52,20 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     end
 end
 
+-- Raid group has changed
 function TranqRotate:GROUP_ROSTER_UPDATE()
     TranqRotate:updateRaidStatus()
-    TranqRotate:updateDisplay()
+end
+
+-- Player left combat
+function TranqRotate:PLAYER_REGEN_ENABLED()
+    TranqRotate:updateRaidStatus()
 end
 
 function TranqRotate:PLAYER_TARGET_CHANGED()
     TranqRotate:updateRaidStatus()
     self:UnregisterEvent("PLAYER_TARGET_CHANGED")
 end
-
 
 -- Register single unit events for a given hunter
 function TranqRotate:registerUnitEvents(hunter)

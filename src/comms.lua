@@ -113,8 +113,9 @@ end
 function TranqRotate:receiveSyncTranq(prefix, message, channel, sender)
 
     local hunter = TranqRotate:getHunter(message.player)
+    local notDuplicate = hunter.lastTranqTime <  GetTime() - TranqRotate.constants.duplicateTranqshotDelayThreshold
 
-    if (hunter ~= nil and hunter.lastTranqTime <  GetServerTime() - 10) then
+    if (hunter ~= nil and notDuplicate) then
         TranqRotate:rotate(TranqRotate:getHunter(message.player), message.fail)
     end
 end

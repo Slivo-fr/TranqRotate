@@ -8,8 +8,6 @@ function TranqRotate:registerHunter(hunterName)
     hunter.name = hunterName
     hunter.GUID = UnitGUID(hunterName)
     hunter.frame = nil
-    hunter.offline = false
-    hunter.alive = true
     hunter.nextTranq = false
     hunter.lastTranqTime = 0
 
@@ -54,13 +52,18 @@ end
 
 -- Update the rotation list once a tranq has been done.
 -- The parameter is the hunter that used it's tranq (successfully or not)
-function TranqRotate:rotate(lastHunter, fail)
+function TranqRotate:rotate(lastHunter, fail, rotateWithoutCooldown)
 
     local name, realm = UnitName("player")
     local hunterRotationTable = TranqRotate:getHunterRotationTable(lastHunter)
     local hasPlayerFailed = name == lastHunter.name and fail
 
-    lastHunter.lastTranqTime = GetServerTime()
+    lastHunter.lastTranqTime = GetTime()
+
+    -- Do not trigger cooldown when rotation from a dead or disconnected status
+    if (rotateWithoutCooldown ~= true) then
+        TranqRotate:startHunterCooldown(lastHunter)
+    end
 
     -- Default value to false
     fail = fail or false
@@ -72,7 +75,7 @@ function TranqRotate:rotate(lastHunter, fail)
 
             TranqRotate:setNextTranq(nextHunter)
 
-            if (hasPlayerFailed) then
+            if (hasPlayerFailed and TranqRotate:isHunterTranqCooldownReady(nextHunter)) then
                 if (#TranqRotate.rotationTables.backup < 1) then
                     SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
                 end
@@ -100,6 +103,10 @@ function TranqRotate:setNextTranq(nextHunter)
     for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
         if (hunter.name == nextHunter.name) then
             hunter.nextTranq = true
+
+            if (nextHunter.name == UnitName("player")) and TranqRotate.db.profile.enableNextToTranqSound then
+                PlaySoundFile(TranqRotate.constants.sounds.nextToTranq)
+            end
         else
             hunter.nextTranq = false
         end
@@ -114,7 +121,6 @@ function TranqRotate:getNextRotationHunter(lastHunter)
     local rotationTable = TranqRotate.rotationTables.rotation
     local nextHunter
     local lastHunterIndex = 1
-    local nextHunterIndex = 1
 
     -- Finding last hunter index in rotation
     for key, hunter in pairs(rotationTable) do
@@ -124,12 +130,14 @@ function TranqRotate:getNextRotationHunter(lastHunter)
         end
     end
 
-    -- Search from last hunter index
-    for index = lastHunterIndex + 1 , #rotationTable, 1 do
-        local hunter = rotationTable[index]
-        if (hunter.alive and not hunter.offline) then
-            nextHunter = hunter
-            break
+    -- Search from last hunter index if not last on rotation
+    if (lastHunterIndex < #rotationTable) then
+        for index = lastHunterIndex + 1 , #rotationTable, 1 do
+            local hunter = rotationTable[index]
+            if (TranqRotate:isEligibleForNextTranq(hunter)) then
+                nextHunter = hunter
+                break
+            end
         end
     end
 
@@ -137,9 +145,21 @@ function TranqRotate:getNextRotationHunter(lastHunter)
     if (nextHunter == nil) then
         for index = 1 , lastHunterIndex, 1 do
             local hunter = rotationTable[index]
-            if (hunter.alive and not hunter.offline) then
+            if (TranqRotate:isEligibleForNextTranq(hunter)) then
                 nextHunter = hunter
                 break
+            end
+        end
+    end
+
+    -- If no hunter in the rotation match the alive/online/CD criteria
+    -- Pick the hunter with the lowest cooldown
+    if (nextHunter == nil and #rotationTable > 0) then
+        local latestTranq = GetTime() + 1
+        for key, hunter in pairs(rotationTable) do
+            if (TranqRotate:isHunterAliveAndOnline(hunter) and hunter.lastTranqTime < latestTranq) then
+                nextHunter = hunter
+                latestTranq = hunter.lastTranqTime
             end
         end
     end
@@ -149,20 +169,10 @@ end
 
 -- Init/Reset rotation status, next tranq is the first hunter on the list
 function TranqRotate:resetRotation()
-
     for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
         hunter.nextTranq = false
         TranqRotate:refreshHunterFrame(hunter)
     end
-
-    -- @todo remove this if neutral reset is fine
-    --if (#TranqRotate.rotationTables.rotation > 0) then
-    --    local firstHunter = TranqRotate.rotationTables.rotation[1]
-    --
-    --    firstHunter.nextTranq = true
-    --    TranqRotate:refreshHunterFrame(firstHunter)
-    --end
-
 end
 
 -- @todo: remove this | TEST FUNCTION - Manually rotate hunters for test purpose
@@ -170,7 +180,7 @@ function TranqRotate:testRotation()
 
     for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
         if (hunter.nextTranq) then
-            TranqRotate:rotate(hunter)
+            TranqRotate:rotate(hunter, false)
             break
         end
     end
@@ -179,6 +189,7 @@ end
 -- Check if a hunter is already registered
 function TranqRotate:isHunterRegistered(GUID)
 
+    -- @todo refactor this using TranqRotate:getHunter(name, GUID)
     for key,hunter in pairs(TranqRotate.hunterTable) do
         if (hunter.GUID == GUID) then
             return true
@@ -258,11 +269,15 @@ function TranqRotate:updateRaidStatus()
         end
 
         if (not TranqRotate.raidInitialized) then
+            TranqRotate:updateDisplay()
             TranqRotate:sendSyncOrderRequest()
             TranqRotate.raidInitialized = true
         end
     else
-        TranqRotate.raidInitialized = false
+        if(TranqRotate.raidInitialized == true) then
+            TranqRotate:updateDisplay()
+            TranqRotate.raidInitialized = false
+        end
     end
 
     TranqRotate:purgeHunterList()
@@ -277,12 +292,10 @@ end
 
 -- Update hunter status
 function TranqRotate:updateHunterStatus(hunter)
-    hunter.alive = TranqRotate:isHunterAlive(hunter.name)
-    hunter.offline = not UnitIsConnected(hunter.name)
 
     -- Jump to the next hunter if the current one is dead or offline
-    if (hunter.nextTranq and (not hunter.alive or hunter.offline)) then
-        TranqRotate:rotate(hunter, false)
+    if (hunter.nextTranq and (not TranqRotate:isHunterAliveAndOnline(hunter))) then
+        TranqRotate:rotate(hunter, false, true)
     end
 
     TranqRotate:refreshHunterFrame(hunter)
