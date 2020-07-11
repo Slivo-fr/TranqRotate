@@ -1,4 +1,4 @@
-if (GetLocale() ~= "ffrFR") then return end
+if (GetLocale() ~= "frFR") then return end
 
 local TranqRotate = select(2, ...)
 
