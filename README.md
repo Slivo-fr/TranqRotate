@@ -2,8 +2,6 @@
 
 This addon is meant to help hunters to setup tranqshot rotation and give them real time visual feedback about it.
 
-**Using player channel as annoucement target does not work as blizzard restricted the addon messaging capacities on those. Option will be removed at some point.**
-
 ![Screenshot](docs/screenshots/screenshot.png "ui") ![Screenshot](docs/screenshots/drag.gif "ui")  ![Screenshot](docs/screenshots/rotation.gif "ui")
 
 ## Feedback
