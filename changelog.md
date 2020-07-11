@@ -9,6 +9,7 @@
 - Adds raid check and update display when player leave combat
 - Fix rotation logic with dead or offline players
 - Adds hunters tranq cooldown display
+- Use a font that support unicode character for asian player names
 
 #### v1.2.0
 
