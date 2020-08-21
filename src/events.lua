@@ -30,6 +30,12 @@ eventFrame:SetScript(
 
 function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
 
+    -- @todo : Improve this with register / unregister event to save ressources
+    -- Avoid parsing combat log when not able to use it
+    if not TranqRotate.raidInitialized then return end
+    -- Avoid parsing combat log when outside instance if test mode isn't enabled
+    if not TranqRotate.testMode and not IsInInstance() then return end
+
     local timestamp, event, _, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags = CombatLogGetCurrentEventInfo()
     local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand = select(12, CombatLogGetCurrentEventInfo())
 
@@ -49,6 +55,8 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
                 TranqRotate:sendAnnounceMessage(TranqRotate.db.profile.announceFailMessage, destName)
             end
         end
+    elseif (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellName, sourceGUID) and TranqRotate:isPlayerNextTranq()) then
+        TranqRotate:throwTranqAlert()
     end
 end
 

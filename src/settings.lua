@@ -186,6 +186,13 @@ function TranqRotate:CreateConfig()
                         order = 1,
                         width = "double",
                     },
+                    enableTranqNowSound = {
+                        name = L["ENABLE_TRANQ_NOW_SOUND"],
+                        desc = L["ENABLE_TRANQ_NOW_SOUND"],
+                        type = "toggle",
+                        order = 2,
+                        width = "double",
+                    },
                 }
             }
         }

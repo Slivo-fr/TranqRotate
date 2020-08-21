@@ -57,11 +57,14 @@ local L = {
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TIR TRANQUILLISANT RATE SUR %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TIR TRANQUILISANT RATE ! TRANQ MAINTENANT !",
 
+    ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "TRANQ MAINTENANT !",
+
     ["BROADCAST_MESSAGE_HEADER"] = "Diffusion de la configuration de la rotation",
 
     --- Sounds
     ["SETTING_SOUNDS"] = "Sons",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "Jouer un son lorsque vous êtes le prochain à devoir tranq",
+    ["ENABLE_TRANQ_NOW_SOUND"] = "Jouer un son au moment ou vous devez tranq",
 
     --- Profiles
     ["SETTING_PROFILES"] = "Profils",
