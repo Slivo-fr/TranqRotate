@@ -117,6 +117,8 @@ SlashCmdList["TRANQROTATE"] = function(msg)
         TranqRotate:testRotation()
     elseif (cmd == 'test') then -- @todo: remove this
         TranqRotate:test()
+    elseif (cmd == 'report') then
+        TranqRotate:printRotationSetup()
     elseif (cmd == 'settings') then
         TranqRotate:openSettings()
     else
@@ -181,6 +183,7 @@ function TranqRotate:printHelp()
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('lock') .. ' : Lock the main window position')
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('unlock') .. ' : Unlock the main window position')
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('settings') .. ' : Open TranqRotate settings')
+    TranqRotate:printMessage(spacing .. TranqRotate:colorText('report') .. ' : Print the rotation setup to the raid channel')
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('backup') .. ' : Whispers backup hunters to immediately tranq')
 end
 
