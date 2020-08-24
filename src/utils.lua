@@ -57,3 +57,56 @@ function TranqRotate:getPlayerNameFont()
 
     return "Fonts\\ARIALN.ttf"
 end
+
+function TranqRotate:getIdFromGuid(guid)
+    local type, _, _, _, _, mobId, _ = strsplit("-", guid or "")
+    return type, tonumber(mobId)
+end
+
+-- Checks if the spell and the mob match a boss frenzy
+function TranqRotate:isBossFrenzy(spellName, guid)
+
+    local bosses = TranqRotate.constants.bosses
+    local type, mobId = TranqRotate:getIdFromGuid(guid)
+
+    if (type == "Creature") then
+        for bossId, frenzy in pairs(bosses) do
+            if (bossId == mobId and spellName == GetSpellInfo(frenzy)) then
+                return true
+            end
+        end
+    end
+
+    return false
+end
+
+-- Checks if the mob is a tranq-able boss
+function TranqRotate:isTranqableBoss(guid)
+
+    local bosses = TranqRotate.constants.bosses
+    local type, mobId = TranqRotate:getIdFromGuid(guid)
+
+    if (type == "Creature") then
+        for bossId, frenzy in pairs(bosses) do
+            if (bossId == mobId) then
+                return true
+            end
+        end
+    end
+
+    return false
+end
+
+-- Checks if the spell is a boss frenzy
+function TranqRotate:isFrenzy(spellName)
+
+    local bosses = TranqRotate.constants.bosses
+
+    for bossId, frenzy in pairs(bosses) do
+        if (spellName == GetSpellInfo(frenzy)) then
+            return true
+        end
+    end
+
+    return false
+end

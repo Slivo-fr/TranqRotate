@@ -57,11 +57,14 @@ local L = {
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! УСМИРЯЮЩИЙ ВЫСТРЕЛ НЕУДАЧЕН НА %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "УСМИРЯЮЩИЙ ВЫСТРЕЛ НЕУДАЧЕН ! УСМИРИТЕ СЕЙЧАС !",
 
+    ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "USE TRANQSHOT NOW !",
+
     ["BROADCAST_MESSAGE_HEADER"] = "Настройка оповещения для текста ротации",
 
     --- Sounds
     ["SETTING_SOUNDS"] = "Звук",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "Воспроизводить звук, когда ваш выстрел следующий",
+    ["ENABLE_TRANQ_NOW_SOUND"] = "Play a sound when you have to shoot your tranq",
 
     --- Profiles
     ["SETTING_PROFILES"] = "Профили",

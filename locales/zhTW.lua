@@ -57,11 +57,14 @@ local L = {
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 對 %s 寧神失敗!!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "寧神失敗 !! 趕緊補寧神!!",
 
+    ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "USE TRANQSHOT NOW !",
+
     ["BROADCAST_MESSAGE_HEADER"] = "循環順序廣播頻道選擇",
 
     --- Sounds
     ["SETTING_SOUNDS"] = "音效",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "當下壹個寧神射擊是妳時，播放音效",
+    ["ENABLE_TRANQ_NOW_SOUND"] = "Play a sound when you have to shoot your tranq",
 
     --- Profiles
     ["SETTING_PROFILES"] = "設定檔",

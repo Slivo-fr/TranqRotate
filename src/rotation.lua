@@ -1,5 +1,7 @@
 local TranqRotate = select(2, ...)
 
+local L = TranqRotate.L
+
 -- Adds hunter to global table and one of the two rotation tables
 function TranqRotate:registerHunter(hunterName)
 
@@ -54,9 +56,12 @@ end
 -- The parameter is the hunter that used it's tranq (successfully or not)
 function TranqRotate:rotate(lastHunter, fail, rotateWithoutCooldown)
 
-    local name, realm = UnitName("player")
+    -- Default value to false
+    fail = fail or false
+
+    local playerName, realm = UnitName("player")
     local hunterRotationTable = TranqRotate:getHunterRotationTable(lastHunter)
-    local hasPlayerFailed = name == lastHunter.name and fail
+    local hasPlayerFailed = playerName == lastHunter.name and fail
 
     lastHunter.lastTranqTime = GetTime()
 
@@ -65,9 +70,6 @@ function TranqRotate:rotate(lastHunter, fail, rotateWithoutCooldown)
         TranqRotate:startHunterCooldown(lastHunter)
     end
 
-    -- Default value to false
-    fail = fail or false
-
     if (hunterRotationTable == TranqRotate.rotationTables.rotation) then
         local nextHunter = TranqRotate:getNextRotationHunter(lastHunter)
 
@@ -75,16 +77,28 @@ function TranqRotate:rotate(lastHunter, fail, rotateWithoutCooldown)
 
             TranqRotate:setNextTranq(nextHunter)
 
-            if (hasPlayerFailed and TranqRotate:isHunterTranqCooldownReady(nextHunter)) then
+            if (TranqRotate:isHunterTranqCooldownReady(nextHunter)) then
                 if (#TranqRotate.rotationTables.backup < 1) then
-                    SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
+                    if (hasPlayerFailed) then
+                        SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
+                    end
+
+                    if (fail and nextHunter.name == playerName) then
+                        TranqRotate:throwTranqAlert()
+                    end
                 end
             end
         end
     end
 
-    if (hasPlayerFailed) then
-        TranqRotate:whisperBackup()
+    if (fail) then
+        if (hasPlayerFailed) then
+            TranqRotate:whisperBackup()
+        end
+
+        if (TranqRotate:getHunterRotationTable(TranqRotate:getHunter(playerName)) == TranqRotate.rotationTables.backup) then
+            TranqRotate:throwTranqAlert()
+        end
     end
 end
 
@@ -113,6 +127,34 @@ function TranqRotate:setNextTranq(nextHunter)
 
         TranqRotate:refreshHunterFrame(hunter)
     end
+end
+
+-- Check if the player is the next in position to tranq
+function TranqRotate:isPlayerNextTranq()
+
+    local player = TranqRotate:getHunter(nil, UnitGUID("player"))
+
+    if (not player.nextTranq) then
+
+        local isRotationInitialized = false;
+        local rotationTable = TranqRotate.rotationTables.rotation
+
+        -- checking if a hunter is flagged nextTranq
+        for key, hunter in pairs(rotationTable) do
+            if (hunter.nextTranq) then
+                isRotationInitialized = true;
+                break
+            end
+        end
+
+        -- First in rotation has to tranq if not one is flagged
+        if (not isRotationInitialized and TranqRotate:getHunterIndex(player, rotationTable) == 1) then
+            return true
+        end
+
+    end
+
+    return player.nextTranq
 end
 
 -- Find and returns the next hunter that will tranq base on last shooter
@@ -405,5 +447,14 @@ function TranqRotate:applyRotationConfiguration(rotationsTables)
                 TranqRotate:moveHunter(hunter, group, index)
             end
         end
+    end
+end
+
+-- Display an alert and play a sound when the player should immediatly tranq
+function TranqRotate:throwTranqAlert()
+    RaidNotice_AddMessage(RaidWarningFrame, L['TRANQ_NOW_LOCAL_ALERT_MESSAGE'], ChatTypeInfo["RAID_WARNING"])
+
+    if (TranqRotate.db.profile.enableTranqNowSound) then
+        PlaySoundFile(TranqRotate.constants.sounds.tranqNow)
     end
 end

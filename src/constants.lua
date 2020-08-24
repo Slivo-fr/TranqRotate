@@ -7,7 +7,7 @@ TranqRotate.colors = {
     ['red'] = CreateColor(0.7, 0.3, 0.3),
     ['gray'] = CreateColor(0.3, 0.3, 0.3),
     ['purple'] = CreateColor(0.71,0.45,0.75),
-    ['white'] = CreateColor(1,1,1)
+    ['white'] = CreateColor(1,1,1),
 }
 
 TranqRotate.constants = {
@@ -33,5 +33,14 @@ TranqRotate.constants = {
 
     ['sounds'] = {
         ['nextToTranq'] = 'Interface\\AddOns\\TranqRotate\\sounds\\ding.ogg',
+        ['tranqNow'] = 'Interface\\AddOns\\TranqRotate\\sounds\\alarm.ogg',
+    },
+
+    ['bosses'] = {
+        [11982] = 19451, -- magmadar
+        [11981] = 23342, -- flamegor
+        [14020] = 23342, -- chromaggus
+        [15509] = 19451, -- huhuran
+--        [15932] = 19451, -- gluth
     }
 }

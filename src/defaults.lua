@@ -12,6 +12,7 @@ function TranqRotate:LoadDefaults()
 			lock = false,
 			hideNotInRaid = false,
 			enableNextToTranqSound = true,
+			enableTranqNowSound = true,
 	    },
 	}
 end

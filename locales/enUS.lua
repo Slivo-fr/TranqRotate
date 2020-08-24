@@ -55,11 +55,14 @@ local L = {
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TRANQSHOT FAILED ON %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TRANQSHOT FAILED ! TRANQ NOW !",
 
+    ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "USE TRANQSHOT NOW !",
+
     ["BROADCAST_MESSAGE_HEADER"] = "Rotation setup text broadcast",
 
     --- Sounds
     ["SETTING_SOUNDS"] = "Sounds",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "Play a sound when you are the next to shoot",
+    ["ENABLE_TRANQ_NOW_SOUND"] = "Play a sound when you have to shoot your tranq",
 
     --- Profiles
     ["SETTING_PROFILES"] = "Profiles",
