@@ -63,7 +63,9 @@ local L = {
 
     ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "TRANQ MAINTENANT !",
 
-    ["BROADCAST_MESSAGE_HEADER"] = "Diffusion de la configuration de la rotation",
+    ["BROADCAST_MESSAGE_HEADER"] = "Rapport de la configuration de la rotation",
+    ["USE_MULTILINE_ROTATION_REPORT"] = "Utiliser plusieurs lignes pour la rotation principale",
+    ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "Chaque chasseur de la rotation apparaitra sur une ligne numérotée",
 
     --- Sounds
     ["SETTING_SOUNDS"] = "Sons",

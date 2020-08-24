@@ -165,7 +165,7 @@ function TranqRotate:CreateConfig()
                         type = "header",
                         order = 30,
                     },
-                    setupBroadcastChannelType = {
+                    rotationReportChannelType = {
                         name = L["MESSAGE_CHANNEL_TYPE"],
                         type = "select",
                         order = 31,
@@ -184,7 +184,14 @@ function TranqRotate:CreateConfig()
                         desc = L["MESSAGE_CHANNEL_NAME_DESC"],
                         type = "input",
                         order = 32,
-                        hidden = function() return not (TranqRotate.db.profile.setupBroadcastChannelType == "CHANNEL") end,
+                        hidden = function() return not (TranqRotate.db.profile.rotationReportChannelType == "CHANNEL") end,
+                    },
+                    useMultilineRotationReport = {
+                        name = L["USE_MULTILINE_ROTATION_REPORT"],
+                        desc = L["USE_MULTILINE_ROTATION_REPORT_DESC"],
+                        type = "toggle",
+                        order = 40,
+                        width = "full",
                     },
                 }
             },

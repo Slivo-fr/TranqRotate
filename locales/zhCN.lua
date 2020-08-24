@@ -64,6 +64,8 @@ local L = {
     ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "USE TRANQSHOT NOW !",
 
     ["BROADCAST_MESSAGE_HEADER"] = "循环顺序广播频道选择",
+    ["USE_MULTILINE_ROTATION_REPORT"] = "Use multiline for main rotation when reporting",
+    ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "Check this option if you want more comprehensible order display",
 
     --- Sounds
     ["SETTING_SOUNDS"] = "音效",
