@@ -16,12 +16,11 @@ eventFrame:SetScript(
         if (event == "PLAYER_LOGIN") then
             TranqRotate:init()
             self:UnregisterEvent("PLAYER_LOGIN")
-        elseif (event == "PLAYER_TARGET_CHANGED") then
-            -- Ugly hack to initialize hunter list when player login right into raid
-            -- Raid members data is unreliable on PLAYER_LOGIN and PLAYER_ENTERING_WORLD events
-            TranqRotate:updateRaidStatus()
-            TranqRotate:sendSyncOrderRequest()
-            self:UnregisterEvent("PLAYER_TARGET_CHANGED")
+
+            -- Delayed raid update because raid data is unreliable at PLAYER_LOGIN
+            C_Timer.After(5, function()
+                TranqRotate:updateRaidStatus()
+            end)
         else
             TranqRotate[event](TranqRotate, ...)
         end
@@ -73,8 +72,11 @@ function TranqRotate:PLAYER_REGEN_ENABLED()
 end
 
 function TranqRotate:PLAYER_TARGET_CHANGED()
-    TranqRotate:updateRaidStatus()
-    self:UnregisterEvent("PLAYER_TARGET_CHANGED")
+    if (TranqRotate.db.profile.showWindowWhenTargetingBoss) then
+        if (TranqRotate:isTranqableBoss(UnitGUID("target"))) then
+            TranqRotate.mainFrame:Show()
+        end
+    end
 end
 
 -- Register single unit events for a given hunter

@@ -67,6 +67,20 @@ function TranqRotate:CreateConfig()
                         order = 6,
                         width = "double",
                     },
+                    doNotShowWindowOnRaidJoin = {
+                        name = L["DO_NOT_SHOW_WHEN_JOINING_RAID"],
+                        desc = L["DO_NOT_SHOW_WHEN_JOINING_RAID_DESC"],
+                        type = "toggle",
+                        order = 7,
+                        width = "double",
+                    },
+                    showWindowWhenTargetingBoss = {
+                        name = L["SHOW_WHEN_TARGETING_BOSS"],
+                        desc = L["SHOW_WHEN_TARGETING_BOSS_DESC"],
+                        type = "toggle",
+                        order = 8,
+                        width = "double",
+                    },
                     testHeader = {
                         name = L["TEST_MODE_HEADER"],
                         type = "header",

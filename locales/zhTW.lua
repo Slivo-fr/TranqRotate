@@ -16,6 +16,10 @@ local L = {
     ["LOCK_WINDOW_DESC"] = "鎖定窗口",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "不在團隊時隱藏窗口",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "不在團隊時隱藏窗口",
+    ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Do not show window when joining a raid",
+    ["DO_NOT_SHOW_WHEN_JOINING_RAID_DESC"] = "Check this if you don't want the window to show up each time you join a raid",
+    ["SHOW_WHEN_TARGETING_BOSS"] = "Show window when you target a tranq-able boss",
+    ["SHOW_WHEN_TARGETING_BOSS_DESC"] = "Show window when you target a tranq-able boss",
     ["WINDOW_LOCKED"] = "TranqRotate: 窗口已隱藏",
     ["WINDOW_UNLOCKED"] = "TranqRotate: 窗口已鎖定",
 

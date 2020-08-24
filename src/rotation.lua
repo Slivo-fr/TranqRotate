@@ -311,7 +311,9 @@ function TranqRotate:updateRaidStatus()
         end
 
         if (not TranqRotate.raidInitialized) then
-            TranqRotate:updateDisplay()
+            if (not TranqRotate.db.profile.doNotShowWindowOnRaidJoin) then
+                TranqRotate:updateDisplay()
+            end
             TranqRotate:sendSyncOrderRequest()
             TranqRotate.raidInitialized = true
         end

@@ -212,7 +212,7 @@ function TranqRotate:toggleArcaneShotTesting(disable)
         TranqRotate:printPrefixedMessage(L['ARCANE_SHOT_TESTING_ENABLED'])
         TranqRotate.testMode = true
 
-        -- Disable testing in 10 minutes
+        -- Disable testing after 10 minutes
         C_Timer.After(600, function()
             TranqRotate:toggleArcaneShotTesting(true)
         end)

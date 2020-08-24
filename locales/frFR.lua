@@ -16,6 +16,10 @@ local L = {
     ["LOCK_WINDOW_DESC"] = "Verrouiller la position de la fênetre",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "Masquer la fenêtre principale hors raid",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Masquer la fenêtre principale hors raid",
+    ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Ne pas afficher la fenêtre principale lorsque vous rejoignez un raid",
+    ["DO_NOT_SHOW_WHEN_JOINING_RAID_DESC"] = "Ne pas afficher la fenêtre principale lorsque vous rejoignez un raid",
+    ["SHOW_WHEN_TARGETING_BOSS"] = "Afficher la fenêtre principale lorsque vous ciblez un boss tranquilisable",
+    ["SHOW_WHEN_TARGETING_BOSS_DESC"] = "Afficher la fenêtre principale lorsque vous ciblez un boss tranquilisable",
     ["WINDOW_LOCKED"] = "TranqRotate: Fenêtre verrouillée",
     ["WINDOW_UNLOCKED"] = "TranqRotate: Fenêtre déverrouillée",
 

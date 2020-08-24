@@ -123,6 +123,8 @@ end
 -- Rotation configuration received
 function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
 
+    TranqRotate:updateRaidStatus()
+
     if (TranqRotate:isVersionEligible(message.version, sender)) then
         TranqRotate.syncVersion = (message.version)
         TranqRotate.syncLastSender = sender

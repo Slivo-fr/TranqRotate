@@ -16,6 +16,10 @@ local L = {
     ["LOCK_WINDOW_DESC"] = "Заблокировать окно",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "Скрыть окно, когда вы не в рейде",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Скрыть окно, когда вы не в рейде",
+    ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Do not show window when joining a raid",
+    ["DO_NOT_SHOW_WHEN_JOINING_RAID_DESC"] = "Check this if you don't want the window to show up each time you join a raid",
+    ["SHOW_WHEN_TARGETING_BOSS"] = "Show window when you target a tranq-able boss",
+    ["SHOW_WHEN_TARGETING_BOSS_DESC"] = "Show window when you target a tranq-able boss",
     ["WINDOW_LOCKED"] = "TranqRotate: Окно заблокировано",
     ["WINDOW_UNLOCKED"] = "TranqRotate: Окно разблокировано",
 
