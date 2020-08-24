@@ -6,6 +6,8 @@
 - Added an option to not show up the window each time you join a raid
 - Added an option to have the window show up when you target a tranq-able boss
 - Rotation will now reset when you kill the boss
+- Adds an option to report the main rotation on multiple lines
+- Adds a `report` slash command to print the rotation to the configured channel
 
 #### v1.3.0
 

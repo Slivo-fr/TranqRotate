@@ -173,7 +173,6 @@ end
 function TranqRotate:printMultilineRotation(rotationTable, channel)
     local position = 1;
     for key, hunt in pairs(rotationTable) do
-        SendChatMessage(tostring(position)..". "..hunt.name, channel)
         TranqRotate:sendRotationSetupBroacastMessage(tostring(position) .. ' - ' .. hunt.name)
         position = position + 1;
     end
