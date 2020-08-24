@@ -2,6 +2,13 @@
 
 #### v1.3.0
 
+- TranqRotate now play a sound when you need to tranq (You can disable it in the options)
+- Added an option to not show up the window each time you join a raid
+- Added an option to have the window show up when you target a tranq-able boss
+- Rotation will now reset when you kill the boss
+
+#### v1.3.0
+
 - Adds arcane shot test mode
 - Adds sound when user is the next to tranq (Added setting toggle to switch if off)
 - Adds some logic to rotation, TranqRotate will skip a hunter if it's tranq ability isn't ready

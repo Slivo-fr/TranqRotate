@@ -1,6 +1,8 @@
 # TranqRotate
 
 This addon is meant to help hunters to setup tranqshot rotation and give them real time visual feedback about it.
+It also allow non-hunter raid leaders to easily manage, report and watch the tranq rotation live. 
+Even if none of your hunter use the addon! 
 
 ![Screenshot](docs/screenshots/screenshot.png "ui") ![Screenshot](docs/screenshots/drag.gif "ui")  ![Screenshot](docs/screenshots/rotation.gif "ui")
 
@@ -23,6 +25,7 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 - Display offline and dead status on hunters frames
 - Test mode out of raid using arcane shot
 - Play a sound when you are next on rotation
+- Show an alert and play a sound when you need to use your tranqshot
 - Display the tranq cooldown of each hunter
 
 ## Usage
@@ -31,19 +34,19 @@ Use `/tranq` for options
 
 You must be in a raid for hunters to get registered and displayed by the addon.
 
-First step is to set your tranq order using drag & drop on hunters, if other hunter use the addon too, changes will be synced. 
-You may use the trumpet button to get it written in raid chat so others players can know what you planned. 
+First step is to setup your tranq rotation using drag & drop on hunters, if others hunters use the addon too, changes will be synced. 
+You may use the trumpet button to report the rotation in raid chat so others players without the addon can know what you planned. 
 Please note the backup group is hidden if empty but you can still drag hunters into it.
 
-You can now just pull the boss and start shooting your tranqshots, TranqRotate will track the rotation and use a purple tranq-like color on the next hunter that should tranq.
+You can now just pull the boss and start shooting your tranqshots, TranqRotate will track the rotation and use a purple tranq-like color on the next hunter that should tranq. TranqRotate will play sounds when the previous hunter shot and you are the next, as well as when you have to use your tranqshot.
 
-**warning** : if all of your hunters does not use the addon, make sure someone with the addon stay within 45m range of hunters without the addon or you won't be able to detected their tranqshot. MC and AQ40 tranq encounters may lead to range issues. 
+**Warning** : if all of your hunters does not use the addon, make sure someone with the addon stay within 45m range of hunters without the addon or you won't be able to detected their tranqshot. MC and AQ40 tranq encounters might lead to range issues. However, I didn't had any complain about this yet  :) 
 
-Once boss has died (or you wiped), just use the reset button in the top bar to reset the rotation state.
+You can use the reset button in the top bar to reset the rotation state if it do not clear itself.
 The reset button is also able to resync raid hunters and rotation setup if you need.
 
 You may adds the `/tranq backup` command to a macro that you can use when you are unable to tranq and you need some help,
-it will whisper all backup hunters the fail message
+It will whisper all backup hunters the fail message.
 
 ## Roadmap
 
@@ -52,8 +55,8 @@ Here is a list of feature I want to implement at some point, no specific order i
 - Adds RL/Raid assist handling to restrict rotation groups changes
 - Automatic handling of death and disconnection of hunters on the rotation group (swap with a backup, send an alert about it)
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot
-- Automatic reset of rotation when raid wipe or boss die
-- Encounter detection and frenzy cooldown progress bar
+- Automatic reset of rotation when raid wipe
+- Frenzy cooldown/duration progress bar
 
 ## Download
 
