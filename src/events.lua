@@ -57,6 +57,8 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
         end
     elseif (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellName, sourceGUID) and TranqRotate:isPlayerNextTranq()) then
         TranqRotate:throwTranqAlert()
+    elseif event == "UNIT_DIED" and TranqRotate:isTranqableBoss(destGUID) then
+        TranqRotate:resetRotation()
     end
 end
 
