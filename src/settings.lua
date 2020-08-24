@@ -72,14 +72,14 @@ function TranqRotate:CreateConfig()
                         desc = L["DO_NOT_SHOW_WHEN_JOINING_RAID_DESC"],
                         type = "toggle",
                         order = 7,
-                        width = "double",
+                        width = "full",
                     },
                     showWindowWhenTargetingBoss = {
                         name = L["SHOW_WHEN_TARGETING_BOSS"],
                         desc = L["SHOW_WHEN_TARGETING_BOSS_DESC"],
                         type = "toggle",
                         order = 8,
-                        width = "double",
+                        width = "full",
                     },
                     testHeader = {
                         name = L["TEST_MODE_HEADER"],
