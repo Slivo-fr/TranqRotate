@@ -91,7 +91,7 @@ function TranqRotate:registerUnitEvents(hunter)
     hunter.frame:SetScript(
         "OnEvent",
         function(self, event, ...)
-            TranqRotate:updateHuntersStatus()
+            TranqRotate:updateHunterStatus(hunter)
         end
     )
 

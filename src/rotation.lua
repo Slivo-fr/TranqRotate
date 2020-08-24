@@ -327,13 +327,6 @@ function TranqRotate:updateRaidStatus()
     TranqRotate:purgeHunterList()
 end
 
--- Update hunters status to reflect dead/offline players
-function TranqRotate:updateHuntersStatus()
-    for key,hunter in pairs(TranqRotate.hunterTable) do
-        TranqRotate:updateHunterStatus(hunter)
-    end
-end
-
 -- Update hunter status
 function TranqRotate:updateHunterStatus(hunter)
 
