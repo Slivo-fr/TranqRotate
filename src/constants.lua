@@ -36,12 +36,18 @@ TranqRotate.constants = {
         ['alarms'] = {
             ['alarm1'] = 'Interface\\AddOns\\TranqRotate\\sounds\\alarm.ogg',
             ['alarm2'] = 'Interface\\AddOns\\TranqRotate\\sounds\\alarm2.ogg',
+            ['alarm3'] = 'Interface\\AddOns\\TranqRotate\\sounds\\alarm3.ogg',
+            ['alarm4'] = 'Interface\\AddOns\\TranqRotate\\sounds\\alarm4.ogg',
+            ['flagtaken'] = 'Sound\\Spells\\PVPFlagTaken.ogg',
         }
     },
 
     ['tranqNowSounds'] = {
         ['alarm1'] = 'Loud BUZZ',
         ['alarm2'] = 'Gentle beeplip',
+        ['alarm3'] = 'Gentle dong',
+        ['alarm4'] = 'Light bipbip',
+        ['flagtaken'] = 'Flag Taken (DBM)',
     },
 
     ['bosses'] = {
