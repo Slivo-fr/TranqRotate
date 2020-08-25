@@ -16,10 +16,10 @@ local L = {
     ["LOCK_WINDOW_DESC"] = "Заблокировать окно",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "Скрыть окно, когда вы не в рейде",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Скрыть окно, когда вы не в рейде",
-    ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Do not show window when joining a raid",
-    ["DO_NOT_SHOW_WHEN_JOINING_RAID_DESC"] = "Check this if you don't want the window to show up each time you join a raid",
-    ["SHOW_WHEN_TARGETING_BOSS"] = "Show window when you target a tranq-able boss",
-    ["SHOW_WHEN_TARGETING_BOSS_DESC"] = "Show window when you target a tranq-able boss",
+    ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Не показывать окно при присоединении к рейду",
+    ["DO_NOT_SHOW_WHEN_JOINING_RAID_DESC"] = "Отметьте, если не хотите, чтобы окно отображалось каждый раз, когда вы присоединяетесь к рейду.",
+    ["SHOW_WHEN_TARGETING_BOSS"] = "Показывать окно, когда вы нацеливаетесь на босса которого можно усмирить",
+    ["SHOW_WHEN_TARGETING_BOSS_DESC"] = "Показывать окно, когда вы нацеливаетесь на босса которого можно усмирить",
     ["WINDOW_LOCKED"] = "TranqRotate: Окно заблокировано",
     ["WINDOW_UNLOCKED"] = "TranqRotate: Окно разблокировано",
 
@@ -61,18 +61,18 @@ local L = {
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! УСМИРЯЮЩИЙ ВЫСТРЕЛ НЕУДАЧЕН НА %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "УСМИРЯЮЩИЙ ВЫСТРЕЛ НЕУДАЧЕН ! УСМИРИТЕ СЕЙЧАС !",
 
-    ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "USE TRANQSHOT NOW !",
+    ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "ИСПОЛЬЗУЙТЕ УСМИРЯЮЩИЙ ВЫСТРЕЛ СЕЙЧАС !",
 
     ["BROADCAST_MESSAGE_HEADER"] = "Настройка оповещения для текста ротации",
-    ["USE_MULTILINE_ROTATION_REPORT"] = "Use multiline for main rotation when reporting",
-    ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "Check this option if you want more comprehensible order display",
+    ["USE_MULTILINE_ROTATION_REPORT"] = "Используйте многострочную ротацию при составлении отчетов",
+    ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "Отметьте, если хотите, чтобы порядок был более понятным.",
 
     --- Sounds
     ["SETTING_SOUNDS"] = "Звук",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "Воспроизводить звук, когда ваш выстрел следующий",
-    ["ENABLE_TRANQ_NOW_SOUND"] = "Play a sound when you have to shoot your tranq",
-    ["TRANQ_NOW_SOUND_CHOICE"] = "Select the sound you want to use for the 'tranq now' alert",
-    ["DBM_SOUND_WARNING"] = "DBM is playing the 'flag taken' sound on each frenzy, it may prevent you from earing gentle sounds from TranqRotate. I would either suggest to pick a strong sound or disable DBM frenzy sound.",
+    ["ENABLE_TRANQ_NOW_SOUND"] = "Воспроизводить звук, когда вам нужно использовать Усмиряющий выстрел",
+    ["TRANQ_NOW_SOUND_CHOICE"] = "Выберите звук, который вы хотите использовать для оповещения 'ИСПОЛЬЗУЙТЕ УСМИРЯЮЩИЙ ВЫСТРЕЛ СЕЙЧАС'",
+    ["DBM_SOUND_WARNING"] = "DBM воспроизводит звук 'PVP Flag' при каждом бешенстве, это может помешать вам услышать более тихий звуки от TranqRotate. Я бы предложил выбрать более сильный звук или отключить звук бешенства в DBM.",
 
     --- Profiles
     ["SETTING_PROFILES"] = "Профили",
