@@ -14,6 +14,7 @@ function TranqRotate:LoadDefaults()
 			hideNotInRaid = false,
 			enableNextToTranqSound = true,
 			enableTranqNowSound = true,
+			tranqNowSound = 'alarm1',
 			doNotShowWindowOnRaidJoin = false,
 			showWindowWhenTargetingBoss = false,
 	    },

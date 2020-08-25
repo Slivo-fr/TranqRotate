@@ -69,6 +69,8 @@ local L = {
     ["SETTING_SOUNDS"] = "Sounds",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "Play a sound when you are the next to shoot",
     ["ENABLE_TRANQ_NOW_SOUND"] = "Play a sound when you have to shoot your tranq",
+    ["TRANQ_NOW_SOUND_CHOICE"] = "Select the sound you want to use for the 'tranq now' alert",
+    ["DBM_SOUND_WARNING"] = "DBM is playing the 'flag taken' sound on each frenzy, it may prevent you from earing gentle sounds from TranqRotate. I would either suggest to pick a strong sound or disable DBM frenzy sound.",
 
     --- Profiles
     ["SETTING_PROFILES"] = "Profiles",

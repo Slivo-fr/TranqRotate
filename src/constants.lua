@@ -33,7 +33,15 @@ TranqRotate.constants = {
 
     ['sounds'] = {
         ['nextToTranq'] = 'Interface\\AddOns\\TranqRotate\\sounds\\ding.ogg',
-        ['tranqNow'] = 'Interface\\AddOns\\TranqRotate\\sounds\\alarm.ogg',
+        ['alarms'] = {
+            ['alarm1'] = 'Interface\\AddOns\\TranqRotate\\sounds\\alarm.ogg',
+            ['alarm2'] = 'Interface\\AddOns\\TranqRotate\\sounds\\alarm2.ogg',
+        }
+    },
+
+    ['tranqNowSounds'] = {
+        ['alarm1'] = 'Loud BUZZ',
+        ['alarm2'] = 'Gentle beeplip',
     },
 
     ['bosses'] = {

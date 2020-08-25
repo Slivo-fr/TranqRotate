@@ -450,6 +450,6 @@ function TranqRotate:throwTranqAlert()
     RaidNotice_AddMessage(RaidWarningFrame, L['TRANQ_NOW_LOCAL_ALERT_MESSAGE'], ChatTypeInfo["RAID_WARNING"])
 
     if (TranqRotate.db.profile.enableTranqNowSound) then
-        PlaySoundFile(TranqRotate.constants.sounds.tranqNow)
+        PlaySoundFile(TranqRotate.constants.sounds.alarms[TranqRotate.db.profile.tranqNowSound])
     end
 end
