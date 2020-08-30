@@ -10,7 +10,7 @@ local L = {
     -- Settings
     ["SETTING_GENERAL"] = "Главный",
     ["SETTING_GENERAL_REPORT"] = "Пожалуйста, сообщите о любой проблеме на",
-    ["SETTING_GENERAL_DESC"] = "Новое : TranqRotate теперь отображает время восстановления охотников и воспроизводит звук, когда наступает ваша очередь! А так же новый режим тестирования\n",
+    ["SETTING_GENERAL_DESC"] = "New : TranqRotate will now play a sound when you need to shoot your tranqshot ! There are also few more display options to make the addon less intrusive.",
 
     ["LOCK_WINDOW"] = "Заблокировать окно",
     ["LOCK_WINDOW_DESC"] = "Заблокировать окно",

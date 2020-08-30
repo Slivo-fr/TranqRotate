@@ -10,7 +10,7 @@ local L = {
     -- Settings
     ["SETTING_GENERAL"] = "Général",
     ["SETTING_GENERAL_REPORT"] = "Merci de signaler tout bug rencontré sur",
-    ["SETTING_GENERAL_DESC"] = "Nouveau : TranqRotate affiche les cooldowns, joue un son quand c'est votre tour et dispose d'un nouveau mode test",
+    ["SETTING_GENERAL_DESC"] = "Nouveau : TranqRotate peut maintenant jouer un son pour vous avertir quand vous devez tranq ! Plusieurs optiosn d'affichage ont été ajoutée pour rendre l'addon moins intrusif",
 
     ["LOCK_WINDOW"] = "Verrouiller la position de la fênetre",
     ["LOCK_WINDOW_DESC"] = "Verrouiller la position de la fênetre",
