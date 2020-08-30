@@ -10,7 +10,7 @@ local L = {
     -- Settings
     ["SETTING_GENERAL"] = "Общие",
     ["SETTING_GENERAL_REPORT"] = "Пожалуйста о всех ошибках сообщайте на",
-    ["SETTING_GENERAL_DESC"] = "Новое: Теперь TranqRotate показывает кулдауны Усмиряющего выстрела и проигрывает звук когда подходит ваша очередь! Обновлен режим тестирования.",
+    ["SETTING_GENERAL_DESC"] = "Новое: Теперь TranqRotate показывает восстановления Усмиряющего выстрела и проигрывает звук когда подходит ваша очередь! Обновлен режим тестирования.",
 
     ["LOCK_WINDOW"] = "Закрепить окно",
     ["LOCK_WINDOW_DESC"] = "Препятствует перемещению окна с помощью мыши",
@@ -37,11 +37,11 @@ local L = {
     ["ENABLE_ANNOUNCES_DESC"] = "Включить / отключить оповещения.",
 
     ---- Channels
-    ["ANNOUNCES_CHANNEL_HEADER"] = "Канал объявления",
+    ["ANNOUNCES_CHANNEL_HEADER"] = "Канал оповещений",
     ["MESSAGE_CHANNEL_TYPE"] = "Канал чата",
-    ["MESSAGE_CHANNEL_TYPE_DESC"] = "Канал для отправки объявлений",
+    ["MESSAGE_CHANNEL_TYPE_DESC"] = "Канал для отправки оповещений",
     ["MESSAGE_CHANNEL_NAME"] = "Имя канала",
-    ["MESSAGE_CHANNEL_NAME_DESC"] = "Установить имя выбранного канала",
+    ["MESSAGE_CHANNEL_NAME_DESC"] = "Установить имя канала для оповещений",
 
     ----- Channels types
     ["CHANNEL_CHANNEL"] = "Канал",
