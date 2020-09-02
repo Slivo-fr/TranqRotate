@@ -16,10 +16,10 @@ local L = {
     ["LOCK_WINDOW_DESC"] = "鎖定窗口",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "不在團隊時隱藏窗口",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "不在團隊時隱藏窗口",
-    ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Do not show window when joining a raid",
-    ["DO_NOT_SHOW_WHEN_JOINING_RAID_DESC"] = "Check this if you don't want the window to show up each time you join a raid",
-    ["SHOW_WHEN_TARGETING_BOSS"] = "Show window when you target a tranq-able boss",
-    ["SHOW_WHEN_TARGETING_BOSS_DESC"] = "Show window when you target a tranq-able boss",
+    ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "加入團隊時隱藏窗口",
+    ["DO_NOT_SHOW_WHEN_JOINING_RAID_DESC"] = "如果您不想每次加入團隊時都顯示窗口，請選中此選項",
+    ["SHOW_WHEN_TARGETING_BOSS"] = "當妳的目標是壹個可寧神的Boss時，顯示窗口",
+    ["SHOW_WHEN_TARGETING_BOSS_DESC"] = "當妳的目標是壹個可寧神的Boss時，顯示窗口",
     ["WINDOW_LOCKED"] = "TranqRotate: 窗口已隱藏",
     ["WINDOW_UNLOCKED"] = "TranqRotate: 窗口已鎖定",
 
@@ -61,18 +61,18 @@ local L = {
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 對 %s 寧神失敗!!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "寧神失敗 !! 趕緊補寧神!!",
 
-    ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "USE TRANQSHOT NOW !",
+    ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "立即使用寧神 !!",
 
     ["BROADCAST_MESSAGE_HEADER"] = "循環順序廣播頻道選擇",
-    ["USE_MULTILINE_ROTATION_REPORT"] = "Use multiline for main rotation when reporting",
-    ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "Check this option if you want more comprehensible order display",
+    ["USE_MULTILINE_ROTATION_REPORT"] = "連續多行發送寧神通告",
+    ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "如果您想要更易於理解的順序顯示，請選中此選項",
 
     --- Sounds
     ["SETTING_SOUNDS"] = "音效",
-    ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "當下壹個寧神射擊是妳時，播放音效",
-    ["ENABLE_TRANQ_NOW_SOUND"] = "Play a sound when you have to shoot your tranq",
-    ["TRANQ_NOW_SOUND_CHOICE"] = "Select the sound you want to use for the 'tranq now' alert",
-    ["DBM_SOUND_WARNING"] = "DBM is playing the 'flag taken' sound on each frenzy, it may prevent you from earing gentle sounds from TranqRotate. I would either suggest to pick a strong sound or disable DBM frenzy sound.",
+    ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "當下壹個寧神射擊是您時，播放提示音",
+    ["ENABLE_TRANQ_NOW_SOUND"] = "當您需要立即寧神射擊時，播放提示音",
+    ["TRANQ_NOW_SOUND_CHOICE"] = "選擇要用於“寧神射擊”提示的聲音",
+    ["DBM_SOUND_WARNING"] = "DBM在瘋狂時播放的'flag taken'提示音，可能導致您無法聽到TranqRotate的提示音。建議選擇壹個響亮的提示音，或者在DBM中禁用瘋狂的警告。",
 
     --- Profiles
     ["SETTING_PROFILES"] = "設定檔",
