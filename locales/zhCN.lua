@@ -8,9 +8,9 @@ local L = {
     ["TRANQ_WINDOW_HIDDEN"] = "Tranqrotate 窗口隐藏. 输入 /tranq toggle 显示窗口",
 
     -- Settings
-    ["SETTING_GENERAL"] = "General",
+    ["SETTING_GENERAL"] = "一般",
     ["SETTING_GENERAL_REPORT"] = "请报告问题: ",
-    ["SETTING_GENERAL_DESC"] = "New : TranqRotate will now play a sound when you need to shoot your tranqshot ! There are also few more display options to make the addon less intrusive.",
+    ["SETTING_GENERAL_DESC"] = "新内容: TranqRotate 当你需要施放你的宁神射击时，现在将播放一个声音!也有一些显示选项，可以减少插件得干扰。",
 
     ["LOCK_WINDOW"] = "锁定窗口",
     ["LOCK_WINDOW_DESC"] = "锁定窗口",
