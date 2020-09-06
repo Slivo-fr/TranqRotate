@@ -134,6 +134,11 @@ function TranqRotate:isPlayerNextTranq()
 
     local player = TranqRotate:getHunter(nil, UnitGUID("player"))
 
+    -- Non hunter user
+    if (player == nil) then
+        return false
+    end
+
     if (not player.nextTranq) then
 
         local isRotationInitialized = false;
