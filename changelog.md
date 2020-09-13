@@ -1,6 +1,6 @@
 ## TranqRotate Changelog
 
-#### v1.3.0
+#### v1.4.0
 
 - TranqRotate now play a sound when you need to tranq (You can disable it in the options)
 - Added an option to not show up the window each time you join a raid
