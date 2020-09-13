@@ -32,7 +32,7 @@ function TranqRotate:isHunterTranqCooldownReady(hunter)
     return hunter.lastTranqTime <= GetTime() - 20
 end
 
--- Checks if a hunter is elligible to tranq next
+-- Checks if a hunter is eligible to tranq next
 function TranqRotate:isEligibleForNextTranq(hunter)
 
     local isCooldownShortEnough = hunter.lastTranqTime <= GetTime() - TranqRotate.constants.minimumCooldownElapsedForEligibility
@@ -109,4 +109,35 @@ function TranqRotate:isFrenzy(spellName)
     end
 
     return false
+end
+
+-- Checks if the player is a hunter
+function TranqRotate:isHunter(name)
+--    return select(2,UnitClass(name)) == 'HUNTER'
+    return select(2,UnitClass(name)) == 'HUNTER'
+end
+
+-- Check if unit is promoted (raid assist or raid leader)
+function TranqRotate:isPlayerRaidAssist(name)
+
+    if (TranqRotate:isInPveRaid()) then
+
+        local raidIndex = UnitInRaid(name)
+
+        if (raidIndex) then
+            local name, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(raidIndex)
+
+            if (rank > 0) then
+                return true
+            end
+        end
+    end
+
+    return false
+end
+
+-- Checks if condition to enable drag and drop are met
+function TranqRotate:isPlayerAllowedToSortHunterList()
+    local playerName = UnitName("player")
+    return TranqRotate:isHunter(playerName) or TranqRotate:isPlayerRaidAssist(playerName)
 end

@@ -158,9 +158,7 @@ function TranqRotate:createHunterFrame(hunter, parentFrame)
     TranqRotate:createCooldownFrame(hunter)
     TranqRotate:configureHunterFrameDrag(hunter)
 
-    if (TranqRotate.enableDrag) then
-        TranqRotate:enableHunterFrameDragging(hunter, true)
-    end
+    TranqRotate:toggleHunterFrameDragging(hunter, TranqRotate:isPlayerAllowedToSortHunterList())
 end
 
 -- Create the cooldown frame
@@ -192,7 +190,7 @@ function TranqRotate:createCooldownFrame(hunter)
         function(self, elapsed)
             self.statusBar:SetValue(GetTime())
 
-            if (self.statusBar.exirationTime < GetTime()) then
+            if (self.statusBar.expirationTime < GetTime()) then
                 self:Hide()
             end
         end

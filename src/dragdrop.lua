@@ -1,16 +1,16 @@
 local TranqRotate = select(2, ...)
 
 -- Enable drag & drop for all hunter frames
-function TranqRotate:enableListSorting()
+function TranqRotate:toggleListSorting(allowSorting)
     for key,hunter in pairs(TranqRotate.hunterTable) do
-        TranqRotate:enableHunterFrameDragging(hunter, true)
+        TranqRotate:toggleHunterFrameDragging(hunter, allowSorting)
     end
 end
 
 -- Enable or disable drag & drop for the hunter frame
-function TranqRotate:enableHunterFrameDragging(hunter, movable)
-    hunter.frame:EnableMouse(movable)
-    hunter.frame:SetMovable(movable)
+function TranqRotate:toggleHunterFrameDragging(hunter, allowSorting)
+    hunter.frame:EnableMouse(allowSorting)
+    hunter.frame:SetMovable(allowSorting)
 end
 
 -- configure hunter frame drag behavior
@@ -180,4 +180,9 @@ function TranqRotate:handleDrop(hunter, group, position)
     end
 
     TranqRotate:moveHunter(hunter, group, finalPosition)
+end
+
+-- Update drag and drop status to match player status
+function TranqRotate:updateDragAndDrop()
+    TranqRotate:toggleListSorting(TranqRotate:isPlayerAllowedToSortHunterList())
 end

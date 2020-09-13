@@ -61,7 +61,7 @@ function TranqRotate:drawList(hunterList, parentFrame)
         parentFrame:Show()
     end
 
-    for key,hunter in pairs(hunterList) do
+    for key, hunter in pairs(hunterList) do
 
         -- Using existing frame if possible
         if (hunter.frame == nil) then
@@ -127,7 +127,7 @@ end
 
 function TranqRotate:startHunterCooldown(hunter)
     hunter.frame.cooldownFrame.statusBar:SetMinMaxValues(GetTime(), GetTime() + 20)
-    hunter.frame.cooldownFrame.statusBar.exirationTime = GetTime() + 20
+    hunter.frame.cooldownFrame.statusBar.expirationTime = GetTime() + 20
     hunter.frame.cooldownFrame:Show()
 end
 

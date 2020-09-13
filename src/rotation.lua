@@ -293,7 +293,7 @@ function TranqRotate:updateRaidStatus()
                 local GUID = UnitGUID(name)
                 local hunter
 
-                if(select(2,UnitClass(name)) == 'HUNTER') then
+                if(TranqRotate:isHunter(name)) then
 
                     local registered = TranqRotate:isHunterRegistered(GUID)
 
@@ -314,6 +314,8 @@ function TranqRotate:updateRaidStatus()
 
             end
         end
+
+        TranqRotate:updateDragAndDrop()
 
         if (not TranqRotate.raidInitialized) then
             if (not TranqRotate.db.profile.doNotShowWindowOnRaidJoin) then
