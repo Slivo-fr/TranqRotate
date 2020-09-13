@@ -73,7 +73,7 @@ end
 
 function TranqRotate:PLAYER_TARGET_CHANGED()
     if (TranqRotate.db.profile.showWindowWhenTargetingBoss) then
-        if (TranqRotate:isTranqableBoss(UnitGUID("target"))) then
+        if (TranqRotate:isTranqableBoss(UnitGUID("target")) and not UnitIsDead('target')) then
             TranqRotate.mainFrame:Show()
         end
     end
