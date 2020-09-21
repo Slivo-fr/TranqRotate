@@ -29,6 +29,10 @@ local L = {
     ["ARCANE_SHOT_TESTING_ENABLED"] = "Arcane shot testing mode enabled for 10 minutes",
     ["ARCANE_SHOT_TESTING_DISABLED"] = "Arcane shot testing mode disabled",
 
+    ["FEATURES_HEADER"] = "Optionals features",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Display boss cooldown progress bar",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "A thin progress bar just under the title bar will show the progress",
+
     --- Announces
     ["SETTING_ANNOUNCES"] = "Announces",
     ["ENABLE_ANNOUNCES"] = "Enable announces",

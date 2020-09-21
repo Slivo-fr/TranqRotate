@@ -17,6 +17,7 @@ function TranqRotate:LoadDefaults()
 			tranqNowSound = 'alarm1',
 			doNotShowWindowOnRaidJoin = false,
 			showWindowWhenTargetingBoss = false,
+			showFrenzyCooldownProgress = true,
 	    },
 	}
 end

@@ -70,8 +70,8 @@ function TranqRotate:isBossFrenzy(spellName, guid)
     local type, mobId = TranqRotate:getIdFromGuid(guid)
 
     if (type == "Creature") then
-        for bossId, frenzy in pairs(bosses) do
-            if (bossId == mobId and spellName == GetSpellInfo(frenzy)) then
+        for bossId, bossData in pairs(bosses) do
+            if (bossId == mobId and spellName == GetSpellInfo(bossData.frenzy)) then
                 return true
             end
         end
@@ -87,7 +87,7 @@ function TranqRotate:isTranqableBoss(guid)
     local type, mobId = TranqRotate:getIdFromGuid(guid)
 
     if (type == "Creature") then
-        for bossId, frenzy in pairs(bosses) do
+        for bossId, bossData in pairs(bosses) do
             if (bossId == mobId) then
                 return true
             end
@@ -102,8 +102,8 @@ function TranqRotate:isFrenzy(spellName)
 
     local bosses = TranqRotate.constants.bosses
 
-    for bossId, frenzy in pairs(bosses) do
-        if (spellName == GetSpellInfo(frenzy)) then
+    for bossId, bossData in pairs(bosses) do
+        if (spellName == GetSpellInfo(bossData.frenzy)) then
             return true
         end
     end

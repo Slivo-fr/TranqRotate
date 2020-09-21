@@ -51,10 +51,25 @@ TranqRotate.constants = {
     },
 
     ['bosses'] = {
-        [11982] = 19451, -- magmadar
-        [11981] = 23342, -- flamegor
-        [14020] = 23342, -- chromaggus
-        [15509] = 19451, -- huhuran
---        [15932] = 19451, -- gluth
+        [11982] = { -- magmadar
+            ['frenzy'] = 19451,
+            ['cooldown'] = 18,
+        },
+        [11981] = { -- flamegor
+            ['frenzy'] = 23342,
+            ['cooldown'] = 10,
+        },
+        [14020] = { -- chromaggus
+            ['frenzy'] = 23342,
+            ['cooldown'] = 16,
+        },
+        [15509] = { -- huhuran
+            ['frenzy'] = 19451,
+            ['cooldown'] = 13,
+        },
+        [15932] = { -- gluth
+            ['frenzy'] = 19451,
+            ['cooldown'] = 20,
+        },
     }
 }

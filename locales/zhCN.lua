@@ -31,6 +31,10 @@ local L = {
     ["ARCANE_SHOT_TESTING_ENABLED"] = "奥术射击测试模式已启用, 持续10分钟",
     ["ARCANE_SHOT_TESTING_DISABLED"] = "奥术射击测试模式已禁用",
 
+    ["FEATURES_HEADER"] = "Optionals features",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Display boss cooldown progress bar",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "A thin progress bar just under the title bar will show the progress",
+
     --- Announces
     ["SETTING_ANNOUNCES"] = "通告",
     ["ENABLE_ANNOUNCES"] = "启用通告",

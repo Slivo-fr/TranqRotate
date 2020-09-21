@@ -54,10 +54,17 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
                 TranqRotate:sendAnnounceMessage(TranqRotate.db.profile.announceFailMessage, destName)
             end
         end
-    elseif (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellName, sourceGUID) and TranqRotate:isPlayerNextTranq()) then
-        TranqRotate:throwTranqAlert()
+    elseif (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellName, sourceGUID)) then
+        if (TranqRotate:isPlayerNextTranq()) then
+            TranqRotate:throwTranqAlert()
+        end
+        if(TranqRotate.db.profile.showFrenzyCooldownProgress) then
+            local type, id = TranqRotate:getIdFromGuid(sourceGUID)
+            TranqRotate:startBossFrenzyCooldown(TranqRotate.constants.bosses[id].cooldown)
+        end
     elseif event == "UNIT_DIED" and TranqRotate:isTranqableBoss(destGUID) then
         TranqRotate:resetRotation()
+        TranqRotate.mainFrame.frenzyFrame:Hide()
     end
 end
 

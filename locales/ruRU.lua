@@ -31,6 +31,10 @@ local L = {
     ["ARCANE_SHOT_TESTING_ENABLED"] = "Тестовый режим включен на 10 минут",
     ["ARCANE_SHOT_TESTING_DISABLED"] = "Тестовый режим выключен",
 
+    ["FEATURES_HEADER"] = "Optionals features",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Display boss cooldown progress bar",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "A thin progress bar just under the title bar will show the progress",
+
     --- Announces
     ["SETTING_ANNOUNCES"] = "Оповещения",
     ["ENABLE_ANNOUNCES"] = "Включить оповещения",

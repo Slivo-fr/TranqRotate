@@ -110,7 +110,23 @@ function TranqRotate:CreateConfig()
                         type = "execute",
                         order = 13,
                         func = function() TranqRotate.toggleArcaneShotTesting() end
-                    }
+                    },
+                    featuresHeader = {
+                        name = L["FEATURES_HEADER"],
+                        type = "header",
+                        order = 20,
+                    },
+                    showFrenzyCooldownProgress = {
+                        name = L["DISPLAY_BOSS_FRENZY_COOLDOWN"],
+                        desc = L["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"],
+                        type = "toggle",
+                        order = 21,
+                        width = "full",
+                        set = function(info, value)
+                            set(info, value)
+                            if (not value) then TranqRotate:resetFrenzyFrame() end
+                        end
+                    },
                 }
             },
             announces = {

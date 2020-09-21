@@ -31,6 +31,10 @@ local L = {
     ["ARCANE_SHOT_TESTING_ENABLED"] = "Test mode activé pour 10 minutes",
     ["ARCANE_SHOT_TESTING_DISABLED"] = "Test mode désactivé",
 
+    ["FEATURES_HEADER"] = "Fonctionnalités optionnelles",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Afficher le cooldown de frénésie des boss",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "Une fine barre de progression, juste sous la barre de titre, indiquera le cooldown de la frénésie",
+
     --- Announces
     ["SETTING_ANNOUNCES"] = "Annonces",
     ["ENABLE_ANNOUNCES"] = "Activer les annonces",
