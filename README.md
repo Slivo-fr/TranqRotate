@@ -1,8 +1,10 @@
 # TranqRotate
 
 This addon is meant to help hunters to setup tranqshot rotation and give them real time visual feedback about it.
+
 It also allow non-hunter raid leaders to easily manage, report and watch the tranq rotation live. 
-Even if none of your hunter use the addon! 
+
+This addon will work even if you are the only one using it in your raid. (With some combat log range limitation, see bellow)
 
 ![Screenshot](docs/screenshots/screenshot.png "ui") ![Screenshot](docs/screenshots/drag.gif "ui")  ![Screenshot](docs/screenshots/rotation.gif "ui")
 
@@ -16,17 +18,18 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 
 - Automatically send messages to notify others player about your tranq success or fail, hopefully you won't have to bother with that crappy macro anymore !
 - Display the list of raid hunters
+- Display offline and dead status on hunters frames
 - Allow player to re-order players between two groups : main rotation and backup
 - Synchronize rotation order between player using the addon
-- Whisper backup hunters (if there is backup) or next rotation hunter if you miss your tranqshot
+- Allow player to broadcast the configured rotation and backup group to the raid
 - Provide a real time visual feedback about the rotation status, even if no one else use the addon in your raid
 - Synchronize tranqshot casts to other player using the addon
-- Allow player to broadcast the configured rotation and backup group to the raid
-- Display offline and dead status on hunters frames
+- Whisper backup hunters (if there is backup) or next rotation hunter if you miss your tranqshot
 - Test mode out of raid using arcane shot
 - Play a sound when you are next on rotation
 - Show an alert and play a sound when you need to use your tranqshot
 - Display the tranq cooldown of each hunter
+- Display the frenzy cooldown of each boss
 
 ## Usage
  
@@ -52,11 +55,10 @@ It will whisper all backup hunters the fail message.
 
 Here is a list of feature I want to implement at some point, no specific order is decided yet.
 
-- Adds RL/Raid assist handling to restrict rotation groups changes
 - Automatic handling of death and disconnection of hunters on the rotation group (swap with a backup, send an alert about it)
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot
 - Automatic reset of rotation when raid wipe
-- Frenzy cooldown/duration progress bar
+- Automatic backup call when afflicted by a disabling spell
 
 ## Download
 

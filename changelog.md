@@ -1,5 +1,10 @@
 ## TranqRotate Changelog
 
+#### v1.5.0
+
+- Ordering tranq rotation is now restricted to raid leader, raid assists and hunters
+- Added a frenzy cooldown progress bar under the title bar
+
 #### v1.4.0
 
 - TranqRotate now play a sound when you need to tranq (You can disable it in the options)
