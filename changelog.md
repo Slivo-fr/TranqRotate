@@ -2,8 +2,12 @@
 
 #### v1.5.0
 
-- Ordering tranq rotation is now restricted to raid leader, raid assists and hunters
+- Restricted ordering tranq rotation to raid leader, raid assists and hunters
 - Added a frenzy cooldown progress bar under the title bar
+- Added configurable optional timed backup alert
+- Added configurable optional incapacitated backup alert
+- Fix font for koKR player names
+- Fix main window showing up when login in while already in a raid with option to mask window enabled
 
 #### v1.4.0
 

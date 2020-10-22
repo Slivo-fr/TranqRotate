@@ -30,6 +30,8 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 - Show an alert and play a sound when you need to use your tranqshot
 - Display the tranq cooldown of each hunter
 - Display the frenzy cooldown of each boss
+- Optional automatic backup call when incapacitated
+- Optional automatic timed backup call 
 
 ## Usage
  
@@ -58,7 +60,6 @@ Here is a list of feature I want to implement at some point, no specific order i
 - Automatic handling of death and disconnection of hunters on the rotation group (swap with a backup, send an alert about it)
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot
 - Automatic reset of rotation when raid wipe
-- Automatic backup call when afflicted by a disabling spell
 
 ## Download
 
