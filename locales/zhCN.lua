@@ -32,8 +32,16 @@ local L = {
     ["ARCANE_SHOT_TESTING_DISABLED"] = "奥术射击测试模式已禁用",
 
     ["FEATURES_HEADER"] = "Optionals features",
-    ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Display boss cooldown progress bar",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Display frenzy cooldown progress bar",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "A thin progress bar just under the title bar will show the progress",
+    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "Enable automatic backup alert when incapacitated",
+    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate will check for your debuffs when you should actually tranq and will call for backup if you are incapacitated for longer than the defined delay",
+    ["INCAPACITATED_DELAY_THRESHOLD"] = "Incapacitated alert threshold",
+    ["INCAPACITATED_DELAY_THRESHOLD_DESC"] = "If you are incapacitated for longer than the configured delay, TranqRotate will automatically call for backup",
+    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT"] = "Enable timed automatic backup alert",
+    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"] = "TranqRotate will call for backup if the boss is on frenzy for a defined delay and you should have been tranqing it",
+    ["TIMED_DELAY_THRESHOLD"] = "Timed alert threshold",
+    ["TIMED_DELAY_THRESHOLD_DESC"] = "TranqRotate will automatically call for backup if you do not tranq within the configured threshold",
 
     --- Announces
     ["SETTING_ANNOUNCES"] = "通告",
@@ -60,10 +68,12 @@ local L = {
     ["SUCCESS_MESSAGE_LABEL"] = "施放成功通告信息",
     ["FAIL_MESSAGE_LABEL"] = "施放失败通告信息",
     ["FAIL_WHISPER_LABEL"] = "施放失败私聊信息",
+    ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "Message whispered when you cannot tranq or call for backup",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已对 %s 施放了宁神射击!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 对 %s 宁神失败!!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "宁神失败 !! 赶紧补宁神!!",
+    ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "I'M UNABLE TO TRANQ ! TRANQ NOW !",
 
     ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "立即使用宁神 !!",
 

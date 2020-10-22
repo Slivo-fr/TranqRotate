@@ -34,3 +34,4 @@ src\comms.lua
 src\defaults.lua
 src\settings.lua
 src\utils.lua
+src\debuff.lua

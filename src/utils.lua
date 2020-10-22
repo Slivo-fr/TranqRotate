@@ -51,8 +51,11 @@ function TranqRotate:isInPveRaid()
 end
 
 function TranqRotate:getPlayerNameFont()
-    if (GetLocale() == "zhCN" or GetLocale() == "zhTW") then
+    local locale = GetLocale()
+    if (locale == "zhCN" or locale == "zhTW") then
         return "Fonts\\ARHei.ttf"
+    elseif (locale == "koKR") then
+        return "Fonts\\2002.ttf"
     end
 
     return "Fonts\\ARIALN.ttf"
@@ -113,7 +116,6 @@ end
 
 -- Checks if the player is a hunter
 function TranqRotate:isHunter(name)
---    return select(2,UnitClass(name)) == 'HUNTER'
     return select(2,UnitClass(name)) == 'HUNTER'
 end
 

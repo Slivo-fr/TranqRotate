@@ -24,6 +24,7 @@ TranqRotate.constants = {
         ['tranqshotDone'] = 'tranqshot-done',
         ['syncOrder'] = 'sync-order',
         ['syncRequest'] = 'sync-request',
+        ['backupRequest'] = 'backup-request',
     },
 
     ['printPrefix'] = 'TranqRotate - ',
@@ -57,7 +58,7 @@ TranqRotate.constants = {
         },
         [11981] = { -- flamegor
             ['frenzy'] = 23342,
-            ['cooldown'] = 10,
+            ['cooldown'] = 9,
         },
         [14020] = { -- chromaggus
             ['frenzy'] = 23342,
@@ -71,5 +72,11 @@ TranqRotate.constants = {
             ['frenzy'] = 19451,
             ['cooldown'] = 20,
         },
-    }
+    },
+
+    ["incapacitatingDebuffs"] = {
+        19408, -- Magmadar fear
+        23171, -- Chromaggus Bronze affliction stun
+        23311, -- Chromaggus Time lapse
+    },
 }

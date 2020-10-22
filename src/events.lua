@@ -29,7 +29,7 @@ eventFrame:SetScript(
 
 function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
 
-    -- @todo : Improve this with register / unregister event to save ressources
+    -- @todo : Improve this with register / unregister event to save resources
     -- Avoid parsing combat log when not able to use it
     if not TranqRotate.raidInitialized then return end
     -- Avoid parsing combat log when outside instance if test mode isn't enabled
@@ -55,8 +55,13 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
             end
         end
     elseif (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellName, sourceGUID)) then
+        TranqRotate.frenzy = true
         if (TranqRotate:isPlayerNextTranq()) then
             TranqRotate:throwTranqAlert()
+
+            if (TranqRotate.db.profile.enableIncapacitatedBackupAlert and TranqRotate:isPlayedIncapacitatedByDebuff()) then
+                TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
+            end
         end
         if(TranqRotate.db.profile.showFrenzyCooldownProgress) then
             local type, id = TranqRotate:getIdFromGuid(sourceGUID)
@@ -111,4 +116,15 @@ function TranqRotate:unregisterUnitEvents(hunter)
     hunter.frame:UnregisterEvent("UNIT_HEALTH_FREQUENT")
     hunter.frame:UnregisterEvent("UNIT_CONNECTION")
     hunter.frame:UnregisterEvent("UNIT_FLAGS")
+end
+
+-- Handle timed alert for non tranqed frenzy
+function TranqRotate:handleTimedAlert()
+    if (TranqRotate.db.profile.enableTimedBackupAlertValue) then
+        C_Timer.After(TranqRotate.db.profile.timedBackupAlertValueDelay, function()
+            if (TranqRotate.frenzy and TranqRotate:isPlayerNextTranq()) then
+                TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
+            end
+        end)
+    end
 end

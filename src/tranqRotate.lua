@@ -22,6 +22,7 @@ function TranqRotate:init()
 
     TranqRotate.raidInitialized = false
     TranqRotate.testMode = false
+    TranqRotate.frenzy = false
 
     TranqRotate:initGui()
     TranqRotate:updateRaidStatus()
@@ -112,7 +113,7 @@ SlashCmdList["TRANQROTATE"] = function(msg)
     elseif (cmd == 'unlock') then
         TranqRotate:lock(false)
     elseif (cmd == 'backup') then
-        TranqRotate:whisperBackup()
+        TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
     elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not
         TranqRotate:testRotation()
     elseif (cmd == 'test') then -- @todo: remove this
@@ -138,7 +139,8 @@ end
 -- @todo: remove this
 function TranqRotate:test()
     TranqRotate:printMessage('test')
-    TranqRotate:toggleArcaneShotTesting()
+
+    print(TranqRotate:isPlayedIncapacitatedByDebuff())
 end
 
 -- Open ace settings

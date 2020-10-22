@@ -34,6 +34,14 @@ local L = {
     ["FEATURES_HEADER"] = "Fonctionnalités optionnelles",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Afficher le cooldown de frénésie des boss",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "Une fine barre de progression, juste sous la barre de titre, indiquera le cooldown de la frénésie",
+    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "Activer l'alerte automatique en cas d'incapacité",
+    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate alertera automatiquement le backup si un debuff vous empeche de tranq pendant un temps supérieur au délai configuré",
+    ["INCAPACITATED_DELAY_THRESHOLD"] = "Délai pour l'alerte d'incapacité",
+    ["INCAPACITATED_DELAY_THRESHOLD_DESC"] = "Si un débuff vous empêche de tranq pour un temps supérieur à celui configuré au moment ou vous devez tranq, une alerte est envoyée au backup",
+    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT"] = "Activer l'alerte automatique chronométrée ",
+    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"] = "TranqRotate enverra automatiquement une alerte au backup si vous ne tirez pas votre tir tranquilisant avant le délai configuré",
+    ["TIMED_DELAY_THRESHOLD"] = "Délai pour l'alerte chronométrée",
+    ["TIMED_DELAY_THRESHOLD_DESC"] = "Si vous ne tirez pas votre tir tranquilisant avant ce délai, une alerte sera envoyée au backup",
 
     --- Announces
     ["SETTING_ANNOUNCES"] = "Annonces",
@@ -60,10 +68,12 @@ local L = {
     ["SUCCESS_MESSAGE_LABEL"] = "Message de réussite",
     ["FAIL_MESSAGE_LABEL"] = "Message d'échec",
     ["FAIL_WHISPER_LABEL"] = "Message d'échec chuchoté",
+    ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "Message chuchoté quand vous ne pouvez pas tranq ou que vous demandez un backup",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait sur %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TIR TRANQUILLISANT RATE SUR %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TIR TRANQUILISANT RATE ! TRANQ MAINTENANT !",
+    ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "JE NE PEUX PAS TRANQ ! TRANQ MAINTENANT !",
 
     ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "TRANQ MAINTENANT !",
 
