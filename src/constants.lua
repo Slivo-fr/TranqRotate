@@ -70,7 +70,7 @@ TranqRotate.constants = {
         },
         [15932] = { -- gluth
             ['frenzy'] = 19451,
-            ['cooldown'] = 20,
+            ['cooldown'] = 10,
         },
     },
 
