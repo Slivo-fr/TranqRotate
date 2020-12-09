@@ -250,21 +250,12 @@ end
 
 -- Iterate over hunter list and purge hunter that aren't in the group anymore
 function TranqRotate:purgeHunterList()
-
-    local change = false
-
-    for key,hunter in pairs(TranqRotate.hunterTable) do
+    for _, hunter in pairs(TranqRotate.hunterTable) do
         if (not UnitInParty(hunter.name)) then
             TranqRotate:unregisterUnitEvents(hunter)
             TranqRotate:removeHunter(hunter)
-            change = true
         end
     end
-
-    if (change) then
-        TranqRotate:drawHunterFrames()
-    end
-
 end
 
 -- Iterate over all raid members to find hunters and update their status
