@@ -10,6 +10,7 @@ function TranqRotate:initGui()
     TranqRotate:createButtons()
     TranqRotate:createRotationFrame()
     TranqRotate:createBackupFrame()
+    TranqRotate:createFrenzyFrame()
 
     TranqRotate:drawHunterFrames()
     TranqRotate:createDropHintFrame()
@@ -21,7 +22,7 @@ end
 -- Show/Hide main window based on user settings
 function TranqRotate:updateDisplay()
 
-    if (TranqRotate:isInPveRaid()) then
+    if (not TranqRotate.db.profile.doNotShowWindowOnRaidJoin and TranqRotate:isInPveRaid()) then
         TranqRotate.mainFrame:Show()
     else
         if (TranqRotate.db.profile.hideNotInRaid) then
@@ -61,7 +62,7 @@ function TranqRotate:drawList(hunterList, parentFrame)
         parentFrame:Show()
     end
 
-    for key,hunter in pairs(hunterList) do
+    for key, hunter in pairs(hunterList) do
 
         -- Using existing frame if possible
         if (hunter.frame == nil) then
@@ -127,8 +128,23 @@ end
 
 function TranqRotate:startHunterCooldown(hunter)
     hunter.frame.cooldownFrame.statusBar:SetMinMaxValues(GetTime(), GetTime() + 20)
-    hunter.frame.cooldownFrame.statusBar.exirationTime = GetTime() + 20
+    hunter.frame.cooldownFrame.statusBar.expirationTime = GetTime() + 20
     hunter.frame.cooldownFrame:Show()
+end
+
+-- Initialize the frenzy cooldown status bar
+function TranqRotate:startBossFrenzyCooldown(cooldownDuration)
+    TranqRotate.mainFrame.frenzyFrame.statusBar:GetStatusBarTexture():SetColorTexture(1, 0.4, 0);
+    TranqRotate.mainFrame.frenzyFrame.statusBar:SetMinMaxValues(GetTime(), GetTime() + cooldownDuration)
+    TranqRotate.mainFrame.frenzyFrame.statusBar.expirationTime = GetTime() + cooldownDuration
+    TranqRotate.mainFrame.frenzyFrame:Show()
+end
+
+-- Reinitialize the frenzy frame
+function TranqRotate:resetFrenzyFrame()
+    TranqRotate.mainFrame.frenzyFrame.statusBar:GetStatusBarTexture():SetColorTexture(1, 0.4, 0);
+    TranqRotate.mainFrame.frenzyFrame.statusBar.expirationTime = nil
+    TranqRotate.mainFrame.frenzyFrame:Hide()
 end
 
 -- Lock/Unlock the mainFrame position

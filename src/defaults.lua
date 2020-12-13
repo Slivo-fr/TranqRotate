@@ -10,6 +10,7 @@ function TranqRotate:LoadDefaults()
 	        announceSuccessMessage = L["DEFAULT_SUCCESS_ANNOUNCE_MESSAGE"],
 	        announceFailMessage = L["DEFAULT_FAIL_ANNOUNCE_MESSAGE"],
 			whisperFailMessage = L["DEFAULT_FAIL_WHISPER_MESSAGE"],
+			unableToTranqMessage = L["DEFAULT_UNABLE_TO_TRANQ_MESSAGE"],
 			lock = false,
 			hideNotInRaid = false,
 			enableNextToTranqSound = true,
@@ -17,6 +18,11 @@ function TranqRotate:LoadDefaults()
 			tranqNowSound = 'alarm1',
 			doNotShowWindowOnRaidJoin = false,
 			showWindowWhenTargetingBoss = false,
+			showFrenzyCooldownProgress = true,
+			enableIncapacitatedBackupAlert = true,
+			incapacitatedDelay = 1.5,
+			enableTimedBackupAlertValue = true,
+			timedBackupAlertValueDelay = 1.5,
 	    },
 	}
 end

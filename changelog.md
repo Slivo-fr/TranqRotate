@@ -1,6 +1,15 @@
 ## TranqRotate Changelog
 
-#### v1.3.0
+#### v1.5.0
+
+- Restricted ordering tranq rotation to raid leader, raid assists and hunters
+- Added a frenzy cooldown progress bar under the title bar
+- Added configurable optional timed backup alert
+- Added configurable optional incapacitated backup alert
+- Fix font for koKR player names
+- Fix main window showing up when login in while already in a raid with option to mask window enabled
+
+#### v1.4.0
 
 - TranqRotate now play a sound when you need to tranq (You can disable it in the options)
 - Added an option to not show up the window each time you join a raid

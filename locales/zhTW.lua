@@ -31,6 +31,18 @@ local L = {
     ["ARCANE_SHOT_TESTING_ENABLED"] = "奧術射擊測試模式已啟用, 持續10分鐘",
     ["ARCANE_SHOT_TESTING_DISABLED"] = "奧術射擊測試模式已禁用",
 
+    ["FEATURES_HEADER"] = "Optionals features",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Display frenzy cooldown progress bar",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "A thin progress bar just under the title bar will show the progress",
+    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "Enable automatic backup alert when incapacitated",
+    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate will check for your debuffs when you should actually tranq and will call for backup if you are incapacitated for longer than the defined delay",
+    ["INCAPACITATED_DELAY_THRESHOLD"] = "Incapacitated alert threshold",
+    ["INCAPACITATED_DELAY_THRESHOLD_DESC"] = "If you are incapacitated for longer than the configured delay, TranqRotate will automatically call for backup",
+    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT"] = "Enable timed automatic backup alert",
+    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"] = "TranqRotate will call for backup if the boss is on frenzy for a defined delay and you should have been tranqing it",
+    ["TIMED_DELAY_THRESHOLD"] = "Timed alert threshold",
+    ["TIMED_DELAY_THRESHOLD_DESC"] = "TranqRotate will automatically call for backup if you do not tranq within the configured threshold",
+
     --- Announces
     ["SETTING_ANNOUNCES"] = "通告",
     ["ENABLE_ANNOUNCES"] = "啟用通告",
@@ -56,10 +68,12 @@ local L = {
     ["SUCCESS_MESSAGE_LABEL"] = "施放成功通告資訊",
     ["FAIL_MESSAGE_LABEL"] = "施放失敗通告資訊",
     ["FAIL_WHISPER_LABEL"] = "施放失敗私聊資訊",
+    ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "Message whispered when you cannot tranq or call for backup",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已對 %s 施放了寧神射擊!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 對 %s 寧神失敗!!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "寧神失敗 !! 趕緊補寧神!!",
+    ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "I'M UNABLE TO TRANQ ! TRANQ NOW !",
 
     ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "立即使用寧神 !!",
 

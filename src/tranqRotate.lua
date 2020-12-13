@@ -19,14 +19,15 @@ function TranqRotate:init()
 
     TranqRotate.hunterTable = {}
     TranqRotate.rotationTables = { rotation = {}, backup = {} }
-    TranqRotate.enableDrag = true
 
     TranqRotate.raidInitialized = false
     TranqRotate.testMode = false
+    TranqRotate.frenzy = false
 
     TranqRotate:initGui()
     TranqRotate:updateRaidStatus()
     TranqRotate:applySettings()
+    TranqRotate:updateDragAndDrop()
 
     TranqRotate:initComms()
 
@@ -67,7 +68,7 @@ function TranqRotate:printPrefixedMessage(msg)
     TranqRotate:printMessage(TranqRotate:colorText(TranqRotate.constants.printPrefix) .. msg)
 end
 
--- Send a tranq annouce message to a given channel
+-- Send a tranq announce message to a given channel
 function TranqRotate:sendAnnounceMessage(message, targetName)
     if TranqRotate.db.profile.enableAnnounces then
         TranqRotate:sendMessage(
@@ -80,7 +81,7 @@ function TranqRotate:sendAnnounceMessage(message, targetName)
 end
 
 -- Send a rotation broadcast message
-function TranqRotate:sendRotationSetupBroacastMessage(message)
+function TranqRotate:sendRotationSetupBroadcastMessage(message)
     if TranqRotate.db.profile.enableAnnounces then
         TranqRotate:sendMessage(
             message,
@@ -112,7 +113,7 @@ SlashCmdList["TRANQROTATE"] = function(msg)
     elseif (cmd == 'unlock') then
         TranqRotate:lock(false)
     elseif (cmd == 'backup') then
-        TranqRotate:whisperBackup()
+        TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
     elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not
         TranqRotate:testRotation()
     elseif (cmd == 'test') then -- @todo: remove this
@@ -138,7 +139,8 @@ end
 -- @todo: remove this
 function TranqRotate:test()
     TranqRotate:printMessage('test')
-    TranqRotate:toggleArcaneShotTesting()
+
+    print(TranqRotate:isPlayedIncapacitatedByDebuff())
 end
 
 -- Open ace settings
@@ -151,18 +153,18 @@ end
 function TranqRotate:printRotationSetup()
 
     if (IsInRaid()) then
-        TranqRotate:sendRotationSetupBroacastMessage('--- ' .. TranqRotate.constants.printPrefix .. L['BROADCAST_HEADER_TEXT'] .. ' ---', channel)
+        TranqRotate:sendRotationSetupBroadcastMessage('--- ' .. TranqRotate.constants.printPrefix .. L['BROADCAST_HEADER_TEXT'] .. ' ---', channel)
 
         if (TranqRotate.db.profile.useMultilineRotationReport) then
             TranqRotate:printMultilineRotation(TranqRotate.rotationTables.rotation)
         else
-            TranqRotate:sendRotationSetupBroacastMessage(
+            TranqRotate:sendRotationSetupBroadcastMessage(
                 TranqRotate:buildGroupMessage(L['BROADCAST_ROTATION_PREFIX'] .. ' : ', TranqRotate.rotationTables.rotation)
             )
         end
 
         if (#TranqRotate.rotationTables.backup > 0) then
-            TranqRotate:sendRotationSetupBroacastMessage(
+            TranqRotate:sendRotationSetupBroadcastMessage(
                 TranqRotate:buildGroupMessage(L['BROADCAST_BACKUP_PREFIX'] .. ' : ', TranqRotate.rotationTables.backup)
             )
         end
@@ -173,7 +175,7 @@ end
 function TranqRotate:printMultilineRotation(rotationTable, channel)
     local position = 1;
     for key, hunt in pairs(rotationTable) do
-        TranqRotate:sendRotationSetupBroacastMessage(tostring(position) .. ' - ' .. hunt.name)
+        TranqRotate:sendRotationSetupBroadcastMessage(tostring(position) .. ' - ' .. hunt.name)
         position = position + 1;
     end
 end
@@ -204,22 +206,6 @@ end
 -- Adds color to given text
 function TranqRotate:colorText(text)
     return '|cffffbf00' .. text .. '|r'
-end
-
--- Check if unit is promoted
-function TranqRotate:isHunterPromoted(name)
-
-    local raidIndex = UnitInRaid(name)
-
-    if (raidIndex) then
-        local name, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(raidIndex)
-
-        if (rank > 0) then
-            return true
-        end
-    end
-
-    return false
 end
 
 -- Toggle arcane shot testing mode

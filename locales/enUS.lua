@@ -29,6 +29,18 @@ local L = {
     ["ARCANE_SHOT_TESTING_ENABLED"] = "Arcane shot testing mode enabled for 10 minutes",
     ["ARCANE_SHOT_TESTING_DISABLED"] = "Arcane shot testing mode disabled",
 
+    ["FEATURES_HEADER"] = "Optionals features",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Display frenzy cooldown progress bar",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "A thin progress bar just under the title bar will show the progress",
+    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "Enable automatic backup alert when incapacitated",
+    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate will check for your debuffs when you should actually tranq and will call for backup if you are incapacitated for longer than the defined delay",
+    ["INCAPACITATED_DELAY_THRESHOLD"] = "Incapacitated alert threshold",
+    ["INCAPACITATED_DELAY_THRESHOLD_DESC"] = "If you are incapacitated for longer than the configured delay, TranqRotate will automatically call for backup",
+    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT"] = "Enable timed automatic backup alert",
+    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"] = "TranqRotate will call for backup if the boss is on frenzy for a defined delay and you should have been tranqing it",
+    ["TIMED_DELAY_THRESHOLD"] = "Timed alert threshold",
+    ["TIMED_DELAY_THRESHOLD_DESC"] = "TranqRotate will automatically call for backup if you do not tranq within the configured threshold",
+
     --- Announces
     ["SETTING_ANNOUNCES"] = "Announces",
     ["ENABLE_ANNOUNCES"] = "Enable announces",
@@ -54,10 +66,12 @@ local L = {
     ["SUCCESS_MESSAGE_LABEL"] = "Successful announce message",
     ["FAIL_MESSAGE_LABEL"] = "Fail announce message",
     ["FAIL_WHISPER_LABEL"] = "Fail whisper message",
+    ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "Message whispered when you cannot tranq or call for backup",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tranqshot done on %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TRANQSHOT FAILED ON %s !!!",
-    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TRANQSHOT FAILED ! TRANQ NOW !",
+    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TRANQSHOT MISSED ! TRANQ NOW !",
+    ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "I'M UNABLE TO TRANQ ! TRANQ NOW !",
 
     ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "USE TRANQSHOT NOW !",
 

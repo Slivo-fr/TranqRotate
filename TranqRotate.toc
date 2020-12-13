@@ -1,8 +1,8 @@
 ## Interface: 11305
-## Title: TranqRotate |cff00aa001.4.0|r
+## Title: TranqRotate |cff00aa001.5.0|r
 ## Notes: A tranqshot rotation assistant
 ## Author: Slivo
-## Version: 1.4.0
+## Version: 1.5.0
 ## SavedVariables: TranqRotateDb
 ## OptionalDeps: Ace3
 
@@ -34,3 +34,4 @@ src\comms.lua
 src\defaults.lua
 src\settings.lua
 src\utils.lua
+src\debuff.lua

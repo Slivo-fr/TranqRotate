@@ -110,7 +110,57 @@ function TranqRotate:CreateConfig()
                         type = "execute",
                         order = 13,
                         func = function() TranqRotate.toggleArcaneShotTesting() end
-                    }
+                    },
+                    featuresHeader = {
+                        name = L["FEATURES_HEADER"],
+                        type = "header",
+                        order = 20,
+                    },
+                    showFrenzyCooldownProgress = {
+                        name = L["DISPLAY_BOSS_FRENZY_COOLDOWN"],
+                        desc = L["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"],
+                        type = "toggle",
+                        order = 21,
+                        width = "full",
+                        set = function(info, value)
+                            set(info, value)
+                            if (not value) then TranqRotate:resetFrenzyFrame() end
+                        end
+                    },
+                    enableIncapacitatedBackupAlert = {
+                        name = L["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"],
+                        desc = L["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"],
+                        type = "toggle",
+                        order = 25,
+                        width = "double",
+                    },
+                    incapacitatedDelay = {
+                        name = L["INCAPACITATED_DELAY_THRESHOLD"],
+                        desc = L["INCAPACITATED_DELAY_THRESHOLD_DESC"],
+                        type = "range",
+                        order = 26,
+                        width = "normal",
+                        min = 1,
+                        max = 4,
+                        step = 0.1,
+                    },
+                    enableTimedBackupAlertValue = {
+                        name = L["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT"],
+                        desc = L["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"],
+                        type = "toggle",
+                        order = 30,
+                        width = "double",
+                    },
+                    timedBackupAlertValueDelay = {
+                        name = L["TIMED_DELAY_THRESHOLD"],
+                        desc = L["TIMED_DELAY_THRESHOLD_DESC"],
+                        type = "range",
+                        order = 31,
+                        width = "normal",
+                        min = 1,
+                        max = 4,
+                        step = 0.1,
+                    },
                 }
             },
             announces = {
@@ -165,6 +215,12 @@ function TranqRotate:CreateConfig()
                         name = L["FAIL_WHISPER_LABEL"],
                         type = "input",
                         order = 25,
+                        width = "double",
+                    },
+                    unableToTranqMessage = {
+                        name = L["UNABLE_TO_TRANQ_MESSAGE_LABEL"],
+                        type = "input",
+                        order = 26,
                         width = "double",
                     },
                     setupBroadcastHeader = {

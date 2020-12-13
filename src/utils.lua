@@ -32,7 +32,7 @@ function TranqRotate:isHunterTranqCooldownReady(hunter)
     return hunter.lastTranqTime <= GetTime() - 20
 end
 
--- Checks if a hunter is elligible to tranq next
+-- Checks if a hunter is eligible to tranq next
 function TranqRotate:isEligibleForNextTranq(hunter)
 
     local isCooldownShortEnough = hunter.lastTranqTime <= GetTime() - TranqRotate.constants.minimumCooldownElapsedForEligibility
@@ -51,8 +51,11 @@ function TranqRotate:isInPveRaid()
 end
 
 function TranqRotate:getPlayerNameFont()
-    if (GetLocale() == "zhCN" or GetLocale() == "zhTW") then
+    local locale = GetLocale()
+    if (locale == "zhCN" or locale == "zhTW") then
         return "Fonts\\ARHei.ttf"
+    elseif (locale == "koKR") then
+        return "Fonts\\2002.ttf"
     end
 
     return "Fonts\\ARIALN.ttf"
@@ -70,8 +73,8 @@ function TranqRotate:isBossFrenzy(spellName, guid)
     local type, mobId = TranqRotate:getIdFromGuid(guid)
 
     if (type == "Creature") then
-        for bossId, frenzy in pairs(bosses) do
-            if (bossId == mobId and spellName == GetSpellInfo(frenzy)) then
+        for bossId, bossData in pairs(bosses) do
+            if (bossId == mobId and spellName == GetSpellInfo(bossData.frenzy)) then
                 return true
             end
         end
@@ -87,7 +90,7 @@ function TranqRotate:isTranqableBoss(guid)
     local type, mobId = TranqRotate:getIdFromGuid(guid)
 
     if (type == "Creature") then
-        for bossId, frenzy in pairs(bosses) do
+        for bossId, bossData in pairs(bosses) do
             if (bossId == mobId) then
                 return true
             end
@@ -102,11 +105,41 @@ function TranqRotate:isFrenzy(spellName)
 
     local bosses = TranqRotate.constants.bosses
 
-    for bossId, frenzy in pairs(bosses) do
-        if (spellName == GetSpellInfo(frenzy)) then
+    for bossId, bossData in pairs(bosses) do
+        if (spellName == GetSpellInfo(bossData.frenzy)) then
             return true
         end
     end
 
     return false
+end
+
+-- Checks if the player is a hunter
+function TranqRotate:isHunter(name)
+    return select(2,UnitClass(name)) == 'HUNTER'
+end
+
+-- Check if unit is promoted (raid assist or raid leader)
+function TranqRotate:isPlayerRaidAssist(name)
+
+    if (TranqRotate:isInPveRaid()) then
+
+        local raidIndex = UnitInRaid(name)
+
+        if (raidIndex) then
+            local name, rank, subgroup, level, class, fileName, zone, online, isDead, role, isML = GetRaidRosterInfo(raidIndex)
+
+            if (rank > 0) then
+                return true
+            end
+        end
+    end
+
+    return false
+end
+
+-- Checks if condition to enable drag and drop are met
+function TranqRotate:isPlayerAllowedToSortHunterList()
+    local playerName = UnitName("player")
+    return TranqRotate:isHunter(playerName) or TranqRotate:isPlayerRaidAssist(playerName)
 end

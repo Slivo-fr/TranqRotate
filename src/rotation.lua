@@ -59,8 +59,12 @@ function TranqRotate:rotate(lastHunter, fail, rotateWithoutCooldown)
     -- Default value to false
     fail = fail or false
 
+    if (not fail) then
+        TranqRotate.frenzy = false
+    end
+
     local playerName, realm = UnitName("player")
-    local hunterRotationTable = TranqRotate:getHunterRotationTable(lastHunter)
+    local lastHunterRotationTable = TranqRotate:getHunterRotationTable(lastHunter)
     local hasPlayerFailed = playerName == lastHunter.name and fail
 
     lastHunter.lastTranqTime = GetTime()
@@ -70,44 +74,31 @@ function TranqRotate:rotate(lastHunter, fail, rotateWithoutCooldown)
         TranqRotate:startHunterCooldown(lastHunter)
     end
 
-    if (hunterRotationTable == TranqRotate.rotationTables.rotation) then
-        local nextHunter = TranqRotate:getNextRotationHunter(lastHunter)
+    local nextHunter = nil
+
+    if (lastHunterRotationTable == TranqRotate.rotationTables.rotation) then
+        nextHunter = TranqRotate:getNextRotationHunter(lastHunter)
 
         if (nextHunter ~= nil) then
-
             TranqRotate:setNextTranq(nextHunter)
 
-            if (TranqRotate:isHunterTranqCooldownReady(nextHunter)) then
-                if (#TranqRotate.rotationTables.backup < 1) then
-                    if (hasPlayerFailed) then
-                        SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, nextHunter.name)
-                    end
-
-                    if (fail and nextHunter.name == playerName) then
-                        TranqRotate:throwTranqAlert()
-                    end
-                end
+            if ((fail and nextHunter.name == playerName) and
+                #TranqRotate.rotationTables.backup < 1 and
+                TranqRotate:isHunterTranqCooldownReady(nextHunter)
+            ) then
+                TranqRotate:throwTranqAlert()
             end
         end
     end
 
     if (fail) then
         if (hasPlayerFailed) then
-            TranqRotate:whisperBackup()
+            TranqRotate:alertBackup(TranqRotate.db.profile.whisperFailMessage, nextHunter, true)
         end
 
-        if (TranqRotate:getHunterRotationTable(TranqRotate:getHunter(playerName)) == TranqRotate.rotationTables.backup) then
+        local playerRotationTable = TranqRotate:getHunterRotationTable(TranqRotate:getHunter(playerName))
+        if (playerRotationTable == TranqRotate.rotationTables.backup and not hasPlayerFailed) then
             TranqRotate:throwTranqAlert()
-        end
-    end
-end
-
--- Whisper fail message to all backup except player
-function TranqRotate:whisperBackup()
-    local name, realm = UnitName("player")
-    for key, backupHunter in pairs(TranqRotate.rotationTables.backup) do
-        if (backupHunter.name ~= name) then
-            SendChatMessage(TranqRotate.db.profile.whisperFailMessage, 'WHISPER', nil, backupHunter.name)
         end
     end
 end
@@ -132,12 +123,11 @@ end
 -- Check if the player is the next in position to tranq
 function TranqRotate:isPlayerNextTranq()
 
-    local player = TranqRotate:getHunter(nil, UnitGUID("player"))
-
-    -- Non hunter user
-    if (player == nil) then
+    if(not TranqRotate:isHunter("player")) then
         return false
     end
+
+    local player = TranqRotate:getHunter(nil, UnitGUID("player"))
 
     if (not player.nextTranq) then
 
@@ -260,21 +250,12 @@ end
 
 -- Iterate over hunter list and purge hunter that aren't in the group anymore
 function TranqRotate:purgeHunterList()
-
-    local change = false
-
-    for key,hunter in pairs(TranqRotate.hunterTable) do
+    for _, hunter in pairs(TranqRotate.hunterTable) do
         if (not UnitInParty(hunter.name)) then
             TranqRotate:unregisterUnitEvents(hunter)
             TranqRotate:removeHunter(hunter)
-            change = true
         end
     end
-
-    if (change) then
-        TranqRotate:drawHunterFrames()
-    end
-
 end
 
 -- Iterate over all raid members to find hunters and update their status
@@ -293,7 +274,7 @@ function TranqRotate:updateRaidStatus()
                 local GUID = UnitGUID(name)
                 local hunter
 
-                if(select(2,UnitClass(name)) == 'HUNTER') then
+                if(TranqRotate:isHunter(name)) then
 
                     local registered = TranqRotate:isHunterRegistered(GUID)
 
@@ -314,6 +295,8 @@ function TranqRotate:updateRaidStatus()
 
             end
         end
+
+        TranqRotate:updateDragAndDrop()
 
         if (not TranqRotate.raidInitialized) then
             if (not TranqRotate.db.profile.doNotShowWindowOnRaidJoin) then
@@ -456,5 +439,50 @@ function TranqRotate:throwTranqAlert()
 
     if (TranqRotate.db.profile.enableTranqNowSound) then
         PlaySoundFile(TranqRotate.constants.sounds.alarms[TranqRotate.db.profile.tranqNowSound])
+    end
+end
+
+-- Send a defined message to backup player or next rotation player if there's no backup
+function TranqRotate:alertBackup(message, nextHunter, noComms)
+    local playerName = UnitName('player')
+    local player = TranqRotate:getHunter(playerName)
+
+    -- Non hunter have no reason to ask for backup
+    if (not TranqRotate:isHunter('player')) then
+        return
+    end
+
+    if (#TranqRotate.rotationTables.backup < 1) then
+
+        if (nextHunter == nil) then
+            nextHunter = TranqRotate:getNextRotationHunter(player)
+        end
+
+        SendChatMessage(message, 'WHISPER', nil, nextHunter.name)
+        if (noComms ~= true) then
+            TranqRotate:sendBackupRequest(nextHunter.name)
+        end
+    else
+        TranqRotate:whisperBackup(message)
+    end
+end
+
+-- Whisper provided message of fail message to all backup except player
+function TranqRotate:whisperBackup(message, noComms)
+
+    local name = UnitName("player")
+
+    if (message == nil) then
+        message = TranqRotate.db.profile.whisperFailMessage
+    end
+
+    for key, backupHunter in pairs(TranqRotate.rotationTables.backup) do
+        if (backupHunter.name ~= name) then
+            SendChatMessage(message, 'WHISPER', nil, backupHunter.name)
+
+            if (noComms ~= true) then
+                TranqRotate:sendBackupRequest(backupHunter.name)
+            end
+        end
     end
 end

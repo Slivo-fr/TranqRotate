@@ -26,6 +26,8 @@ function TranqRotate.OnCommReceived(prefix, data, channel, sender)
                 TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
             elseif (message.type == TranqRotate.constants.commsTypes.syncRequest) then
                 TranqRotate:receiveSyncRequest(prefix, message, channel, sender)
+            elseif (message.type == TranqRotate.constants.commsTypes.backupRequest) then
+                TranqRotate:receiveBackupRequest(prefix, message, channel, sender)
             end
         end
     end
@@ -105,6 +107,18 @@ function TranqRotate:sendSyncOrderRequest()
     TranqRotate:sendRaidAddonMessage(message)
 end
 
+-- Broadcast a request for the current rotation configuration
+function TranqRotate:sendBackupRequest(name)
+
+    TranqRotate:printPrefixedMessage('Sending backup request to ' .. name)
+
+    local message = {
+        ['type'] = TranqRotate.constants.commsTypes.backupRequest,
+    }
+
+    TranqRotate:sendWhisperAddonMessage(message, name)
+end
+
 -----------------------------------------------------------------------------------------------------------------------
 -- INPUT
 -----------------------------------------------------------------------------------------------------------------------
@@ -137,4 +151,10 @@ end
 -- Request to send current roration configuration received
 function TranqRotate:receiveSyncRequest(prefix, data, channel, sender)
     TranqRotate:sendSyncOrder(true, sender)
+end
+
+-- Received a backup request
+function TranqRotate:receiveBackupRequest(prefix, message, channel, sender)
+    TranqRotate:printPrefixedMessage(sender .. ' asked for backup !')
+    TranqRotate:throwTranqAlert()
 end

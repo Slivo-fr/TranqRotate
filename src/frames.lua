@@ -158,9 +158,7 @@ function TranqRotate:createHunterFrame(hunter, parentFrame)
     TranqRotate:createCooldownFrame(hunter)
     TranqRotate:configureHunterFrameDrag(hunter)
 
-    if (TranqRotate.enableDrag) then
-        TranqRotate:enableHunterFrameDragging(hunter, true)
-    end
+    TranqRotate:toggleHunterFrameDragging(hunter, TranqRotate:isPlayerAllowedToSortHunterList())
 end
 
 -- Create the cooldown frame
@@ -181,10 +179,11 @@ function TranqRotate:createCooldownFrame(hunter)
     local statusBar = CreateFrame("StatusBar", nil, hunter.frame.cooldownFrame)
     statusBar:SetAllPoints()
     statusBar:SetMinMaxValues(0,1)
-    statusBar:SetStatusBarTexture("Interface\\AddOns\\TranqRotate\\textures\\steel.tga")
-    statusBar:GetStatusBarTexture():SetHorizTile(false)
-    statusBar:GetStatusBarTexture():SetVertTile(false)
-    statusBar:SetStatusBarColor(1, 0, 0)
+
+    local statusBarTexture = statusBar:CreateTexture(nil, "OVERLAY");
+    statusBarTexture:SetColorTexture(1, 0, 0);
+    statusBar:SetStatusBarTexture(statusBarTexture);
+
     hunter.frame.cooldownFrame.statusBar = statusBar
 
     hunter.frame.cooldownFrame:SetScript(
@@ -192,11 +191,49 @@ function TranqRotate:createCooldownFrame(hunter)
         function(self, elapsed)
             self.statusBar:SetValue(GetTime())
 
-            if (self.statusBar.exirationTime < GetTime()) then
+            if (self.statusBar.expirationTime < GetTime()) then
                 self:Hide()
             end
         end
     )
 
     hunter.frame.cooldownFrame:Hide()
+end
+
+-- Create the boss frenzy CD frame
+function TranqRotate:createFrenzyFrame()
+
+    -- Frame
+    TranqRotate.mainFrame.frenzyFrame = CreateFrame("Frame", nil, TranqRotate.mainFrame)
+    TranqRotate.mainFrame.frenzyFrame:SetPoint('LEFT', 0, 0)
+    TranqRotate.mainFrame.frenzyFrame:SetPoint('RIGHT', 0, 0)
+    TranqRotate.mainFrame.frenzyFrame:SetPoint('TOP', 0, -TranqRotate.constants.titleBarHeight)
+    TranqRotate.mainFrame.frenzyFrame:SetHeight(2)
+
+    local statusBar = CreateFrame("StatusBar", nil, TranqRotate.mainFrame.frenzyFrame)
+    statusBar:SetAllPoints()
+    statusBar:SetMinMaxValues(0,1)
+    statusBar:SetValue(0)
+
+    local statusBarTexture = statusBar:CreateTexture(nil, "OVERLAY");
+    statusBarTexture:SetColorTexture(1, 0.4, 0);
+    statusBar:SetStatusBarTexture(statusBarTexture);
+
+    TranqRotate.mainFrame.frenzyFrame.statusBar = statusBar
+
+    TranqRotate.mainFrame.frenzyFrame:SetScript(
+        "OnUpdate",
+        function(self, elapsed)
+
+            if (self.statusBar.expirationTime) then
+                self.statusBar:SetValue(GetTime())
+                if (self.statusBar.expirationTime < GetTime()) then
+                    statusBar:GetStatusBarTexture():SetColorTexture(1, 0, 0);
+                end
+            end
+
+        end
+    )
+
+    TranqRotate.mainFrame.frenzyFrame:Hide()
 end
