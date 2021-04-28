@@ -250,11 +250,18 @@ end
 
 -- Iterate over hunter list and purge hunter that aren't in the group anymore
 function TranqRotate:purgeHunterList()
+
+    local hunterToRemove = {}
+
     for _, hunter in pairs(TranqRotate.hunterTable) do
         if (not UnitInParty(hunter.name)) then
-            TranqRotate:unregisterUnitEvents(hunter)
-            TranqRotate:removeHunter(hunter)
+            table.insert(hunterToRemove, hunter)
         end
+    end
+
+    for _, hunter in pairs(hunterToRemove) do
+        TranqRotate:unregisterUnitEvents(hunter)
+        TranqRotate:removeHunter(hunter)
     end
 end
 
