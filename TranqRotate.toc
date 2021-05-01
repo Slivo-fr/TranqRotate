@@ -2,7 +2,7 @@
 ## Title: TranqRotate |cff00aa001.5.1|r
 ## Notes: A tranqshot rotation assistant
 ## Author: Slivo
-## Version: 1.5.0
+## Version: 1.5.1
 ## SavedVariables: TranqRotateDb
 ## OptionalDeps: Ace3
 
