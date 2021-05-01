@@ -1,5 +1,11 @@
 ## TranqRotate Changelog
 
+#### v1.5.1
+
+- Handles the new dispel resistance mechanic
+- Fix a bad nil check in comms
+- Fix a logic issue in hunter list cleaning function 
+
 #### v1.5.0
 
 - Restricted ordering tranq rotation to raid leader, raid assists and hunters
