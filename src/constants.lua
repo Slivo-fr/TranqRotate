@@ -76,5 +76,6 @@ TranqRotate.constants = {
         19408, -- Magmadar fear
         23171, -- Chromaggus Bronze affliction stun
         23311, -- Chromaggus Time lapse
+        29685, -- Gluth fear
     },
 }
