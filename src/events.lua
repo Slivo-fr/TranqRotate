@@ -66,7 +66,9 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
             local type, id = TranqRotate:getIdFromGuid(sourceGUID)
             TranqRotate:startBossFrenzyCooldown(TranqRotate.constants.bosses[id].cooldown)
         end
-    elseif event == "UNIT_DIED" and TranqRotate:isTranqableBoss(destGUID) then
+    elseif (event == "SPELL_AURA_REMOVED" and TranqRotate:isBossFrenzy(spellName, sourceGUID)) then
+        TranqRotate.frenzy = false
+    elseif (event == "UNIT_DIED" and TranqRotate:isTranqableBoss(destGUID)) then
         TranqRotate:resetRotation()
         TranqRotate.mainFrame.frenzyFrame:Hide()
     end
