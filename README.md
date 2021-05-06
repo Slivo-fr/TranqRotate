@@ -20,7 +20,7 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 - Display the list of raid hunters
 - Display offline and dead status on hunters frames
 - Allow player to re-order players between two groups : main rotation and backup
-- Synchronize rotation order between player using the addon
+- Synchronize rotation order between addon users
 - Allow player to broadcast the configured rotation and backup group to the raid
 - Provide a real time visual feedback about the rotation status, even if no one else use the addon in your raid
 - Synchronize tranqshot casts to other player using the addon
