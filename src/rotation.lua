@@ -463,9 +463,11 @@ function TranqRotate:alertBackup(message, nextHunter, noComms)
             nextHunter = TranqRotate:getNextRotationHunter(player)
         end
 
-        SendChatMessage(message, 'WHISPER', nil, nextHunter.name)
-        if (noComms ~= true) then
-            TranqRotate:sendBackupRequest(nextHunter.name)
+        if (playerName ~= nextHunter.name) then
+            SendChatMessage(message, 'WHISPER', nil, nextHunter.name)
+            if (noComms ~= true) then
+                TranqRotate:sendBackupRequest(nextHunter.name)
+            end
         end
     else
         TranqRotate:whisperBackup(message)
