@@ -70,6 +70,17 @@ end
 
 -- Send a tranq announce message to a given channel
 function TranqRotate:sendAnnounceMessage(message, targetName)
+
+    -- Prints instead to avoid lua error in open world with say and yell
+    if (
+        not IsInInstance() and (
+            TranqRotate.db.profile.channelType == "SAY" or TranqRotate.db.profile.channelType == "YELL"
+        )
+    ) then
+        TranqRotate:printPrefixedMessage(message .. " " .. L["YELL_SAY_DISABLED_OPEN_WORLD"])
+        return
+    end
+
     if TranqRotate.db.profile.enableAnnounces then
         TranqRotate:sendMessage(
             message,
@@ -117,7 +128,7 @@ SlashCmdList["TRANQROTATE"] = function(msg)
     elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not
         TranqRotate:testRotation()
     elseif (cmd == 'test') then -- @todo: remove this
-        TranqRotate:test()
+        TranqRotate:toggleArcaneShotTesting()
     elseif (cmd == 'report') then
         TranqRotate:printRotationSetup()
     elseif (cmd == 'settings') then

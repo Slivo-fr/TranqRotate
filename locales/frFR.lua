@@ -47,6 +47,7 @@ local L = {
     ["SETTING_ANNOUNCES"] = "Annonces",
     ["ENABLE_ANNOUNCES"] = "Activer les annonces",
     ["ENABLE_ANNOUNCES_DESC"] = "Activer / désactiver les annonces",
+    ["YELL_SAY_DISABLED_OPEN_WORLD"] = "(Les canaux dire et crier ne fonctionnent pas hors instance)",
 
     ---- Channels
     ["ANNOUNCES_CHANNEL_HEADER"] = "Canal",
