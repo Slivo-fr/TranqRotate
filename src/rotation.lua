@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 local L = TranqRotate.L
 
 -- Adds hunter to global table and one of the two rotation tables

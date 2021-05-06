@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 local tranqShot = GetSpellInfo(19801)
 local arcaneShot = GetSpellInfo(14287)
 

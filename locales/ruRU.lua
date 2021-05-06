@@ -1,6 +1,6 @@
 if (GetLocale() ~= "ruRU") then return end
 
-local TranqRotate = select(2, ...)
+TranqRotate = select(2, ...)
 
 local L = {
 

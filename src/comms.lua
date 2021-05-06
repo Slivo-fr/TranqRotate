@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 local AceComm = LibStub("AceComm-3.0")
 local AceSerializer = LibStub("AceSerializer-3.0")
 

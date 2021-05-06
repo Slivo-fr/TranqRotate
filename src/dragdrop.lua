@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 -- Enable drag & drop for all hunter frames
 function TranqRotate:toggleListSorting(allowSorting)
     for key,hunter in pairs(TranqRotate.hunterTable) do

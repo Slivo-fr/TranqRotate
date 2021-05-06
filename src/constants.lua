@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 TranqRotate.colors = {
     ['green'] = CreateColor(0.67, 0.83, 0.45),
     ['darkGreen'] = CreateColor(0.1, 0.4, 0.1),

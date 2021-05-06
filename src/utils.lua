@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 -- Check if a table contains the given element
 function TranqRotate:tableContains(table, element)
 
