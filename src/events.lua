@@ -55,6 +55,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     elseif (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellName, sourceGUID)) then
         TranqRotate.frenzy = true
         if (TranqRotate:isPlayerNextTranq()) then
+            TranqRotate:handleTimedAlert()
             TranqRotate:throwTranqAlert()
 
             if (TranqRotate.db.profile.enableIncapacitatedBackupAlert and TranqRotate:isPlayedIncapacitatedByDebuff()) then
