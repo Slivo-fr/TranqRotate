@@ -29,25 +29,26 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
 
     -- @todo : Improve this with register / unregister event to save resources
     -- Avoid parsing combat log when not able to use it
-    if not TranqRotate.raidInitialized then return end
+    if (not TranqRotate.raidInitialized) then return end
     -- Avoid parsing combat log when outside instance if test mode isn't enabled
-    if not TranqRotate.testMode and not IsInInstance() then return end
+    if (not TranqRotate.testMode and not IsInInstance()) then return end
 
     local timestamp, event, _, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags = CombatLogGetCurrentEventInfo()
     local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand = select(12, CombatLogGetCurrentEventInfo())
 
-    -- @todo try to refactor a bit
     if (spellName == tranqShot or (TranqRotate.testMode and spellName == arcaneShot)) then
         local hunter = TranqRotate:getHunter(nil, sourceGUID)
         if (event == "SPELL_CAST_SUCCESS") then
             TranqRotate:sendSyncTranq(hunter, false, timestamp)
-            TranqRotate:rotate(hunter, false)
+            TranqRotate:rotate(hunter)
             if  (sourceGUID == UnitGUID("player")) then
                 TranqRotate:sendAnnounceMessage(TranqRotate.db.profile.announceSuccessMessage, destName)
             end
         elseif (event == "SPELL_MISSED" or event == "SPELL_DISPEL_FAILED") then
+            -- @Todo remove this when releasing beta
+            print(event)
             TranqRotate:sendSyncTranq(hunter, true, timestamp)
-            TranqRotate:rotate(hunter, true)
+            TranqRotate:handleFailTranq(hunter)
             if  (sourceGUID == UnitGUID("player")) then
                 TranqRotate:sendAnnounceMessage(TranqRotate.db.profile.announceFailMessage, destName)
             end

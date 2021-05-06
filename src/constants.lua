@@ -27,6 +27,7 @@ TranqRotate.constants = {
 
     ['printPrefix'] = 'TranqRotate - ',
     ['duplicateTranqshotDelayThreshold'] = 10,
+    ['duplicateFailedTranqshotDelayThreshold'] = 10,
 
     ['minimumCooldownElapsedForEligibility'] = 10,
 

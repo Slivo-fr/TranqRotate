@@ -10,6 +10,7 @@ function TranqRotate:registerHunter(hunterName)
     hunter.frame = nil
     hunter.nextTranq = false
     hunter.lastTranqTime = 0
+    hunter.lastFailTime = 0
 
     -- Add to global list
     table.insert(TranqRotate.hunterTable, hunter)
@@ -51,19 +52,11 @@ function TranqRotate:removeHunter(deletedHunter)
 end
 
 -- Update the rotation list once a tranq has been done.
--- The parameter is the hunter that used it's tranq (successfully or not)
-function TranqRotate:rotate(lastHunter, fail, rotateWithoutCooldown)
+-- The parameter is the hunter that used it's tranq
+function TranqRotate:rotate(lastHunter, rotateWithoutCooldown)
 
-    -- Default value to false
-    fail = fail or false
-
-    if (not fail) then
-        TranqRotate.frenzy = false
-    end
-
-    local playerName, realm = UnitName("player")
+    TranqRotate.frenzy = false
     local lastHunterRotationTable = TranqRotate:getHunterRotationTable(lastHunter)
-    local hasPlayerFailed = playerName == lastHunter.name and fail
 
     lastHunter.lastTranqTime = GetTime()
 
@@ -79,25 +72,50 @@ function TranqRotate:rotate(lastHunter, fail, rotateWithoutCooldown)
 
         if (nextHunter ~= nil) then
             TranqRotate:setNextTranq(nextHunter)
-
-            if ((fail and nextHunter.name == playerName) and
-                #TranqRotate.rotationTables.backup < 1 and
-                TranqRotate:isHunterTranqCooldownReady(nextHunter)
-            ) then
-                TranqRotate:throwTranqAlert()
-            end
         end
     end
+end
 
-    if (fail) then
-        if (hasPlayerFailed) then
-            TranqRotate:alertBackup(TranqRotate.db.profile.whisperFailMessage, nextHunter, true)
-        end
+-- Handle miss or dispel resist scenario
+function TranqRotate:handleFailTranq(hunter)
 
-        local playerRotationTable = TranqRotate:getHunterRotationTable(TranqRotate:getHunter(playerName))
-        if (playerRotationTable == TranqRotate.rotationTables.backup and not hasPlayerFailed) then
-            TranqRotate:throwTranqAlert()
-        end
+    -- Do not process multiple SPELL_DISPEL_FAILED events or multiple fail broadcasts
+    local duplicate = hunter.lastFailTime >=  GetTime() - TranqRotate.constants.duplicateFailedTranqshotDelayThreshold
+    if (duplicate) then
+        return
+    end
+
+    local playerName, realm = UnitName("player")
+    local hasPlayerFailed = playerName == hunter.name
+    local nextHunter = TranqRotate:getHighlightedHunter()
+    local lastHunterRotationTable = TranqRotate:getHunterRotationTable(hunter)
+
+    -- Could happen if the first event received is a miss/resist
+    if (nextHunter == nil) then
+        nextHunter = TranqRotate:getNextRotationHunter(hunter)
+    end
+
+    hunter.lastFailTime = GetTime()
+
+    -- No backup, if player is next in rotation he will be warned to handle the fail
+    if (
+        lastHunterRotationTable == TranqRotate.rotationTables.rotation and
+        nextHunter.name == playerName and
+        #TranqRotate.rotationTables.backup < 1 and
+        TranqRotate:isHunterTranqCooldownReady(nextHunter)
+    ) then
+        TranqRotate:throwTranqAlert()
+    end
+
+    -- The player failed, sending fail message and backup alerts
+    if (hasPlayerFailed) then
+        TranqRotate:alertBackup(TranqRotate.db.profile.whisperFailMessage, nextHunter, true)
+    end
+
+    -- Player is in backup group, display an alert when someone fails
+    local playerRotationTable = TranqRotate:getHunterRotationTable(TranqRotate:getHunter(playerName))
+    if (playerRotationTable == TranqRotate.rotationTables.backup and not hasPlayerFailed) then
+        TranqRotate:throwTranqAlert()
     end
 end
 
@@ -325,7 +343,7 @@ function TranqRotate:updateHunterStatus(hunter)
 
     -- Jump to the next hunter if the current one is dead or offline
     if (hunter.nextTranq and (not TranqRotate:isHunterAliveAndOnline(hunter))) then
-        TranqRotate:rotate(hunter, false, true)
+        TranqRotate:rotate(hunter, true)
     end
 
     TranqRotate:refreshHunterFrame(hunter)
@@ -492,4 +510,16 @@ function TranqRotate:whisperBackup(message, noComms)
             end
         end
     end
+end
+
+-- Returns the hunter currently wearing the "next" flag
+function TranqRotate:getHighlightedHunter()
+
+    for key,hunter in pairs(TranqRotate.rotationTables.rotation) do
+        if (hunter.nextTranq) then
+            return hunter
+        end
+    end
+
+    return nil
 end
