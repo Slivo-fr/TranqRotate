@@ -214,8 +214,8 @@ end
 function TranqRotate:testRotation()
 
     for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
-        if (hunter.nextTranq) then
-            TranqRotate:rotate(hunter, false)
+        if (hunter.nextTranq or key == #TranqRotate.rotationTables.rotation) then
+            TranqRotate:rotate(hunter)
             break
         end
     end
