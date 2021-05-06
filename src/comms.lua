@@ -85,7 +85,8 @@ function TranqRotate:sendSyncOrder(whisper, name)
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.syncOrder,
         ['version'] = TranqRotate.syncVersion,
-        ['rotation'] = TranqRotate:getSimpleRotationTables()
+        ['rotation'] = TranqRotate:getSimpleRotationTables(),
+        ['addonVersion'] = TranqRotate.version,
     }
 
     if (whisper) then
@@ -100,6 +101,7 @@ function TranqRotate:sendSyncOrderRequest()
 
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.syncRequest,
+        ['addonVersion'] = TranqRotate.version,
     }
 
     TranqRotate:sendRaidAddonMessage(message)
@@ -144,6 +146,7 @@ end
 function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
 
     TranqRotate:updateRaidStatus()
+    TranqRotate:updatePlayerAddonVersion(sender, message.addonVersion)
 
     if (TranqRotate:isVersionEligible(message.version, sender)) then
         TranqRotate.syncVersion = (message.version)
@@ -155,7 +158,8 @@ function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
 end
 
 -- Request to send current roration configuration received
-function TranqRotate:receiveSyncRequest(prefix, data, channel, sender)
+function TranqRotate:receiveSyncRequest(prefix, message, channel, sender)
+    TranqRotate:updatePlayerAddonVersion(sender, message.addonVersion)
     TranqRotate:sendSyncOrder(true, sender)
 end
 
