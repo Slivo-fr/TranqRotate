@@ -2,7 +2,7 @@
 
 #### v1.6.0
 
-- Improve miss and resist tranqshot handling (no more duplicate calls)
+- Improve miss and resist tranqshot handling (no more duplicate announces)
 - Adds gluth fear to handled list of incapacitating debuffs
 - Adds `/tranq check` command to display the version others users have installed
 - Fixed timed alert feature that never worked (forgot to call it :D)
