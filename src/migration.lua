@@ -4,8 +4,11 @@ function TranqRotate:migrateProfile()
         TranqRotate.db.profile.currentMigration = 0
     end
 
-    for i = TranqRotate.db.profile.currentMigration + 1, #TranqRotate.migrations, 1 do
-        TranqRotate.migrations[i]()
+    if (TranqRotate.db.profile.currentMigration < #TranqRotate.migrations) then
+        for i = TranqRotate.db.profile.currentMigration + 1, #TranqRotate.migrations, 1 do
+            TranqRotate.migrations[i]()
+            TranqRotate.db.profile.currentMigration = i
+        end
     end
 end
 

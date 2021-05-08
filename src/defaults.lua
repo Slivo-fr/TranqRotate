@@ -23,7 +23,6 @@ function TranqRotate:LoadDefaults()
 			incapacitatedDelay = 2,
 			enableTimedBackupAlert = false,
 			timedBackupAlertDelay = 3,
-			currentMigration = #TranqRotate.migrations,
 	    },
 	}
 end
