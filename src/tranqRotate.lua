@@ -28,6 +28,7 @@ function TranqRotate:init()
     TranqRotate:initGui()
     TranqRotate:updateRaidStatus()
     TranqRotate:applySettings()
+    TranqRotate:updateDisplay()
     TranqRotate:updateDragAndDrop()
 
     TranqRotate:initComms()
@@ -52,8 +53,6 @@ function TranqRotate:applySettings()
     else
         TranqRotate.mainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
     end
-
-    TranqRotate:updateDisplay()
 
     TranqRotate.mainFrame:EnableMouse(not TranqRotate.db.profile.lock)
     TranqRotate.mainFrame:SetMovable(not TranqRotate.db.profile.lock)
