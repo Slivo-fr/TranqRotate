@@ -15,6 +15,7 @@ function TranqRotate:init()
     self.db.RegisterCallback(self, "OnProfileReset", "ProfilesChanged")
 
     self:CreateConfig()
+    TranqRotate.migrateProfile()
 
     TranqRotate.hunterTable = {}
     TranqRotate.addonVersions = {}

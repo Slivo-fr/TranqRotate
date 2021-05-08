@@ -122,8 +122,8 @@ end
 
 -- Handle timed alert for non tranqed frenzy
 function TranqRotate:handleTimedAlert()
-    if (TranqRotate.db.profile.enableTimedBackupAlertValue) then
-        C_Timer.After(TranqRotate.db.profile.timedBackupAlertValueDelay, function()
+    if (TranqRotate.db.profile.enableTimedBackupAlert) then
+        C_Timer.After(TranqRotate.db.profile.timedBackupAlertDelay, function()
             if (TranqRotate.frenzy and TranqRotate:isPlayerNextTranq()) then
                 TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
             end
