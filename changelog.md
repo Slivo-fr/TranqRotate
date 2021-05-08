@@ -2,11 +2,12 @@
 
 #### v1.6.0
 
-- Improve miss and resist tranqshot handling (no more duplicate announces)
+- Improves miss and resist tranqshot handling (no more duplicate announces)
 - Adds gluth fear to handled list of incapacitating debuffs
-- Adds `/tranq check` command to display the version others users have installed
-- Fixed timed alert feature that never worked (forgot to call it :D)
+- Adds `/tranq check` command to display the version other users have installed
+- Fix timed alert feature that never worked (forgot to call it :D), changed default value to disabled
 - Fix an ui error when trying to send announces on say/yell channel in open world (test mode)
+- Fix windows hiding unexpectedly when changing settings
 
 #### v1.5.1
 
