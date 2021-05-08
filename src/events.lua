@@ -45,8 +45,6 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
                 TranqRotate:sendAnnounceMessage(TranqRotate.db.profile.announceSuccessMessage, destName)
             end
         elseif (event == "SPELL_MISSED" or event == "SPELL_DISPEL_FAILED") then
-            -- @Todo remove this when releasing beta
-            print(event)
             TranqRotate:sendSyncTranq(hunter, true, timestamp)
             TranqRotate:handleFailTranq(hunter)
             if  (sourceGUID == UnitGUID("player")) then
