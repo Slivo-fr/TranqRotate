@@ -41,18 +41,18 @@ function TranqRotate:CreateConfig()
 						order = 2,
 					},
                     -- @todo : find a way to space widget properly
-					spacer3 = {
-						name = ' ',
-						type = "description",
-						width = "full",
-						order = 3,
-					},
-					baseVersion = {
-						name = L['SETTING_GENERAL_DESC'],
-						type = "description",
-						width = "full",
-						order = 4,
-					},
+					--spacer3 = {
+					--	name = ' ',
+					--	type = "description",
+					--	width = "full",
+					--	order = 3,
+					--},
+					--baseVersion = {
+					--	name = L['SETTING_GENERAL_DESC'],
+					--	type = "description",
+					--	width = "full",
+					--	order = 4,
+					--},
                     -- @todo : find a way to space widget properly
 					spacer4 = {
 						name = ' ',
