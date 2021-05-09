@@ -32,6 +32,7 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 - Display the frenzy cooldown of each boss
 - Optional automatic backup call when incapacitated
 - Optional automatic timed backup call 
+- Prints to chat name and reason of a tranq fail (miss or resist)
 
 ## Usage
  
@@ -53,6 +54,8 @@ The reset button is also able to resync raid hunters and rotation setup if you n
 You may adds the `/tranq backup` command to a macro that you can use when you are unable to tranq and you need some help,
 It will whisper all backup hunters the fail message.
 
+The `/tranq check` command allows you to list version or TranqRotate used by others hunters and others non-hunters players
+
 ## Roadmap
 
 Here is a list of feature I want to implement at some point, no specific order is decided yet.
@@ -60,6 +63,8 @@ Here is a list of feature I want to implement at some point, no specific order i
 - Automatic handling of death and disconnection of hunters on the rotation group (swap with a backup, send an alert about it)
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot
 - Automatic reset of rotation when raid wipe
+- Adds raid markers to tranq announces if target has one
+- Show an indicator on hunters that does not use TranqRotate (So you know you have to inform them about the rotation)
 
 ## Download
 
