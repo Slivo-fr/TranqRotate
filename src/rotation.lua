@@ -497,7 +497,7 @@ function TranqRotate:alertBackup(message, nextHunter, noComms)
             end
         end
     else
-        TranqRotate:whisperBackup(message)
+        TranqRotate:whisperBackup(message, noComms)
     end
 end
 
