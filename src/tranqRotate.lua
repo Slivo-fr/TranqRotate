@@ -272,3 +272,14 @@ function TranqRotate:formatAddonVersion(version)
         return version
     end
 end
+
+function TranqRotate:printFail(hunter, event)
+    if (event == "SPELL_MISSED") then
+        TranqRotate:printPrefixedMessage(hunter.name .. " missed his tranqshot!")
+    elseif(event == "SPELL_DISPEL_FAILED") then
+        TranqRotate:printPrefixedMessage(hunter.name .. "'s tranqshot was resisted!")
+    else
+        -- v1.5.1 and older do not send the event type
+        TranqRotate:printPrefixedMessage(hunter.name .. "'s tranqshot was missed or resisted!")
+    end
+end

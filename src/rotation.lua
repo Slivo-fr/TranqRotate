@@ -78,13 +78,15 @@ function TranqRotate:rotate(lastHunter, rotateWithoutCooldown)
 end
 
 -- Handle miss or dispel resist scenario
-function TranqRotate:handleFailTranq(hunter)
+function TranqRotate:handleFailTranq(hunter, event)
 
     -- Do not process multiple SPELL_DISPEL_FAILED events or multiple fail broadcasts
     local duplicate = hunter.lastFailTime >=  GetTime() - TranqRotate.constants.duplicateFailedTranqshotDelayThreshold
     if (duplicate) then
         return
     end
+
+    TranqRotate:printFail(hunter, event)
 
     local playerName, realm = UnitName("player")
     local hasPlayerFailed = playerName == hunter.name

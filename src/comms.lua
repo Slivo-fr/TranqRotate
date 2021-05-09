@@ -65,12 +65,13 @@ end
 -----------------------------------------------------------------------------------------------------------------------
 
 -- Broadcast a tranqshot event
-function TranqRotate:sendSyncTranq(hunter, fail, timestamp)
+function TranqRotate:sendSyncTranq(hunter, fail, timestamp, failEvent)
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.tranqshotDone,
         ['timestamp'] = timestamp,
         ['player'] = hunter.name,
         ['fail'] = fail,
+        ['failEvent'] = failEvent,
     }
 
     TranqRotate:sendRaidAddonMessage(message)
@@ -138,7 +139,7 @@ function TranqRotate:receiveSyncTranq(prefix, message, channel, sender)
             TranqRotate:rotate(hunter)
         end
     else
-        TranqRotate:handleFailTranq(hunter)
+        TranqRotate:handleFailTranq(hunter, message.failEvent)
     end
 end
 
