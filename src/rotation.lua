@@ -232,12 +232,20 @@ end
 -- @todo: remove this | TEST FUNCTION - Manually rotate hunters for test purpose
 function TranqRotate:testRotation()
 
+    local hunterToRotate = nil
     for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
-        if (hunter.nextTranq or key == #TranqRotate.rotationTables.rotation) then
-            TranqRotate:rotate(hunter)
+        if (hunter.nextTranq) then
+            hunterToRotate = hunter
             break
         end
     end
+
+    if (not hunterToRotate) then
+        hunterToRotate = TranqRotate.rotationTables.rotation[1]
+    end
+
+    TranqRotate:sendSyncTranq(hunterToRotate, false, timestamp)
+    TranqRotate:rotate(hunterToRotate)
 end
 
 -- Check if a hunter is already registered
