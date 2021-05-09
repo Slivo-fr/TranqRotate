@@ -41,18 +41,18 @@ function TranqRotate:CreateConfig()
 						order = 2,
 					},
                     -- @todo : find a way to space widget properly
-					spacer3 = {
-						name = ' ',
-						type = "description",
-						width = "full",
-						order = 3,
-					},
-					baseVersion = {
-						name = L['SETTING_GENERAL_DESC'],
-						type = "description",
-						width = "full",
-						order = 4,
-					},
+					--spacer3 = {
+					--	name = ' ',
+					--	type = "description",
+					--	width = "full",
+					--	order = 3,
+					--},
+					--baseVersion = {
+					--	name = L['SETTING_GENERAL_DESC'],
+					--	type = "description",
+					--	width = "full",
+					--	order = 4,
+					--},
                     -- @todo : find a way to space widget properly
 					spacer4 = {
 						name = ' ',
@@ -141,24 +141,24 @@ function TranqRotate:CreateConfig()
                         order = 26,
                         width = "normal",
                         min = 1,
-                        max = 4,
+                        max = 6,
                         step = 0.1,
                     },
-                    enableTimedBackupAlertValue = {
+                    enableTimedBackupAlert = {
                         name = L["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT"],
                         desc = L["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"],
                         type = "toggle",
                         order = 30,
                         width = "double",
                     },
-                    timedBackupAlertValueDelay = {
+                    timedBackupAlertDelay = {
                         name = L["TIMED_DELAY_THRESHOLD"],
                         desc = L["TIMED_DELAY_THRESHOLD_DESC"],
                         type = "range",
                         order = 31,
                         width = "normal",
                         min = 1,
-                        max = 4,
+                        max = 6,
                         step = 0.1,
                     },
                 }

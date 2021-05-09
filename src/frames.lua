@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 -- Create main window
 function TranqRotate:createMainFrame()
     TranqRotate.mainFrame = CreateFrame("Frame", 'mainFrame', UIParent)

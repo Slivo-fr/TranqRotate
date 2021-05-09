@@ -20,9 +20,9 @@ function TranqRotate:LoadDefaults()
 			showWindowWhenTargetingBoss = false,
 			showFrenzyCooldownProgress = true,
 			enableIncapacitatedBackupAlert = true,
-			incapacitatedDelay = 1.5,
-			enableTimedBackupAlertValue = true,
-			timedBackupAlertValueDelay = 1.5,
+			incapacitatedDelay = 2,
+			enableTimedBackupAlert = false,
+			timedBackupAlertDelay = 3,
 	    },
 	}
 end

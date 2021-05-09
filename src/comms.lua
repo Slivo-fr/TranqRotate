@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 local AceComm = LibStub("AceComm-3.0")
 local AceSerializer = LibStub("AceSerializer-3.0")
 
@@ -67,12 +65,13 @@ end
 -----------------------------------------------------------------------------------------------------------------------
 
 -- Broadcast a tranqshot event
-function TranqRotate:sendSyncTranq(hunter, fail, timestamp)
+function TranqRotate:sendSyncTranq(hunter, fail, timestamp, failEvent)
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.tranqshotDone,
         ['timestamp'] = timestamp,
         ['player'] = hunter.name,
         ['fail'] = fail,
+        ['failEvent'] = failEvent,
     }
 
     TranqRotate:sendRaidAddonMessage(message)
@@ -87,7 +86,8 @@ function TranqRotate:sendSyncOrder(whisper, name)
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.syncOrder,
         ['version'] = TranqRotate.syncVersion,
-        ['rotation'] = TranqRotate:getSimpleRotationTables()
+        ['rotation'] = TranqRotate:getSimpleRotationTables(),
+        ['addonVersion'] = TranqRotate.version,
     }
 
     if (whisper) then
@@ -102,6 +102,7 @@ function TranqRotate:sendSyncOrderRequest()
 
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.syncRequest,
+        ['addonVersion'] = TranqRotate.version,
     }
 
     TranqRotate:sendRaidAddonMessage(message)
@@ -132,10 +133,13 @@ function TranqRotate:receiveSyncTranq(prefix, message, channel, sender)
         return
     end
 
-    local notDuplicate = hunter.lastTranqTime <  GetTime() - TranqRotate.constants.duplicateTranqshotDelayThreshold
-
-    if (notDuplicate) then
-        TranqRotate:rotate(hunter, message.fail)
+    if (not message.fail) then
+        local notDuplicate = hunter.lastTranqTime <  GetTime() - TranqRotate.constants.duplicateTranqshotDelayThreshold
+        if (notDuplicate) then
+            TranqRotate:rotate(hunter)
+        end
+    else
+        TranqRotate:handleFailTranq(hunter, message.failEvent)
     end
 end
 
@@ -143,6 +147,7 @@ end
 function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
 
     TranqRotate:updateRaidStatus()
+    TranqRotate:updatePlayerAddonVersion(sender, message.addonVersion)
 
     if (TranqRotate:isVersionEligible(message.version, sender)) then
         TranqRotate.syncVersion = (message.version)
@@ -154,7 +159,8 @@ function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
 end
 
 -- Request to send current roration configuration received
-function TranqRotate:receiveSyncRequest(prefix, data, channel, sender)
+function TranqRotate:receiveSyncRequest(prefix, message, channel, sender)
+    TranqRotate:updatePlayerAddonVersion(sender, message.addonVersion)
     TranqRotate:sendSyncOrder(true, sender)
 end
 

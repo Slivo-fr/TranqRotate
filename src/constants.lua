@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 TranqRotate.colors = {
     ['green'] = CreateColor(0.67, 0.83, 0.45),
     ['darkGreen'] = CreateColor(0.1, 0.4, 0.1),
@@ -29,6 +27,7 @@ TranqRotate.constants = {
 
     ['printPrefix'] = 'TranqRotate - ',
     ['duplicateTranqshotDelayThreshold'] = 10,
+    ['duplicateFailedTranqshotDelayThreshold'] = 10,
 
     ['minimumCooldownElapsedForEligibility'] = 10,
 
@@ -78,5 +77,6 @@ TranqRotate.constants = {
         19408, -- Magmadar fear
         23171, -- Chromaggus Bronze affliction stun
         23311, -- Chromaggus Time lapse
+        29685, -- Gluth fear
     },
 }

@@ -2,8 +2,7 @@ TranqRotate = select(2, ...)
 
 local L = TranqRotate.L
 
-local parent = ...
-TranqRotate.version = GetAddOnMetadata(parent, "Version")
+TranqRotate.version = GetAddOnMetadata(..., "Version")
 
 -- Initialize addon - Shouldn't be call more than once
 function TranqRotate:init()
@@ -16,8 +15,10 @@ function TranqRotate:init()
     self.db.RegisterCallback(self, "OnProfileReset", "ProfilesChanged")
 
     self:CreateConfig()
+    TranqRotate.migrateProfile()
 
     TranqRotate.hunterTable = {}
+    TranqRotate.addonVersions = {}
     TranqRotate.rotationTables = { rotation = {}, backup = {} }
 
     TranqRotate.raidInitialized = false
@@ -27,6 +28,7 @@ function TranqRotate:init()
     TranqRotate:initGui()
     TranqRotate:updateRaidStatus()
     TranqRotate:applySettings()
+    TranqRotate:updateDisplay()
     TranqRotate:updateDragAndDrop()
 
     TranqRotate:initComms()
@@ -52,8 +54,6 @@ function TranqRotate:applySettings()
         TranqRotate.mainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
     end
 
-    TranqRotate:updateDisplay()
-
     TranqRotate.mainFrame:EnableMouse(not TranqRotate.db.profile.lock)
     TranqRotate.mainFrame:SetMovable(not TranqRotate.db.profile.lock)
 end
@@ -70,6 +70,17 @@ end
 
 -- Send a tranq announce message to a given channel
 function TranqRotate:sendAnnounceMessage(message, targetName)
+
+    -- Prints instead to avoid lua error in open world with say and yell
+    if (
+        not IsInInstance() and (
+            TranqRotate.db.profile.channelType == "SAY" or TranqRotate.db.profile.channelType == "YELL"
+        )
+    ) then
+        TranqRotate:printPrefixedMessage(message .. " " .. L["YELL_SAY_DISABLED_OPEN_WORLD"])
+        return
+    end
+
     if TranqRotate.db.profile.enableAnnounces then
         TranqRotate:sendMessage(
             message,
@@ -117,11 +128,13 @@ SlashCmdList["TRANQROTATE"] = function(msg)
     elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not
         TranqRotate:testRotation()
     elseif (cmd == 'test') then -- @todo: remove this
-        TranqRotate:test()
+        TranqRotate:toggleArcaneShotTesting()
     elseif (cmd == 'report') then
         TranqRotate:printRotationSetup()
     elseif (cmd == 'settings') then
         TranqRotate:openSettings()
+    elseif (cmd == 'check') then
+        TranqRotate:checkVersions()
     else
         TranqRotate:printHelp()
     end
@@ -199,8 +212,9 @@ function TranqRotate:printHelp()
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('lock') .. ' : Lock the main window position')
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('unlock') .. ' : Unlock the main window position')
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('settings') .. ' : Open TranqRotate settings')
-    TranqRotate:printMessage(spacing .. TranqRotate:colorText('report') .. ' : Print the rotation setup to the configured channel')
+    TranqRotate:printMessage(spacing .. TranqRotate:colorText('report') .. ' : Prints the rotation setup to the configured channel')
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('backup') .. ' : Whispers backup hunters to immediately tranq')
+    TranqRotate:printMessage(spacing .. TranqRotate:colorText('check') .. ' : Prints users version of TranqRotate')
 end
 
 -- Adds color to given text
@@ -222,5 +236,50 @@ function TranqRotate:toggleArcaneShotTesting(disable)
     else
         TranqRotate.testMode = false
         TranqRotate:printPrefixedMessage(L['ARCANE_SHOT_TESTING_DISABLED'])
+    end
+end
+
+function TranqRotate:updatePlayerAddonVersion(player, version)
+
+    local hunter = TranqRotate:getHunter(player)
+    if (hunter) then
+        hunter.addonVersion = version
+    else
+        TranqRotate.addonVersions[player] = version
+    end
+end
+
+function TranqRotate:checkVersions()
+    TranqRotate:printPrefixedMessage("## Version check ##")
+    TranqRotate:printPrefixedMessage("You - " .. TranqRotate.version)
+
+    for key, hunter in pairs(TranqRotate.hunterTable) do
+        if (hunter.name ~= UnitName("player")) then
+            TranqRotate:printPrefixedMessage(hunter.name .. " - " .. TranqRotate:formatAddonVersion(hunter.addonVersion))
+        end
+    end
+    for key, player in pairs(TranqRotate.addonVersions) do
+        if (player ~= UnitName("player")) then
+            TranqRotate:printPrefixedMessage(hunter.name .. " - " .. TranqRotate:formatAddonVersion(hunter.addonVersion))
+        end
+    end
+end
+
+function TranqRotate:formatAddonVersion(version)
+    if (version == nil) then
+        return "None or below 1.6.0"
+    else
+        return version
+    end
+end
+
+function TranqRotate:printFail(hunter, event)
+    if (event == "SPELL_MISSED") then
+        TranqRotate:printPrefixedMessage(hunter.name .. " missed his tranqshot!")
+    elseif(event == "SPELL_DISPEL_FAILED") then
+        TranqRotate:printPrefixedMessage(hunter.name .. "'s tranqshot was resisted!")
+    else
+        -- v1.5.1 and older do not send the event type
+        TranqRotate:printPrefixedMessage(hunter.name .. "'s tranqshot was missed or resisted!")
     end
 end

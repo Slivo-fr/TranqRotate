@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 local tranqShot = GetSpellInfo(19801)
 local arcaneShot = GetSpellInfo(14287)
 
@@ -31,25 +29,24 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
 
     -- @todo : Improve this with register / unregister event to save resources
     -- Avoid parsing combat log when not able to use it
-    if not TranqRotate.raidInitialized then return end
+    if (not TranqRotate.raidInitialized) then return end
     -- Avoid parsing combat log when outside instance if test mode isn't enabled
-    if not TranqRotate.testMode and not IsInInstance() then return end
+    if (not TranqRotate.testMode and not IsInInstance()) then return end
 
     local timestamp, event, _, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags = CombatLogGetCurrentEventInfo()
     local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand = select(12, CombatLogGetCurrentEventInfo())
 
-    -- @todo try to refactor a bit
     if (spellName == tranqShot or (TranqRotate.testMode and spellName == arcaneShot)) then
         local hunter = TranqRotate:getHunter(nil, sourceGUID)
         if (event == "SPELL_CAST_SUCCESS") then
             TranqRotate:sendSyncTranq(hunter, false, timestamp)
-            TranqRotate:rotate(hunter, false)
+            TranqRotate:rotate(hunter)
             if  (sourceGUID == UnitGUID("player")) then
                 TranqRotate:sendAnnounceMessage(TranqRotate.db.profile.announceSuccessMessage, destName)
             end
         elseif (event == "SPELL_MISSED" or event == "SPELL_DISPEL_FAILED") then
-            TranqRotate:sendSyncTranq(hunter, true, timestamp)
-            TranqRotate:rotate(hunter, true)
+            TranqRotate:sendSyncTranq(hunter, true, timestamp, event)
+            TranqRotate:handleFailTranq(hunter, event)
             if  (sourceGUID == UnitGUID("player")) then
                 TranqRotate:sendAnnounceMessage(TranqRotate.db.profile.announceFailMessage, destName)
             end
@@ -57,6 +54,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     elseif (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellName, sourceGUID)) then
         TranqRotate.frenzy = true
         if (TranqRotate:isPlayerNextTranq()) then
+            TranqRotate:handleTimedAlert()
             TranqRotate:throwTranqAlert()
 
             if (TranqRotate.db.profile.enableIncapacitatedBackupAlert and TranqRotate:isPlayedIncapacitatedByDebuff()) then
@@ -67,7 +65,9 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
             local type, id = TranqRotate:getIdFromGuid(sourceGUID)
             TranqRotate:startBossFrenzyCooldown(TranqRotate.constants.bosses[id].cooldown)
         end
-    elseif event == "UNIT_DIED" and TranqRotate:isTranqableBoss(destGUID) then
+    elseif (event == "SPELL_AURA_REMOVED" and TranqRotate:isBossFrenzy(spellName, sourceGUID)) then
+        TranqRotate.frenzy = false
+    elseif (event == "UNIT_DIED" and TranqRotate:isTranqableBoss(destGUID)) then
         TranqRotate:resetRotation()
         TranqRotate.mainFrame.frenzyFrame:Hide()
     end
@@ -120,8 +120,8 @@ end
 
 -- Handle timed alert for non tranqed frenzy
 function TranqRotate:handleTimedAlert()
-    if (TranqRotate.db.profile.enableTimedBackupAlertValue) then
-        C_Timer.After(TranqRotate.db.profile.timedBackupAlertValueDelay, function()
+    if (TranqRotate.db.profile.enableTimedBackupAlert) then
+        C_Timer.After(TranqRotate.db.profile.timedBackupAlertDelay, function()
             if (TranqRotate.frenzy and TranqRotate:isPlayerNextTranq()) then
                 TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
             end

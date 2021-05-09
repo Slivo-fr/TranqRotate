@@ -1,5 +1,15 @@
 ## TranqRotate Changelog
 
+#### v1.6.0
+
+- Improves miss and resist tranqshot handling (no more duplicate announces or whispers)
+- Adds gluth fear to handled list of incapacitating debuffs
+- Adds `/tranq check` command to display the version other users have installed
+- Adds printing of fail to chat window
+- Fix timed alert feature that never worked (forgot to call it :D), changed default value to disabled
+- Fix an ui error when trying to send announces on say/yell channel in open world (test mode)
+- Fix windows hiding unexpectedly when changing settings
+
 #### v1.5.1
 
 - Handles the new dispel resistance mechanic

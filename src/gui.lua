@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 local L = TranqRotate.L
 
 -- Initialize GUI frames. Shouldn't be called more than once

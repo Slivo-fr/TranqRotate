@@ -20,7 +20,7 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 - Display the list of raid hunters
 - Display offline and dead status on hunters frames
 - Allow player to re-order players between two groups : main rotation and backup
-- Synchronize rotation order between player using the addon
+- Synchronize rotation order between addon users
 - Allow player to broadcast the configured rotation and backup group to the raid
 - Provide a real time visual feedback about the rotation status, even if no one else use the addon in your raid
 - Synchronize tranqshot casts to other player using the addon
@@ -32,6 +32,7 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 - Display the frenzy cooldown of each boss
 - Optional automatic backup call when incapacitated
 - Optional automatic timed backup call 
+- Prints to chat name and reason of a tranq fail (miss or resist)
 
 ## Usage
  
@@ -53,6 +54,8 @@ The reset button is also able to resync raid hunters and rotation setup if you n
 You may adds the `/tranq backup` command to a macro that you can use when you are unable to tranq and you need some help,
 It will whisper all backup hunters the fail message.
 
+The `/tranq check` command allows you to list version or TranqRotate used by others hunters and others non-hunters players
+
 ## Roadmap
 
 Here is a list of feature I want to implement at some point, no specific order is decided yet.
@@ -60,6 +63,8 @@ Here is a list of feature I want to implement at some point, no specific order i
 - Automatic handling of death and disconnection of hunters on the rotation group (swap with a backup, send an alert about it)
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot
 - Automatic reset of rotation when raid wipe
+- Adds raid markers to tranq announces if target has one
+- Show an indicator on hunters that does not use TranqRotate (So you know you have to inform them about the rotation)
 
 ## Download
 

@@ -1,5 +1,3 @@
-local TranqRotate = select(2, ...)
-
 -- Checks if player is incapacitated by a debuff for too long
 function TranqRotate:isPlayedIncapacitatedByDebuff()
 

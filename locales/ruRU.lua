@@ -1,6 +1,6 @@
 if (GetLocale() ~= "ruRU") then return end
 
-local TranqRotate = select(2, ...)
+TranqRotate = select(2, ...)
 
 local L = {
 
@@ -47,6 +47,7 @@ local L = {
     ["SETTING_ANNOUNCES"] = "Оповещения",
     ["ENABLE_ANNOUNCES"] = "Включить оповещения",
     ["ENABLE_ANNOUNCES_DESC"] = "Включить / отключить оповещения",
+    ["YELL_SAY_DISABLED_OPEN_WORLD"] = "(Yell and say channels does not work in open world, but will inside your raids)",
 
     ---- Channels
     ["ANNOUNCES_CHANNEL_HEADER"] = "Канал оповещений",
