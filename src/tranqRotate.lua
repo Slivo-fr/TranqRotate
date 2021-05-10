@@ -77,7 +77,7 @@ function TranqRotate:sendAnnounceMessage(message, targetName)
             TranqRotate.db.profile.channelType == "SAY" or TranqRotate.db.profile.channelType == "YELL"
         )
     ) then
-        TranqRotate:printPrefixedMessage(message .. " " .. L["YELL_SAY_DISABLED_OPEN_WORLD"])
+        TranqRotate:printPrefixedMessage(string.format(message, targetName) .. " " .. L["YELL_SAY_DISABLED_OPEN_WORLD"])
         return
     end
 
