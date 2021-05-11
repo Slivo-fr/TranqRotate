@@ -1,5 +1,11 @@
 ## TranqRotate Changelog
 
+#### v1.6.1
+
+- Update ace3 libs for TBC prepatch
+- Fix few minor issues with test mode
+- Fix a lua error using `/tranq check` with non hunter users
+
 #### v1.6.0
 
 - Improves miss and resist tranqshot handling (no more duplicate announces or whispers)

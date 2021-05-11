@@ -77,7 +77,7 @@ function TranqRotate:sendAnnounceMessage(message, targetName)
             TranqRotate.db.profile.channelType == "SAY" or TranqRotate.db.profile.channelType == "YELL"
         )
     ) then
-        TranqRotate:printPrefixedMessage(message .. " " .. L["YELL_SAY_DISABLED_OPEN_WORLD"])
+        TranqRotate:printPrefixedMessage(string.format(message, targetName) .. " " .. L["YELL_SAY_DISABLED_OPEN_WORLD"])
         return
     end
 
@@ -260,7 +260,7 @@ function TranqRotate:checkVersions()
     end
     for key, player in pairs(TranqRotate.addonVersions) do
         if (player ~= UnitName("player")) then
-            TranqRotate:printPrefixedMessage(hunter.name .. " - " .. TranqRotate:formatAddonVersion(hunter.addonVersion))
+            TranqRotate:printPrefixedMessage(player .. " - " .. TranqRotate:formatAddonVersion(hunter.addonVersion))
         end
     end
 end
