@@ -111,6 +111,7 @@ end
 -- Broadcast a request for the current rotation configuration
 function TranqRotate:sendBackupRequest(name)
 
+    -- todo: translation
     TranqRotate:printPrefixedMessage('Sending backup request to ' .. name)
 
     local message = {
@@ -153,6 +154,7 @@ function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
         TranqRotate.syncVersion = (message.version)
         TranqRotate.syncLastSender = sender
 
+        -- todo : translation
         TranqRotate:printPrefixedMessage('Received new rotation configuration from ' .. sender)
         TranqRotate:applyRotationConfiguration(message.rotation)
     end
@@ -166,6 +168,7 @@ end
 
 -- Received a backup request
 function TranqRotate:receiveBackupRequest(prefix, message, channel, sender)
+    -- todo: translations
     TranqRotate:printPrefixedMessage(sender .. ' asked for backup !')
     TranqRotate:throwTranqAlert()
 end
