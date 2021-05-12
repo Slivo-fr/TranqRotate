@@ -245,6 +245,7 @@ function TranqRotate:updatePlayerAddonVersion(player, version)
     local hunter = TranqRotate:getHunter(player)
     if (hunter) then
         hunter.addonVersion = version
+        TranqRotate:updateBlindIcon(hunter)
     else
         TranqRotate.addonVersions[player] = version
     end

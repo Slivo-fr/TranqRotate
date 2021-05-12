@@ -34,6 +34,10 @@ local L = {
     ["FEATURES_HEADER"] = "可选功能",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "显示激怒冷却进度条",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "标题栏下方显示一个细进度条",
+    ["DISPLAY_BLIND_ICON"] = "Show an icon for hunter without TranqRotate",
+    ["DISPLAY_BLIND_ICON_DESC"] = "Adds a blind icon on the hunter frame to indicate he's not using the addon. This means he will not be aware of the rotate unless you communicate with him and his tranqshot won't be synced if he's far from every other TranqRotate user.",
+    ["DISPLAY_BLIND_ICON_TOOLTIP"] = "Show the blind icon tooltip",
+    ["DISPLAY_BLIND_ICON_TOOLTIP_DESC"] = "You can disable this options to disable the tooltip while still having the icon",
     ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "当无法工作时，启用自动替补通告",
     ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate会检查你的Debuff，如果轮到你宁神时，你瘫痪时间超过定义的延迟时间，则会要求替补",
     ["INCAPACITATED_DELAY_THRESHOLD"] = "瘫痪通告阀值",
@@ -96,6 +100,11 @@ local L = {
     ["BROADCAST_HEADER_TEXT"] = "猎人宁神顺序",
     ["BROADCAST_ROTATION_PREFIX"] = "循环",
     ["BROADCAST_BACKUP_PREFIX"] = "替补",
+
+    --- Blind icon tooltip
+    ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "This player does not use TranqRotate",
+    ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "Or runs an outdated version below 1.6.0",
+    ["TOOLTIP_DISABLE_SETTINGS"] = "(You can disable this icon and/or this tooltip in the settings)",
 }
 
 TranqRotate.L = L
