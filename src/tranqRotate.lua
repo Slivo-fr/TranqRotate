@@ -283,3 +283,20 @@ function TranqRotate:printFail(hunter, event)
         TranqRotate:printPrefixedMessage(hunter.name .. "'s tranqshot was missed or resisted!")
     end
 end
+
+-- Demo rotation to record documentation gifs / screens
+function TranqRotate:runDemo()
+    C_Timer.NewTicker(
+        10.5,
+        function()
+            TranqRotate:startBossFrenzyCooldown(10)
+            C_Timer.After(
+                 1,
+                function()
+                    TranqRotate:testRotation()
+                end
+            )
+        end,
+        5
+    )
+end
