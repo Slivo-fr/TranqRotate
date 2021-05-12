@@ -215,6 +215,7 @@ function TranqRotate:printHelp()
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('report') .. ' : Prints the rotation setup to the configured channel')
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('backup') .. ' : Whispers backup hunters to immediately tranq')
     TranqRotate:printMessage(spacing .. TranqRotate:colorText('check') .. ' : Prints users version of TranqRotate')
+    TranqRotate:printMessage(spacing .. TranqRotate:colorText('test') .. ' : Toggle test mode')
 end
 
 -- Adds color to given text
