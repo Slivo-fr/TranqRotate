@@ -231,7 +231,7 @@ function TranqRotate:resetRotation()
     end
 end
 
--- @todo: remove this | TEST FUNCTION - Manually rotate hunters for test purpose
+-- TEST FUNCTION - Manually rotate hunters for test purpose
 function TranqRotate:testRotation()
 
     local hunterToRotate = nil
