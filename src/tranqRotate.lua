@@ -267,6 +267,7 @@ function TranqRotate:checkVersions()
     end
 end
 
+-- @todo translations
 -- Returns a string based on the hunter addon version
 function TranqRotate:formatAddonVersion(version)
     if (version == nil) then
@@ -276,6 +277,7 @@ function TranqRotate:formatAddonVersion(version)
     end
 end
 
+-- @todo translations
 -- Prints in the chat the reason a tranqshot has failed
 function TranqRotate:printFail(hunter, event)
     if (event == "SPELL_MISSED") then
