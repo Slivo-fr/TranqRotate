@@ -239,6 +239,7 @@ function TranqRotate:toggleArcaneShotTesting(disable)
     end
 end
 
+-- Update the addon version of a given player
 function TranqRotate:updatePlayerAddonVersion(player, version)
 
     local hunter = TranqRotate:getHunter(player)
@@ -249,6 +250,7 @@ function TranqRotate:updatePlayerAddonVersion(player, version)
     end
 end
 
+-- Prints to the chat the addon version of every hunter and addon users
 function TranqRotate:checkVersions()
     TranqRotate:printPrefixedMessage("## Version check ##")
     TranqRotate:printPrefixedMessage("You - " .. TranqRotate.version)
@@ -265,6 +267,7 @@ function TranqRotate:checkVersions()
     end
 end
 
+-- Returns a string based on the hunter addon version
 function TranqRotate:formatAddonVersion(version)
     if (version == nil) then
         return "None or below 1.6.0"
@@ -273,6 +276,7 @@ function TranqRotate:formatAddonVersion(version)
     end
 end
 
+-- Prints in the chat the reason a tranqshot has failed
 function TranqRotate:printFail(hunter, event)
     if (event == "SPELL_MISSED") then
         TranqRotate:printPrefixedMessage(hunter.name .. " missed his tranqshot!")
