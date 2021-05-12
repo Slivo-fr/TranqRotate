@@ -127,7 +127,7 @@ SlashCmdList["TRANQROTATE"] = function(msg)
         TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
     elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not
         TranqRotate:testRotation()
-    elseif (cmd == 'test') then -- @todo: remove this
+    elseif (cmd == 'test') then
         TranqRotate:toggleArcaneShotTesting()
     elseif (cmd == 'report') then
         TranqRotate:printRotationSetup()
