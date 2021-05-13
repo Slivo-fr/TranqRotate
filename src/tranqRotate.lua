@@ -262,9 +262,9 @@ function TranqRotate:checkVersions()
             TranqRotate:printPrefixedMessage(hunter.name .. " - " .. TranqRotate:formatAddonVersion(hunter.addonVersion))
         end
     end
-    for key, player in pairs(TranqRotate.addonVersions) do
+    for player, version in pairs(TranqRotate.addonVersions) do
         if (player ~= UnitName("player")) then
-            TranqRotate:printPrefixedMessage(player .. " - " .. TranqRotate:formatAddonVersion(player.addonVersion))
+            TranqRotate:printPrefixedMessage(player .. " - " .. TranqRotate:formatAddonVersion(version))
         end
     end
 end
