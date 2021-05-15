@@ -87,7 +87,7 @@ function TranqRotate:drawList(hunterList, parentFrame)
         end
 
         -- SetColor
-        setHunterFrameColor(hunter)
+        TranqRotate:setHunterFrameColor(hunter)
         -- Update blind version icon
         TranqRotate:updateBlindIcon(hunter)
 
@@ -107,12 +107,12 @@ end
 
 -- Refresh a single hunter frame
 function TranqRotate:refreshHunterFrame(hunter)
-    setHunterFrameColor(hunter)
+    TranqRotate:setHunterFrameColor(hunter)
     TranqRotate:updateBlindIcon(hunter)
 end
 
 -- Set the hunter frame color regarding it's status
-function setHunterFrameColor(hunter)
+function TranqRotate:setHunterFrameColor(hunter)
 
     local color = TranqRotate.colors.green
 
