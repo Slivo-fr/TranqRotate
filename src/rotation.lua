@@ -250,19 +250,6 @@ function TranqRotate:testRotation()
     TranqRotate:rotate(hunterToRotate)
 end
 
--- Check if a hunter is already registered
-function TranqRotate:isHunterRegistered(GUID)
-
-    -- @todo refactor this using TranqRotate:getHunter(name, GUID)
-    for key,hunter in pairs(TranqRotate.hunterTable) do
-        if (hunter.GUID == GUID) then
-            return true
-        end
-    end
-
-    return false
-end
-
 -- Return our hunter object from name or GUID
 function TranqRotate:getHunter(name, GUID)
 
@@ -298,6 +285,7 @@ function TranqRotate:updateRaidStatus()
     if (TranqRotate:isInPveRaid()) then
 
         local playerCount = GetNumGroupMembers()
+        local complete = true
 
         for index = 1, playerCount, 1 do
 
@@ -305,28 +293,20 @@ function TranqRotate:updateRaidStatus()
 
             -- Players name might be nil at loading
             if (name ~= nil) then
-                local GUID = UnitGUID(name)
-                local hunter
-
                 if(TranqRotate:isHunter(name)) then
+                    local hunter = TranqRotate:getHunter(nil, UnitGUID(name))
 
-                    local registered = TranqRotate:isHunterRegistered(GUID)
-
-                    if (not registered) then
-                        if (not InCombatLockdown()) then
-                            hunter = TranqRotate:registerHunter(name)
-                            TranqRotate:registerUnitEvents(hunter)
-                            registered = true
-                        end
-                    else
-                        hunter = TranqRotate:getHunter(nil, GUID)
+                    if (hunter == nil and not InCombatLockdown()) then
+                        hunter = TranqRotate:registerHunter(name)
+                        TranqRotate:registerUnitEvents(hunter)
                     end
 
-                    if (registered) then
+                    if (hunter ~= nil) then
                         TranqRotate:updateHunterStatus(hunter)
                     end
                 end
-
+            else
+                complete = false
             end
         end
 
@@ -338,6 +318,15 @@ function TranqRotate:updateRaidStatus()
             end
             TranqRotate:sendSyncOrderRequest()
             TranqRotate.raidInitialized = true
+        end
+
+        -- If some player names are nil, retry
+        if (not complete and not TranqRotate.delayedUpdate) then
+            TranqRotate.delayedUpdate = true
+            C_Timer.After(1, function()
+                TranqRotate:updateRaidStatus()
+                TranqRotate.delayedUpdate = false
+            end)
         end
     else
         if(TranqRotate.raidInitialized == true) then
