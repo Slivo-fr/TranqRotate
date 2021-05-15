@@ -242,13 +242,11 @@ end
 
 -- Update the addon version of a given player
 function TranqRotate:updatePlayerAddonVersion(player, version)
+    TranqRotate.addonVersions[player] = version
 
     local hunter = TranqRotate:getHunter(player)
     if (hunter) then
-        hunter.addonVersion = version
         TranqRotate:updateBlindIcon(hunter)
-    else
-        TranqRotate.addonVersions[player] = version
     end
 end
 
@@ -257,14 +255,18 @@ function TranqRotate:checkVersions()
     TranqRotate:printPrefixedMessage("## Version check ##")
     TranqRotate:printPrefixedMessage("You - " .. TranqRotate.version)
 
-    for key, hunter in pairs(TranqRotate.hunterTable) do
-        if (hunter.name ~= UnitName("player")) then
-            TranqRotate:printPrefixedMessage(hunter.name .. " - " .. TranqRotate:formatAddonVersion(hunter.addonVersion))
-        end
-    end
     for player, version in pairs(TranqRotate.addonVersions) do
         if (player ~= UnitName("player")) then
             TranqRotate:printPrefixedMessage(player .. " - " .. TranqRotate:formatAddonVersion(version))
+        end
+    end
+end
+
+-- Removes players that left the raid from version table
+function TranqRotate:purgeAddonVersions()
+    for player, version in pairs(TranqRotate.addonVersions) do
+        if (not UnitInParty(player)) then
+            TranqRotate.addonVersions[player] = nil
         end
     end
 end

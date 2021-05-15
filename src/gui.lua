@@ -88,6 +88,8 @@ function TranqRotate:drawList(hunterList, parentFrame)
 
         -- SetColor
         setHunterFrameColor(hunter)
+        -- Update blind version icon
+        TranqRotate:updateBlindIcon(hunter)
 
         hunter.frame:Show()
         hunter.frame.hunter = hunter
@@ -129,7 +131,7 @@ end
 function TranqRotate:updateBlindIcon(hunter)
     if (
         not TranqRotate.db.profile.showIconOnHunterWithoutTranqRotate or
-        hunter.addonVersion ~= nil or
+        TranqRotate.addonVersions[hunter.name] ~= nil or
         hunter.name == UnitName('player') or
         not TranqRotate:isHunterOnline(hunter)
     ) then

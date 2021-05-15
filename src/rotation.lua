@@ -11,7 +11,6 @@ function TranqRotate:registerHunter(hunterName)
     hunter.nextTranq = false
     hunter.lastTranqTime = 0
     hunter.lastFailTime = 0
-    hunter.addonVersion = nil
 
     -- Add to global list
     table.insert(TranqRotate.hunterTable, hunter)
@@ -336,6 +335,7 @@ function TranqRotate:updateRaidStatus()
     end
 
     TranqRotate:purgeHunterList()
+    TranqRotate:purgeAddonVersions()
 end
 
 -- Update hunter status
