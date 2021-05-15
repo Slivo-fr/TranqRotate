@@ -4,7 +4,7 @@
 
 - Adds an icon on hunter not using the addon (You can disable it in the settings)
 - Adds `/tranq test` command to toggle the test mode
-- Fix another lua error using `/tranq check` with non hunter users
+- Improves and fix player addon version checks
 
 #### v1.6.1
 
