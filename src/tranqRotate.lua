@@ -7,15 +7,15 @@ TranqRotate.version = GetAddOnMetadata(..., "Version")
 -- Initialize addon - Shouldn't be call more than once
 function TranqRotate:init()
 
-    self:LoadDefaults()
+    TranqRotate:LoadDefaults()
 
-    self.db = LibStub:GetLibrary("AceDB-3.0"):New("TranqRotateDb", self.defaults, true)
-    self.db.RegisterCallback(self, "OnProfileChanged", "ProfilesChanged")
-    self.db.RegisterCallback(self, "OnProfileCopied", "ProfilesChanged")
-    self.db.RegisterCallback(self, "OnProfileReset", "ProfilesChanged")
+    TranqRotate.db = LibStub:GetLibrary("AceDB-3.0"):New("TranqRotateDb", self.defaults, true)
+    TranqRotate.db.RegisterCallback(self, "OnProfileChanged", "ProfilesChanged")
+    TranqRotate.db.RegisterCallback(self, "OnProfileCopied", "ProfilesChanged")
+    TranqRotate.db.RegisterCallback(self, "OnProfileReset", "ProfilesChanged")
 
-    self:CreateConfig()
-    TranqRotate.migrateProfile()
+    TranqRotate:CreateConfig()
+    TranqRotate:migrateProfile()
 
     TranqRotate.hunterTable = {}
     TranqRotate.addonVersions = {}
