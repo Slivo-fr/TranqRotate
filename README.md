@@ -6,7 +6,7 @@ It also allow non-hunter raid leaders to easily manage, report and watch the tra
 
 This addon will work even if you are the only one using it in your raid. (With some combat log range limitation, see bellow)
 
-![Screenshot](docs/screenshots/screenshot.png "ui") ![Screenshot](docs/screenshots/drag.gif "ui")  ![Screenshot](docs/screenshots/rotation.gif "ui")
+![Screenshot](docs/screenshots/screenshot.png "screenshot") ![Screenshot](docs/screenshots/drag.gif "drag and drop gif")  ![Screenshot](docs/screenshots/rotation.gif "rotation gif")
 
 ## Feedback
 
