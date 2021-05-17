@@ -77,13 +77,13 @@ function TranqRotate:sendAnnounceMessage(message, targetName, raidIconFlags)
             TranqRotate.db.profile.channelType == "SAY" or TranqRotate.db.profile.channelType == "YELL"
         )
     ) then
-        targetName = TranqRotate:getRaidTargetIconPrint(raidIconFlags, TranqRotate.iconTypePrint) .. targetName
+        targetName = TranqRotate:getRaidTargetIcon(raidIconFlags, TranqRotate.iconTypePrint) .. targetName
         TranqRotate:printPrefixedMessage(string.format(message, targetName) .. " " .. L["YELL_SAY_DISABLED_OPEN_WORLD"])
         return
     end
 
     if TranqRotate.db.profile.enableAnnounces then
-        targetName = TranqRotate:getRaidTargetIconChat(raidIconFlags, TranqRotate.iconTypeChat) .. targetName
+        targetName = TranqRotate:getRaidTargetIcon(raidIconFlags, TranqRotate.iconTypeChat) .. targetName
         TranqRotate:sendMessage(
             string.format(message, targetName),
             TranqRotate.db.profile.channelType,

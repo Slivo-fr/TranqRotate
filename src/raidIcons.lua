@@ -1,45 +1,28 @@
 TranqRotate.iconTypeChat = "chat"
 TranqRotate.iconTypePrint = "print"
 
-TranqRotate.raidIconMaskToIcon = {
-    [COMBATLOG_OBJECT_RAIDTARGET1] = {
-        [TranqRotate.iconTypeChat] = "{rt1}",
-        [TranqRotate.iconTypePrint] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_1.blp:0|t"
-    },
-    [COMBATLOG_OBJECT_RAIDTARGET2] = {
-        [TranqRotate.iconTypeChat] = "{rt2}",
-        [TranqRotate.iconTypePrint] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_2.blp:0|t"
-    },
-    [COMBATLOG_OBJECT_RAIDTARGET3] = {
-        [TranqRotate.iconTypeChat] = "{rt3}",
-        [TranqRotate.iconTypePrint] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_3.blp:0|t"
-    },
-    [COMBATLOG_OBJECT_RAIDTARGET4] = {
-        [TranqRotate.iconTypeChat] = "{rt4}",
-        [TranqRotate.iconTypePrint] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_4.blp:0|t"
-    },
-    [COMBATLOG_OBJECT_RAIDTARGET5] = {
-        [TranqRotate.iconTypeChat] = "{rt5}",
-        [TranqRotate.iconTypePrint] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_5.blp:0|t"
-    },
-    [COMBATLOG_OBJECT_RAIDTARGET6] = {
-        [TranqRotate.iconTypeChat] = "{rt6}",
-        [TranqRotate.iconTypePrint] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_6.blp:0|t"
-    },
-    [COMBATLOG_OBJECT_RAIDTARGET7] = {
-        [TranqRotate.iconTypeChat] = "{rt7}",
-        [TranqRotate.iconTypePrint] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_7.blp:0|t"
-    },
-    [COMBATLOG_OBJECT_RAIDTARGET8] = {
-        [TranqRotate.iconTypeChat] = "{rt8}",
-        [TranqRotate.iconTypePrint] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_8.blp:0|t"
-    },
+TranqRotate.raidIconMaskToIndex = {
+    [COMBATLOG_OBJECT_RAIDTARGET1] = 1,
+    [COMBATLOG_OBJECT_RAIDTARGET2] = 2,
+    [COMBATLOG_OBJECT_RAIDTARGET3] = 3,
+    [COMBATLOG_OBJECT_RAIDTARGET4] = 4,
+    [COMBATLOG_OBJECT_RAIDTARGET5] = 5,
+    [COMBATLOG_OBJECT_RAIDTARGET6] = 6,
+    [COMBATLOG_OBJECT_RAIDTARGET7] = 7,
+    [COMBATLOG_OBJECT_RAIDTARGET8] = 8,
 }
+
+TranqRotate.chatIconString = "{rt%d}"
+TranqRotate.printIconString = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d.blp:0|t"
 
 function TranqRotate:getRaidTargetIcon(flags, type)
     local raidIconMask = bit.band(flags, COMBATLOG_OBJECT_RAIDTARGET_MASK)
-    if (TranqRotate.raidIconMaskToIcon[raidIconMask]) then
-        return TranqRotate.raidIconMaskToIcon[raidIconMask][type]
+    if (TranqRotate.raidIconMaskToIndex[raidIconMask]) then
+        if (type == TranqRotate.iconTypeChat) then
+            return string.format(TranqRotate.chatIconString, TranqRotate.raidIconMaskToIndex[raidIconMask])
+        elseif (type == TranqRotate.iconTypePrint) then
+            return string.format(TranqRotate.printIconString, TranqRotate.raidIconMaskToIndex[raidIconMask])
+        end
     end
 
     return ""
