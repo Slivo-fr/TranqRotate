@@ -1,3 +1,5 @@
+local L = TranqRotate.L
+
 -- Create main window
 function TranqRotate:createMainFrame()
     TranqRotate.mainFrame = CreateFrame("Frame", 'mainFrame', UIParent)
@@ -154,6 +156,7 @@ function TranqRotate:createHunterFrame(hunter, parentFrame)
     hunter.frame.text:SetText(hunter.name)
 
     TranqRotate:createCooldownFrame(hunter)
+    TranqRotate:createBlindIconFrame(hunter)
     TranqRotate:configureHunterFrameDrag(hunter)
 
     TranqRotate:toggleHunterFrameDragging(hunter, TranqRotate:isPlayerAllowedToSortHunterList())
@@ -196,6 +199,53 @@ function TranqRotate:createCooldownFrame(hunter)
     )
 
     hunter.frame.cooldownFrame:Hide()
+end
+
+-- Create the blind icon frame
+function TranqRotate:createBlindIconFrame(hunter)
+
+    -- Frame
+    hunter.frame.blindIconFrame = CreateFrame("Frame", nil, hunter.frame)
+    hunter.frame.blindIconFrame:SetPoint('RIGHT', -5, 0)
+    hunter.frame.blindIconFrame:SetPoint('CENTER', 0, 0)
+    hunter.frame.blindIconFrame:SetWidth(16)
+    hunter.frame.blindIconFrame:SetHeight(16)
+
+    -- Set Texture
+    hunter.frame.blindIconFrame.texture = hunter.frame.blindIconFrame:CreateTexture(nil, "ARTWORK")
+    hunter.frame.blindIconFrame.texture:SetTexture("Interface\\AddOns\\TranqRotate\\textures\\blind.tga")
+    hunter.frame.blindIconFrame.texture:SetAllPoints()
+    hunter.frame.blindIconFrame.texture:SetTexCoord(0.15, 0.85, 0.15, 0.85);
+
+    -- Tooltip
+    hunter.frame.blindIconFrame:SetScript("OnEnter", TranqRotate.onBlindIconEnter)
+    hunter.frame.blindIconFrame:SetScript("OnLeave", TranqRotate.onBlindIconLeave)
+
+    -- Drag & drop handlers
+    hunter.frame.blindIconFrame:SetScript("OnDragStart", function(self, ...)
+        ExecuteFrameScript(self:GetParent(), "OnDragStart", ...);
+    end)
+    hunter.frame.blindIconFrame:SetScript("OnDragStop", function(self, ...)
+        ExecuteFrameScript(self:GetParent(), "OnDragStop", ...);
+    end)
+
+    hunter.frame.blindIconFrame:Hide()
+end
+
+-- Blind icon tooltip show
+function TranqRotate:onBlindIconEnter()
+    if (TranqRotate.db.profile.showBlindIconTooltip) then
+        GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
+        GameTooltip:SetText(L["TOOLTIP_PLAYER_WITHOUT_ADDON"])
+        GameTooltip:AddLine(L["TOOLTIP_MAY_RUN_OUDATED_VERSION"])
+        GameTooltip:AddLine(L["TOOLTIP_DISABLE_SETTINGS"])
+        GameTooltip:Show()
+    end
+end
+
+-- Blind icon tooltip hide
+function TranqRotate:onBlindIconLeave(self, motion)
+    GameTooltip:Hide()
 end
 
 -- Create the boss frenzy CD frame

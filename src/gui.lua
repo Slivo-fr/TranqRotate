@@ -87,7 +87,9 @@ function TranqRotate:drawList(hunterList, parentFrame)
         end
 
         -- SetColor
-        setHunterFrameColor(hunter)
+        TranqRotate:setHunterFrameColor(hunter)
+        -- Update blind version icon
+        TranqRotate:updateBlindIcon(hunter)
 
         hunter.frame:Show()
         hunter.frame.hunter = hunter
@@ -105,11 +107,12 @@ end
 
 -- Refresh a single hunter frame
 function TranqRotate:refreshHunterFrame(hunter)
-    setHunterFrameColor(hunter)
+    TranqRotate:setHunterFrameColor(hunter)
+    TranqRotate:updateBlindIcon(hunter)
 end
 
 -- Set the hunter frame color regarding it's status
-function setHunterFrameColor(hunter)
+function TranqRotate:setHunterFrameColor(hunter)
 
     local color = TranqRotate.colors.green
 
@@ -124,6 +127,28 @@ function setHunterFrameColor(hunter)
     hunter.frame.texture:SetVertexColor(color:GetRGB())
 end
 
+-- Toggle blind icon display based on addonVersion
+function TranqRotate:updateBlindIcon(hunter)
+    if (
+        not TranqRotate.db.profile.showIconOnHunterWithoutTranqRotate or
+        TranqRotate.addonVersions[hunter.name] ~= nil or
+        hunter.name == UnitName('player') or
+        not TranqRotate:isHunterOnline(hunter)
+    ) then
+        hunter.frame.blindIconFrame:Hide()
+    else
+        hunter.frame.blindIconFrame:Show()
+    end
+end
+
+-- Refresh all blind icons
+function TranqRotate:refreshBlindIcons()
+    for _, hunter in pairs(TranqRotate.hunterTable) do
+        TranqRotate:updateBlindIcon(hunter)
+    end
+end
+
+-- Starts the tranq cooldown progress
 function TranqRotate:startHunterCooldown(hunter)
     hunter.frame.cooldownFrame.statusBar:SetMinMaxValues(GetTime(), GetTime() + 20)
     hunter.frame.cooldownFrame.statusBar.expirationTime = GetTime() + 20

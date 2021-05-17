@@ -6,13 +6,13 @@ It also allow non-hunter raid leaders to easily manage, report and watch the tra
 
 This addon will work even if you are the only one using it in your raid. (With some combat log range limitation, see bellow)
 
-![Screenshot](docs/screenshots/screenshot.png "ui") ![Screenshot](docs/screenshots/drag.gif "ui")  ![Screenshot](docs/screenshots/rotation.gif "ui")
+![Screenshot](docs/screenshots/screenshot.png "screenshot") ![Screenshot](docs/screenshots/drag.gif "drag and drop gif")  ![Screenshot](docs/screenshots/rotation.gif "rotation gif")
 
 ## Feedback
 
 I'm looking for feedback ! I've set up a small discord server to get in touch : https://discord.gg/bPFyvDe
  
-Please report any issue using github issues : https://github.com/Slivo-fr/TranqRotate/issues
+Please report any issue on github : https://github.com/Slivo-fr/TranqRotate/issues
 
 ## Features
 
@@ -33,6 +33,7 @@ Please report any issue using github issues : https://github.com/Slivo-fr/TranqR
 - Optional automatic backup call when incapacitated
 - Optional automatic timed backup call 
 - Prints to chat name and reason of a tranq fail (miss or resist)
+- Show an indicator on hunters that does not use the addon
 
 ## Usage
  
@@ -64,7 +65,6 @@ Here is a list of feature I want to implement at some point, no specific order i
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot
 - Automatic reset of rotation when raid wipe
 - Adds raid markers to tranq announces if target has one
-- Show an indicator on hunters that does not use TranqRotate (So you know you have to inform them about the rotation)
 
 ## Download
 

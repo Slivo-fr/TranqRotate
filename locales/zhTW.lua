@@ -34,6 +34,10 @@ local L = {
     ["FEATURES_HEADER"] = "Optionals features",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Display frenzy cooldown progress bar",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "A thin progress bar just under the title bar will show the progress",
+    ["DISPLAY_BLIND_ICON"] = "Show an icon for hunter without TranqRotate",
+    ["DISPLAY_BLIND_ICON_DESC"] = "Adds a blind icon on the hunter frame to indicate he's not using the addon. This means he will not be aware of the rotate unless you communicate with him and his tranqshot won't be synced if he's far from every other TranqRotate user.",
+    ["DISPLAY_BLIND_ICON_TOOLTIP"] = "Show the blind icon tooltip",
+    ["DISPLAY_BLIND_ICON_TOOLTIP_DESC"] = "You can disable this options to disable the tooltip while still having the icon",
     ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "Enable automatic backup alert when incapacitated",
     ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate will check for your debuffs when you should actually tranq and will call for backup if you are incapacitated for longer than the defined delay",
     ["INCAPACITATED_DELAY_THRESHOLD"] = "Incapacitated alert threshold",
@@ -96,6 +100,11 @@ local L = {
     ["BROADCAST_HEADER_TEXT"] = "獵人寧神順序",
     ["BROADCAST_ROTATION_PREFIX"] = "循環",
     ["BROADCAST_BACKUP_PREFIX"] = "替補",
+
+    --- Blind icon tooltip
+    ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "This player does not use TranqRotate",
+    ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "Or runs an outdated version below 1.6.0",
+    ["TOOLTIP_DISABLE_SETTINGS"] = "(You can disable this icon and/or this tooltip in the settings)",
 }
 
 TranqRotate.L = L

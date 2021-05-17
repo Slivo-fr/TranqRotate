@@ -31,23 +31,27 @@ local L = {
     ["ARCANE_SHOT_TESTING_ENABLED"] = "Тестовый режим включен на 10 минут",
     ["ARCANE_SHOT_TESTING_DISABLED"] = "Тестовый режим выключен",
 
-    ["FEATURES_HEADER"] = "Optionals features",
-    ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Display frenzy cooldown progress bar",
-    ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "A thin progress bar just under the title bar will show the progress",
-    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "Enable automatic backup alert when incapacitated",
-    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate will check for your debuffs when you should actually tranq and will call for backup if you are incapacitated for longer than the defined delay",
-    ["INCAPACITATED_DELAY_THRESHOLD"] = "Incapacitated alert threshold",
-    ["INCAPACITATED_DELAY_THRESHOLD_DESC"] = "If you are incapacitated for longer than the configured delay, TranqRotate will automatically call for backup",
-    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT"] = "Enable timed automatic backup alert",
-    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"] = "TranqRotate will call for backup if the boss is on frenzy for a defined delay and you should have been tranqing it",
-    ["TIMED_DELAY_THRESHOLD"] = "Timed alert threshold",
-    ["TIMED_DELAY_THRESHOLD_DESC"] = "TranqRotate will automatically call for backup if you do not tranq within the configured threshold",
+    ["FEATURES_HEADER"] = "Дополнительные возможности",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Показывть полоску перезарядки бешенства",
+    ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "Тонкая полоса прямо под строкой заголовка будет показывать прогресс перезарядки",
+    ["DISPLAY_BLIND_ICON"] = "Показывать иконку для охотника без TranqRotate",
+    ["DISPLAY_BLIND_ICON_DESC"] = "Добавляет значок в рамку охотника, показывабщий, что он не использует аддон. Это означает, что он не будет знать о ротации, если вы не сообщите ему, и его Усмеряющий выстрел не будет синхронизирован, если он находится далеко от всех остальных пользователей TranqRotate.",
+    ["DISPLAY_BLIND_ICON_TOOLTIP"] = "Показать всплывающую подсказку для значка",
+    ["DISPLAY_BLIND_ICON_TOOLTIP_DESC"] = "При отключить этого параметра, отключается всплывающая потказка для значка, при этом зам значок все еще отображается",
+    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "Включить автоматическое оповещение запасным при неспособности",
+    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate проверит ваши дебаффы, и когда вы должны будите использовать Усмиряющий выстрел, а вы не сможете его применить в отведенную очередность, он оповестит запасных",
+    ["INCAPACITATED_DELAY_THRESHOLD"] = "Порог оповещения о неспособности",
+    ["INCAPACITATED_DELAY_THRESHOLD_DESC"] = "Если вы потеряете способность выполнить действие дольше установленной задержки, TranqRotate автоматически оповестит запасных",
+    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT"] = "Включить время автоматического оповещения запасных",
+    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"] = "TranqRotate оповестит запасных, если босс находится в бешенсте в течение оппределенного времени, а вы должны были усмирять его",
+    ["TIMED_DELAY_THRESHOLD"] = "Время порого для оповещения",
+    ["TIMED_DELAY_THRESHOLD_DESC"] = "TranqRotate автоматически оповестит запасных, если вы не произвели успирение в установленный порог",
 
     --- Announces
     ["SETTING_ANNOUNCES"] = "Оповещения",
     ["ENABLE_ANNOUNCES"] = "Включить оповещения",
     ["ENABLE_ANNOUNCES_DESC"] = "Включить / отключить оповещения",
-    ["YELL_SAY_DISABLED_OPEN_WORLD"] = "(Yell and say channels does not work in open world, but will inside your raids)",
+    ["YELL_SAY_DISABLED_OPEN_WORLD"] = "(Каналы Крикнуть и Сказать работают внутри ваших рейдов, но не в открытом мире)",
 
     ---- Channels
     ["ANNOUNCES_CHANNEL_HEADER"] = "Канал оповещений",
@@ -69,14 +73,14 @@ local L = {
     ["SUCCESS_MESSAGE_LABEL"] = "При успехе сообщить",
     ["FAIL_MESSAGE_LABEL"] = "При промахе сообщить",
     ["FAIL_WHISPER_LABEL"] = "При промахе шепнуть запасным",
-    ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "Message whispered when you cannot tranq or call for backup",
+    ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "Сообщение шепота, когда вы не можете произвести усирение или оповестить запасных",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Усмиряющий выстрел в %s",
-    ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! Усмиряющий выстрел промах в %s !!!",
-    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "!!! Усмиряющий выстрел промах !!! ! СТРЕЛЯЙ СЕЙЧАС !",
-    ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "I'M UNABLE TO TRANQ ! TRANQ NOW !",
+    ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! Усмиряющий выстрел промахнулся в %s !!!",
+    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "!!! Усмиряющий выстрел промахнулся !!! ! УСМИРЯЙ СЕЙЧАС !",
+    ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "Я НЕ МОГУ УСМИРИТЬ ! УСМИРЯЙ СЕЙЧАС !",
 
-    ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "СТРЕЛЯЙ СЕЙЧАС !",
+    ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "УСМИРЯЙ СЕЙЧАС !",
 
     ["BROADCAST_MESSAGE_HEADER"] = "Объявление очередности",
     ["USE_MULTILINE_ROTATION_REPORT"] = "Использовать многострочный вывод при объявлении очередности",
@@ -96,6 +100,11 @@ local L = {
     ["BROADCAST_HEADER_TEXT"] = "Очередность Усмиряющего выстрела",
     ["BROADCAST_ROTATION_PREFIX"] = "Очередность",
     ["BROADCAST_BACKUP_PREFIX"] = "Запасные",
+
+    --- Blind icon tooltip
+    ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "Этот игрок не использует TranqRotate",
+    ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "Или используется версия ниже 1.6.0",
+    ["TOOLTIP_DISABLE_SETTINGS"] = "(Вы можете отключить этот значок и/или эту подсказку в настройках)",
 }
 
 TranqRotate.L = L

@@ -1,5 +1,11 @@
 ## TranqRotate Changelog
 
+#### v1.7.0
+
+- Adds an icon on hunter not using the addon (You can disable it in the settings)
+- Adds `/tranq test` command to toggle the test mode
+- Improves and fix player addon version checks
+
 #### v1.6.1
 
 - Update ace3 libs for TBC prepatch
@@ -33,7 +39,7 @@
 
 #### v1.4.0
 
-- TranqRotate now play a sound when you need to tranq (You can disable it in the options)
+- TranqRotate now play a sound when you need to tranq (You can disable it in the settings)
 - Added an option to not show up the window each time you join a raid
 - Added an option to have the window show up when you target a tranq-able boss
 - Rotation will now reset when you kill the boss

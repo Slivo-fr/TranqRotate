@@ -34,6 +34,10 @@ local L = {
     ["FEATURES_HEADER"] = "可选功能",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "显示激怒冷却进度条",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "标题栏下方显示一个细进度条",
+    ["DISPLAY_BLIND_ICON"] = "显示一个没有TranqRotate插件的失明图标",
+    ["DISPLAY_BLIND_ICON_DESC"] = "在猎人框架上添加一个失明图标，表明他没有使用此插件。这意味着他将不会意识到轮换，除非你与他交流，如果他远离其他TranqRotate用户，他的宁神射击将不会同步。",
+    ["DISPLAY_BLIND_ICON_TOOLTIP"] = "显示失明图标的工具提示",
+    ["DISPLAY_BLIND_ICON_TOOLTIP_DESC"] = "您可以禁用此选项来禁用工具提示，同时仍然拥有图标",
     ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "当无法工作时，启用自动替补通告",
     ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate会检查你的Debuff，如果轮到你宁神时，你瘫痪时间超过定义的延迟时间，则会要求替补",
     ["INCAPACITATED_DELAY_THRESHOLD"] = "瘫痪通告阀值",
@@ -41,13 +45,13 @@ local L = {
     ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT"] = "启用定时自动替补通告",
     ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"] = "如果BOSS在规定的延迟时间内激怒，而你已经宁神了，那么TranqRotate会要求替补",
     ["TIMED_DELAY_THRESHOLD"] = "定时通告阈值",
-    ["TIMED_DELAY_THRESHOLD_DESC"] = "如果你没有在配置的阈值内进行宁神, TranqRotate将自动调用替补",
+    ["TIMED_DELAY_THRESHOLD_DESC"] = "如果你没有在配置的阈值内进行宁神，TranqRotate将自动调用替补",
 
     --- Announces
     ["SETTING_ANNOUNCES"] = "通告",
     ["ENABLE_ANNOUNCES"] = "启用通告",
     ["ENABLE_ANNOUNCES_DESC"] = "启用 / 禁用通告",
-    ["YELL_SAY_DISABLED_OPEN_WORLD"] = "(Yell and say channels does not work in open world, but will inside your raids)",
+    ["YELL_SAY_DISABLED_OPEN_WORLD"] = "(大喊并说 频道在开放世界中不工作，但会在你的团本中工作)",
 
     ---- Channels
     ["ANNOUNCES_CHANNEL_HEADER"] = "通告频道",
@@ -69,12 +73,12 @@ local L = {
     ["SUCCESS_MESSAGE_LABEL"] = "施放成功通告信息",
     ["FAIL_MESSAGE_LABEL"] = "施放失败通告信息",
     ["FAIL_WHISPER_LABEL"] = "施放失败私聊信息",
-    ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "Message whispered when you cannot tranq or call for backup",
+    ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "当你无法宁神或呼叫替补时,这条信息就会低声传来",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已对 %s 施放了宁神射击!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 对 %s 宁神失败!!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "宁神失败 !! 赶紧补宁神!!",
-    ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "I'M UNABLE TO TRANQ ! TRANQ NOW !",
+    ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "我无法宁神射击 ! 请现在宁神 !",
 
     ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "立即使用宁神 !!",
 
@@ -96,6 +100,11 @@ local L = {
     ["BROADCAST_HEADER_TEXT"] = "猎人宁神顺序",
     ["BROADCAST_ROTATION_PREFIX"] = "循环",
     ["BROADCAST_BACKUP_PREFIX"] = "替补",
+
+    --- Blind icon tooltip
+    ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "此玩家没有使用TranqRotate插件",
+    ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "或者运行低于1.6.0的过时版本",
+    ["TOOLTIP_DISABLE_SETTINGS"] = "(您可以在设置中禁用此图标或此工具提示)",
 }
 
 TranqRotate.L = L

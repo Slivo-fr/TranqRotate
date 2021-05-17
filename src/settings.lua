@@ -91,54 +91,69 @@ function TranqRotate:CreateConfig()
                     testHeader = {
                         name = L["TEST_MODE_HEADER"],
                         type = "header",
-                        order = 10,
+                        order = 30,
                     },
                     ToggleArcaneShotTestingDesc = {
                         name = L['ENABLE_ARCANE_SHOT_TESTING_DESC'],
                         type = "description",
                         width = "full",
-                        order = 11,
+                        order = 31,
                     },
                     spacer12 = {
                         name = ' ',
                         type = "description",
                         width = "full",
-                        order = 12,
+                        order = 32,
                     },
                     ToggleArcaneShotTesting = {
                         name = L["ENABLE_ARCANE_SHOT_TESTING"],
                         type = "execute",
-                        order = 13,
+                        order = 33,
                         func = function() TranqRotate.toggleArcaneShotTesting() end
                     },
                     featuresHeader = {
                         name = L["FEATURES_HEADER"],
                         type = "header",
-                        order = 20,
+                        order = 50,
                     },
                     showFrenzyCooldownProgress = {
                         name = L["DISPLAY_BOSS_FRENZY_COOLDOWN"],
                         desc = L["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"],
                         type = "toggle",
-                        order = 21,
+                        order = 51,
                         width = "full",
                         set = function(info, value)
                             set(info, value)
                             if (not value) then TranqRotate:resetFrenzyFrame() end
                         end
                     },
+                    showIconOnHunterWithoutTranqRotate = {
+                        name = L["DISPLAY_BLIND_ICON"],
+                        desc = L["DISPLAY_BLIND_ICON_DESC"],
+                        type = "toggle",
+                        order = 52,
+                        width = "full",
+                        set = function(info, value) set(info,value) TranqRotate:refreshBlindIcons() end
+                    },
+                    showBlindIconTooltip = {
+                        name = L["DISPLAY_BLIND_ICON_TOOLTIP"],
+                        desc = L["DISPLAY_BLIND_ICON_TOOLTIP_DESC"],
+                        type = "toggle",
+                        order = 53,
+                        width = "full",
+                    },
                     enableIncapacitatedBackupAlert = {
                         name = L["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"],
                         desc = L["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"],
                         type = "toggle",
-                        order = 25,
+                        order = 54,
                         width = "double",
                     },
                     incapacitatedDelay = {
                         name = L["INCAPACITATED_DELAY_THRESHOLD"],
                         desc = L["INCAPACITATED_DELAY_THRESHOLD_DESC"],
                         type = "range",
-                        order = 26,
+                        order = 55,
                         width = "normal",
                         min = 1,
                         max = 6,
@@ -148,14 +163,14 @@ function TranqRotate:CreateConfig()
                         name = L["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT"],
                         desc = L["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"],
                         type = "toggle",
-                        order = 30,
+                        order = 56,
                         width = "double",
                     },
                     timedBackupAlertDelay = {
                         name = L["TIMED_DELAY_THRESHOLD"],
                         desc = L["TIMED_DELAY_THRESHOLD_DESC"],
                         type = "range",
-                        order = 31,
+                        order = 57,
                         width = "normal",
                         min = 1,
                         max = 6,

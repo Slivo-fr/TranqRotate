@@ -1,3 +1,4 @@
+-- Runs migrations on the current profile based on the currentMigration value
 function TranqRotate:migrateProfile()
 
     if (TranqRotate.db.profile.currentMigration == nil) then

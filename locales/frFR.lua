@@ -34,6 +34,10 @@ local L = {
     ["FEATURES_HEADER"] = "Fonctionnalités optionnelles",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Afficher le cooldown de frénésie des boss",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "Une fine barre de progression, juste sous la barre de titre, indiquera le cooldown de la frénésie",
+    ["DISPLAY_BLIND_ICON"] = "Afficher une icone pour les chasseurs qui n'utilisent pas TranqRotate",
+    ["DISPLAY_BLIND_ICON_DESC"] = "Ajoute une icone \"aveugle\" sur le chasseur pour indiquer qu'il n'utilise pas l'addon. Cela signifie qu'il ne connaitra pas la rotation affichée à moins de lui communiquer, ses tir tranquilisants ne seront également pas synchronisés si le joueur se retrouve loin des utilisateurs de l'addons",
+    ["DISPLAY_BLIND_ICON_TOOLTIP"] = "Afficher l'infobulle pour l'icone \"aveugle\"",
+    ["DISPLAY_BLIND_ICON_TOOLTIP_DESC"] = "En désactivant cette option vous désactivez l'infobulle tout en conservant l'icone",
     ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "Activer l'alerte automatique en cas d'incapacité",
     ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate alertera automatiquement le backup si un debuff vous empeche de tranq pendant un temps supérieur au délai configuré",
     ["INCAPACITATED_DELAY_THRESHOLD"] = "Délai pour l'alerte d'incapacité",
@@ -96,6 +100,11 @@ local L = {
     ["BROADCAST_HEADER_TEXT"] = "Hunter tranqshot setup",
     ["BROADCAST_ROTATION_PREFIX"] = "Rotation",
     ["BROADCAST_BACKUP_PREFIX"] = "Backup",
+
+    --- Blind icon tooltip
+    ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "Ce joueur n'utilise pas TranqRotate",
+    ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "Ou possède une version obsolète inférieure à 1.6.0",
+    ["TOOLTIP_DISABLE_SETTINGS"] = "(Il est possible de désactiver l'icone et/ou l'infobulle dans les options)",
 }
 
 TranqRotate.L = L
