@@ -64,7 +64,6 @@ Here is a list of feature I want to implement at some point, no specific order i
 - Automatic handling of death and disconnection of hunters on the rotation group (swap with a backup, send an alert about it)
 - Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot
 - Automatic reset of rotation when raid wipe
-- Adds raid markers to tranq announces if target has one
 
 ## Download
 

@@ -69,7 +69,7 @@ function TranqRotate:printPrefixedMessage(msg)
 end
 
 -- Send a tranq announce message to a given channel
-function TranqRotate:sendAnnounceMessage(message, targetName)
+function TranqRotate:sendAnnounceMessage(message, targetName, raidIconFlags)
 
     -- Prints instead to avoid lua error in open world with say and yell
     if (
@@ -77,14 +77,15 @@ function TranqRotate:sendAnnounceMessage(message, targetName)
             TranqRotate.db.profile.channelType == "SAY" or TranqRotate.db.profile.channelType == "YELL"
         )
     ) then
+        targetName = TranqRotate:getRaidTargetIconPrint(raidIconFlags, TranqRotate.iconTypePrint) .. targetName
         TranqRotate:printPrefixedMessage(string.format(message, targetName) .. " " .. L["YELL_SAY_DISABLED_OPEN_WORLD"])
         return
     end
 
     if TranqRotate.db.profile.enableAnnounces then
+        targetName = TranqRotate:getRaidTargetIconChat(raidIconFlags, TranqRotate.iconTypeChat) .. targetName
         TranqRotate:sendMessage(
-            message,
-            targetName,
+            string.format(message, targetName),
             TranqRotate.db.profile.channelType,
             TranqRotate.db.profile.targetChannel
         )
@@ -104,12 +105,12 @@ function TranqRotate:sendRotationSetupBroadcastMessage(message)
 end
 
 -- Send a message to a given channel
-function TranqRotate:sendMessage(message, targetName, channelType, targetChannel)
+function TranqRotate:sendMessage(message, channelType, targetChannel)
     local channelNumber
     if channelType == "CHANNEL" then
         channelNumber = GetChannelName(targetChannel)
     end
-    SendChatMessage(string.format(message, targetName), channelType, nil, channelNumber or targetChannel)
+    SendChatMessage(message, channelType, nil, channelNumber or targetChannel)
 end
 
 SLASH_TRANQROTATE1 = "/tranq"
