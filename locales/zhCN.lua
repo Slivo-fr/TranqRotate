@@ -34,9 +34,9 @@ local L = {
     ["FEATURES_HEADER"] = "可选功能",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "显示激怒冷却进度条",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "标题栏下方显示一个细进度条",
-    ["DISPLAY_BLIND_ICON"] = "显示一个没有TranqRotate的猎人图标",
-    ["DISPLAY_BLIND_ICON_DESC"] = "在猎人框架上添加一个盲人图标，表明他没有使用此插件。这意味着他将不会意识到轮换，除非你与他交流，如果他远离其他TranqRotate用户，他的宁神射击将不会同步。",
-    ["DISPLAY_BLIND_ICON_TOOLTIP"] = "显示盲人图标的工具提示",
+    ["DISPLAY_BLIND_ICON"] = "显示一个没有TranqRotate插件的失明图标",
+    ["DISPLAY_BLIND_ICON_DESC"] = "在猎人框架上添加一个失明图标，表明他没有使用此插件。这意味着他将不会意识到轮换，除非你与他交流，如果他远离其他TranqRotate用户，他的宁神射击将不会同步。",
+    ["DISPLAY_BLIND_ICON_TOOLTIP"] = "显示失明图标的工具提示",
     ["DISPLAY_BLIND_ICON_TOOLTIP_DESC"] = "您可以禁用此选项来禁用工具提示，同时仍然拥有图标",
     ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "当无法工作时，启用自动替补通告",
     ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate会检查你的Debuff，如果轮到你宁神时，你瘫痪时间超过定义的延迟时间，则会要求替补",
@@ -73,7 +73,7 @@ local L = {
     ["SUCCESS_MESSAGE_LABEL"] = "施放成功通告信息",
     ["FAIL_MESSAGE_LABEL"] = "施放失败通告信息",
     ["FAIL_WHISPER_LABEL"] = "施放失败私聊信息",
-    ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "当你无法宁神或请求支援时,这条信息就会低声传来",
+    ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "当你无法宁神或呼叫替补时,这条信息就会低声传来",
 
     ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已对 %s 施放了宁神射击!",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 对 %s 宁神失败!!!",
@@ -102,9 +102,9 @@ local L = {
     ["BROADCAST_BACKUP_PREFIX"] = "替补",
 
     --- Blind icon tooltip
-    ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "此玩家不使用TranqRotate",
+    ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "此玩家没有使用TranqRotate插件",
     ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "或者运行低于1.6.0的过时版本",
-    ["TOOLTIP_DISABLE_SETTINGS"] = "(您可以在设置中禁用此图标和/或此工具提示)",
+    ["TOOLTIP_DISABLE_SETTINGS"] = "(您可以在设置中禁用此图标或此工具提示)",
 }
 
 TranqRotate.L = L
