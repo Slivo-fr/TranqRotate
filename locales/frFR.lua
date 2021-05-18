@@ -70,12 +70,14 @@ local L = {
 
     ---- Messages
     ["ANNOUNCES_MESSAGE_HEADER"] = "Annonces de tir tranquilisant",
-    ["SUCCESS_MESSAGE_LABEL"] = "Message de réussite",
+    ["BOSS_SUCCESS_MESSAGE_LABEL"] = "Message de réussite sur boss (%s est le nom du prochain chasseur)",
+    ["TRASH_SUCCESS_MESSAGE_LABEL"] = "Message de réussite sur trash (%s est le nom de la cible)",
     ["FAIL_MESSAGE_LABEL"] = "Message d'échec",
     ["FAIL_WHISPER_LABEL"] = "Message d'échec chuchoté",
     ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "Message chuchoté quand vous ne pouvez pas tranq ou que vous demandez un backup",
 
-    ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait sur %s",
+    ['DEFAULT_BOSS_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait, %s est le suivant!",
+    ['DEFAULT_TRASH_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait sur %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TIR TRANQUILLISANT RATE SUR %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TIR TRANQUILISANT RATE ! TRANQ MAINTENANT !",
     ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "JE NE PEUX PAS TRANQ ! TRANQ MAINTENANT !",

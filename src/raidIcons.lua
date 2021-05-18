@@ -1,5 +1,4 @@
-TranqRotate.iconTypeChat = "chat"
-TranqRotate.iconTypePrint = "print"
+TranqRotate.chatIconString = "{rt%d}"
 
 TranqRotate.raidIconMaskToIndex = {
     [COMBATLOG_OBJECT_RAIDTARGET1] = 1,
@@ -12,17 +11,10 @@ TranqRotate.raidIconMaskToIndex = {
     [COMBATLOG_OBJECT_RAIDTARGET8] = 8,
 }
 
-TranqRotate.chatIconString = "{rt%d}"
-TranqRotate.printIconString = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d.blp:0|t"
-
-function TranqRotate:getRaidTargetIcon(flags, type)
+function TranqRotate:getRaidTargetIcon(flags)
     local raidIconMask = bit.band(flags, COMBATLOG_OBJECT_RAIDTARGET_MASK)
     if (TranqRotate.raidIconMaskToIndex[raidIconMask]) then
-        if (type == TranqRotate.iconTypeChat) then
-            return string.format(TranqRotate.chatIconString, TranqRotate.raidIconMaskToIndex[raidIconMask])
-        elseif (type == TranqRotate.iconTypePrint) then
-            return string.format(TranqRotate.printIconString, TranqRotate.raidIconMaskToIndex[raidIconMask])
-        end
+        return string.format(TranqRotate.chatIconString, TranqRotate.raidIconMaskToIndex[raidIconMask])
     end
 
     return ""

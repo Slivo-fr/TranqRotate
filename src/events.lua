@@ -43,13 +43,19 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
                 TranqRotate:sendSyncTranq(hunter, false, timestamp)
                 TranqRotate:rotate(hunter)
                 if  (sourceGUID == UnitGUID("player")) then
-                    TranqRotate:sendAnnounceMessage(TranqRotate.db.profile.announceSuccessMessage, destName, destRaidFlags)
+                    TranqRotate:sendAnnounceMessage(
+                        TranqRotate:getTranqSuccessMessage(
+                            TranqRotate:isTranqableBoss(destGUID),
+                            destName,
+                            destRaidFlags
+                        )
+                    )
                 end
             elseif (event == "SPELL_MISSED" or event == "SPELL_DISPEL_FAILED") then
                 TranqRotate:sendSyncTranq(hunter, true, timestamp, event)
                 TranqRotate:handleFailTranq(hunter, event)
                 if  (sourceGUID == UnitGUID("player")) then
-                    TranqRotate:sendAnnounceMessage(TranqRotate.db.profile.announceFailMessage, destName, destRaidFlags)
+                    TranqRotate:sendAnnounceMessage(TranqRotate:getTranqFailMessage(destName, destRaidFlags))
                 end
             end
         end

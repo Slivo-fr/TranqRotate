@@ -214,28 +214,34 @@ function TranqRotate:CreateConfig()
                         width = "normal",
                         order = 22,
                     },
-                    announceSuccessMessage = {
-                        name = L["SUCCESS_MESSAGE_LABEL"],
+                    announceBossSuccessMessage = {
+                        name = L["BOSS_SUCCESS_MESSAGE_LABEL"],
                         type = "input",
                         order = 23,
+                        width = "double",
+                    },
+                    announceTrashSuccessMessage = {
+                        name = L["TRASH_SUCCESS_MESSAGE_LABEL"],
+                        type = "input",
+                        order = 24,
                         width = "double",
                     },
                     announceFailMessage = {
                         name = L["FAIL_MESSAGE_LABEL"],
                         type = "input",
-                        order = 24,
+                        order = 25,
                         width = "double",
                     },
                     whisperFailMessage = {
                         name = L["FAIL_WHISPER_LABEL"],
                         type = "input",
-                        order = 25,
+                        order = 26,
                         width = "double",
                     },
                     unableToTranqMessage = {
                         name = L["UNABLE_TO_TRANQ_MESSAGE_LABEL"],
                         type = "input",
-                        order = 26,
+                        order = 27,
                         width = "double",
                     },
                     setupBroadcastHeader = {

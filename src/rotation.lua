@@ -523,3 +523,32 @@ function TranqRotate:getHighlightedHunter()
 
     return nil
 end
+
+function TranqRotate:getTranqSuccessMessage(isBossTranq, targetName, raidIconFlags)
+
+    local message = ""
+    if (isBossTranq) then
+        message = TranqRotate.db.profile.announceBossSuccessMessage
+        local hunter = TranqRotate:getHighlightedHunter()
+        message = string.format(message, hunter.name)
+    else
+        message = TranqRotate.db.profile.announceTrashSuccessMessage
+        message = string.format(
+            message,
+            TranqRotate:getRaidTargetIcon(raidIconFlags) .. targetName
+        )
+    end
+
+    return message
+end
+
+function TranqRotate:getTranqFailMessage(targetName, raidIconFlags)
+
+    local message = TranqRotate.db.profile.announceFailMessage
+    message = string.format(
+        message,
+        TranqRotate:getRaidTargetIcon(raidIconFlags) .. targetName
+    )
+
+    return message
+end
