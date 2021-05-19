@@ -90,13 +90,11 @@ end
 
 -- Send a rotation broadcast message
 function TranqRotate:sendRotationSetupBroadcastMessage(message)
-    if TranqRotate.db.profile.enableAnnounces then
-        TranqRotate:sendMessage(
-            message,
-            TranqRotate.db.profile.rotationReportChannelType,
-            TranqRotate.db.profile.setupBroadcastTargetChannel
-        )
-    end
+    TranqRotate:sendMessage(
+        message,
+        TranqRotate.db.profile.rotationReportChannelType,
+        TranqRotate.db.profile.setupBroadcastTargetChannel
+    )
 end
 
 -- Send a message to a given channel
