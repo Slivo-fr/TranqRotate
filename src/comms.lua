@@ -121,6 +121,16 @@ function TranqRotate:sendBackupRequest(name)
     TranqRotate:sendWhisperAddonMessage(message, name)
 end
 
+-- Broadcast a reset of the rotation to other players
+function TranqRotate:sendResetBroadcast()
+
+    local message = {
+        ['type'] = TranqRotate.constants.commsTypes.reset,
+    }
+
+    TranqRotate:sendRaidAddonMessage(message)
+end
+
 -----------------------------------------------------------------------------------------------------------------------
 -- INPUT
 -----------------------------------------------------------------------------------------------------------------------

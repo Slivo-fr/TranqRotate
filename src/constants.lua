@@ -23,6 +23,7 @@ TranqRotate.constants = {
         ['syncOrder'] = 'sync-order',
         ['syncRequest'] = 'sync-request',
         ['backupRequest'] = 'backup-request',
+        ['reset'] = 'reset',
     },
 
     ['printPrefix'] = 'TranqRotate - ',
