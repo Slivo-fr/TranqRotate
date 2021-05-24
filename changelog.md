@@ -1,5 +1,11 @@
 ## TranqRotate Changelog
 
+#### v1.8.0
+
+- Adds different announces messages for boss and trash (Boss announces can call next player, trash announces can call target)
+- Adds raid market symbol to chat tranq announces
+- Removes server suffix from hunter names on era connected realms
+
 #### v1.7.0
 
 - Adds an icon on hunter not using the addon (You can disable it in the settings)
