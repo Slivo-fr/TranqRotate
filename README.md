@@ -61,9 +61,8 @@ The `/tranq check` command allows you to list version or TranqRotate used by oth
 
 Here is a list of feature I want to implement at some point, no specific order is decided yet.
 
-- Automatic handling of death and disconnection of hunters on the rotation group (swap with a backup, send an alert about it)
-- Use raid symbols to mark hunters that need to tranq, or that need to backup a failed tranqshot
 - Automatic reset of rotation when raid wipe
+- Customization of the tranq window, size, textures, colors, fonts...
 
 ## Download
 
