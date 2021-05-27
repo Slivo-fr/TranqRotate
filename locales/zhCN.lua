@@ -107,6 +107,10 @@ local L = {
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "此玩家没有使用TranqRotate插件",
     ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "或者运行低于1.6.0的过时版本",
     ["TOOLTIP_DISABLE_SETTINGS"] = "(您可以在设置中禁用此图标或此工具提示)",
+
+    --- Available update
+    ["UPDATE_AVAILABLE"] = "A new TranqRotate version is available, update to get latest features",
+    ["BREAKING_UPDATE_AVAILABLE"] = "A new BREAKING TranqRotate update is available, you MUST update AS SOON AS possible! TranqRotate may not work properly with up-to-date version users.",
 }
 
 TranqRotate.L = L

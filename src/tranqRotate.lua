@@ -242,6 +242,11 @@ function TranqRotate:updatePlayerAddonVersion(player, version)
     if (hunter) then
         TranqRotate:updateBlindIcon(hunter)
     end
+
+    local updateRequired, breakingUpdate = TranqRotate:isUpdateRequired(version)
+    if (updateRequired) then
+        TranqRotate:notifyUserAboutAvailableUpdate(breakingUpdate)
+    end
 end
 
 -- Prints to the chat the addon version of every hunter and addon users
@@ -303,4 +308,58 @@ function TranqRotate:runDemo()
         end,
         5
     )
+end
+
+-- Parse version string
+-- @return major, minor, fix, isStable
+function TranqRotate:parseVersionString(versionString)
+
+    local version, type = strsplit("-", versionString)
+    local major, minor, fix = strsplit( ".", version)
+
+    return tonumber(major), tonumber(minor), tonumber(fix), type == nil
+end
+
+-- Check if the given version would require updating
+-- @return requireUpdate, breakingUpdate
+function TranqRotate:isUpdateRequired(versionString)
+
+    local remoteMajor, remoteMinor, remoteFix, isRemoteStable = self:parseVersionString(versionString)
+    local localMajor, localMinor, localFix, isLocalStable = self:parseVersionString(TranqRotate.version)
+
+    if (isRemoteStable) then
+
+        if (remoteMajor > localMajor) then
+            return true, true
+        elseif (remoteMajor < localMajor) then
+            return false, false
+        end
+
+        if (remoteMinor > localMinor) then
+            return true, false
+        elseif (remoteMinor < localMinor) then
+            return false, false
+        end
+
+        if (remoteFix > localFix) then
+            return true, false
+        end
+    end
+
+    return false, false
+end
+
+-- Notify user about a new version available
+function TranqRotate:notifyUserAboutAvailableUpdate(isBreakingUpdate)
+    if (isBreakingUpdate) then
+        if (TranqRotate.notifiedBreakingUpdate ~= true) then
+            TranqRotate:printPrefixedMessage('|cffff3d3d' .. L['BREAKING_UPDATE_AVAILABLE'] .. '|r')
+            TranqRotate.notifiedBreakingUpdate = true
+        end
+    else
+        if (TranqRotate.notifiedUpdate ~= true and TranqRotate.notifiedBreakingUpdate ~= true) then
+            TranqRotate:printPrefixedMessage(L['UPDATE_AVAILABLE'])
+            TranqRotate.notifiedUpdate = true
+        end
+    end
 end
