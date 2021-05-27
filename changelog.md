@@ -3,8 +3,9 @@
 #### v1.8.0
 
 - Adds different announces messages for boss and trash (Boss announces can call next player, trash announces can call target)
-- Adds raid market symbol to chat tranq announces
+- Adds raid marker symbol to chat tranq announces
 - Removes server suffix from hunter names on era connected realms
+- Adds "available update" chat notifications
 
 #### v1.7.0
 
