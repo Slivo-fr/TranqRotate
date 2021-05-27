@@ -70,12 +70,14 @@ local L = {
 
     ---- Messages
     ["ANNOUNCES_MESSAGE_HEADER"] = "通告信息",
-    ["SUCCESS_MESSAGE_LABEL"] = "施放成功通告信息",
+    ["BOSS_SUCCESS_MESSAGE_LABEL"] = "Successful announce message on boss (%s will be replaced by next hunter name)",
+    ["TRASH_SUCCESS_MESSAGE_LABEL"] = "Successful announce message on trash (%s will be replaced by target name)",
     ["FAIL_MESSAGE_LABEL"] = "施放失败通告信息",
     ["FAIL_WHISPER_LABEL"] = "施放失败私聊信息",
     ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "当你无法宁神或呼叫替补时,这条信息就会低声传来",
 
-    ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "已对 %s 施放了宁神射击!",
+    ['DEFAULT_BOSS_SUCCESS_ANNOUNCE_MESSAGE'] = "Tranqshot done, %s is next!",
+    ['DEFAULT_TRASH_SUCCESS_ANNOUNCE_MESSAGE'] = "Tranqshot done on %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! 对 %s 宁神失败!!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "宁神失败 !! 赶紧补宁神!!",
     ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "我无法宁神射击 ! 请现在宁神 !",
@@ -105,6 +107,10 @@ local L = {
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "此玩家没有使用TranqRotate插件",
     ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "或者运行低于1.6.0的过时版本",
     ["TOOLTIP_DISABLE_SETTINGS"] = "(您可以在设置中禁用此图标或此工具提示)",
+
+    --- Available update
+    ["UPDATE_AVAILABLE"] = "A new TranqRotate version is available, update to get latest features",
+    ["BREAKING_UPDATE_AVAILABLE"] = "A new BREAKING TranqRotate update is available, you MUST update AS SOON AS possible! TranqRotate may not work properly with up-to-date version users.",
 }
 
 TranqRotate.L = L

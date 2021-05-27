@@ -70,12 +70,14 @@ local L = {
 
     ---- Messages
     ["ANNOUNCES_MESSAGE_HEADER"] = "Сообщения оповещений",
-    ["SUCCESS_MESSAGE_LABEL"] = "При успехе сообщить",
+    ["BOSS_SUCCESS_MESSAGE_LABEL"] = "Successful announce message on boss (%s will be replaced by next hunter name)",
+    ["TRASH_SUCCESS_MESSAGE_LABEL"] = "Successful announce message on trash (%s will be replaced by target name)",
     ["FAIL_MESSAGE_LABEL"] = "При промахе сообщить",
     ["FAIL_WHISPER_LABEL"] = "При промахе шепнуть запасным",
     ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "Сообщение шепота, когда вы не можете произвести усирение или оповестить запасных",
 
-    ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Усмиряющий выстрел в %s",
+    ['DEFAULT_BOSS_SUCCESS_ANNOUNCE_MESSAGE'] = "Tranqshot done, %s is next!",
+    ['DEFAULT_TRASH_SUCCESS_ANNOUNCE_MESSAGE'] = "Tranqshot done on %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! Усмиряющий выстрел промахнулся в %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "!!! Усмиряющий выстрел промахнулся !!! ! УСМИРЯЙ СЕЙЧАС !",
     ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "Я НЕ МОГУ УСМИРИТЬ ! УСМИРЯЙ СЕЙЧАС !",
@@ -105,6 +107,10 @@ local L = {
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "Этот игрок не использует TranqRotate",
     ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "Или используется версия ниже 1.6.0",
     ["TOOLTIP_DISABLE_SETTINGS"] = "(Вы можете отключить этот значок и/или эту подсказку в настройках)",
+
+    --- Available update
+    ["UPDATE_AVAILABLE"] = "A new TranqRotate version is available, update to get latest features",
+    ["BREAKING_UPDATE_AVAILABLE"] = "A new BREAKING TranqRotate update is available, you MUST update AS SOON AS possible! TranqRotate may not work properly with up-to-date version users.",
 }
 
 TranqRotate.L = L

@@ -70,12 +70,14 @@ local L = {
 
     ---- Messages
     ["ANNOUNCES_MESSAGE_HEADER"] = "Annonces de tir tranquilisant",
-    ["SUCCESS_MESSAGE_LABEL"] = "Message de réussite",
+    ["BOSS_SUCCESS_MESSAGE_LABEL"] = "Message de réussite sur boss (%s est le nom du prochain chasseur)",
+    ["TRASH_SUCCESS_MESSAGE_LABEL"] = "Message de réussite sur trash (%s est le nom de la cible)",
     ["FAIL_MESSAGE_LABEL"] = "Message d'échec",
     ["FAIL_WHISPER_LABEL"] = "Message d'échec chuchoté",
     ["UNABLE_TO_TRANQ_MESSAGE_LABEL"] = "Message chuchoté quand vous ne pouvez pas tranq ou que vous demandez un backup",
 
-    ['DEFAULT_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait sur %s",
+    ['DEFAULT_BOSS_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait, %s est le suivant!",
+    ['DEFAULT_TRASH_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait sur %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TIR TRANQUILLISANT RATE SUR %s !!!",
     ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TIR TRANQUILISANT RATE ! TRANQ MAINTENANT !",
     ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "JE NE PEUX PAS TRANQ ! TRANQ MAINTENANT !",
@@ -105,6 +107,10 @@ local L = {
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "Ce joueur n'utilise pas TranqRotate",
     ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "Ou possède une version obsolète inférieure à 1.6.0",
     ["TOOLTIP_DISABLE_SETTINGS"] = "(Il est possible de désactiver l'icone et/ou l'infobulle dans les options)",
+
+    --- Available update
+    ["UPDATE_AVAILABLE"] = "Une nouvelle version est disponible, faites la mise à jour pour profiter des derniers ajouts",
+    ["BREAKING_UPDATE_AVAILABLE"] = "Une nouvelle version MAJEURE est disponible, vous DEVEZ faire la mise à jour le plus rapidement possible! Votre version pourrait ne pas fonctionner correctement avec celle des utilisateurs disposant de la mise à jour.",
 }
 
 TranqRotate.L = L

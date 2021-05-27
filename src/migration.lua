@@ -20,4 +20,9 @@ TranqRotate.migrations = {
         TranqRotate.db.profile.enableTimedBackupAlertValue = nil
         TranqRotate.db.profile.timedBackupAlertValueDelay = nil
     end,
+    -- 1.8.0
+    function()
+        -- This is an old key
+        TranqRotate.db.profile.announceSuccessMessage = nil
+    end,
 }

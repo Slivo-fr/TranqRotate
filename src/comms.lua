@@ -148,7 +148,6 @@ end
 function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
 
     TranqRotate:updateRaidStatus()
-    TranqRotate:updatePlayerAddonVersion(sender, message.addonVersion)
 
     if (TranqRotate:isVersionEligible(message.version, sender)) then
         TranqRotate.syncVersion = (message.version)
@@ -158,6 +157,8 @@ function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
         TranqRotate:printPrefixedMessage('Received new rotation configuration from ' .. sender)
         TranqRotate:applyRotationConfiguration(message.rotation)
     end
+
+    TranqRotate:updatePlayerAddonVersion(sender, message.addonVersion)
 end
 
 -- Request to send current roration configuration received

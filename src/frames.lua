@@ -153,7 +153,7 @@ function TranqRotate:createHunterFrame(hunter, parentFrame)
     hunter.frame.text = hunter.frame:CreateFontString(nil, "ARTWORK")
     hunter.frame.text:SetFont(TranqRotate:getPlayerNameFont(), 12)
     hunter.frame.text:SetPoint("LEFT",5,0)
-    hunter.frame.text:SetText(hunter.name)
+    hunter.frame.text:SetText(strsplit("-", hunter.name))
 
     TranqRotate:createCooldownFrame(hunter)
     TranqRotate:createBlindIconFrame(hunter)

@@ -69,22 +69,19 @@ function TranqRotate:printPrefixedMessage(msg)
 end
 
 -- Send a tranq announce message to a given channel
-function TranqRotate:sendAnnounceMessage(message, targetName)
-
-    -- Prints instead to avoid lua error in open world with say and yell
-    if (
-        not IsInInstance() and (
-            TranqRotate.db.profile.channelType == "SAY" or TranqRotate.db.profile.channelType == "YELL"
-        )
-    ) then
-        TranqRotate:printPrefixedMessage(string.format(message, targetName) .. " " .. L["YELL_SAY_DISABLED_OPEN_WORLD"])
-        return
-    end
-
+function TranqRotate:sendAnnounceMessage(chatMessage)
     if TranqRotate.db.profile.enableAnnounces then
+        -- Prints instead to avoid lua error in open world with say and yell
+        if (
+            not IsInInstance() and
+            (TranqRotate.db.profile.channelType == "SAY" or TranqRotate.db.profile.channelType == "YELL")
+        ) then
+            TranqRotate:printPrefixedMessage(chatMessage .. " " .. L["YELL_SAY_DISABLED_OPEN_WORLD"])
+            return
+        end
+
         TranqRotate:sendMessage(
-            message,
-            targetName,
+            chatMessage,
             TranqRotate.db.profile.channelType,
             TranqRotate.db.profile.targetChannel
         )
@@ -93,23 +90,20 @@ end
 
 -- Send a rotation broadcast message
 function TranqRotate:sendRotationSetupBroadcastMessage(message)
-    if TranqRotate.db.profile.enableAnnounces then
-        TranqRotate:sendMessage(
-            message,
-            nil,
-            TranqRotate.db.profile.rotationReportChannelType,
-            TranqRotate.db.profile.setupBroadcastTargetChannel
-        )
-    end
+    TranqRotate:sendMessage(
+        message,
+        TranqRotate.db.profile.rotationReportChannelType,
+        TranqRotate.db.profile.setupBroadcastTargetChannel
+    )
 end
 
 -- Send a message to a given channel
-function TranqRotate:sendMessage(message, targetName, channelType, targetChannel)
+function TranqRotate:sendMessage(message, channelType, targetChannel)
     local channelNumber
     if channelType == "CHANNEL" then
         channelNumber = GetChannelName(targetChannel)
     end
-    SendChatMessage(string.format(message, targetName), channelType, nil, channelNumber or targetChannel)
+    SendChatMessage(message, channelType, nil, channelNumber or targetChannel)
 end
 
 SLASH_TRANQROTATE1 = "/tranq"
@@ -248,6 +242,11 @@ function TranqRotate:updatePlayerAddonVersion(player, version)
     if (hunter) then
         TranqRotate:updateBlindIcon(hunter)
     end
+
+    local updateRequired, breakingUpdate = TranqRotate:isUpdateRequired(version)
+    if (updateRequired) then
+        TranqRotate:notifyUserAboutAvailableUpdate(breakingUpdate)
+    end
 end
 
 -- Prints to the chat the addon version of every hunter and addon users
@@ -309,4 +308,58 @@ function TranqRotate:runDemo()
         end,
         5
     )
+end
+
+-- Parse version string
+-- @return major, minor, fix, isStable
+function TranqRotate:parseVersionString(versionString)
+
+    local version, type = strsplit("-", versionString)
+    local major, minor, fix = strsplit( ".", version)
+
+    return tonumber(major), tonumber(minor), tonumber(fix), type == nil
+end
+
+-- Check if the given version would require updating
+-- @return requireUpdate, breakingUpdate
+function TranqRotate:isUpdateRequired(versionString)
+
+    local remoteMajor, remoteMinor, remoteFix, isRemoteStable = self:parseVersionString(versionString)
+    local localMajor, localMinor, localFix, isLocalStable = self:parseVersionString(TranqRotate.version)
+
+    if (isRemoteStable) then
+
+        if (remoteMajor > localMajor) then
+            return true, true
+        elseif (remoteMajor < localMajor) then
+            return false, false
+        end
+
+        if (remoteMinor > localMinor) then
+            return true, false
+        elseif (remoteMinor < localMinor) then
+            return false, false
+        end
+
+        if (remoteFix > localFix) then
+            return true, false
+        end
+    end
+
+    return false, false
+end
+
+-- Notify user about a new version available
+function TranqRotate:notifyUserAboutAvailableUpdate(isBreakingUpdate)
+    if (isBreakingUpdate) then
+        if (TranqRotate.notifiedBreakingUpdate ~= true) then
+            TranqRotate:printPrefixedMessage('|cffff3d3d' .. L['BREAKING_UPDATE_AVAILABLE'] .. '|r')
+            TranqRotate.notifiedBreakingUpdate = true
+        end
+    else
+        if (TranqRotate.notifiedUpdate ~= true and TranqRotate.notifiedBreakingUpdate ~= true) then
+            TranqRotate:printPrefixedMessage(L['UPDATE_AVAILABLE'])
+            TranqRotate.notifiedUpdate = true
+        end
+    end
 end
