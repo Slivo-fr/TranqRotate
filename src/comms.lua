@@ -69,7 +69,7 @@ function TranqRotate:sendSyncTranq(hunter, fail, timestamp, failEvent)
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.tranqshotDone,
         ['timestamp'] = timestamp,
-        ['player'] = hunter.name,
+        ['player'] = hunter.GUID,
         ['fail'] = fail,
         ['failEvent'] = failEvent,
     }

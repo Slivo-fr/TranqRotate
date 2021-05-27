@@ -430,7 +430,7 @@ function TranqRotate:getSimpleRotationTables()
 
     for key, rotationTable in pairs(TranqRotate.rotationTables) do
         for _, hunter in pairs(rotationTable) do
-            table.insert(simpleTables[key], hunter.name)
+            table.insert(simpleTables[key], hunter.GUID)
         end
     end
 
