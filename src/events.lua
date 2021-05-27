@@ -37,7 +37,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand = select(12, CombatLogGetCurrentEventInfo())
 
     if (spellName == tranqShot or (TranqRotate.testMode and spellName == arcaneShot)) then
-        local hunter = TranqRotate:getHunter(nil, sourceGUID)
+        local hunter = TranqRotate:getHunter(sourceGUID)
         if (hunter) then
             if (event == "SPELL_CAST_SUCCESS") then
                 TranqRotate:sendSyncTranq(hunter, false, timestamp)

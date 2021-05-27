@@ -145,7 +145,7 @@ function TranqRotate:isPlayerNextTranq()
         return false
     end
 
-    local player = TranqRotate:getHunter(nil, UnitGUID("player"))
+    local player = TranqRotate:getHunter(UnitGUID("player"))
 
     if (not player.nextTranq) then
 
@@ -250,10 +250,10 @@ function TranqRotate:testRotation()
 end
 
 -- Return our hunter object from name or GUID
-function TranqRotate:getHunter(name, GUID)
+function TranqRotate:getHunter(searchTerm)
 
-    for key,hunter in pairs(TranqRotate.hunterTable) do
-        if ((GUID ~= nil and hunter.GUID == GUID) or (name ~= nil and hunter.name == name)) then
+    for _, hunter in pairs(TranqRotate.hunterTable) do
+        if (searchTerm ~= nil and (hunter.GUID == searchTerm or hunter.name == searchTerm)) then
             return hunter
         end
     end
@@ -293,7 +293,7 @@ function TranqRotate:updateRaidStatus()
             -- Players name might be nil at loading
             if (name ~= nil) then
                 if(TranqRotate:isHunter(name)) then
-                    local hunter = TranqRotate:getHunter(nil, UnitGUID(name))
+                    local hunter = TranqRotate:getHunter(UnitGUID(name))
 
                     if (hunter == nil and not InCombatLockdown()) then
                         hunter = TranqRotate:registerHunter(name)
@@ -447,8 +447,8 @@ function TranqRotate:applyRotationConfiguration(rotationsTables)
             group = 'BACKUP'
         end
 
-        for index, hunterName in pairs(rotationTable) do
-            local hunter = TranqRotate:getHunter(hunterName)
+        for index, GUID in pairs(rotationTable) do
+            local hunter = TranqRotate:getHunter(GUID)
             if (hunter) then
                 TranqRotate:moveHunter(hunter, group, index)
             end
