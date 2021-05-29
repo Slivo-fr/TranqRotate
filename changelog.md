@@ -1,5 +1,9 @@
 ## TranqRotate Changelog
 
+#### v2.0.0
+
+- Fix connected realms sync issues - **BREAKING CHANGES**
+
 #### v1.8.0
 
 - Adds different announces messages for boss and trash (Boss announces can call next player, trash announces can call target)
