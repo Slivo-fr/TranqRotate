@@ -55,7 +55,7 @@ The reset button is also able to resync raid hunters and rotation setup if you n
 You may adds the `/tranq backup` command to a macro that you can use when you are unable to tranq and you need some help,
 It will whisper all backup hunters the fail message.
 
-The `/tranq check` command allows you to list version or TranqRotate used by others hunters and others non-hunters players
+The `/tranq check` command allows you to list TranqRotate versions used by others players
 
 ## Roadmap
 
