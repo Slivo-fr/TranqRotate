@@ -430,7 +430,7 @@ function TranqRotate:getSimpleRotationTables()
 
     for key, rotationTable in pairs(TranqRotate.rotationTables) do
         for _, hunter in pairs(rotationTable) do
-            table.insert(simpleTables[key], hunter.name)
+            table.insert(simpleTables[key], hunter.GUID)
         end
     end
 
@@ -495,14 +495,12 @@ end
 -- Whisper provided message of fail message to all backup except player
 function TranqRotate:whisperBackup(message, noComms)
 
-    local name = UnitName("player")
-
     if (message == nil) then
         message = TranqRotate.db.profile.whisperFailMessage
     end
 
     for key, backupHunter in pairs(TranqRotate.rotationTables.backup) do
-        if (backupHunter.name ~= name) then
+        if (backupHunter.name ~= UnitName("player")) then
             SendChatMessage(message, 'WHISPER', nil, backupHunter.name)
 
             if (noComms ~= true) then
