@@ -192,7 +192,7 @@ function TranqRotate:buildGroupMessage(prefix, rotationTable)
     local hunters = {}
 
     for key, hunt in pairs(rotationTable) do
-        table.insert(hunters, hunt.name)
+        table.insert(hunters, TranqRotate:formatPlayerName(hunt.name))
     end
 
     return prefix .. table.concat(hunters, ', ')
@@ -256,7 +256,7 @@ function TranqRotate:checkVersions()
 
     for player, version in pairs(TranqRotate.addonVersions) do
         if (player ~= UnitName("player")) then
-            TranqRotate:printPrefixedMessage(player .. " - " .. TranqRotate:formatAddonVersion(version))
+            TranqRotate:printPrefixedMessage(TranqRotate:formatPlayerName(player) .. " - " .. TranqRotate:formatAddonVersion(version))
         end
     end
 end
@@ -283,13 +283,15 @@ end
 -- @todo translations
 -- Prints in the chat the reason a tranqshot has failed
 function TranqRotate:printFail(hunter, event)
+
+    local name = TranqRotate:formatPlayerName(hunter.name)
     if (event == "SPELL_MISSED") then
-        TranqRotate:printPrefixedMessage(hunter.name .. " missed his tranqshot!")
+        TranqRotate:printPrefixedMessage(name .. " missed his tranqshot!")
     elseif(event == "SPELL_DISPEL_FAILED") then
-        TranqRotate:printPrefixedMessage(hunter.name .. "'s tranqshot was resisted!")
+        TranqRotate:printPrefixedMessage(name .. "'s tranqshot was resisted!")
     else
         -- v1.5.1 and older do not send the event type
-        TranqRotate:printPrefixedMessage(hunter.name .. "'s tranqshot was missed or resisted!")
+        TranqRotate:printPrefixedMessage(name .. "'s tranqshot was missed or resisted!")
     end
 end
 

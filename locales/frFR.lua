@@ -23,6 +23,13 @@ local L = {
     ["WINDOW_LOCKED"] = "TranqRotate: Fenêtre verrouillée",
     ["WINDOW_UNLOCKED"] = "TranqRotate: Fenêtre déverrouillée",
 
+    --- Player names formatting options
+    ["PLAYER_NAME_FORMAT"] = "Format des noms des joueurs",
+    ["PLAYER_NAME_FORMAT_DESC"] = "Le suffixe serveur des joueurs appartement à d'autre serveurs sont masqué par défaut. Si par malchance deux chasseur ont exactement le même nom, vous pouvez ajuster ce paramètre",
+    ["PLAYER_NAME_ONLY_OPTION_LABEL"] = "Nomdujoueur",
+    ["SHORTENED_SUFFIX_OPTION_LABEL"] = "Nomdujoueur-Ser",
+    ["FULL_NAME_OPTION_LABEL"] = "Nomdujoueur-Serveur",
+
     ["TEST_MODE_HEADER"] = "Test mode",
     ["ENABLE_ARCANE_SHOT_TESTING"] = "Activer/désactiver le mode test",
     ["ENABLE_ARCANE_SHOT_TESTING_DESC"] =

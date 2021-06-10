@@ -88,6 +88,18 @@ function TranqRotate:CreateConfig()
                         order = 9,
                         width = "full",
                     },
+                    playerNameFormatting = {
+                        name = L["PLAYER_NAME_FORMAT"],
+                        desc = L["PLAYER_NAME_FORMAT_DESC"],
+                        type = "select",
+                        order = 12,
+                        values = {
+                            [TranqRotate.constants.playerNameFormats.PLAYER_NAME_ONLY] = L["PLAYER_NAME_ONLY_OPTION_LABEL"],
+                            [TranqRotate.constants.playerNameFormats.SHORT] = L["SHORTENED_SUFFIX_OPTION_LABEL"],
+                            [TranqRotate.constants.playerNameFormats.FULL_NAME] = L["FULL_NAME_OPTION_LABEL"],
+                        },
+                        set = function(info, value) set(info,value) TranqRotate:drawHunterFrames() end
+                    },
                     testHeader = {
                         name = L["TEST_MODE_HEADER"],
                         type = "header",

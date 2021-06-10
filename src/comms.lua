@@ -112,7 +112,7 @@ end
 function TranqRotate:sendBackupRequest(name)
 
     -- todo: translation
-    TranqRotate:printPrefixedMessage('Sending backup request to ' .. name)
+    TranqRotate:printPrefixedMessage('Sending backup request to ' .. TranqRotate:formatPlayerName(name))
 
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.backupRequest,
@@ -154,7 +154,7 @@ function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
         TranqRotate.syncLastSender = sender
 
         -- todo : translation
-        TranqRotate:printPrefixedMessage('Received new rotation configuration from ' .. sender)
+        TranqRotate:printPrefixedMessage('Received new rotation configuration from ' .. TranqRotate:formatPlayerName(sender))
         TranqRotate:applyRotationConfiguration(message.rotation)
     end
 
@@ -170,6 +170,6 @@ end
 -- Received a backup request
 function TranqRotate:receiveBackupRequest(prefix, message, channel, sender)
     -- todo: translations
-    TranqRotate:printPrefixedMessage(sender .. ' asked for backup !')
+    TranqRotate:printPrefixedMessage(TranqRotate:formatPlayerName(sender) .. ' asked for backup !')
     TranqRotate:throwTranqAlert()
 end

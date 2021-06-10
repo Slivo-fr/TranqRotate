@@ -528,7 +528,7 @@ function TranqRotate:getTranqSuccessMessage(isBossTranq, targetName, raidIconFla
     if (isBossTranq) then
         message = TranqRotate.db.profile.announceBossSuccessMessage
         local hunter = TranqRotate:getHighlightedHunter()
-        message = string.format(message, hunter.name)
+        message = string.format(message, TranqRotate:formatPlayerName(hunter.name))
     else
         message = TranqRotate.db.profile.announceTrashSuccessMessage
         message = string.format(
