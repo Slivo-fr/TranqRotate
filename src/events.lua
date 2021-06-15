@@ -76,7 +76,10 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     elseif (event == "SPELL_AURA_REMOVED" and TranqRotate:isBossFrenzy(spellName, sourceGUID)) then
         TranqRotate.frenzy = false
     elseif (event == "UNIT_DIED" and TranqRotate:isTranqableBoss(destGUID)) then
-        TranqRotate:resetRotation()
+        if (TranqRotate:isPlayerAllowedToManageRotation()) then
+            TranqRotate:resetRotation()
+            TranqRotate:sendResetBroadcast()
+        end
         TranqRotate.mainFrame.frenzyFrame:Hide()
     end
 end

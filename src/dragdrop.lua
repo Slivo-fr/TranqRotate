@@ -185,5 +185,5 @@ end
 
 -- Update drag and drop status to match player status
 function TranqRotate:updateDragAndDrop()
-    TranqRotate:toggleListSorting(TranqRotate:isPlayerAllowedToSortHunterList())
+    TranqRotate:toggleListSorting(TranqRotate:isPlayerAllowedToManageRotation())
 end

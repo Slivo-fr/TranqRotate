@@ -59,11 +59,7 @@ function TranqRotate:createButtons()
         },
         {
             ['texture'] = 'Interface/Buttons/UI-RefreshButton',
-            ['callback'] = function()
-                    TranqRotate:updateRaidStatus()
-                    TranqRotate:resetRotation()
-                    TranqRotate:sendSyncOrderRequest()
-                end
+            ['callback'] = TranqRotate.handleResetButton
         },
         {
             ['texture'] = 'Interface/Buttons/UI-GuildButton-MOTD-Up',
@@ -159,7 +155,7 @@ function TranqRotate:createHunterFrame(hunter, parentFrame)
     TranqRotate:createBlindIconFrame(hunter)
     TranqRotate:configureHunterFrameDrag(hunter)
 
-    TranqRotate:toggleHunterFrameDragging(hunter, TranqRotate:isPlayerAllowedToSortHunterList())
+    TranqRotate:toggleHunterFrameDragging(hunter, TranqRotate:isPlayerAllowedToManageRotation())
 end
 
 -- Create the cooldown frame

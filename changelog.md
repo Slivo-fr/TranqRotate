@@ -1,5 +1,13 @@
 ## TranqRotate Changelog
 
+#### v2.1.0
+
+- Removes server suffixes from player names everywhere (connected realms)
+- Adds an option to re-add shortened or full server suffixes to player names (in case of unlikely namesake)
+- Adds rotation reset sync
+- Removes the ability to re-sync tranq order from the reset button
+- Adds highlighted "next" hunter to the tranq rotation sync
+
 #### v2.0.0
 
 - Fix connected realms sync issues - **BREAKING CHANGES**

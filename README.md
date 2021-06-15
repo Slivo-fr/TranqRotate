@@ -32,7 +32,7 @@ Please report any issue on github : https://github.com/Slivo-fr/TranqRotate/issu
 - Display the frenzy cooldown of each boss
 - Optional automatic backup call when incapacitated
 - Optional automatic timed backup call 
-- Prints to chat name and reason of a tranq fail (miss or resist)
+- Prints to chat the reason of a tranq fail (miss or resist)
 - Show an indicator on hunters that does not use the addon
 
 ## Usage
@@ -49,8 +49,7 @@ You can now just pull the boss and start shooting your tranqshots, TranqRotate w
 
 **Warning** : if all of your hunters does not use the addon, make sure someone with the addon stay within 45m range of hunters without the addon or you won't be able to register their tranqshot. MC and AQ40 tranq encounters might lead to range issues. However, I didn't had any complain about this yet  :) 
 
-You can use the reset button in the top bar to reset the rotation state if it do not clear itself.
-The reset button is also able to resync raid hunters and rotation setup if you need.
+You can use the reset button in the top bar to reset the rotation status
 
 You may adds the `/tranq backup` command to a macro that you can use when you are unable to tranq and you need some help,
 It will whisper all backup hunters the fail message.
