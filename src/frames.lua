@@ -59,15 +59,7 @@ function TranqRotate:createButtons()
         },
         {
             ['texture'] = 'Interface/Buttons/UI-RefreshButton',
-            ['callback'] = function()
-                TranqRotate:updateRaidStatus()
-                if (TranqRotate:isPlayerAllowedToManageRotation()) then
-                    TranqRotate:resetRotation()
-                    TranqRotate:sendResetBroadcast()
-                else
-                    TranqRotate:printPrefixedMessage("You need to be raid assist to reset the rotation")
-                end
-            end
+            ['callback'] = TranqRotate.handleResetButton
         },
         {
             ['texture'] = 'Interface/Buttons/UI-GuildButton-MOTD-Up',

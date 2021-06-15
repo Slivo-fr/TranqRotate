@@ -108,14 +108,17 @@ local L = {
     ["BROADCAST_ROTATION_PREFIX"] = "Rotation",
     ["BROADCAST_BACKUP_PREFIX"] = "Backup",
 
-    --- Blind icon tooltip
+    -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "This player does not use TranqRotate",
     ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "Or runs an outdated version below 1.6.0",
     ["TOOLTIP_DISABLE_SETTINGS"] = "(You can disable this icon and/or this tooltip in the settings)",
 
-    --- Available update
+    -- Available update
     ["UPDATE_AVAILABLE"] = "A new TranqRotate version is available, update to get latest features",
     ["BREAKING_UPDATE_AVAILABLE"] = "A new BREAKING TranqRotate update is available, you MUST update AS SOON AS possible! TranqRotate may not work properly with up-to-date version users.",
+
+    -- Rotation reset
+    ["RESET_UNAUTHORIZED"] = "You must be raid assist to reset the rotation",
 }
 
 TranqRotate.L = L

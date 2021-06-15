@@ -557,3 +557,13 @@ function TranqRotate:getTranqFailMessage(targetName, raidIconFlags)
 
     return message
 end
+
+function TranqRotate:handleResetButton()
+    TranqRotate:updateRaidStatus()
+    if (TranqRotate:isPlayerAllowedToManageRotation()) then
+        TranqRotate:resetRotation()
+        TranqRotate:sendResetBroadcast()
+    else
+        TranqRotate:printPrefixedMessage(L["RESET_UNAUTHORIZED"])
+    end
+end
