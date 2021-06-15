@@ -136,10 +136,15 @@ function TranqRotate:isPlayerRaidAssist(name)
     return false
 end
 
--- Checks if condition to enable drag and drop are met
-function TranqRotate:isPlayerAllowedToSortHunterList()
+-- Checks if player is allowed to manage rotation
+function TranqRotate:isPlayerAllowedToManageRotation()
     local playerName = UnitName("player")
-    return TranqRotate:isHunter(playerName) or TranqRotate:isPlayerRaidAssist(playerName)
+    return TranqRotate:isUnitAllowedToManageRotation(playerName)
+end
+
+-- Checks if unit is allowed to manage rotation
+function TranqRotate:isUnitAllowedToManageRotation(unitName)
+    return TranqRotate:isHunter(unitName) or TranqRotate:isPlayerRaidAssist(unitName)
 end
 
 -- Format the player name and server suffix

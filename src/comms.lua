@@ -26,6 +26,8 @@ function TranqRotate.OnCommReceived(prefix, data, channel, sender)
                 TranqRotate:receiveSyncRequest(prefix, message, channel, sender)
             elseif (message.type == TranqRotate.constants.commsTypes.backupRequest) then
                 TranqRotate:receiveBackupRequest(prefix, message, channel, sender)
+            elseif (message.type == TranqRotate.constants.commsTypes.reset) then
+                TranqRotate:receiveResetRequest(prefix, message, channel, sender)
             end
         end
     end
@@ -89,6 +91,11 @@ function TranqRotate:sendSyncOrder(whisper, name)
         ['rotation'] = TranqRotate:getSimpleRotationTables(),
         ['addonVersion'] = TranqRotate.version,
     }
+
+    local nextHunter = TranqRotate:getHighlightedHunter()
+    if (nil ~= nextHunter) then
+        message.nextHunter = nextHunter.GUID
+    end
 
     if (whisper) then
         TranqRotate:sendWhisperAddonMessage(message, name)
@@ -166,6 +173,11 @@ function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
         -- todo : translation
         TranqRotate:printPrefixedMessage('Received new rotation configuration from ' .. TranqRotate:formatPlayerName(sender))
         TranqRotate:applyRotationConfiguration(message.rotation)
+
+        local nextHunter = TranqRotate:getHunter(message.nextHunter)
+        if (nil ~= nextHunter) then
+            TranqRotate:setNextTranq(nextHunter)
+        end
     end
 
     TranqRotate:updatePlayerAddonVersion(sender, message.addonVersion)
@@ -182,4 +194,18 @@ function TranqRotate:receiveBackupRequest(prefix, message, channel, sender)
     -- todo: translations
     TranqRotate:printPrefixedMessage(TranqRotate:formatPlayerName(sender) .. ' asked for backup !')
     TranqRotate:throwTranqAlert()
+end
+
+-- Received a rotation reset request
+function TranqRotate:receiveResetRequest(prefix, message, channel, sender)
+
+    if (not TranqRotate:isUnitAllowedToManageRotation(sender)) then
+        return
+    end
+
+    if (TranqRotate.lastRotationReset < GetTime() - 2) then
+        -- todo: translations
+        TranqRotate:printPrefixedMessage(TranqRotate:formatPlayerName(sender) .. ' has reset the rotation.')
+        TranqRotate:resetRotation()
+    end
 end

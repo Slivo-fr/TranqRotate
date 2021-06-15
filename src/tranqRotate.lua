@@ -24,6 +24,7 @@ function TranqRotate:init()
     TranqRotate.raidInitialized = false
     TranqRotate.testMode = false
     TranqRotate.frenzy = false
+    TranqRotate.lastRotationReset = 0
 
     TranqRotate:initGui()
     TranqRotate:updateRaidStatus()
