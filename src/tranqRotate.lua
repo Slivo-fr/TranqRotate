@@ -144,13 +144,6 @@ function TranqRotate:toggleDisplay()
     end
 end
 
--- @todo: remove this
-function TranqRotate:test()
-    TranqRotate:printMessage('test')
-
-    print(TranqRotate:isPlayedIncapacitatedByDebuff())
-end
-
 -- Open ace settings
 function TranqRotate:openSettings()
     local AceConfigDialog = LibStub("AceConfigDialog-3.0")
