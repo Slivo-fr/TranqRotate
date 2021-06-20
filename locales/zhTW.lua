@@ -23,6 +23,13 @@ local L = {
     ["WINDOW_LOCKED"] = "TranqRotate: 窗口已隱藏",
     ["WINDOW_UNLOCKED"] = "TranqRotate: 窗口已鎖定",
 
+    --- Player names formatting options
+    ["PLAYER_NAME_FORMAT"] = "Player names format",
+    ["PLAYER_NAME_FORMAT_DESC"] = "On connected realms, players from other servers will have a the server suffix hidden by default. If you ever get two hunter with the exact same name, adjust this setting to your needs",
+    ["PLAYER_NAME_ONLY_OPTION_LABEL"] = "Playername",
+    ["SHORTENED_SUFFIX_OPTION_LABEL"] = "Playername-Ser",
+    ["FULL_NAME_OPTION_LABEL"] = "Playername-Server",
+
     ["TEST_MODE_HEADER"] = "測試模式",
     ["ENABLE_ARCANE_SHOT_TESTING"] = "切換測試模式",
     ["ENABLE_ARCANE_SHOT_TESTING_DESC"] =
@@ -103,14 +110,17 @@ local L = {
     ["BROADCAST_ROTATION_PREFIX"] = "循環",
     ["BROADCAST_BACKUP_PREFIX"] = "替補",
 
-    --- Blind icon tooltip
+    -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "This player does not use TranqRotate",
     ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "Or runs an outdated version below 1.6.0",
     ["TOOLTIP_DISABLE_SETTINGS"] = "(You can disable this icon and/or this tooltip in the settings)",
 
-    --- Available update
+    -- Available update
     ["UPDATE_AVAILABLE"] = "A new TranqRotate version is available, update to get latest features",
     ["BREAKING_UPDATE_AVAILABLE"] = "A new BREAKING TranqRotate update is available, you MUST update AS SOON AS possible! TranqRotate may not work properly with up-to-date version users.",
+
+    -- Rotation reset
+    ["RESET_UNAUTHORIZED"] = "You must be raid assist to reset the rotation",
 }
 
 TranqRotate.L = L

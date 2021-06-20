@@ -23,6 +23,7 @@ TranqRotate.constants = {
         ['syncOrder'] = 'sync-order',
         ['syncRequest'] = 'sync-request',
         ['backupRequest'] = 'backup-request',
+        ['reset'] = 'reset',
     },
 
     ['printPrefix'] = 'TranqRotate - ',
@@ -79,4 +80,10 @@ TranqRotate.constants = {
         23311, -- Chromaggus Time lapse
         29685, -- Gluth fear
     },
+
+    ["playerNameFormats"] = {
+        ["SHORT"] = "SHORT",
+        ["PLAYER_NAME_ONLY"] = "PLAYER_NAME",
+        ["FULL_NAME"] = "FULL_NAME",
+    }
 }

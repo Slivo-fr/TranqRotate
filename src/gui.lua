@@ -67,6 +67,7 @@ function TranqRotate:drawList(hunterList, parentFrame)
             TranqRotate:createHunterFrame(hunter, parentFrame)
         else
             hunter.frame:SetParent(parentFrame)
+            hunter.frame.text:SetText(TranqRotate:formatPlayerName(hunter.name))
         end
 
         hunter.frame:ClearAllPoints()

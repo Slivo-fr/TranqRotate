@@ -224,6 +224,9 @@ end
 
 -- Init/Reset rotation status, next tranq is the first hunter on the list
 function TranqRotate:resetRotation()
+
+    TranqRotate.lastRotationReset = GetTime()
+
     for key, hunter in pairs(TranqRotate.rotationTables.rotation) do
         hunter.nextTranq = false
         TranqRotate:refreshHunterFrame(hunter)
@@ -252,8 +255,12 @@ end
 -- Return our hunter object from name or GUID
 function TranqRotate:getHunter(searchTerm)
 
+    if (searchTerm == nil) then
+        return nil
+    end
+
     for _, hunter in pairs(TranqRotate.hunterTable) do
-        if (searchTerm ~= nil and (hunter.GUID == searchTerm or hunter.name == searchTerm)) then
+        if (hunter.GUID == searchTerm or hunter.name == searchTerm) then
             return hunter
         end
     end
@@ -528,7 +535,7 @@ function TranqRotate:getTranqSuccessMessage(isBossTranq, targetName, raidIconFla
     if (isBossTranq) then
         message = TranqRotate.db.profile.announceBossSuccessMessage
         local hunter = TranqRotate:getHighlightedHunter()
-        message = string.format(message, hunter.name)
+        message = string.format(message, TranqRotate:formatPlayerName(hunter.name))
     else
         message = TranqRotate.db.profile.announceTrashSuccessMessage
         message = string.format(
@@ -549,4 +556,14 @@ function TranqRotate:getTranqFailMessage(targetName, raidIconFlags)
     )
 
     return message
+end
+
+function TranqRotate:handleResetButton()
+    TranqRotate:updateRaidStatus()
+    if (TranqRotate:isPlayerAllowedToManageRotation()) then
+        TranqRotate:resetRotation()
+        TranqRotate:sendResetBroadcast()
+    else
+        TranqRotate:printPrefixedMessage(L["RESET_UNAUTHORIZED"])
+    end
 end
