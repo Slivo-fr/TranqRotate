@@ -127,6 +127,11 @@ local L = {
     ["COMMS_RECEIVED_NEW_ROTATION"] = "Nouvelle rotation reçue de %s",
     ["COMMS_RECEIVED_BACKUP_REQUEST"] = "%s demande un backup !",
     ["COMMS_RECEIVED_RESET_BROADCAST"] = "%s à réinitialisé la rotation",
+
+    -- Failed tranq printed messages
+    ["PRINT_FAILED_TRANQ_MISS"] = "%s a raté son tranqshot!",
+    ["PRINT_FAILED_TRANQ_RESIST"] = "Le tranqshot de %s a été résisté!",
+    ["PRINT_FAILED_TRANQ_MISS_OR_RESIST"] = "Le tranqshot de %s a raté ou a été résisté!",
 }
 
 TranqRotate.L = L

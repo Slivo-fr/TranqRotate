@@ -281,18 +281,17 @@ function TranqRotate:formatAddonVersion(version)
     end
 end
 
--- @todo translations
 -- Prints in the chat the reason a tranqshot has failed
 function TranqRotate:printFail(hunter, event)
 
     local name = TranqRotate:formatPlayerName(hunter.name)
     if (event == "SPELL_MISSED") then
-        TranqRotate:printPrefixedMessage(name .. " missed his tranqshot!")
+        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_MISS'], name))-- .. " missed his tranqshot!")
     elseif(event == "SPELL_DISPEL_FAILED") then
-        TranqRotate:printPrefixedMessage(name .. "'s tranqshot was resisted!")
+        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_RESIST'], name))-- .. " missed his tranqshot!")
     else
         -- v1.5.1 and older do not send the event type
-        TranqRotate:printPrefixedMessage(name .. "'s tranqshot was missed or resisted!")
+        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_MISS_OR_RESIST'], name))-- .. " missed his tranqshot!")
     end
 end
 
