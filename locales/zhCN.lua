@@ -121,6 +121,12 @@ local L = {
 
     -- Rotation reset
     ["RESET_UNAUTHORIZED"] = "You must be raid assist to reset the rotation",
+
+    -- Comms chat messages
+    ["COMMS_SENT_BACKUP_REQUEST"] = "Sending backup request to %s",
+    ["COMMS_RECEIVED_NEW_ROTATION"] = "Received new rotation configuration from %s",
+    ["COMMS_RECEIVED_BACKUP_REQUEST"] = "%s asked for backup !",
+    ["COMMS_RECEIVED_RESET_BROADCAST"] = "%s has reset the rotation.",
 }
 
 TranqRotate.L = L

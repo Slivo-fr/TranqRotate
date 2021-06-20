@@ -118,8 +118,7 @@ end
 -- Broadcast a request for the current rotation configuration
 function TranqRotate:sendBackupRequest(name)
 
-    -- todo: translation
-    TranqRotate:printPrefixedMessage('Sending backup request to ' .. TranqRotate:formatPlayerName(name))
+    TranqRotate:printPrefixedMessage(string.format(L['COMMS_SENT_BACKUP_REQUEST'], TranqRotate:formatPlayerName(name)))
 
     local message = {
         ['type'] = TranqRotate.constants.commsTypes.backupRequest,
@@ -170,8 +169,8 @@ function TranqRotate:receiveSyncOrder(prefix, message, channel, sender)
         TranqRotate.syncVersion = (message.version)
         TranqRotate.syncLastSender = sender
 
-        -- todo : translation
-        TranqRotate:printPrefixedMessage('Received new rotation configuration from ' .. TranqRotate:formatPlayerName(sender))
+        TranqRotate:printPrefixedMessage(string.format(L['COMMS_RECEIVED_NEW_ROTATION'], TranqRotate:formatPlayerName(sender)))
+
         TranqRotate:applyRotationConfiguration(message.rotation)
 
         local nextHunter = TranqRotate:getHunter(message.nextHunter)
@@ -191,8 +190,8 @@ end
 
 -- Received a backup request
 function TranqRotate:receiveBackupRequest(prefix, message, channel, sender)
-    -- todo: translations
-    TranqRotate:printPrefixedMessage(TranqRotate:formatPlayerName(sender) .. ' asked for backup !')
+    TranqRotate:printPrefixedMessage(string.format(L['COMMS_RECEIVED_BACKUP_REQUEST'], TranqRotate:formatPlayerName(sender)))
+
     TranqRotate:throwTranqAlert()
 end
 
@@ -204,8 +203,8 @@ function TranqRotate:receiveResetRequest(prefix, message, channel, sender)
     end
 
     if (TranqRotate.lastRotationReset < GetTime() - 2) then
-        -- todo: translations
-        TranqRotate:printPrefixedMessage(TranqRotate:formatPlayerName(sender) .. ' has reset the rotation.')
+        TranqRotate:printPrefixedMessage(string.format(L['COMMS_RECEIVED_RESET_BROADCAST'], TranqRotate:formatPlayerName(sender)))
+
         TranqRotate:resetRotation()
     end
 end

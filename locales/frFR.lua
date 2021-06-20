@@ -121,6 +121,12 @@ local L = {
 
     -- Rotation reset
     ["RESET_UNAUTHORIZED"] = "Vous devez être assistant raid pour réinitialiser la rotation",
+
+    -- Comms chat messages
+    ["COMMS_SENT_BACKUP_REQUEST"] = "Envoi d'une demande de backup à %s",
+    ["COMMS_RECEIVED_NEW_ROTATION"] = "Nouvelle rotation reçue de %s",
+    ["COMMS_RECEIVED_BACKUP_REQUEST"] = "%s demande un backup !",
+    ["COMMS_RECEIVED_RESET_BROADCAST"] = "%s à réinitialisé la rotation",
 }
 
 TranqRotate.L = L
