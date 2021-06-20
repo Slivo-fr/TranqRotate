@@ -120,7 +120,7 @@ SlashCmdList["TRANQROTATE"] = function(msg)
         TranqRotate:lock(false)
     elseif (cmd == 'backup') then
         TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
-    elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not
+    elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not (Used in runDemo)
         TranqRotate:testRotation()
     elseif (cmd == 'test') then
         TranqRotate:toggleArcaneShotTesting()
@@ -264,7 +264,6 @@ function TranqRotate:purgeAddonVersions()
     end
 end
 
--- @todo translations
 -- Returns a string based on the hunter addon version
 function TranqRotate:formatAddonVersion(version)
     if (version == nil) then
