@@ -1,8 +1,8 @@
 ## Interface: 11307
-## Title: TranqRotate |cff00aa002.1.0-beta1|r
+## Title: TranqRotate |cff00aa002.1.0|r
 ## Notes: A tranqshot rotation assistant
 ## Author: Slivo
-## Version: 2.1.0-beta1
+## Version: 2.1.0
 ## SavedVariables: TranqRotateDb
 ## OptionalDeps: Ace3
 
