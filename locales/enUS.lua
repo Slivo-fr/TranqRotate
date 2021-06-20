@@ -130,6 +130,11 @@ local L = {
     ["PRINT_FAILED_TRANQ_MISS"] = "%s missed his tranqshot!",
     ["PRINT_FAILED_TRANQ_RESIST"] = "%s's tranqshot was resisted!",
     ["PRINT_FAILED_TRANQ_MISS_OR_RESIST"] = "%s's tranqshot was missed or resisted!",
+
+    -- Version check printed messages
+    ["VERSION_CHECK_HEADER"] = "Version check",
+    ["VERSION_CHECK_YOU"] = "You",
+    ["VERSION_CHECK_NONE_OR_BELOW_1.6.0"] = "None or below 1.6.0",
 }
 
 TranqRotate.L = L

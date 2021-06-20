@@ -245,8 +245,8 @@ end
 
 -- Prints to the chat the addon version of every hunter and addon users
 function TranqRotate:checkVersions()
-    TranqRotate:printPrefixedMessage("## Version check ##")
-    TranqRotate:printPrefixedMessage("You - " .. TranqRotate.version)
+    TranqRotate:printPrefixedMessage("## " .. L["VERSION_CHECK_HEADER"] .. " ##")
+    TranqRotate:printPrefixedMessage(L["VERSION_CHECK_YOU"] .. " - " .. TranqRotate.version)
 
     for player, version in pairs(TranqRotate.addonVersions) do
         if (player ~= UnitName("player")) then
@@ -268,7 +268,7 @@ end
 -- Returns a string based on the hunter addon version
 function TranqRotate:formatAddonVersion(version)
     if (version == nil) then
-        return "None or below 1.6.0"
+        return L["VERSION_CHECK_NONE_OR_BELOW_1.6.0"]
     else
         return version
     end
