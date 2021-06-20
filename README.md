@@ -12,7 +12,7 @@ This addon will work even if you are the only one using it in your raid. (With s
 
 I'm looking for feedback ! I've set up a small discord server to get in touch : https://discord.gg/bPFyvDe
  
-Please report any issue on github : https://github.com/Slivo-fr/TranqRotate/issues
+Please report any issue at https://github.com/Slivo-fr/TranqRotate/issues
 
 ## Features
 
