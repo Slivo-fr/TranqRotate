@@ -53,7 +53,7 @@ function TranqRotate:CreateConfig()
                         order = 6,
                         width = "double",
                     },
-                    test = {
+                    resetWindowPosition = {
                         name = L["RESET_WINDOW_POSITION"],
                         type = "execute",
                         order = 7,
