@@ -40,12 +40,12 @@ function TranqRotate:CreateConfig()
                         width = "full",
                         order = 2,
                     },
-					spacer4 = {
-						name = ' ',
-						type = "description",
-						width = "full",
-						order = 5,
-					},
+                    spacer4 = {
+                        name = ' ',
+                        type = "description",
+                        width = "full",
+                        order = 5,
+                    },
                     lock = {
                         name = L["LOCK_WINDOW"],
                         desc = L["LOCK_WINDOW_DESC"],
