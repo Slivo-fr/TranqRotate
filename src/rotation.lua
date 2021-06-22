@@ -330,8 +330,8 @@ function TranqRotate:updateRaidStatus()
         if (not complete and not TranqRotate.delayedUpdate) then
             TranqRotate.delayedUpdate = true
             C_Timer.After(1, function()
-                TranqRotate:updateRaidStatus()
                 TranqRotate.delayedUpdate = false
+                TranqRotate:updateRaidStatus()
             end)
         end
     else
