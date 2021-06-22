@@ -14,6 +14,8 @@ local L = {
 
     ["LOCK_WINDOW"] = "Verrouiller la position de la fênetre",
     ["LOCK_WINDOW_DESC"] = "Verrouiller la position de la fênetre",
+    ["RESET_WINDOW_POSITION"] = "Reset position",
+    ["RESET_WINDOW_POSITION_DESC"] = "Reinitialise la position de la fenêtre principale",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "Masquer la fenêtre principale hors raid",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Masquer la fenêtre principale hors raid",
     ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Ne pas afficher la fenêtre principale lorsque vous rejoignez un raid",

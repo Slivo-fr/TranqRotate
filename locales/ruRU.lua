@@ -14,6 +14,8 @@ local L = {
 
     ["LOCK_WINDOW"] = "Закрепить окно",
     ["LOCK_WINDOW_DESC"] = "Препятствует перемещению окна с помощью мыши",
+    ["RESET_WINDOW_POSITION"] = "Reset position",
+    ["RESET_WINDOW_POSITION_DESC"] = "Reset the main window position",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "Показывать окно только в рейде",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Окно будет отображаться только в рейдовой группе",
     ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Не показывать окно во время присоединения к рейду",

@@ -12,6 +12,8 @@ local L = {
 
     ["LOCK_WINDOW"] = "Lock window",
     ["LOCK_WINDOW_DESC"] = "Lock window",
+    ["RESET_WINDOW_POSITION"] = "Reset position",
+    ["RESET_WINDOW_POSITION_DESC"] = "Reset the main window position",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "Hide the window when not in a raid",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Hide the window when not in a raid",
     ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Do not show window when joining a raid",

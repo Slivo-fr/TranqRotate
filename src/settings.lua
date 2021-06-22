@@ -67,25 +67,31 @@ function TranqRotate:CreateConfig()
                         order = 6,
                         width = "double",
                     },
+                    test = {
+                        name = L["RESET_WINDOW_POSITION"],
+                        type = "execute",
+                        order = 7,
+                        func = function() TranqRotate:resetMainWindowPosition() end
+                    },
                     hideNotInRaid = {
                         name = L["HIDE_WINDOW_NOT_IN_RAID"],
                         desc = L["HIDE_WINDOW_NOT_IN_RAID_DESC"],
                         type = "toggle",
-                        order = 7,
+                        order = 8,
                         width = "double",
                     },
                     doNotShowWindowOnRaidJoin = {
                         name = L["DO_NOT_SHOW_WHEN_JOINING_RAID"],
                         desc = L["DO_NOT_SHOW_WHEN_JOINING_RAID_DESC"],
                         type = "toggle",
-                        order = 8,
+                        order = 9,
                         width = "full",
                     },
                     showWindowWhenTargetingBoss = {
                         name = L["SHOW_WHEN_TARGETING_BOSS"],
                         desc = L["SHOW_WHEN_TARGETING_BOSS_DESC"],
                         type = "toggle",
-                        order = 9,
+                        order = 10,
                         width = "full",
                     },
                     playerNameFormatting = {

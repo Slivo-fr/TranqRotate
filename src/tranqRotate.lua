@@ -39,7 +39,7 @@ end
 
 -- Apply setting on profile change
 function TranqRotate:ProfilesChanged()
-	self.db:RegisterDefaults(self.defaults)
+    self.db:RegisterDefaults(self.defaults)
     self:applySettings()
 end
 

@@ -14,6 +14,8 @@ local L = {
 
     ["LOCK_WINDOW"] = "鎖定窗口",
     ["LOCK_WINDOW_DESC"] = "鎖定窗口",
+    ["RESET_WINDOW_POSITION"] = "Reset position",
+    ["RESET_WINDOW_POSITION_DESC"] = "Reset the main window position",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "不在團隊時隱藏窗口",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "不在團隊時隱藏窗口",
     ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "加入團隊時隱藏窗口",
