@@ -97,6 +97,11 @@ local L = {
     ["USE_MULTILINE_ROTATION_REPORT"] = "連續多行發送寧神通告",
     ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "如果您想要更易於理解的順序顯示，請選中此選項",
 
+    --- Raid broadcast messages
+    ["BROADCAST_HEADER_TEXT"] = "獵人寧神順序",
+    ["BROADCAST_ROTATION_PREFIX"] = "循環",
+    ["BROADCAST_BACKUP_PREFIX"] = "替補",
+
     --- Sounds
     ["SETTING_SOUNDS"] = "音效",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "當下壹個寧神射擊是您時，播放提示音",
@@ -106,11 +111,6 @@ local L = {
 
     --- Profiles
     ["SETTING_PROFILES"] = "設定檔",
-
-    --- Raid broadcast messages
-    ["BROADCAST_HEADER_TEXT"] = "獵人寧神順序",
-    ["BROADCAST_ROTATION_PREFIX"] = "循環",
-    ["BROADCAST_BACKUP_PREFIX"] = "替補",
 
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "This player does not use TranqRotate",

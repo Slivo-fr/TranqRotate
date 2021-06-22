@@ -95,6 +95,11 @@ local L = {
     ["USE_MULTILINE_ROTATION_REPORT"] = "Use multiline for main rotation when reporting",
     ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "Check this option if you want more comprehensible order display",
 
+    --- Raid broadcast messages
+    ["BROADCAST_HEADER_TEXT"] = "Hunter tranqshot setup",
+    ["BROADCAST_ROTATION_PREFIX"] = "Rotation",
+    ["BROADCAST_BACKUP_PREFIX"] = "Backup",
+
     --- Sounds
     ["SETTING_SOUNDS"] = "Sounds",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "Play a sound when you are the next to shoot",
@@ -104,11 +109,6 @@ local L = {
 
     --- Profiles
     ["SETTING_PROFILES"] = "Profiles",
-
-    --- Raid broadcast messages
-    ["BROADCAST_HEADER_TEXT"] = "Hunter tranqshot setup",
-    ["BROADCAST_ROTATION_PREFIX"] = "Rotation",
-    ["BROADCAST_BACKUP_PREFIX"] = "Backup",
 
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "This player does not use TranqRotate",

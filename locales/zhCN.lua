@@ -97,6 +97,11 @@ local L = {
     ["USE_MULTILINE_ROTATION_REPORT"] = "连续多行发送宁神通告",
     ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "如果您想要更易于理解的顺序显示，请选中此选项",
 
+    --- Raid broadcast messages
+    ["BROADCAST_HEADER_TEXT"] = "猎人宁神顺序",
+    ["BROADCAST_ROTATION_PREFIX"] = "循环",
+    ["BROADCAST_BACKUP_PREFIX"] = "替补",
+
     --- Sounds
     ["SETTING_SOUNDS"] = "音效",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "当下一个宁神射击是您时，播放提示音",
@@ -106,11 +111,6 @@ local L = {
 
     --- Profiles
     ["SETTING_PROFILES"] = "配置文件",
-
-    --- Raid broadcast messages
-    ["BROADCAST_HEADER_TEXT"] = "猎人宁神顺序",
-    ["BROADCAST_ROTATION_PREFIX"] = "循环",
-    ["BROADCAST_BACKUP_PREFIX"] = "替补",
 
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "此玩家没有使用TranqRotate插件",

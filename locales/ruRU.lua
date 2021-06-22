@@ -97,6 +97,11 @@ local L = {
     ["USE_MULTILINE_ROTATION_REPORT"] = "Использовать многострочный вывод при объявлении очередности",
     ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "Выберите для более понятного порядка отображения очередности",
 
+    --- Raid broadcast messages
+    ["BROADCAST_HEADER_TEXT"] = "Очередность Усмиряющего выстрела",
+    ["BROADCAST_ROTATION_PREFIX"] = "Очередность",
+    ["BROADCAST_BACKUP_PREFIX"] = "Запасные",
+
     --- Sounds
     ["SETTING_SOUNDS"] = "Звуки",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "Проигрывать звук когда подходит ваша очередь",
@@ -106,11 +111,6 @@ local L = {
 
     --- Profiles
     ["SETTING_PROFILES"] = "Профили",
-
-    --- Raid broadcast messages
-    ["BROADCAST_HEADER_TEXT"] = "Очередность Усмиряющего выстрела",
-    ["BROADCAST_ROTATION_PREFIX"] = "Очередность",
-    ["BROADCAST_BACKUP_PREFIX"] = "Запасные",
 
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "Этот игрок не использует TranqRotate",
