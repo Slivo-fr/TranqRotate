@@ -28,32 +28,18 @@ function TranqRotate:CreateConfig()
                 type = "group",
                 order = 1,
                 args = {
-					descriptionText = {
-						name = "TranqRotate v" .. TranqRotate.version .. " by Slivo-Sulfuron\n",
-						type = "description",
-						width = "full",
-						order = 1,
-					},
-					repoLink = {
-						name = L['SETTING_GENERAL_REPORT'] .. " https://github.com/Slivo-fr/TranqRotate\n",
-						type = "description",
-						width = "full",
-						order = 2,
-					},
-                    -- @todo : find a way to space widget properly
-					--spacer3 = {
-					--	name = ' ',
-					--	type = "description",
-					--	width = "full",
-					--	order = 3,
-					--},
-					--baseVersion = {
-					--	name = L['SETTING_GENERAL_DESC'],
-					--	type = "description",
-					--	width = "full",
-					--	order = 4,
-					--},
-                    -- @todo : find a way to space widget properly
+                    descriptionText = {
+                        name = "TranqRotate v" .. TranqRotate.version .. " by Slivo-Sulfuron",
+                        type = "description",
+                        width = "full",
+                        order = 1,
+                    },
+                    repoLink = {
+                        name = L['SETTING_GENERAL_REPORT'] .. " https://github.com/Slivo-fr/TranqRotate",
+                        type = "description",
+                        width = "full",
+                        order = 2,
+                    },
 					spacer4 = {
 						name = ' ',
 						type = "description",
@@ -328,7 +314,7 @@ function TranqRotate:CreateConfig()
                             PlaySoundFile(TranqRotate.constants.sounds.alarms[value])
                         end
                     },
-                    baseVersion = {
+                    dbmSoundWarning = {
                         name = L['DBM_SOUND_WARNING'],
                         type = "description",
                         width = "full",
@@ -344,6 +330,7 @@ function TranqRotate:CreateConfig()
 
     AceConfigDialog:AddToBlizOptions(Addon, nil, nil, "general")
     AceConfigDialog:AddToBlizOptions(Addon, L['SETTING_ANNOUNCES'], Addon, "announces")
+    AceConfigDialog:AddToBlizOptions(Addon, L['SETTING_SOUNDS'], Addon, "sounds")
     AceConfigDialog:AddToBlizOptions(Addon, L["SETTING_PROFILES"], Addon, "profile")
 
     AceConfigDialog:SetDefaultSize(Addon, 895, 570)
