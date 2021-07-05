@@ -1,6 +1,8 @@
 local AceComm = LibStub("AceComm-3.0")
 local AceSerializer = LibStub("AceSerializer-3.0")
 
+local L = TranqRotate.L
+
 -- Register comm prefix at initialization steps
 function TranqRotate:initComms()
 
