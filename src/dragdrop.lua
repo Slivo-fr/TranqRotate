@@ -25,7 +25,14 @@ function TranqRotate:configureHunterFrameDrag(hunter)
         function()
             hunter.frame:StartMoving()
             hunter.frame:SetFrameStrata("HIGH")
-            TranqRotate.mainFrame.rulerFrame:SetPoint('BOTTOMRIGHT', hunter.frame, 'TOPLEFT', 0, 0)
+
+            hunter.frame:SetScript(
+                "OnUpdate",
+                function ()
+                    TranqRotate:setDropHintPosition(hunter.frame)
+                end
+            )
+
             TranqRotate.mainFrame.dropHintFrame:Show()
             TranqRotate.mainFrame.backupFrame:Show()
         end
@@ -38,15 +45,23 @@ function TranqRotate:configureHunterFrameDrag(hunter)
             hunter.frame:SetFrameStrata(TranqRotate.mainFrame:GetFrameStrata())
             TranqRotate.mainFrame.dropHintFrame:Hide()
 
+            -- Removes the OnUpdate event used for drag & drop
+            hunter.frame:SetScript("OnUpdate", nil)
+
             if (#TranqRotate.rotationTables.backup < 1) then
                 TranqRotate.mainFrame.backupFrame:Hide()
             end
 
-            local group, position = TranqRotate:getDropPosition(TranqRotate.mainFrame.rulerFrame:GetHeight())
+            local group, position = TranqRotate:getDropPosition(hunter.frame)
             TranqRotate:handleDrop(hunter, group, position)
             TranqRotate:sendSyncOrder(false)
         end
     )
+end
+
+-- returns the difference between the top of the rotation frame and the dragged hunter frame
+function TranqRotate:getDragFrameHeight(hunterFrame)
+    return math.abs(hunterFrame:GetTop() - TranqRotate.mainFrame.rotationFrame:GetTop())
 end
 
 -- create and initialize the drop hint frame
@@ -70,32 +85,14 @@ function TranqRotate:createDropHintFrame()
     TranqRotate.mainFrame.dropHintFrame = hintFrame
 end
 
--- Create and initialize the 'ruler' frame.
--- It's height will be used as a ruler for position calculation
-function TranqRotate:createRulerFrame()
-
-    local rulerFrame = CreateFrame("Frame", nil, TranqRotate.mainFrame.rotationFrame)
-    TranqRotate.mainFrame.rulerFrame = rulerFrame
-
-    rulerFrame:SetPoint('TOPLEFT', TranqRotate.mainFrame.rotationFrame, 'TOPLEFT', 0, 0)
-
-    rulerFrame:SetScript(
-        "OnSizeChanged",
-        function (self, width, height)
-            TranqRotate:setDropHintPosition(self, width, height)
-        end
-    )
-
-end
-
 -- Set the drop hint frame position to match dragged frame position
-function TranqRotate:setDropHintPosition(self, width, height)
+function TranqRotate:setDropHintPosition(hunterFrame)
 
     local hunterFrameHeight = TranqRotate.constants.hunterFrameHeight
     local hunterFrameSpacing = TranqRotate.constants.hunterFrameSpacing
     local hintPosition = 0
 
-    local group, position = TranqRotate:getDropPosition(height)
+    local group, position = TranqRotate:getDropPosition(hunterFrame)
 
     if (group == 'ROTATION') then
         if (position == 0) then
@@ -117,8 +114,9 @@ function TranqRotate:setDropHintPosition(self, width, height)
 end
 
 -- Compute drop group and position from ruler height
-function TranqRotate:getDropPosition(rulerHeight)
+function TranqRotate:getDropPosition(hunterFrame)
 
+    local height = TranqRotate:getDragFrameHeight(hunterFrame)
     local group = 'ROTATION'
     local position = 0
 
@@ -126,25 +124,25 @@ function TranqRotate:getDropPosition(rulerHeight)
     local hunterFrameSpacing = TranqRotate.constants.hunterFrameSpacing
 
     -- Dragged frame is above rotation frames
-    if (TranqRotate.mainFrame.rulerFrame:GetTop() > TranqRotate.mainFrame.rotationFrame:GetTop()) then
-        rulerHeight = 0
+    if (hunterFrame:GetTop() > TranqRotate.mainFrame.rotationFrame:GetTop()) then
+        height = 0
     end
 
-    position = floor(rulerHeight / (hunterFrameHeight + hunterFrameSpacing))
+    position = floor(height / (hunterFrameHeight + hunterFrameSpacing))
 
     -- Dragged frame is bellow rotation frame
-    if (rulerHeight > TranqRotate.mainFrame.rotationFrame:GetHeight()) then
+    if (height > TranqRotate.mainFrame.rotationFrame:GetHeight()) then
 
         group = 'BACKUP'
 
         -- Removing rotation frame size from calculation, using it's height as base hintPosition offset
-        rulerHeight = rulerHeight - TranqRotate.mainFrame.rotationFrame:GetHeight()
+        height = height - TranqRotate.mainFrame.rotationFrame:GetHeight()
 
-        if (rulerHeight > TranqRotate.mainFrame.backupFrame:GetHeight()) then
+        if (height > TranqRotate.mainFrame.backupFrame:GetHeight()) then
             -- Dragged frame is bellow backup frame
             position = #TranqRotate.rotationTables.backup
         else
-            position = floor(rulerHeight / (hunterFrameHeight + hunterFrameSpacing))
+            position = floor(height / (hunterFrameHeight + hunterFrameSpacing))
         end
     end
 
