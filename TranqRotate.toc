@@ -37,3 +37,4 @@ src\utils.lua
 src\debuff.lua
 src\migration.lua
 src\raidIcons.lua
+src\encounter.lua

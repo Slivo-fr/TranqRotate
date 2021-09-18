@@ -7,6 +7,7 @@ eventFrame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 eventFrame:RegisterEvent("GROUP_ROSTER_UPDATE")
 eventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
 eventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
+eventFrame:RegisterEvent("ENCOUNTER_END")
 
 eventFrame:SetScript(
     "OnEvent",
@@ -77,8 +78,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
         TranqRotate.frenzy = false
     elseif (event == "UNIT_DIED" and TranqRotate:isTranqableBoss(destGUID)) then
         if (TranqRotate:isPlayerAllowedToManageRotation()) then
-            TranqRotate:resetRotation()
-            TranqRotate:sendResetBroadcast()
+            TranqRotate:endEncounter()
         end
         TranqRotate.mainFrame.frenzyFrame:Hide()
     end
@@ -92,6 +92,11 @@ end
 -- Player left combat
 function TranqRotate:PLAYER_REGEN_ENABLED()
     TranqRotate:updateRaidStatus()
+end
+
+-- Player left combat
+function TranqRotate:ENCOUNTER_END()
+    TranqRotate.endEncounter()
 end
 
 function TranqRotate:PLAYER_TARGET_CHANGED()

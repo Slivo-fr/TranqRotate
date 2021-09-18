@@ -69,6 +69,11 @@ function TranqRotate:printPrefixedMessage(msg)
     TranqRotate:printMessage(TranqRotate:colorText(TranqRotate.constants.printPrefix) .. msg)
 end
 
+-- Print message with colored prefix
+function TranqRotate:debug(...)
+    print("TranqRotate", "DEBUG", ...)
+end
+
 -- Send a tranq announce message to a given channel
 function TranqRotate:sendAnnounceMessage(chatMessage)
     if TranqRotate.db.profile.enableAnnounces then
