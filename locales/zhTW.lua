@@ -14,6 +14,8 @@ local L = {
 
     ["LOCK_WINDOW"] = "鎖定窗口",
     ["LOCK_WINDOW_DESC"] = "鎖定窗口",
+    ["RESET_WINDOW_POSITION"] = "Reset position",
+    ["RESET_WINDOW_POSITION_DESC"] = "Reset the main window position",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "不在團隊時隱藏窗口",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "不在團隊時隱藏窗口",
     ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "加入團隊時隱藏窗口",
@@ -95,6 +97,11 @@ local L = {
     ["USE_MULTILINE_ROTATION_REPORT"] = "連續多行發送寧神通告",
     ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "如果您想要更易於理解的順序顯示，請選中此選項",
 
+    --- Raid broadcast messages
+    ["BROADCAST_HEADER_TEXT"] = "獵人寧神順序",
+    ["BROADCAST_ROTATION_PREFIX"] = "循環",
+    ["BROADCAST_BACKUP_PREFIX"] = "替補",
+
     --- Sounds
     ["SETTING_SOUNDS"] = "音效",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "當下壹個寧神射擊是您時，播放提示音",
@@ -104,11 +111,6 @@ local L = {
 
     --- Profiles
     ["SETTING_PROFILES"] = "設定檔",
-
-    --- Raid broadcast messages
-    ["BROADCAST_HEADER_TEXT"] = "獵人寧神順序",
-    ["BROADCAST_ROTATION_PREFIX"] = "循環",
-    ["BROADCAST_BACKUP_PREFIX"] = "替補",
 
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "This player does not use TranqRotate",
@@ -121,6 +123,22 @@ local L = {
 
     -- Rotation reset
     ["RESET_UNAUTHORIZED"] = "You must be raid assist to reset the rotation",
+
+    -- Comms chat messages
+    ["COMMS_SENT_BACKUP_REQUEST"] = "Sending backup request to %s",
+    ["COMMS_RECEIVED_NEW_ROTATION"] = "Received new rotation configuration from %s",
+    ["COMMS_RECEIVED_BACKUP_REQUEST"] = "%s asked for backup !",
+    ["COMMS_RECEIVED_RESET_BROADCAST"] = "%s has reset the rotation.",
+
+    -- Failed tranq printed messages
+    ["PRINT_FAILED_TRANQ_MISS"] = "%s missed his tranqshot!",
+    ["PRINT_FAILED_TRANQ_RESIST"] = "%s's tranqshot was resisted!",
+    ["PRINT_FAILED_TRANQ_MISS_OR_RESIST"] = "%s's tranqshot was missed or resisted!",
+
+    -- Version check printed messages
+    ["VERSION_CHECK_HEADER"] = "Version check",
+    ["VERSION_CHECK_YOU"] = "You",
+    ["VERSION_CHECK_NONE_OR_BELOW_1.6.0"] = "None or below 1.6.0",
 }
 
 TranqRotate.L = L

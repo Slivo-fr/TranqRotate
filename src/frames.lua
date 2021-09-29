@@ -14,14 +14,22 @@ function TranqRotate:createMainFrame()
     TranqRotate.mainFrame:SetScript(
         "OnDragStop",
         function()
-            local config = TranqRotate.db.profile
             TranqRotate.mainFrame:StopMovingOrSizing()
 
-            config.point = 'TOPLEFT'
-            config.y = TranqRotate.mainFrame:GetTop()
-            config.x = TranqRotate.mainFrame:GetLeft()
+            TranqRotate.db.profile.point = 'TOPLEFT'
+            TranqRotate.db.profile.y = TranqRotate.mainFrame:GetTop()
+            TranqRotate.db.profile.x = TranqRotate.mainFrame:GetLeft()
         end
     )
+end
+
+function TranqRotate:resetMainWindowPosition()
+    TranqRotate.db.profile.point = nil
+    TranqRotate.db.profile.y = nil
+    TranqRotate.db.profile.x = nil
+
+    TranqRotate.mainFrame:ClearAllPoints()
+    TranqRotate.mainFrame:SetPoint('CENTER')
 end
 
 -- Create Title frame

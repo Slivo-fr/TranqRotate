@@ -39,7 +39,7 @@ end
 
 -- Apply setting on profile change
 function TranqRotate:ProfilesChanged()
-	self.db:RegisterDefaults(self.defaults)
+    self.db:RegisterDefaults(self.defaults)
     self:applySettings()
 end
 
@@ -67,6 +67,11 @@ end
 -- Print message with colored prefix
 function TranqRotate:printPrefixedMessage(msg)
     TranqRotate:printMessage(TranqRotate:colorText(TranqRotate.constants.printPrefix) .. msg)
+end
+
+-- Print message with colored prefix
+function TranqRotate:debug(...)
+    print("TranqRotate", "DEBUG", ...)
 end
 
 -- Send a tranq announce message to a given channel
@@ -120,7 +125,7 @@ SlashCmdList["TRANQROTATE"] = function(msg)
         TranqRotate:lock(false)
     elseif (cmd == 'backup') then
         TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
-    elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not
+    elseif (cmd == 'rotate') then -- @todo decide if this should be removed or not (Used in runDemo)
         TranqRotate:testRotation()
     elseif (cmd == 'test') then
         TranqRotate:toggleArcaneShotTesting()
@@ -142,13 +147,6 @@ function TranqRotate:toggleDisplay()
     else
         TranqRotate.mainFrame:Show()
     end
-end
-
--- @todo: remove this
-function TranqRotate:test()
-    TranqRotate:printMessage('test')
-
-    print(TranqRotate:isPlayedIncapacitatedByDebuff())
 end
 
 -- Open ace settings
@@ -252,8 +250,8 @@ end
 
 -- Prints to the chat the addon version of every hunter and addon users
 function TranqRotate:checkVersions()
-    TranqRotate:printPrefixedMessage("## Version check ##")
-    TranqRotate:printPrefixedMessage("You - " .. TranqRotate.version)
+    TranqRotate:printPrefixedMessage("## " .. L["VERSION_CHECK_HEADER"] .. " ##")
+    TranqRotate:printPrefixedMessage(L["VERSION_CHECK_YOU"] .. " - " .. TranqRotate.version)
 
     for player, version in pairs(TranqRotate.addonVersions) do
         if (player ~= UnitName("player")) then
@@ -271,28 +269,26 @@ function TranqRotate:purgeAddonVersions()
     end
 end
 
--- @todo translations
 -- Returns a string based on the hunter addon version
 function TranqRotate:formatAddonVersion(version)
     if (version == nil) then
-        return "None or below 1.6.0"
+        return L["VERSION_CHECK_NONE_OR_BELOW_1.6.0"]
     else
         return version
     end
 end
 
--- @todo translations
 -- Prints in the chat the reason a tranqshot has failed
 function TranqRotate:printFail(hunter, event)
 
     local name = TranqRotate:formatPlayerName(hunter.name)
     if (event == "SPELL_MISSED") then
-        TranqRotate:printPrefixedMessage(name .. " missed his tranqshot!")
+        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_MISS'], name))-- .. " missed his tranqshot!")
     elseif(event == "SPELL_DISPEL_FAILED") then
-        TranqRotate:printPrefixedMessage(name .. "'s tranqshot was resisted!")
+        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_RESIST'], name))-- .. " missed his tranqshot!")
     else
         -- v1.5.1 and older do not send the event type
-        TranqRotate:printPrefixedMessage(name .. "'s tranqshot was missed or resisted!")
+        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_MISS_OR_RESIST'], name))-- .. " missed his tranqshot!")
     end
 end
 

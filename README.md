@@ -1,6 +1,6 @@
 # TranqRotate
 
-This addon is meant to help hunters to setup tranqshot rotation and give them real time visual feedback about it.
+This addon is meant to help hunters to setup tranqshot rotation and give them real time feedback about it.
 
 It also allow non-hunter raid leaders to easily manage, report and watch the tranq rotation live. 
 
@@ -10,9 +10,9 @@ This addon will work even if you are the only one using it in your raid. (With s
 
 ## Feedback
 
-I'm looking for feedback ! I've set up a small discord server to get in touch : https://discord.gg/bPFyvDe
+I've set up a small discord server to talk about the project, get feedback and troubleshoot problems : https://discord.gg/bPFyvDe
  
-Please report any issue on github : https://github.com/Slivo-fr/TranqRotate/issues
+Please report any issue at https://github.com/Slivo-fr/TranqRotate/issues
 
 ## Features
 
@@ -60,7 +60,6 @@ The `/tranq check` command allows you to list TranqRotate versions used by other
 
 Here is a list of feature I want to implement at some point, no specific order is decided yet.
 
-- Automatic reset of rotation when raid wipe
 - Customization of the tranq window, size, textures, colors, fonts...
 
 ## Download

@@ -1,5 +1,13 @@
 ## TranqRotate Changelog
 
+#### v2.2.0
+
+- Adds several translations
+- Adds a button to reset window position in general settings
+- Update Ace3 libs
+- Improves rotation automatic reset after boss fight
+- Drag and drop backend changes
+
 #### v2.1.0
 
 - Removes server suffixes from player names everywhere (connected realms)

@@ -14,6 +14,8 @@ local L = {
 
     ["LOCK_WINDOW"] = "Verrouiller la position de la fênetre",
     ["LOCK_WINDOW_DESC"] = "Verrouiller la position de la fênetre",
+    ["RESET_WINDOW_POSITION"] = "Reset position",
+    ["RESET_WINDOW_POSITION_DESC"] = "Reinitialise la position de la fenêtre principale",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "Masquer la fenêtre principale hors raid",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Masquer la fenêtre principale hors raid",
     ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Ne pas afficher la fenêtre principale lorsque vous rejoignez un raid",
@@ -95,6 +97,11 @@ local L = {
     ["USE_MULTILINE_ROTATION_REPORT"] = "Utiliser plusieurs lignes pour la rotation principale",
     ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "Chaque chasseur de la rotation apparaitra sur une ligne numérotée",
 
+    --- Raid broadcast messages
+    ["BROADCAST_HEADER_TEXT"] = "Hunter tranqshot setup",
+    ["BROADCAST_ROTATION_PREFIX"] = "Rotation",
+    ["BROADCAST_BACKUP_PREFIX"] = "Backup",
+
     --- Sounds
     ["SETTING_SOUNDS"] = "Sons",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "Jouer un son lorsque vous êtes le prochain à devoir tranq",
@@ -104,11 +111,6 @@ local L = {
 
     --- Profiles
     ["SETTING_PROFILES"] = "Profils",
-
-    --- Raid broadcast messages
-    ["BROADCAST_HEADER_TEXT"] = "Hunter tranqshot setup",
-    ["BROADCAST_ROTATION_PREFIX"] = "Rotation",
-    ["BROADCAST_BACKUP_PREFIX"] = "Backup",
 
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "Ce joueur n'utilise pas TranqRotate",
@@ -121,6 +123,22 @@ local L = {
 
     -- Rotation reset
     ["RESET_UNAUTHORIZED"] = "Vous devez être assistant raid pour réinitialiser la rotation",
+
+    -- Comms chat messages
+    ["COMMS_SENT_BACKUP_REQUEST"] = "Envoi d'une demande de backup à %s",
+    ["COMMS_RECEIVED_NEW_ROTATION"] = "Nouvelle rotation reçue de %s",
+    ["COMMS_RECEIVED_BACKUP_REQUEST"] = "%s demande un backup !",
+    ["COMMS_RECEIVED_RESET_BROADCAST"] = "%s à réinitialisé la rotation",
+
+    -- Failed tranq printed messages
+    ["PRINT_FAILED_TRANQ_MISS"] = "%s a raté son tranqshot!",
+    ["PRINT_FAILED_TRANQ_RESIST"] = "Le tranqshot de %s a été résisté!",
+    ["PRINT_FAILED_TRANQ_MISS_OR_RESIST"] = "Le tranqshot de %s a raté ou a été résisté!",
+
+    -- Version check printed messages
+    ["VERSION_CHECK_HEADER"] = "Controle des versions",
+    ["VERSION_CHECK_YOU"] = "Vous",
+    ["VERSION_CHECK_NONE_OR_BELOW_1.6.0"] = "Aucune ou inférieure à 1.6.0",
 }
 
 TranqRotate.L = L

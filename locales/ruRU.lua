@@ -14,6 +14,8 @@ local L = {
 
     ["LOCK_WINDOW"] = "Закрепить окно",
     ["LOCK_WINDOW_DESC"] = "Препятствует перемещению окна с помощью мыши",
+    ["RESET_WINDOW_POSITION"] = "Reset position",
+    ["RESET_WINDOW_POSITION_DESC"] = "Reset the main window position",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "Показывать окно только в рейде",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Окно будет отображаться только в рейдовой группе",
     ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Не показывать окно во время присоединения к рейду",
@@ -95,6 +97,11 @@ local L = {
     ["USE_MULTILINE_ROTATION_REPORT"] = "Использовать многострочный вывод при объявлении очередности",
     ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "Выберите для более понятного порядка отображения очередности",
 
+    --- Raid broadcast messages
+    ["BROADCAST_HEADER_TEXT"] = "Очередность Усмиряющего выстрела",
+    ["BROADCAST_ROTATION_PREFIX"] = "Очередность",
+    ["BROADCAST_BACKUP_PREFIX"] = "Запасные",
+
     --- Sounds
     ["SETTING_SOUNDS"] = "Звуки",
     ["ENABLE_NEXT_TO_TRANQ_SOUND"] = "Проигрывать звук когда подходит ваша очередь",
@@ -104,11 +111,6 @@ local L = {
 
     --- Profiles
     ["SETTING_PROFILES"] = "Профили",
-
-    --- Raid broadcast messages
-    ["BROADCAST_HEADER_TEXT"] = "Очередность Усмиряющего выстрела",
-    ["BROADCAST_ROTATION_PREFIX"] = "Очередность",
-    ["BROADCAST_BACKUP_PREFIX"] = "Запасные",
 
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "Этот игрок не использует TranqRotate",
@@ -121,6 +123,22 @@ local L = {
 
     -- Rotation reset
     ["RESET_UNAUTHORIZED"] = "You must be raid assist to reset the rotation",
+
+    -- Comms chat messages
+    ["COMMS_SENT_BACKUP_REQUEST"] = "Sending backup request to %s",
+    ["COMMS_RECEIVED_NEW_ROTATION"] = "Received new rotation configuration from %s",
+    ["COMMS_RECEIVED_BACKUP_REQUEST"] = "%s asked for backup !",
+    ["COMMS_RECEIVED_RESET_BROADCAST"] = "%s has reset the rotation.",
+
+    -- Failed tranq printed messages
+    ["PRINT_FAILED_TRANQ_MISS"] = "%s missed his tranqshot!",
+    ["PRINT_FAILED_TRANQ_RESIST"] = "%s's tranqshot was resisted!",
+    ["PRINT_FAILED_TRANQ_MISS_OR_RESIST"] = "%s's tranqshot was missed or resisted!",
+
+    -- Version check printed messages
+    ["VERSION_CHECK_HEADER"] = "Version check",
+    ["VERSION_CHECK_YOU"] = "You",
+    ["VERSION_CHECK_NONE_OR_BELOW_1.6.0"] = "None or below 1.6.0",
 }
 
 TranqRotate.L = L

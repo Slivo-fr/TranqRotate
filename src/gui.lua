@@ -12,7 +12,6 @@ function TranqRotate:initGui()
 
     TranqRotate:drawHunterFrames()
     TranqRotate:createDropHintFrame()
-    TranqRotate:createRulerFrame()
 
     TranqRotate:updateDisplay()
 end
