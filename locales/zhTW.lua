@@ -7,6 +7,12 @@ local L = {
     ["LOADED_MESSAGE"] = "TranqRotate 已加載, 輸入 /tranq 進入設定",
     ["TRANQ_WINDOW_HIDDEN"] = "Tranqrotate 窗口隱藏. 輸入 /tranq toggle 顯示窗口",
 
+    -- Buttons tooltips
+    ["BUTTON_CLOSE"] = "Hide window",
+    ["BUTTON_SETTINGS"] = "Settings",
+    ["BUTTON_RESET_ROTATION"] = "Reset Rotation",
+    ["BUTTON_PRINT_ROTATION"] = "Print Rotation",
+
     -- Settings
     ["SETTING_GENERAL"] = "General",
     ["SETTING_GENERAL_REPORT"] = "請報告問題: ",

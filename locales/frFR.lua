@@ -7,6 +7,12 @@ local L = {
     ["LOADED_MESSAGE"] = "TranqRotate chargé, utilisez /tranq pour les options",
     ["TRANQ_WINDOW_HIDDEN"] = "Tranqrotate window hidden. Use /tranq toggle to get it back",
 
+    -- Buttons tooltips
+    ["BUTTON_CLOSE"] = "Hide window",
+    ["BUTTON_SETTINGS"] = "Settings",
+    ["BUTTON_RESET_ROTATION"] = "Reset Rotation",
+    ["BUTTON_PRINT_ROTATION"] = "Print Rotation",
+
     -- Settings
     ["SETTING_GENERAL"] = "Général",
     ["SETTING_GENERAL_REPORT"] = "Merci de signaler tout bug rencontré sur",
