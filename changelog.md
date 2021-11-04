@@ -1,9 +1,13 @@
 ## TranqRotate Changelog
 
-#### v2.2.1
+#### v2.2.2
 
 - Bump toc for 1.14.1
 - Add tooltip to title bar buttons (Thanks Vinny)
+
+#### v2.2.1
+
+- Bump toc for 1.14.0
 
 #### v2.2.0
 
