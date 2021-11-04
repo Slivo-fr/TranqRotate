@@ -57,34 +57,38 @@ function TranqRotate:createButtons()
 
     local buttons = {
         {
-            ['texture'] = 'Interface/Buttons/UI-Panel-MinimizeButton-Up',
-            ['callback'] = TranqRotate.toggleDisplay,
-            ['textCoord'] = {0.18, 0.8, 0.2, 0.8}
+            texture = 'Interface/Buttons/UI-Panel-MinimizeButton-Up',
+            callback = TranqRotate.toggleDisplay,
+            textCoord = {0.18, 0.8, 0.2, 0.8},
+            tooltip = L['BUTTON_CLOSE'],
         },
         {
-            ['texture'] = 'Interface/GossipFrame/BinderGossipIcon',
-            ['callback'] = TranqRotate.openSettings
+            texture = 'Interface/GossipFrame/BinderGossipIcon',
+            callback = TranqRotate.openSettings,
+            tooltip = L['BUTTON_SETTINGS'],
         },
         {
-            ['texture'] = 'Interface/Buttons/UI-RefreshButton',
-            ['callback'] = TranqRotate.handleResetButton
+            texture = 'Interface/Buttons/UI-RefreshButton',
+            callback = TranqRotate.handleResetButton,
+            tooltip = L['BUTTON_RESET_ROTATION'],
         },
         {
-            ['texture'] = 'Interface/Buttons/UI-GuildButton-MOTD-Up',
-            ['callback'] = TranqRotate.printRotationSetup
+            texture = 'Interface/Buttons/UI-GuildButton-MOTD-Up',
+            callback = TranqRotate.printRotationSetup,
+            tooltip = L['BUTTON_PRINT_ROTATION'],
         },
     }
 
     local position = 5
 
     for key, button in pairs(buttons) do
-        TranqRotate:createButton(position, button.texture, button.callback, button.textCoord)
+        TranqRotate:createButton(position, button.texture, button.callback, button.textCoord, button.tooltip)
         position = position + 13
     end
 end
 
 -- Create a single button in the title bar
-function TranqRotate:createButton(position, texture, callback, textCoord)
+function TranqRotate:createButton(position, texture, callback, textCoord, tooltip)
 
     local button = CreateFrame("Button", nil, TranqRotate.mainFrame.titleFrame)
     button:SetPoint('RIGHT', -position, 0)
@@ -107,6 +111,17 @@ function TranqRotate:createButton(position, texture, callback, textCoord)
     end
 
     button:SetScript("OnClick", callback)
+
+    if tooltip then
+        button:SetScript("OnEnter", function()
+            GameTooltip:SetOwner(button, "ANCHOR_RIGHT")
+            GameTooltip_SetTitle(GameTooltip, tooltip)
+            GameTooltip:Show()
+        end)
+        button:SetScript("OnLeave", function()
+            GameTooltip:Hide()
+        end)
+    end
 end
 
 -- Create rotation frame
