@@ -1,0 +1,40 @@
+## Interface: 20502
+## Title: TranqRotate |cff00aa002.2.2|r
+## Notes: A tranqshot rotation assistant
+## Author: Slivo
+## Version: 2.2.2
+## SavedVariables: TranqRotateDb
+## OptionalDeps: Ace3
+
+#@no-lib-strip@
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+libs\AceGUI-3.0\AceGUI-3.0.xml
+libs\AceConfig-3.0\AceConfig-3.0.xml
+libs\AceComm-3.0\AceComm-3.0.xml
+libs\AceSerializer-3.0\AceSerializer-3.0.xml
+#@end-no-lib-strip@
+
+locales\enUS.lua
+locales\frFR.lua
+locales\zhCN.lua
+locales\zhTW.lua
+locales\ruRU.lua
+
+src\tranqRotate.lua
+src\events.lua
+src\rotation.lua
+src\constants.lua
+src\frames.lua
+src\gui.lua
+src\dragdrop.lua
+src\comms.lua
+src\defaults.lua
+src\settings.lua
+src\utils.lua
+src\debuff.lua
+src\migration.lua
+src\raidIcons.lua
+src\encounter.lua
