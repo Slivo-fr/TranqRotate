@@ -159,7 +159,7 @@ end
 function TranqRotate:printRotationSetup()
 
     if (IsInRaid()) then
-        TranqRotate:sendRotationSetupBroadcastMessage('--- ' .. TranqRotate.constants.printPrefix .. L['BROADCAST_HEADER_TEXT'] .. ' ---', channel)
+        TranqRotate:sendRotationSetupBroadcastMessage('--- ' .. TranqRotate.constants.printPrefix .. L['BROADCAST_HEADER_TEXT'] .. ' ---')
 
         if (TranqRotate.db.profile.useMultilineRotationReport) then
             TranqRotate:printMultilineRotation(TranqRotate.rotationTables.rotation)

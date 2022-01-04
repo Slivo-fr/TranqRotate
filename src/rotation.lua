@@ -248,7 +248,7 @@ function TranqRotate:testRotation()
         hunterToRotate = TranqRotate.rotationTables.rotation[1]
     end
 
-    TranqRotate:sendSyncTranq(hunterToRotate, false, timestamp)
+    TranqRotate:sendSyncTranq(hunterToRotate, false, GetTime())
     TranqRotate:rotate(hunterToRotate)
 end
 
