@@ -1,4 +1,5 @@
 .idea
 libs
 copy.sh
+copytbc.sh
 package.sh

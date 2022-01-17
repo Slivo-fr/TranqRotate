@@ -66,4 +66,4 @@ Here is a list of feature I want to implement at some point, no specific order i
 
 Do not use github download button on this page, get the latest release zip file from https://github.com/Slivo-fr/TranqRotate/releases
 
-Also available here https://www.curseforge.com/wow/addons/tranqrotate and there https://wowclassicui.com/fr/addons/tranqrotate
+Also available on [curseforge](https://www.curseforge.com/wow/addons/tranqrotate)

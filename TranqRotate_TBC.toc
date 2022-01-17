@@ -1,4 +1,4 @@
-## Interface: 11401
+## Interface: 20502
 ## Title: TranqRotate |cff00aa002.2.3|r
 ## Notes: A tranqshot rotation assistant
 ## Author: Slivo

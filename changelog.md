@@ -1,5 +1,9 @@
 ## TranqRotate Changelog
 
+#### v2.2.3
+
+- Incapacitated backup alert should now work properly
+
 #### v2.2.2
 
 - Bump toc for 1.14.1
