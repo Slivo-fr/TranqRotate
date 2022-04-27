@@ -313,15 +313,17 @@ end
 -- @return major, minor, fix, isStable
 function TranqRotate:parseVersionString(versionString)
 
-    local version, type = strsplit("-", versionString)
+    local version, versionType = strsplit("-", versionString)
     local major, minor, fix = strsplit( ".", version)
 
-    return tonumber(major), tonumber(minor), tonumber(fix), type == nil
+    return tonumber(major), tonumber(minor), tonumber(fix), versionType == nil
 end
 
 -- Check if the given version would require updating
 -- @return requireUpdate, breakingUpdate
 function TranqRotate:isUpdateRequired(versionString)
+
+    if (nil == versionString) then return false, false end
 
     local remoteMajor, remoteMinor, remoteFix, isRemoteStable = self:parseVersionString(versionString)
     local localMajor, localMinor, localFix, isLocalStable = self:parseVersionString(TranqRotate.version)
