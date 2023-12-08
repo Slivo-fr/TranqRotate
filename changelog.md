@@ -1,5 +1,9 @@
 ## TranqRotate Changelog
 
+#### v2.2.5
+
+- Bump toc for 1.15.0
+
 #### v2.2.4
 
 - Minor fix regarding version checks
