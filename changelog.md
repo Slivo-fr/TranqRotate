@@ -1,5 +1,10 @@
 ## TranqRotate Changelog
 
+#### v2.2.6
+
+- Bump toc for 1.15.2
+- Update Ace3 libs
+
 #### v2.2.5
 
 - Bump toc for 1.15.0
