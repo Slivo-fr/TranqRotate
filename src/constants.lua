@@ -15,6 +15,7 @@ TranqRotate.constants = {
     ['mainFrameWidth'] = 130,
     ['rotationFramesBaseHeight'] = 20,
 
+    ['minimumKnownWorkingVersion'] = '2.2.6',
     ['commsPrefix'] = 'tranqrotate',
     ['commsChannel'] = 'RAID',
 

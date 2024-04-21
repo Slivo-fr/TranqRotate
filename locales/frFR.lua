@@ -16,18 +16,18 @@ local L = {
     -- Settings
     ["SETTING_GENERAL"] = "Général",
     ["SETTING_GENERAL_REPORT"] = "Merci de signaler tout bug rencontré sur",
-    ["SETTING_GENERAL_DESC"] = "Nouveau : TranqRotate peut maintenant jouer un son pour vous avertir quand vous devez tranq ! Plusieurs optiosn d'affichage ont été ajoutée pour rendre l'addon moins intrusif",
+    ["SETTING_GENERAL_DESC"] = "Nouveau : TranqRotate peut maintenant jouer un son pour vous avertir quand vous devez tranq ! Plusieurs options d'affichage ont été ajoutée pour rendre l'addon moins intrusif",
 
-    ["LOCK_WINDOW"] = "Verrouiller la position de la fênetre",
-    ["LOCK_WINDOW_DESC"] = "Verrouiller la position de la fênetre",
+    ["LOCK_WINDOW"] = "Verrouiller la position de la fenêtre",
+    ["LOCK_WINDOW_DESC"] = "Verrouiller la position de la fenêtre",
     ["RESET_WINDOW_POSITION"] = "Reset position",
     ["RESET_WINDOW_POSITION_DESC"] = "Reinitialise la position de la fenêtre principale",
     ["HIDE_WINDOW_NOT_IN_RAID"] = "Masquer la fenêtre principale hors raid",
     ["HIDE_WINDOW_NOT_IN_RAID_DESC"] = "Masquer la fenêtre principale hors raid",
     ["DO_NOT_SHOW_WHEN_JOINING_RAID"] = "Ne pas afficher la fenêtre principale lorsque vous rejoignez un raid",
     ["DO_NOT_SHOW_WHEN_JOINING_RAID_DESC"] = "Ne pas afficher la fenêtre principale lorsque vous rejoignez un raid",
-    ["SHOW_WHEN_TARGETING_BOSS"] = "Afficher la fenêtre principale lorsque vous ciblez un boss tranquilisable",
-    ["SHOW_WHEN_TARGETING_BOSS_DESC"] = "Afficher la fenêtre principale lorsque vous ciblez un boss tranquilisable",
+    ["SHOW_WHEN_TARGETING_BOSS"] = "Afficher la fenêtre principale lorsque vous ciblez un boss tranquillisable",
+    ["SHOW_WHEN_TARGETING_BOSS_DESC"] = "Afficher la fenêtre principale lorsque vous ciblez un boss tranquillisable",
     ["WINDOW_LOCKED"] = "TranqRotate: Fenêtre verrouillée",
     ["WINDOW_UNLOCKED"] = "TranqRotate: Fenêtre déverrouillée",
 
@@ -41,7 +41,7 @@ local L = {
     ["TEST_MODE_HEADER"] = "Test mode",
     ["ENABLE_ARCANE_SHOT_TESTING"] = "Activer/désactiver le mode test",
     ["ENABLE_ARCANE_SHOT_TESTING_DESC"] =
-        "Tant que le mode de test est activé, arcane shot sera considéré comme un tir tranquilisant\n" ..
+        "Tant que le mode de test est activé, arcane shot sera considéré comme un tir tranquillisant\n" ..
         "Le mode de test durera 10 minutes ou jusqu'a désactivation",
     ["ARCANE_SHOT_TESTING_ENABLED"] = "Test mode activé pour 10 minutes",
     ["ARCANE_SHOT_TESTING_DISABLED"] = "Test mode désactivé",
@@ -49,18 +49,18 @@ local L = {
     ["FEATURES_HEADER"] = "Fonctionnalités optionnelles",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Afficher le cooldown de frénésie des boss",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "Une fine barre de progression, juste sous la barre de titre, indiquera le cooldown de la frénésie",
-    ["DISPLAY_BLIND_ICON"] = "Afficher une icone pour les chasseurs qui n'utilisent pas TranqRotate",
-    ["DISPLAY_BLIND_ICON_DESC"] = "Ajoute une icone \"aveugle\" sur le chasseur pour indiquer qu'il n'utilise pas l'addon. Cela signifie qu'il ne connaitra pas la rotation affichée à moins de lui communiquer, ses tir tranquilisants ne seront également pas synchronisés si le joueur se retrouve loin des utilisateurs de l'addons",
-    ["DISPLAY_BLIND_ICON_TOOLTIP"] = "Afficher l'infobulle pour l'icone \"aveugle\"",
-    ["DISPLAY_BLIND_ICON_TOOLTIP_DESC"] = "En désactivant cette option vous désactivez l'infobulle tout en conservant l'icone",
+    ["DISPLAY_BLIND_ICON"] = "Afficher une icône pour les chasseurs qui n'utilisent pas TranqRotate",
+    ["DISPLAY_BLIND_ICON_DESC"] = "Ajoute une icône \"aveugle\" sur le chasseur pour indiquer qu'il n'utilise pas l'addon. Cela signifie qu'il ne connaitra pas la rotation affichée à moins de lui communiquer, ses tir tranquillisants ne seront également pas synchronisés si le joueur se retrouve loin des utilisateurs de l'addon",
+    ["DISPLAY_BLIND_ICON_TOOLTIP"] = "Afficher l'infobulle pour l'icône \"aveugle\"",
+    ["DISPLAY_BLIND_ICON_TOOLTIP_DESC"] = "En désactivant cette option vous désactivez l'infobulle tout en conservant l'icône",
     ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED"] = "Activer l'alerte automatique en cas d'incapacité",
-    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate alertera automatiquement le backup si un debuff vous empeche de tranq pendant un temps supérieur au délai configuré",
+    ["ENABLE_AUTOMATIC_BACKUP_ALERT_WHEN_INCAPACITATED_DESC"] = "TranqRotate alertera automatiquement le backup si un debuff vous empêche de tranq pendant un temps supérieur au délai configuré",
     ["INCAPACITATED_DELAY_THRESHOLD"] = "Délai pour l'alerte d'incapacité",
-    ["INCAPACITATED_DELAY_THRESHOLD_DESC"] = "Si un débuff vous empêche de tranq pour un temps supérieur à celui configuré au moment ou vous devez tranq, une alerte est envoyée au backup",
+    ["INCAPACITATED_DELAY_THRESHOLD_DESC"] = "Si un debuff vous empêche de tranq pour un temps supérieur à celui configuré au moment ou vous devez tranq, une alerte est envoyée au backup",
     ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT"] = "Activer l'alerte automatique chronométrée ",
-    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"] = "TranqRotate enverra automatiquement une alerte au backup si vous ne tirez pas votre tir tranquilisant avant le délai configuré",
+    ["ENABLE_AUTOMATIC_TIMED_BACKUP_ALERT_DESC"] = "TranqRotate enverra automatiquement une alerte au backup si vous ne tirez pas votre tir tranquillisant avant le délai configuré",
     ["TIMED_DELAY_THRESHOLD"] = "Délai pour l'alerte chronométrée",
-    ["TIMED_DELAY_THRESHOLD_DESC"] = "Si vous ne tirez pas votre tir tranquilisant avant ce délai, une alerte sera envoyée au backup",
+    ["TIMED_DELAY_THRESHOLD_DESC"] = "Si vous ne tirez pas votre tir tranquillisant avant ce délai, une alerte sera envoyée au backup",
 
     --- Announces
     ["SETTING_ANNOUNCES"] = "Annonces",
@@ -84,7 +84,7 @@ local L = {
     ["CHANNEL_RAID"] = "Raid",
 
     ---- Messages
-    ["ANNOUNCES_MESSAGE_HEADER"] = "Annonces de tir tranquilisant",
+    ["ANNOUNCES_MESSAGE_HEADER"] = "Annonces de tir tranquillisant",
     ["BOSS_SUCCESS_MESSAGE_LABEL"] = "Message de réussite sur boss (%s est le nom du prochain chasseur)",
     ["TRASH_SUCCESS_MESSAGE_LABEL"] = "Message de réussite sur trash (%s est le nom de la cible)",
     ["FAIL_MESSAGE_LABEL"] = "Message d'échec",
@@ -94,7 +94,7 @@ local L = {
     ['DEFAULT_BOSS_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait, %s est le suivant!",
     ['DEFAULT_TRASH_SUCCESS_ANNOUNCE_MESSAGE'] = "Tir tranquillisant fait sur %s",
     ['DEFAULT_FAIL_ANNOUNCE_MESSAGE'] = "!!! TIR TRANQUILLISANT RATE SUR %s !!!",
-    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TIR TRANQUILISANT RATE ! TRANQ MAINTENANT !",
+    ['DEFAULT_FAIL_WHISPER_MESSAGE'] = "TIR tranquillisant RATE ! TRANQ MAINTENANT !",
     ['DEFAULT_UNABLE_TO_TRANQ_MESSAGE'] = "JE NE PEUX PAS TRANQ ! TRANQ MAINTENANT !",
 
     ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "TRANQ MAINTENANT !",
@@ -120,8 +120,8 @@ local L = {
 
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "Ce joueur n'utilise pas TranqRotate",
-    ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "Ou possède une version obsolète inférieure à 1.6.0",
-    ["TOOLTIP_DISABLE_SETTINGS"] = "(Il est possible de désactiver l'icone et/ou l'infobulle dans les options)",
+    ["TOOLTIP_MAY_RUN_OUTDATED_VERSION"] = "Ou possède une version obsolète inférieure à %s",
+    ["TOOLTIP_DISABLE_SETTINGS"] = "(Il est possible de désactiver l'icône et/ou l'infobulle dans les options)",
 
     -- Available update
     ["UPDATE_AVAILABLE"] = "Une nouvelle version est disponible, faites la mise à jour pour profiter des derniers ajouts",
@@ -142,7 +142,7 @@ local L = {
     ["PRINT_FAILED_TRANQ_MISS_OR_RESIST"] = "Le tranqshot de %s a raté ou a été résisté!",
 
     -- Version check printed messages
-    ["VERSION_CHECK_HEADER"] = "Controle des versions",
+    ["VERSION_CHECK_HEADER"] = "Contrôle des versions",
     ["VERSION_CHECK_YOU"] = "Vous",
     ["VERSION_CHECK_NONE_OR_BELOW_1.6.0"] = "Aucune ou inférieure à 1.6.0",
 }

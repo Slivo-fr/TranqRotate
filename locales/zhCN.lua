@@ -120,7 +120,7 @@ local L = {
 
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "此玩家没有使用TranqRotate插件",
-    ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "或者运行低于1.6.0的过时版本",
+    ["TOOLTIP_MAY_RUN_OUTDATED_VERSION"] = "或者运行低于%s的过时版本",
     ["TOOLTIP_DISABLE_SETTINGS"] = "(您可以在设置中禁用此图标或此工具提示)",
 
     -- Available update

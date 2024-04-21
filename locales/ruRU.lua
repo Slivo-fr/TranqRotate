@@ -120,7 +120,7 @@ local L = {
 
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "Этот игрок не использует TranqRotate",
-    ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "Или используется версия ниже 1.6.0",
+    ["TOOLTIP_MAY_RUN_OUTDATED_VERSION"] = "Или используется версия ниже %s",
     ["TOOLTIP_DISABLE_SETTINGS"] = "(Вы можете отключить этот значок и/или эту подсказку в настройках)",
 
     -- Available update

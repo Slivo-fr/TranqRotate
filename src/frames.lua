@@ -256,7 +256,7 @@ function TranqRotate:onBlindIconEnter()
     if (TranqRotate.db.profile.showBlindIconTooltip) then
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOMRIGHT")
         GameTooltip:SetText(L["TOOLTIP_PLAYER_WITHOUT_ADDON"])
-        GameTooltip:AddLine(L["TOOLTIP_MAY_RUN_OUDATED_VERSION"])
+        GameTooltip:AddLine(string.format(L['TOOLTIP_MAY_RUN_OUTDATED_VERSION'], TranqRotate.constants.minimumKnownWorkingVersion))
         GameTooltip:AddLine(L["TOOLTIP_DISABLE_SETTINGS"])
         GameTooltip:Show()
     end

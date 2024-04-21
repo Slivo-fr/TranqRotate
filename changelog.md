@@ -1,5 +1,10 @@
 ## TranqRotate Changelog
 
+#### v2.2.7
+
+- Update blind icon tooltip message
+- Improve French translations
+
 #### v2.2.6
 
 - Bump toc for 1.15.2
