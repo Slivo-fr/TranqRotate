@@ -118,7 +118,7 @@ local L = {
 
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "This player does not use TranqRotate",
-    ["TOOLTIP_MAY_RUN_OUDATED_VERSION"] = "Or runs an outdated version below 1.6.0",
+    ["TOOLTIP_MAY_RUN_OUTDATED_VERSION"] = "Or runs an outdated version below %s",
     ["TOOLTIP_DISABLE_SETTINGS"] = "(You can disable this icon and/or this tooltip in the settings)",
 
     -- Available update
