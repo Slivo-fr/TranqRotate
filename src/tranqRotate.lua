@@ -283,12 +283,12 @@ function TranqRotate:printFail(hunter, event)
 
     local name = TranqRotate:formatPlayerName(hunter.name)
     if (event == "SPELL_MISSED") then
-        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_MISS'], name))-- .. " missed his tranqshot!")
+        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_MISS'], name))
     elseif(event == "SPELL_DISPEL_FAILED") then
-        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_RESIST'], name))-- .. " missed his tranqshot!")
+        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_RESIST'], name))
     else
         -- v1.5.1 and older do not send the event type
-        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_MISS_OR_RESIST'], name))-- .. " missed his tranqshot!")
+        TranqRotate:printPrefixedMessage(string.format(L['PRINT_FAILED_TRANQ_MISS_OR_RESIST'], name))
     end
 end
 
