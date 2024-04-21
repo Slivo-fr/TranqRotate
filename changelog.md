@@ -3,7 +3,7 @@
 #### v2.2.7
 
 - Update blind icon tooltip message
-- Improve french translations
+- Improve French translations
 
 #### v2.2.6
 
