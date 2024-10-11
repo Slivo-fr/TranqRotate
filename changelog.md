@@ -1,5 +1,9 @@
 ## TranqRotate Changelog
 
+#### v2.2.8
+
+- Bump toc for 1.15.4
+
 #### v2.2.7
 
 - Update blind icon tooltip message
