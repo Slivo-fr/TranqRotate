@@ -1,5 +1,9 @@
 ## TranqRotate Changelog
 
+#### v2.2.9
+
+- Update bosses spells ID's to match blizzard changes
+
 #### v2.2.8
 
 - Bump toc for 1.15.4
