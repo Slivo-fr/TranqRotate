@@ -62,23 +62,26 @@ TranqRotate.constants = {
             ['cooldown'] = 9,
         },
         [14020] = { -- chromaggus
-            ['frenzy'] = 23342,
+            ['frenzy'] = 23128,
             ['cooldown'] = 16,
         },
         [15509] = { -- huhuran
-            ['frenzy'] = 19451,
+            ['frenzy'] = 26051,
             ['cooldown'] = 13,
         },
         [15932] = { -- gluth
-            ['frenzy'] = 19451,
+            ['frenzy'] = 28371,
             ['cooldown'] = 10,
         },
     },
 
     ["incapacitatingDebuffs"] = {
         19408, -- Magmadar fear
+        461125, -- Magmadar fear SOD ?
         23171, -- Chromaggus Bronze affliction stun
+        23310, -- Chromaggus Time lapse
         23311, -- Chromaggus Time lapse
+        23312, -- Chromaggus Time lapse
         29685, -- Gluth fear
     },
 
