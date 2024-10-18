@@ -2,7 +2,7 @@
 
 #### v2.2.9
 
-- Update bosses spells ID's to match blizzard changes
+- Frenzy detection - update spell IDs to match Blizzard changes
 
 #### v2.2.8
 
