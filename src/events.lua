@@ -47,11 +47,11 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
                 TranqRotate:rotate(hunter)
                 if  (sourceGUID == UnitGUID("player")) then
                     TranqRotate:sendAnnounceMessage(
-                            TranqRotate:getTranqSuccessMessage(
-                                    TranqRotate:isTranqableBoss(destGUID),
-                                    destName,
-                                    destRaidFlags
-                            )
+                        TranqRotate:getTranqSuccessMessage(
+                            TranqRotate:isTranqableBoss(destGUID),
+                            destName,
+                            destRaidFlags
+                        )
                     )
                 end
             elseif (event == "SPELL_MISSED" or event == "SPELL_DISPEL_FAILED") then
