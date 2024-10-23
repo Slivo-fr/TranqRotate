@@ -1,5 +1,9 @@
 ## TranqRotate Changelog
 
+#### v2.2.9
+
+- Frenzy detection - update spell IDs to match Blizzard changes
+
 #### v2.2.8
 
 - Bump toc for 1.15.4
@@ -89,7 +93,7 @@
 
 - Handles the new dispel resistance mechanic
 - Fix a bad nil check in comms
-- Fix a logic issue in hunter list cleaning function 
+- Fix a logic issue in hunter list cleaning function
 
 #### v1.5.0
 

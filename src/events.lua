@@ -20,9 +20,11 @@ eventFrame:SetScript(
             C_Timer.After(5, function()
                 TranqRotate:updateRaidStatus()
             end)
-        else
-            TranqRotate[event](TranqRotate, ...)
+
+            return
         end
+
+        TranqRotate[event](TranqRotate, ...)
     end
 )
 
@@ -60,8 +62,13 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
                 end
             end
         end
-    elseif (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellName, sourceGUID)) then
+
+        return
+    end
+
+    if (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellName, sourceGUID)) then
         TranqRotate.frenzy = true
+
         if (TranqRotate:isPlayerNextTranq()) then
             TranqRotate:handleTimedAlert()
             TranqRotate:throwTranqAlert()
@@ -70,17 +77,28 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
                 TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
             end
         end
+
         if(TranqRotate.db.profile.showFrenzyCooldownProgress) then
             local type, id = TranqRotate:getIdFromGuid(sourceGUID)
             TranqRotate:startBossFrenzyCooldown(TranqRotate.constants.bosses[id].cooldown)
         end
-    elseif (event == "SPELL_AURA_REMOVED" and TranqRotate:isBossFrenzy(spellName, sourceGUID)) then
+
+        return
+    end
+
+    if (event == "SPELL_AURA_REMOVED" and TranqRotate:isBossFrenzy(spellName, sourceGUID)) then
         TranqRotate.frenzy = false
-    elseif (event == "UNIT_DIED" and TranqRotate:isTranqableBoss(destGUID)) then
+
+        return
+    end
+
+    if (event == "UNIT_DIED" and TranqRotate:isTranqableBoss(destGUID)) then
         if (TranqRotate:isPlayerAllowedToManageRotation()) then
             TranqRotate:endEncounter()
         end
         TranqRotate.mainFrame.frenzyFrame:Hide()
+
+        return
     end
 end
 
