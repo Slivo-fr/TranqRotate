@@ -75,6 +75,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
 
             if (TranqRotate.db.profile.enableIncapacitatedBackupAlert and TranqRotate:isPlayedIncapacitatedByDebuff()) then
                 TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
+                TranqRotate:printPrefixedMessage(string.format(L['PRINT_INCAPACITATED_BACKUP_CALL']))
             end
         end
 
@@ -158,6 +159,7 @@ function TranqRotate:handleTimedAlert()
         C_Timer.After(TranqRotate.db.profile.timedBackupAlertDelay, function()
             if (TranqRotate.frenzy and TranqRotate:isPlayerNextTranq()) then
                 TranqRotate:alertBackup(TranqRotate.db.profile.unableToTranqMessage)
+                TranqRotate:printPrefixedMessage(string.format(L['PRINT_TIMED_BACKUP_CALL']))
             end
         end)
     end

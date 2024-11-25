@@ -139,6 +139,10 @@ local L = {
     ["PRINT_FAILED_TRANQ_RESIST"] = "%s's tranqshot was resisted!",
     ["PRINT_FAILED_TRANQ_MISS_OR_RESIST"] = "%s's tranqshot was missed or resisted!",
 
+    -- Incapacitated backup call printed messages
+    ["PRINT_INCAPACITATED_BACKUP_CALL"] = "Backup has been automatically requested because your were incapacitated",
+    ["PRINT_TIMED_BACKUP_CALL"] = "Backup has been automatically requested because your were too slow",
+
     -- Version check printed messages
     ["VERSION_CHECK_HEADER"] = "Version check",
     ["VERSION_CHECK_YOU"] = "You",
