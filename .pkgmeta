@@ -1,7 +1,7 @@
 package-as: TranqRotate
 
 enable-nolib-creation: no
-manual-changelog: latest_changelog_entry.md
+manual-changelog: .latest_changelog.md
 
 externals:
   libs/AceComm-3.0: https://repos.wowace.com/wow/ace3/trunk/AceComm-3.0
@@ -16,4 +16,3 @@ externals:
 ignore:
   - README.md
   - docs
-  - latest_changelog_entry.txt
