@@ -6,6 +6,9 @@
 ## SavedVariables: TranqRotateDb
 ## OptionalDeps: Ace3
 
+## X-Curse-Project-ID: 353296
+## X-Wago-ID: baNDJ8Ko
+
 #@no-lib-strip@
 libs\LibStub\LibStub.lua
 libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
