@@ -35,6 +35,9 @@ jobs:
         with:
           fetch-depth: 0  # gets entire git history, needed for automatic changelogs
 
+      - name: create release changelog
+        run: sed -n '/^#### v[0-9.]\+/{p;n;/^####/{q};p;:a;n;/^####/q;p;ba}' changelog.md | sed '$d' > latest_changelog_entry.md
+
       # once cloned, we just run the GitHub Action for the packager project
       - name: Package and release
         uses: BigWigsMods/packager@v2
