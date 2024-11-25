@@ -142,7 +142,7 @@ local L = {
     ["PRINT_FAILED_TRANQ_MISS_OR_RESIST"] = "Le tranqshot de %s a raté ou a été résisté!",
 
     -- Incapacitated backup call printed messages
-    ["PRINT_INCAPACITATED_BACKUP_CALL"] = "Un backup a été demandé automatiquement parce que vous étiez 'paralysé'",
+    ["PRINT_INCAPACITATED_BACKUP_CALL"] = "Un backup a été demandé automatiquement parce que vous étiez \"paralysé\"",
     ["PRINT_TIMED_BACKUP_CALL"] = "Un backup a été demandé automatiquement parce que vous avez mis trop de temps à tranq",
 
     -- Version check printed messages
