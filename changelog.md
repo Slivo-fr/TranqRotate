@@ -1,5 +1,9 @@
 ## TranqRotate Changelog
 
+#### v2.2.10
+
+- Update toc for 1.15.5
+
 #### v2.2.9
 
 - Frenzy detection - update spell IDs to match Blizzard changes
