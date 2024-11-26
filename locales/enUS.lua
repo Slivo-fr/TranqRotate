@@ -48,6 +48,7 @@ local L = {
     ["DISPLAY_BOSS_FRENZY_COOLDOWN"] = "Display frenzy cooldown progress bar",
     ["DISPLAY_BOSS_FRENZY_COOLDOWN_DESC"] = "A thin progress bar just under the title bar will show the progress",
     ["DISPLAY_BLIND_ICON"] = "Show an icon for hunter without TranqRotate",
+    ["DISPLAY_BLIND_ICON"] = "Show an icon for hunter without TranqRotate",
     ["DISPLAY_BLIND_ICON_DESC"] = "Adds a blind icon on the hunter frame to indicate he's not using the addon. This means he will not be aware of the rotate unless you communicate with him and his tranqshot won't be synced if he's far from every other TranqRotate user.",
     ["DISPLAY_BLIND_ICON_TOOLTIP"] = "Show the blind icon tooltip",
     ["DISPLAY_BLIND_ICON_TOOLTIP_DESC"] = "You can disable this options to disable the tooltip while still having the icon",
@@ -146,7 +147,7 @@ local L = {
     -- Version check printed messages
     ["VERSION_CHECK_HEADER"] = "Version check",
     ["VERSION_CHECK_YOU"] = "You",
-    ["VERSION_CHECK_NONE_OR_BELOW_1.6.0"] = "None or below 1.6.0",
+    ["VERSION_CHECK_NONE_OR_OUTDATED_VERSION"] = "None or below %s",
 }
 
 TranqRotate.L = L

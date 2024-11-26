@@ -272,7 +272,7 @@ end
 -- Returns a string based on the hunter addon version
 function TranqRotate:formatAddonVersion(version)
     if (version == nil) then
-        return L["VERSION_CHECK_NONE_OR_BELOW_1.6.0"]
+        return string.format(L['VERSION_CHECK_NONE_OR_OUTDATED_VERSION'], TranqRotate.constants.minimumKnownWorkingVersion)
     else
         return version
     end
