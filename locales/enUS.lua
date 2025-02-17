@@ -146,7 +146,7 @@ local L = {
     -- Version check printed messages
     ["VERSION_CHECK_HEADER"] = "Version check",
     ["VERSION_CHECK_YOU"] = "You",
-    ["VERSION_CHECK_NONE_OR_BELOW_1.6.0"] = "None or below 1.6.0",
+    ["VERSION_CHECK_NONE_OR_OUTDATED_VERSION"] = "None or below %s",
 }
 
 TranqRotate.L = L
