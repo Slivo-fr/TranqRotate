@@ -1,8 +1,8 @@
 ## Interface: 11506, 20504
-## Title: TranqRotate |cff00aa002.2.10|r
+## Title: TranqRotate |cff00aa002.2.11|r
 ## Notes: A tranqshot rotation assistant
 ## Author: Slivo
-## Version: 2.2.10
+## Version: 2.2.11
 ## SavedVariables: TranqRotateDb
 ## OptionalDeps: Ace3
 
