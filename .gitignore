@@ -2,3 +2,4 @@
 libs
 copy*.sh
 package.sh
+releases

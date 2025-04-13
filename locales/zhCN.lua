@@ -115,6 +115,11 @@ local L = {
     ["TRANQ_NOW_SOUND_CHOICE"] = "选择要用于“宁神射击”提示的声音",
     ["DBM_SOUND_WARNING"] = "DBM在激怒时播放的'flag taken'提示音，可能导致您无法听到TranqRotate的提示音。建议选择一个响亮的提示音，或者在DBM中禁用激怒的警告。",
 
+    --- Debug
+    ["SETTING_DEBUG"] = "Debug",
+    ["ENABLE_DEBUG_OUTPUT"] = "Enable debug output to chat window",
+    ["ENABLE_DEBUG_OUTPUT_DESC"] = "TranqRotate will print debug information to your main chat window",
+
     --- Profiles
     ["SETTING_PROFILES"] = "配置文件",
 

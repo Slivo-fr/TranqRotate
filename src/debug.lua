@@ -1,8 +1,7 @@
 -- Print debug message
-function TranqRotate:debug(text)
+function TranqRotate:printDebug(text)
     print(
-        TranqRotate:colorDebugText("TranqRotate"),
-        TranqRotate:colorDebugText("DEBUG"),
+        TranqRotate:colorDebugText("TranqRotate DEBUG"),
         text
     )
 end
@@ -21,7 +20,11 @@ function TranqRotate:debugPrintTranqTargetInfo(targetGUID, spellId, spellName)
 
     local type, mobId = TranqRotate:getIdFromGuid(targetGUID)
 
-    TranqRotate:debug(
+    if (nil == mobId) then
+        return
+    end
+
+    TranqRotate:printDebug(
         string.format(
             "bossId: %s - spell: %s/%s",
             mobId,
@@ -34,7 +37,7 @@ end
 -- Print debug boss aura information
 function TranqRotate:debugPrintBossAuraInfo(spellName, spellId, sourceGUID)
 
-    if (not TranqRotate.db.profile.enableDebugOutput or not TranqRotate:isTranqableBoss(guid)) then
+    if (not TranqRotate.db.profile.enableDebugOutput or not TranqRotate:isTranqableBoss(sourceGUID)) then
         return
     end
 
@@ -42,11 +45,11 @@ function TranqRotate:debugPrintBossAuraInfo(spellName, spellId, sourceGUID)
     local bossData = TranqRotate.constants.bosses[mobId]
 
     if (nil == bossData) then
-        TranqRotate:debug("No boss data for ID %s", mobId)
+        TranqRotate:printDebug("No boss data for ID %s", mobId)
         return
     end
 
-    TranqRotate:debug(
+    TranqRotate:printDebug(
         string.format(
             "bossId: %s - aura: %s/%s - expected: %s/%s",
             mobId,

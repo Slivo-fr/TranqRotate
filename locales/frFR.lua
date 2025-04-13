@@ -115,6 +115,11 @@ local L = {
     ["TRANQ_NOW_SOUND_CHOICE"] = "Son à jouer au moment ou vous devez tranq",
     ["DBM_SOUND_WARNING"] = "DBM joue le son de capture de drapeau à chaque frénésie, cela pourrait couvrir un son trop doux. Je suggère de choisir un son assez marquant ou de désactiver les alertes de frénésie DBM si vous choisissez un son plus doux.",
 
+    --- Debug
+    ["SETTING_DEBUG"] = "Debug",
+    ["ENABLE_DEBUG_OUTPUT"] = "Active les messages de debug",
+    ["ENABLE_DEBUG_OUTPUT_DESC"] = "Des messages d'information additionnel seront affiché dans le chat",
+
     --- Profiles
     ["SETTING_PROFILES"] = "Profils",
 

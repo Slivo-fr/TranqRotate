@@ -321,6 +321,20 @@ function TranqRotate:CreateConfig()
                         order = 4,
                     },
                 }
+            },
+            sounds = {
+                name = L['SETTING_DEBUG'],
+                type = "group",
+                order = 3,
+                args = {
+                    enableDebugOutput = {
+                        name = L["ENABLE_DEBUG_OUTPUT"],
+                        desc = L["ENABLE_DEBUG_OUTPUT_DESC"],
+                        type = "toggle",
+                        order = 1,
+                        width = "full",
+                    }
+                }
             }
         }
 	}
@@ -331,6 +345,7 @@ function TranqRotate:CreateConfig()
     AceConfigDialog:AddToBlizOptions(Addon, nil, nil, "general")
     AceConfigDialog:AddToBlizOptions(Addon, L['SETTING_ANNOUNCES'], Addon, "announces")
     AceConfigDialog:AddToBlizOptions(Addon, L['SETTING_SOUNDS'], Addon, "sounds")
+    AceConfigDialog:AddToBlizOptions(Addon, L['SETTING_DEBUG'], Addon, "debug")
     AceConfigDialog:AddToBlizOptions(Addon, L["SETTING_PROFILES"], Addon, "profile")
 
     AceConfigDialog:SetDefaultSize(Addon, 895, 570)

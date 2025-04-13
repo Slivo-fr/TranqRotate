@@ -118,6 +118,11 @@ local L = {
     --- Profiles
     ["SETTING_PROFILES"] = "設定檔",
 
+    --- Debug
+    ["SETTING_DEBUG"] = "Debug",
+    ["ENABLE_DEBUG_OUTPUT"] = "Enable debug output to chat window",
+    ["ENABLE_DEBUG_OUTPUT_DESC"] = "TranqRotate will print debug information to your main chat window",
+
     -- Blind icon tooltip
     ["TOOLTIP_PLAYER_WITHOUT_ADDON"] = "This player does not use TranqRotate",
     ["TOOLTIP_MAY_RUN_OUTDATED_VERSION"] = "Or runs an outdated version below %s",

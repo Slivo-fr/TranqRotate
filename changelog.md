@@ -1,5 +1,10 @@
 ## TranqRotate Changelog
 
+#### v2.3.0
+
+- Update toc for 1.15.7
+- Add a new debug setting to print tranq/boss information to chat
+ 
 #### v2.2.11
 
 - Update toc for 1.15.6

@@ -27,6 +27,7 @@ function TranqRotate:LoadDefaults()
 			showIconOnHunterWithoutTranqRotate = true,
 			showBlindIconTooltip = true,
 			playerNameFormatting = TranqRotate.constants.playerNameFormats.PLAYER_NAME_ONLY,
+			enableDebugOutput = false,
 	    },
 	}
 end
