@@ -40,10 +40,10 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand = select(12, CombatLogGetCurrentEventInfo())
 
     if (spellName == tranqShot or (TranqRotate.testMode and spellName == arcaneShot)) then
-        TranqRotate:debugPrintTranqTargetInfo(destGUID, spellId, spellName)
         local hunter = TranqRotate:getHunter(sourceGUID)
         if (hunter) then
             if (event == "SPELL_CAST_SUCCESS") then
+                TranqRotate:debugPrintTranqTargetInfo(destGUID, spellId, spellName)
                 TranqRotate:sendSyncTranq(hunter, false, timestamp)
                 TranqRotate:rotate(hunter)
                 if  (sourceGUID == UnitGUID("player")) then
@@ -67,7 +67,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
         return
     end
 
-    if (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellName, sourceGUID, spellId)) then
+    if (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellId, sourceGUID, destGUID, spellName)) then
         TranqRotate.frenzy = true
 
         if (TranqRotate:isPlayerNextTranq()) then
@@ -88,7 +88,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
         return
     end
 
-    if (event == "SPELL_AURA_REMOVED" and TranqRotate:isBossFrenzy(spellName, sourceGUID, spellId)) then
+    if (event == "SPELL_AURA_REMOVED" and TranqRotate:isBossFrenzy(spellId, sourceGUID, destGUID, spellName)) then
         TranqRotate.frenzy = false
 
         return
