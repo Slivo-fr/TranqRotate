@@ -14,7 +14,6 @@ end
 -- Print tranq target debug information
 function TranqRotate:debugPrintTranqTargetInfo(targetGUID, spellId, spellName)
 
-    print("test")
     if (not TranqRotate.db.profile.enableDebugOutput) then
         return
     end
