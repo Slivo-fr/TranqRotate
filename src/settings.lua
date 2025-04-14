@@ -322,10 +322,10 @@ function TranqRotate:CreateConfig()
                     },
                 }
             },
-            sounds = {
+            debug = {
                 name = L['SETTING_DEBUG'],
                 type = "group",
-                order = 3,
+                order = 4,
                 args = {
                     enableDebugOutput = {
                         name = L["ENABLE_DEBUG_OUTPUT"],
