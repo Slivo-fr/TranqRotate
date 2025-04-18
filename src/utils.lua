@@ -59,26 +59,16 @@ function TranqRotate:getPlayerNameFont()
     return "Fonts\\ARIALN.ttf"
 end
 
-function TranqRotate:getTypeAndIdFromGuid(guid)
+function TranqRotate:getIdFromGuid(guid)
     local type, _, _, _, _, mobId, _ = strsplit("-", guid or "")
-    return type, tonumber(mobId)
-end
-
--- Because Chromaggus is a vehicle somehow ... ¯\_(ツ)_/¯
-function TranqRotate:isCreatureType(type)
-    return type == "Creature" or type == "Vehicle"
+    return tonumber(mobId)
 end
 
 -- Checks if the spell and the mob match a boss frenzy
 function TranqRotate:isBossFrenzy(spellId, sourceGUID)
 
     local bosses = TranqRotate.constants.bosses
-    local type, mobId = TranqRotate:getTypeAndIdFromGuid(sourceGUID)
-
-    -- Test if we can leave this out without having errors
-    --if (not TranqRotate:isCreatureType(type)) then
-    --    return false
-    --end
+    local mobId = TranqRotate:getIdFromGuid(sourceGUID)
 
     for bossId, bossData in pairs(bosses) do
         if (bossId == mobId and spellId == bossData.frenzyId) then
@@ -93,12 +83,7 @@ end
 function TranqRotate:isTranqableBoss(guid)
 
     local bosses = TranqRotate.constants.bosses
-    local type, mobId = TranqRotate:getTypeAndIdFromGuid(guid)
-
-    -- With test mode we could have player or other weird GUID here
-    if (not TranqRotate:isCreatureType(type)) then
-        return false
-    end
+    local mobId = TranqRotate:getIdFromGuid(guid)
 
     for bossId, bossData in pairs(bosses) do
         if (bossId == mobId) then

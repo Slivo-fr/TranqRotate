@@ -39,7 +39,8 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     local timestamp, event, _, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags = CombatLogGetCurrentEventInfo()
     local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand = select(12, CombatLogGetCurrentEventInfo())
 
-    if (spellId == tranqShotSpellId or (TranqRotate.testMode and spellId == arcaneShotSpellId)) then
+    -- Using GetSpellInfo on arcaneShotSpellId and spellId to account for all ranks of arcane shot
+    if (spellId == tranqShotSpellId or (TranqRotate.testMode and GetSpellInfo(spellId) == GetSpellInfo(arcaneShotSpellId))) then
         local hunter = TranqRotate:getHunter(sourceGUID)
         if (hunter) then
             if (event == "SPELL_CAST_SUCCESS") then
@@ -80,7 +81,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
         end
 
         if(TranqRotate.db.profile.showFrenzyCooldownProgress) then
-            local type, id = TranqRotate:getTypeAndIdFromGuid(sourceGUID)
+            local id = TranqRotate:getIdFromGuid(sourceGUID)
             TranqRotate:startBossFrenzyCooldown(TranqRotate.constants.bosses[id].cooldown)
         end
 
