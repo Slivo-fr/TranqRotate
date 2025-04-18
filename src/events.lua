@@ -1,5 +1,5 @@
-local tranqShot = GetSpellInfo(19801)
-local arcaneShot = GetSpellInfo(14287)
+local tranqShotSpellId = 19801
+local arcaneShotSpellId = 14287
 
 local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent("PLAYER_LOGIN")
@@ -39,11 +39,10 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     local timestamp, event, _, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags = CombatLogGetCurrentEventInfo()
     local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand = select(12, CombatLogGetCurrentEventInfo())
 
-    if (spellName == tranqShot or (TranqRotate.testMode and spellName == arcaneShot)) then
+    if (spellId == tranqShotSpellId or (TranqRotate.testMode and spellId == arcaneShotSpellId)) then
         local hunter = TranqRotate:getHunter(sourceGUID)
         if (hunter) then
             if (event == "SPELL_CAST_SUCCESS") then
-                TranqRotate:debugPrintTranqTargetInfo(destGUID, spellId, spellName)
                 TranqRotate:sendSyncTranq(hunter, false, timestamp)
                 TranqRotate:rotate(hunter)
                 if  (sourceGUID == UnitGUID("player")) then
@@ -67,7 +66,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
         return
     end
 
-    if (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellId, sourceGUID, destGUID, spellName)) then
+    if (event == "SPELL_AURA_APPLIED" and TranqRotate:isBossFrenzy(spellId, sourceGUID)) then
         TranqRotate.frenzy = true
 
         if (TranqRotate:isPlayerNextTranq()) then
@@ -81,14 +80,14 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
         end
 
         if(TranqRotate.db.profile.showFrenzyCooldownProgress) then
-            local type, id = TranqRotate:getIdFromGuid(sourceGUID)
+            local type, id = TranqRotate:getTypeAndIdFromGuid(sourceGUID)
             TranqRotate:startBossFrenzyCooldown(TranqRotate.constants.bosses[id].cooldown)
         end
 
         return
     end
 
-    if (event == "SPELL_AURA_REMOVED" and TranqRotate:isBossFrenzy(spellId, sourceGUID, destGUID, spellName)) then
+    if (event == "SPELL_AURA_REMOVED" and TranqRotate:isBossFrenzy(spellId, sourceGUID)) then
         TranqRotate.frenzy = false
 
         return
