@@ -28,6 +28,8 @@ jobs:
 
     # "steps" holds a list of all the steps needed to package and release our AddOn
     steps:
+      - name: Install SVN for ACE3 repos
+        run: sudo apt-get install subversion
 
       # we first have to clone the AddOn project, this is a required step
       - name: Clone project
