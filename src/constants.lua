@@ -9,6 +9,9 @@ TranqRotate.colors = {
 }
 
 TranqRotate.constants = {
+    ['tranqShotSpellId'] = 19801,
+    ['arcaneShotSpellId'] = 14287,
+
     ['hunterFrameHeight'] = 22,
     ['hunterFrameSpacing'] = 4,
     ['titleBarHeight'] = 18,

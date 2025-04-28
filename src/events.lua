@@ -1,6 +1,3 @@
-local tranqShotSpellId = 19801
-local arcaneShotSpellId = 14287
-
 local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent("PLAYER_LOGIN")
 eventFrame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
@@ -40,7 +37,7 @@ function TranqRotate:COMBAT_LOG_EVENT_UNFILTERED()
     local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand = select(12, CombatLogGetCurrentEventInfo())
 
     -- Using GetSpellInfo on arcaneShotSpellId and spellId to account for all ranks of arcane shot
-    if (spellId == tranqShotSpellId or (TranqRotate.testMode and GetSpellInfo(spellId) == GetSpellInfo(arcaneShotSpellId))) then
+    if (spellId == TranqRotate.constants.tranqShotSpellId or (TranqRotate.testMode and GetSpellInfo(spellId) == GetSpellInfo(TranqRotate.constants.arcaneShotSpellId))) then
         local hunter = TranqRotate:getHunter(sourceGUID)
         if (hunter) then
             if (event == "SPELL_CAST_SUCCESS") then
