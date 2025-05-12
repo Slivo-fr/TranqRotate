@@ -53,8 +53,6 @@ Please note the backup group is hidden if empty but you can still drag hunters i
 
 You can now just pull the boss and start shooting your tranqshots, TranqRotate will track the rotation and use a purple tranq-like color on the next hunter that should tranq. TranqRotate will play sounds when the previous hunter shot and you are the next, as well as when you have to use your tranqshot.
 
-**Warning** : if all of your hunters does not use the addon, make sure someone with the addon stay within 45m range of hunters without the addon or you won't be able to register their tranqshot. MC and AQ40 tranq encounters might lead to range issues. However, I didn't had any complain about this yet  :) 
-
 You can use the reset button in the top bar to reset the rotation status
 
 You may adds the `/tranq backup` command to a macro that you can use when you are unable to tranq and you need some help,

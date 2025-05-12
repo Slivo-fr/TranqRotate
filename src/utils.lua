@@ -61,20 +61,18 @@ end
 
 function TranqRotate:getIdFromGuid(guid)
     local type, _, _, _, _, mobId, _ = strsplit("-", guid or "")
-    return type, tonumber(mobId)
+    return tonumber(mobId)
 end
 
 -- Checks if the spell and the mob match a boss frenzy
-function TranqRotate:isBossFrenzy(spellName, guid)
+function TranqRotate:isBossFrenzy(spellId, sourceGUID)
 
     local bosses = TranqRotate.constants.bosses
-    local type, mobId = TranqRotate:getIdFromGuid(guid)
+    local mobId = TranqRotate:getIdFromGuid(sourceGUID)
 
-    if (type == "Creature") then
-        for bossId, bossData in pairs(bosses) do
-            if (bossId == mobId and spellName == GetSpellInfo(bossData.frenzy)) then
-                return true
-            end
+    for bossId, bossData in pairs(bosses) do
+        if (bossId == mobId and spellId == bossData.frenzyId) then
+            return true
         end
     end
 
@@ -85,26 +83,10 @@ end
 function TranqRotate:isTranqableBoss(guid)
 
     local bosses = TranqRotate.constants.bosses
-    local type, mobId = TranqRotate:getIdFromGuid(guid)
-
-    if (type == "Creature") then
-        for bossId, bossData in pairs(bosses) do
-            if (bossId == mobId) then
-                return true
-            end
-        end
-    end
-
-    return false
-end
-
--- Checks if the spell is a boss frenzy
-function TranqRotate:isFrenzy(spellName)
-
-    local bosses = TranqRotate.constants.bosses
+    local mobId = TranqRotate:getIdFromGuid(guid)
 
     for bossId, bossData in pairs(bosses) do
-        if (spellName == GetSpellInfo(bossData.frenzy)) then
+        if (bossId == mobId) then
             return true
         end
     end

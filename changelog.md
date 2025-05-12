@@ -1,5 +1,15 @@
 ## TranqRotate Changelog
 
+#### v2.3.0
+
+- Update toc for 1.15.7
+- Fix frenzy alert on Chromaggus, thanks to Sabine and his friends at `A Few Good Men`
+- Update spell checking logic to use spell IDs directly now that combat log includes them
+ 
+#### v2.2.11
+
+- Update toc for 1.15.6
+
 #### v2.2.10
 
 - Update toc for 1.15.5

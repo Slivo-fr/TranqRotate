@@ -115,6 +115,11 @@ local L = {
     ["TRANQ_NOW_SOUND_CHOICE"] = "Выберите звук для Усмиряющего выстрела",
     ["DBM_SOUND_WARNING"] = "DBM проигрывает звук для каждого Бешенства, из-за этого вы можете не устышать оповещение от TranqRotate. Рекомендуется выбрать хорошо различимый звук для TranqRotate или отключить оповещение от DBM",
 
+    --- Debug
+    ["SETTING_DEBUG"] = "Debug",
+    ["ENABLE_DEBUG_OUTPUT"] = "Enable debug output to chat window",
+    ["ENABLE_DEBUG_OUTPUT_DESC"] = "TranqRotate will print debug information to your main chat window",
+
     --- Profiles
     ["SETTING_PROFILES"] = "Профили",
 

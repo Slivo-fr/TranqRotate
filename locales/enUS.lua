@@ -113,6 +113,11 @@ local L = {
     ["TRANQ_NOW_SOUND_CHOICE"] = "Select the sound you want to use for the 'tranq now' alert",
     ["DBM_SOUND_WARNING"] = "DBM is playing the 'flag taken' sound on each frenzy, it may prevent you from earing gentle sounds from TranqRotate. I would either suggest to pick a strong sound or disable DBM frenzy sound.",
 
+    --- Debug
+    ["SETTING_DEBUG"] = "Debug",
+    ["ENABLE_DEBUG_OUTPUT"] = "Enable debug output to chat window",
+    ["ENABLE_DEBUG_OUTPUT_DESC"] = "TranqRotate will print debug information to your main chat window",
+
     --- Profiles
     ["SETTING_PROFILES"] = "Profiles",
 

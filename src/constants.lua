@@ -9,6 +9,9 @@ TranqRotate.colors = {
 }
 
 TranqRotate.constants = {
+    ['tranqShotSpellId'] = 19801,
+    ['arcaneShotSpellId'] = 14287,
+
     ['hunterFrameHeight'] = 22,
     ['hunterFrameSpacing'] = 4,
     ['titleBarHeight'] = 18,
@@ -54,23 +57,23 @@ TranqRotate.constants = {
 
     ['bosses'] = {
         [11982] = { -- magmadar
-            ['frenzy'] = 19451,
+            ['frenzyId'] = 19451,
             ['cooldown'] = 18,
         },
         [11981] = { -- flamegor
-            ['frenzy'] = 23342,
+            ['frenzyId'] = 23342,
             ['cooldown'] = 9,
         },
         [14020] = { -- chromaggus
-            ['frenzy'] = 23128,
+            ['frenzyId'] = 23128,
             ['cooldown'] = 16,
         },
         [15509] = { -- huhuran
-            ['frenzy'] = 26051,
+            ['frenzyId'] = 26051,
             ['cooldown'] = 13,
         },
         [15932] = { -- gluth
-            ['frenzy'] = 28371,
+            ['frenzyId'] = 28371,
             ['cooldown'] = 10,
         },
     },
