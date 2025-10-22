@@ -1,4 +1,4 @@
-## Interface: 11507, 20504
+## Interface: 11508
 ## Title: TranqRotate |cff00aa002.3.0|r
 ## Notes: A tranqshot rotation assistant
 ## Author: Slivo
@@ -42,3 +42,4 @@ src\migration.lua
 src\raidIcons.lua
 src\encounter.lua
 src\debug.lua
+
