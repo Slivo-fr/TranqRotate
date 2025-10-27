@@ -1,5 +1,9 @@
 ## TranqRotate Changelog
 
+#### v2.3.1
+
+- Update toc for 1.15.8
+
 #### v2.3.0
 
 - Update toc for 1.15.7
