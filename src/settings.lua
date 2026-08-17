@@ -274,13 +274,6 @@ function TranqRotate:CreateConfig()
                         order = 32,
                         hidden = function() return not (TranqRotate.db.profile.rotationReportChannelType == "CHANNEL") end,
                     },
-                    useMultilineRotationReport = {
-                        name = L["USE_MULTILINE_ROTATION_REPORT"],
-                        desc = L["USE_MULTILINE_ROTATION_REPORT_DESC"],
-                        type = "toggle",
-                        order = 40,
-                        width = "full",
-                    },
                 }
             },
             sounds = {

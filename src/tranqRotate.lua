@@ -162,40 +162,68 @@ end
 -- Sends rotation setup to raid channel
 function TranqRotate:printRotationSetup()
 
-    if (IsInRaid()) then
-        TranqRotate:sendRotationSetupBroadcastMessage('--- ' .. TranqRotate.constants.printPrefix .. L['BROADCAST_HEADER_TEXT'] .. ' ---')
+    if (not IsInRaid()) then
+        return
+    end
 
-        if (TranqRotate.db.profile.useMultilineRotationReport) then
-            TranqRotate:printMultilineRotation(TranqRotate.rotationTables.rotation)
-        else
-            TranqRotate:sendRotationSetupBroadcastMessage(
-                TranqRotate:buildGroupMessage(L['BROADCAST_ROTATION_PREFIX'] .. ' : ', TranqRotate.rotationTables.rotation)
-            )
-        end
+    -- Names flagged while building the rotation lines, reported again at the end
+    local missingAddon = {}
 
-        if (#TranqRotate.rotationTables.backup > 0) then
-            TranqRotate:sendRotationSetupBroadcastMessage(
-                TranqRotate:buildGroupMessage(L['BROADCAST_BACKUP_PREFIX'] .. ' : ', TranqRotate.rotationTables.backup)
-            )
-        end
+    local spellLink = TranqRotate:getSpellLink(TranqRotate.constants.tranqShotSpellId)
+
+    TranqRotate:sendRotationSetupBroadcastMessage(
+        TranqRotate.constants.reportMarker .. ' ' ..
+            string.format(L['BROADCAST_HEADER_TEXT'], spellLink or TranqRotate.constants.tranqShotName)
+    )
+
+    for position, hunter in ipairs(TranqRotate.rotationTables.rotation) do
+        TranqRotate:sendRotationSetupBroadcastMessage(
+            position .. ' : ' .. TranqRotate:buildReportName(hunter, missingAddon)
+        )
+    end
+
+    if (#TranqRotate.rotationTables.backup > 0) then
+        TranqRotate:sendRotationSetupBroadcastMessage(
+            TranqRotate:buildGroupMessage(L['BROADCAST_BACKUP_PREFIX'] .. ' : ', TranqRotate.rotationTables.backup, missingAddon)
+        )
+    end
+
+    if (#missingAddon > 0) then
+        TranqRotate:sendRotationSetupBroadcastMessage(
+            TranqRotate.constants.missingAddonMarker .. ' ' .. L['BROADCAST_MISSING_ADDON_PREFIX'] .. ' : ' ..
+                table.concat(missingAddon, ', ')
+        )
     end
 end
 
--- Print the main rotation on multiple lines
-function TranqRotate:printMultilineRotation(rotationTable, channel)
-    local position = 1;
-    for key, hunt in pairs(rotationTable) do
-        TranqRotate:sendRotationSetupBroadcastMessage(tostring(position) .. ' - ' .. hunt.name)
-        position = position + 1;
+-- Formats a hunter name for the report, flagging and collecting those without TranqRotate
+-- The report always spells out the realm, whatever the display setting, so anyone reading
+-- it in chat can whisper the right person
+function TranqRotate:buildReportName(hunter, missingAddon)
+
+    local name = TranqRotate:getFullPlayerName(hunter.name)
+
+    if (TranqRotate:isMissingAddon(hunter)) then
+        table.insert(missingAddon, name)
+        return name .. TranqRotate.constants.missingAddonMarker
     end
+
+    return name
+end
+
+-- Checks if a hunter is known to be running TranqRotate, matching the blind icon rules
+function TranqRotate:isMissingAddon(hunter)
+    return TranqRotate.addonVersions[hunter.name] == nil and
+        hunter.name ~= UnitName('player') and
+        TranqRotate:isHunterOnline(hunter)
 end
 
 -- Serialize hunters names of a given rotation group
-function TranqRotate:buildGroupMessage(prefix, rotationTable)
+function TranqRotate:buildGroupMessage(prefix, rotationTable, missingAddon)
     local hunters = {}
 
-    for key, hunt in pairs(rotationTable) do
-        table.insert(hunters, TranqRotate:formatPlayerName(hunt.name))
+    for key, hunt in ipairs(rotationTable) do
+        table.insert(hunters, TranqRotate:buildReportName(hunt, missingAddon))
     end
 
     return prefix .. table.concat(hunters, ', ')

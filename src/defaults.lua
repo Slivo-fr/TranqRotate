@@ -6,7 +6,6 @@ function TranqRotate:LoadDefaults()
 	        enableAnnounces = true,
 	        channelType = "YELL",
 	        rotationReportChannelType = "RAID",
-	        useMultilineRotationReport = false,
 			announceBossSuccessMessage = L["DEFAULT_BOSS_SUCCESS_ANNOUNCE_MESSAGE"],
 			announceTrashSuccessMessage = L["DEFAULT_TRASH_SUCCESS_ANNOUNCE_MESSAGE"],
 	        announceFailMessage = L["DEFAULT_FAIL_ANNOUNCE_MESSAGE"],

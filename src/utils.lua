@@ -129,6 +129,79 @@ function TranqRotate:isUnitAllowedToManageRotation(unitName)
     return TranqRotate:isHunter(unitName) or TranqRotate:isPlayerRaidAssist(unitName)
 end
 
+-- Spell name, from the modern API when present and the legacy global otherwise
+function TranqRotate:getSpellName(spellId)
+
+    if (C_Spell and C_Spell.GetSpellName) then
+        return C_Spell.GetSpellName(spellId)
+    end
+
+    if (C_Spell and C_Spell.GetSpellInfo) then
+        local info = C_Spell.GetSpellInfo(spellId)
+        return info and info.name
+    end
+
+    return (GetSpellInfo(spellId))
+end
+
+-- Chat safe spell link, built by hand rather than taken from GetSpellLink
+-- On Classic the native link omits the trailing ':0' field, and SendChatMessage's
+-- hyperlink validator strips links that lack it, so a sent message would arrive with
+-- the link gone and only the bare name left. Native is kept as a last resort for the
+-- rare spell whose name will not resolve, since then there is no link text to build
+function TranqRotate:getSpellLink(spellId)
+
+    local name = TranqRotate:getSpellName(spellId)
+
+    if (name) then
+        return string.format('|cff71d5ff|Hspell:%d:0|h[%s]|h|r', spellId, name)
+    end
+
+    local nativeGetSpellLink = (C_Spell and C_Spell.GetSpellLink) or GetSpellLink
+    local link = nativeGetSpellLink and nativeGetSpellLink(spellId)
+
+    if (link and link ~= '') then
+        return link
+    end
+
+    return nil
+end
+
+-- Returns a name carrying its realm suffix, used where the name must stay unambiguous
+-- The game omits the suffix for players on your own realm, but Classic Era realms are
+-- connected, so a bare name can belong to several people in the same raid
+function TranqRotate:getFullPlayerName(name)
+
+    if (strfind(name, "-")) then
+        return name
+    end
+
+    local realm = TranqRotate:getPlayerRealm()
+
+    if (realm == nil or realm == '') then
+        return name
+    end
+
+    return name .. "-" .. realm
+end
+
+-- Own realm in the suffix format, stripped of spaces and punctuation
+function TranqRotate:getPlayerRealm()
+
+    if (TranqRotate.playerRealm == nil or TranqRotate.playerRealm == '') then
+        local realm = GetNormalizedRealmName and GetNormalizedRealmName()
+
+        if (realm == nil or realm == '') then
+            realm = GetRealmName and GetRealmName()
+            realm = realm and string.gsub(realm, "[%s'%-]", "")
+        end
+
+        TranqRotate.playerRealm = realm
+    end
+
+    return TranqRotate.playerRealm
+end
+
 -- Format the player name and server suffix
 function TranqRotate:formatPlayerName(fullName)
 

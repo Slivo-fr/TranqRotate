@@ -25,4 +25,9 @@ TranqRotate.migrations = {
         -- This is an old key
         TranqRotate.db.profile.announceSuccessMessage = nil
     end,
+    -- 2.4.0
+    function()
+        -- The rotation report is always numbered now, this option no longer exists
+        TranqRotate.db.profile.useMultilineRotationReport = nil
+    end,
 }

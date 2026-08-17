@@ -10,6 +10,8 @@ TranqRotate.colors = {
 
 TranqRotate.constants = {
     ['tranqShotSpellId'] = 19801,
+    -- Last resort for the report header, only used if the client cannot name the spell
+    ['tranqShotName'] = 'Tranquilizing Shot',
     ['arcaneShotSpellId'] = 14287,
 
     ['hunterFrameHeight'] = 22,
@@ -31,6 +33,8 @@ TranqRotate.constants = {
     },
 
     ['printPrefix'] = 'TranqRotate - ',
+    ['reportMarker'] = '{rt2}', -- Circle, prefixes the rotation report header
+    ['missingAddonMarker'] = '*',
     ['duplicateTranqshotDelayThreshold'] = 10,
     ['duplicateFailedTranqshotDelayThreshold'] = 10,
 

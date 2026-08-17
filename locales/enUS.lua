@@ -98,13 +98,11 @@ local L = {
     ['TRANQ_NOW_LOCAL_ALERT_MESSAGE'] = "USE TRANQSHOT NOW !",
 
     ["BROADCAST_MESSAGE_HEADER"] = "Rotation setup text broadcast",
-    ["USE_MULTILINE_ROTATION_REPORT"] = "Use multiline for main rotation when reporting",
-    ["USE_MULTILINE_ROTATION_REPORT_DESC"] = "Check this option if you want more comprehensible order display",
 
     --- Raid broadcast messages
-    ["BROADCAST_HEADER_TEXT"] = "Hunter tranqshot setup",
-    ["BROADCAST_ROTATION_PREFIX"] = "Rotation",
+    ["BROADCAST_HEADER_TEXT"] = "%s Order, by TranqRotate",
     ["BROADCAST_BACKUP_PREFIX"] = "Backup",
+    ["BROADCAST_MISSING_ADDON_PREFIX"] = "Missing TranqRotate",
 
     --- Sounds
     ["SETTING_SOUNDS"] = "Sounds",
